@@ -922,6 +922,7 @@
       <ColumnInfo>
         <Column id="QmeLogonUserId" type="STRING" size="256"/>
         <Column id="LanguageKey" type="STRING" size="256"/>
+        <Column id="FormId" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>

@@ -8,12 +8,149 @@
             <Tabpage id="Tabpage1" text="1. P/O List" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Button id="Button_tp1_SortComma" taborder="1" text="S:SO,FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Button id="Button_tp1_GroupComma" taborder="2" text="G:SO,FAC" left="139" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Button id="Button_tp1_SortPlus" taborder="3" text="S:SO+FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
-                  <Button id="Button_tp1_GroupPlus" taborder="4" text="G:SO+FAC" left="140" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
-                  <Button id="Button_tp1_InitSortGroup" taborder="5" text="INIT_SortGroup" left="267" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Grid id="GridPoList" left="10" top="12" right="10" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="4" binddataset="ds_POList" taborder="0">
+                  <Grid id="GridPoList00" left="10" top="12" right="10" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="4" binddataset="ds_POList" taborder="6">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="PR_MENGE"/>
+                          <Cell col="1" text="VBELN"/>
+                          <Cell col="2" text="CENTER_CD"/>
+                          <Cell col="3" text="OS_PRICE"/>
+                          <Cell col="4" text="SORT_NUM"/>
+                          <Cell col="5" text="L_NETWR"/>
+                          <Cell col="6" text="CRT"/>
+                          <Cell col="7" text="GMT_COL"/>
+                          <Cell col="8" text="J_3ASIZE"/>
+                          <Cell col="9" text="PO_DESC"/>
+                          <Cell col="10" text="MSGBN"/>
+                          <Cell col="11" text="DOC_TYPE"/>
+                          <Cell col="12" text="OS_PEINH"/>
+                          <Cell col="13" text="USAGE"/>
+                          <Cell col="14" text="REMAIN_MENGE"/>
+                          <Cell col="15" text="MTL_SIZE_KEY"/>
+                          <Cell col="16" text="SUPPLIER_NAME"/>
+                          <Cell col="17" text="TYPE"/>
+                          <Cell col="18" text="MTL_ITEM"/>
+                          <Cell col="19" text="MTL_COLOR_KEY"/>
+                          <Cell col="20" text="MATNR"/>
+                          <Cell col="21" text="L_WAERK"/>
+                          <Cell col="22" text="CURRENCY"/>
+                          <Cell col="23" text="GOODS_MOV"/>
+                          <Cell col="24" text="MTL_ITEM_CD"/>
+                          <Cell col="25" text="GMT_ITEM"/>
+                          <Cell col="26" text="UNIT"/>
+                          <Cell col="27" text="ITEM_CD"/>
+                          <Cell col="28" text="CENTER_NM"/>
+                          <Cell col="29" text="PRICE"/>
+                          <Cell col="30" text="OS_MENGE"/>
+                          <Cell col="31" text="SUPPLIER_CODE1"/>
+                          <Cell col="32" text="PEINH"/>
+                          <Cell col="33" text="INCO1"/>
+                          <Cell col="34" text="MEINS"/>
+                          <Cell col="35" text="OSSTS"/>
+                          <Cell col="36" text="PURCGRP"/>
+                          <Cell col="37" text="PO_MENGE"/>
+                          <Cell col="38" text="GMTMATNR"/>
+                          <Cell col="39" text="POSNR"/>
+                          <Cell col="40" text="DELIVERY_DATE"/>
+                          <Cell col="41" text="LOT_NO"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:PR_MENGE"/>
+                          <Cell col="1" text="bind:VBELN"/>
+                          <Cell col="2" text="bind:CENTER_CD"/>
+                          <Cell col="3" text="bind:OS_PRICE"/>
+                          <Cell col="4" text="bind:SORT_NUM"/>
+                          <Cell col="5" text="bind:L_NETWR"/>
+                          <Cell col="6" text="bind:CRT"/>
+                          <Cell col="7" text="bind:GMT_COL"/>
+                          <Cell col="8" text="bind:J_3ASIZE"/>
+                          <Cell col="9" text="bind:PO_DESC"/>
+                          <Cell col="10" text="bind:MSGBN"/>
+                          <Cell col="11" text="bind:DOC_TYPE"/>
+                          <Cell col="12" text="bind:OS_PEINH"/>
+                          <Cell col="13" text="bind:USAGE"/>
+                          <Cell col="14" text="bind:REMAIN_MENGE"/>
+                          <Cell col="15" text="bind:MTL_SIZE_KEY"/>
+                          <Cell col="16" text="bind:SUPPLIER_NAME"/>
+                          <Cell col="17" text="bind:TYPE"/>
+                          <Cell col="18" text="bind:MTL_ITEM"/>
+                          <Cell col="19" text="bind:MTL_COLOR_KEY"/>
+                          <Cell col="20" text="bind:MATNR"/>
+                          <Cell col="21" text="bind:L_WAERK"/>
+                          <Cell col="22" text="bind:CURRENCY"/>
+                          <Cell col="23" text="bind:GOODS_MOV"/>
+                          <Cell col="24" text="bind:MTL_ITEM_CD"/>
+                          <Cell col="25" text="bind:GMT_ITEM"/>
+                          <Cell col="26" text="bind:UNIT"/>
+                          <Cell col="27" text="bind:ITEM_CD"/>
+                          <Cell col="28" text="bind:CENTER_NM"/>
+                          <Cell col="29" text="bind:PRICE"/>
+                          <Cell col="30" text="bind:OS_MENGE"/>
+                          <Cell col="31" text="bind:SUPPLIER_CODE1"/>
+                          <Cell col="32" text="bind:PEINH"/>
+                          <Cell col="33" text="bind:INCO1"/>
+                          <Cell col="34" text="bind:MEINS"/>
+                          <Cell col="35" text="bind:OSSTS"/>
+                          <Cell col="36" text="bind:PURCGRP"/>
+                          <Cell col="37" text="bind:PO_MENGE"/>
+                          <Cell col="38" text="bind:GMTMATNR"/>
+                          <Cell col="39" text="bind:POSNR"/>
+                          <Cell col="40" text="bind:DELIVERY_DATE"/>
+                          <Cell col="41" text="bind:LOT_NO"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Grid id="GridPoList" left="9" top="227" right="11" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="80" binddataset="ds_POList01" taborder="0">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -158,149 +295,12 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Grid id="GridPoList00" left="62" top="142" right="39" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="143" binddataset="ds_POList00" taborder="6">
-                    <Formats>
-                      <Format id="default">
-                        <Columns>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                        </Columns>
-                        <Rows>
-                          <Row band="head" size="24"/>
-                          <Row size="24"/>
-                        </Rows>
-                        <Band id="head">
-                          <Cell text="PR_MENGE"/>
-                          <Cell col="1" text="VBELN"/>
-                          <Cell col="2" text="CENTER_CD"/>
-                          <Cell col="3" text="OS_PRICE"/>
-                          <Cell col="4" text="SORT_NUM"/>
-                          <Cell col="5" text="L_NETWR"/>
-                          <Cell col="6" text="CRT"/>
-                          <Cell col="7" text="GMT_COL"/>
-                          <Cell col="8" text="J_3ASIZE"/>
-                          <Cell col="9" text="PO_DESC"/>
-                          <Cell col="10" text="MSGBN"/>
-                          <Cell col="11" text="DOC_TYPE"/>
-                          <Cell col="12" text="OS_PEINH"/>
-                          <Cell col="13" text="USAGE"/>
-                          <Cell col="14" text="REMAIN_MENGE"/>
-                          <Cell col="15" text="MTL_SIZE_KEY"/>
-                          <Cell col="16" text="SUPPLIER_NAME"/>
-                          <Cell col="17" text="TYPE"/>
-                          <Cell col="18" text="MTL_ITEM"/>
-                          <Cell col="19" text="MTL_COLOR_KEY"/>
-                          <Cell col="20" text="MATNR"/>
-                          <Cell col="21" text="L_WAERK"/>
-                          <Cell col="22" text="CURRENCY"/>
-                          <Cell col="23" text="GOODS_MOV"/>
-                          <Cell col="24" text="MTL_ITEM_CD"/>
-                          <Cell col="25" text="GMT_ITEM"/>
-                          <Cell col="26" text="UNIT"/>
-                          <Cell col="27" text="ITEM_CD"/>
-                          <Cell col="28" text="CENTER_NM"/>
-                          <Cell col="29" text="PRICE"/>
-                          <Cell col="30" text="OS_MENGE"/>
-                          <Cell col="31" text="SUPPLIER_CODE1"/>
-                          <Cell col="32" text="PEINH"/>
-                          <Cell col="33" text="INCO1"/>
-                          <Cell col="34" text="MEINS"/>
-                          <Cell col="35" text="OSSTS"/>
-                          <Cell col="36" text="PURCGRP"/>
-                          <Cell col="37" text="PO_MENGE"/>
-                          <Cell col="38" text="GMTMATNR"/>
-                          <Cell col="39" text="POSNR"/>
-                          <Cell col="40" text="DELIVERY_DATE"/>
-                          <Cell col="41" text="LOT_NO"/>
-                        </Band>
-                        <Band id="body">
-                          <Cell text="bind:PR_MENGE"/>
-                          <Cell col="1" text="bind:VBELN"/>
-                          <Cell col="2" text="bind:CENTER_CD"/>
-                          <Cell col="3" text="bind:OS_PRICE"/>
-                          <Cell col="4" text="bind:SORT_NUM"/>
-                          <Cell col="5" text="bind:L_NETWR"/>
-                          <Cell col="6" text="bind:CRT"/>
-                          <Cell col="7" text="bind:GMT_COL"/>
-                          <Cell col="8" text="bind:J_3ASIZE"/>
-                          <Cell col="9" text="bind:PO_DESC"/>
-                          <Cell col="10" text="bind:MSGBN"/>
-                          <Cell col="11" text="bind:DOC_TYPE"/>
-                          <Cell col="12" text="bind:OS_PEINH"/>
-                          <Cell col="13" text="bind:USAGE"/>
-                          <Cell col="14" text="bind:REMAIN_MENGE"/>
-                          <Cell col="15" text="bind:MTL_SIZE_KEY"/>
-                          <Cell col="16" text="bind:SUPPLIER_NAME"/>
-                          <Cell col="17" text="bind:TYPE"/>
-                          <Cell col="18" text="bind:MTL_ITEM"/>
-                          <Cell col="19" text="bind:MTL_COLOR_KEY"/>
-                          <Cell col="20" text="bind:MATNR"/>
-                          <Cell col="21" text="bind:L_WAERK"/>
-                          <Cell col="22" text="bind:CURRENCY"/>
-                          <Cell col="23" text="bind:GOODS_MOV"/>
-                          <Cell col="24" text="bind:MTL_ITEM_CD"/>
-                          <Cell col="25" text="bind:GMT_ITEM"/>
-                          <Cell col="26" text="bind:UNIT"/>
-                          <Cell col="27" text="bind:ITEM_CD"/>
-                          <Cell col="28" text="bind:CENTER_NM"/>
-                          <Cell col="29" text="bind:PRICE"/>
-                          <Cell col="30" text="bind:OS_MENGE"/>
-                          <Cell col="31" text="bind:SUPPLIER_CODE1"/>
-                          <Cell col="32" text="bind:PEINH"/>
-                          <Cell col="33" text="bind:INCO1"/>
-                          <Cell col="34" text="bind:MEINS"/>
-                          <Cell col="35" text="bind:OSSTS"/>
-                          <Cell col="36" text="bind:PURCGRP"/>
-                          <Cell col="37" text="bind:PO_MENGE"/>
-                          <Cell col="38" text="bind:GMTMATNR"/>
-                          <Cell col="39" text="bind:POSNR"/>
-                          <Cell col="40" text="bind:DELIVERY_DATE"/>
-                          <Cell col="41" text="bind:LOT_NO"/>
-                        </Band>
-                      </Format>
-                    </Formats>
-                  </Grid>
-                  <Grid id="Grid00" taborder="7" left="227" top="237" width="431" height="97" binddataset="ds_in">
+                  <Button id="Button_tp1_SortComma" taborder="1" text="S:SO,FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
+                  <Button id="Button_tp1_GroupComma" taborder="2" text="G:SO,FAC" left="139" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
+                  <Button id="Button_tp1_SortPlus" taborder="3" text="S:SO+FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
+                  <Button id="Button_tp1_GroupPlus" taborder="4" text="G:SO+FAC" left="140" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
+                  <Button id="Button_tp1_InitSortGroup" taborder="5" text="INIT_SortGroup" left="267" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
+                  <Grid id="Grid00" taborder="7" left="714" top="45" width="431" height="97" binddataset="ds_in" visible="false">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -503,7 +503,7 @@ this.fn_reset = function()
 */
 this.tfn_getPoListHistoryLoad = function(){
 	//this.ds_POList.clearData();
-	this.ds_POList00.clearData();
+	this.ds_POList.clearData();
 	this.ds_POHistory.clearData();
 	this.ds_in.setColumn(0, "p_osno1", "1126195724");
 	this.ds_in.setColumn(0, "p_user_id", "160307");
@@ -512,9 +512,9 @@ this.tfn_getPoListHistoryLoad = function(){
 	//	AppSvr	JSP	-- http://nyc.panpacific.co.kr/QMENexacroSvr/
 	var sSvcID 			= "getPoListHistoryLoad";
 	var sURL 			= "AppSvr::common/commonAction.ppc";
-	var sInDatasets 	= "ds_in0=ds_in";
-	var sOutDatasets 	= "ds_POList00=ds_out0";
-	var sArguments 		= "sqlId=" + nexacro.wrapQuote("POMapper.getPOList");
+	var sInDatasets 	= "ds_in0=ds_in ds_in1=ds_in";
+	var sOutDatasets 	= "ds_POList=ds_out0 ds_POHistory=ds_out1";
+	var sArguments 		= "sqlId=" + nexacro.wrapQuote("POMapper.getPOList SqlId_00001");
 
 	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
 }
@@ -540,9 +540,6 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 		default:
 			break;
  		
-			case "transTest"	:		// 
-				this.gtrace("ds_initTestReturn.saveXML--->"+this.ds_initTestReturn.saveXML(),gtrcPos)	;
-				break;
 			case "getPoListHistoryLoad"	:
 				
 				break;
@@ -623,521 +620,12 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 };
 
-this.Tab00_Tabpage1_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{	// 트랜잭션테스트용
-	//	http://nyc.panpacific.co.kr/QMENexacroSvr/common/commonAction.ppc
-	//	AppSvr	JSP	-- http://nyc.panpacific.co.kr/QMENexacroSvr/
-	var sSvcID 			= "transTest";
-	var sURL 			= "AppSvr::common/commonAction.ppc";
-	var sInDatasets 	= "ds_in0=ds_initTest";
-	var sOutDatasets 	= "ds_initTestReturn=ds_out0";
-	var sArguments 		= "sqlId=" + nexacro.wrapQuote("POMapper.getPOList");
-	
-	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
-};
-
 this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.tfn_getPoListHistoryLoad();
 };
 ]]></Script>
     <Objects>
-      <Dataset id="ds_POList">
-        <ColumnInfo>
-          <Column id="A01" type="STRING" size="256"/>
-          <Column id="A02" type="STRING" size="256"/>
-          <Column id="A03" type="STRING" size="256"/>
-          <Column id="A04" type="STRING" size="256"/>
-          <Column id="A05" type="STRING" size="256"/>
-          <Column id="A06" type="STRING" size="256"/>
-          <Column id="A07" type="STRING" size="256"/>
-          <Column id="A08" type="STRING" size="256"/>
-          <Column id="A09" type="STRING" size="256"/>
-          <Column id="A10" type="STRING" size="256"/>
-          <Column id="A11" type="STRING" size="256"/>
-          <Column id="A12" type="STRING" size="256"/>
-          <Column id="A13" type="STRING" size="256"/>
-          <Column id="A14" type="STRING" size="256"/>
-          <Column id="A15" type="STRING" size="256"/>
-          <Column id="A16" type="STRING" size="256"/>
-          <Column id="A17" type="STRING" size="256"/>
-          <Column id="A18" type="STRING" size="256"/>
-          <Column id="A19" type="STRING" size="256"/>
-          <Column id="A20" type="STRING" size="256"/>
-          <Column id="A21" type="STRING" size="256"/>
-          <Column id="A22" type="STRING" size="256"/>
-          <Column id="A23" type="STRING" size="256"/>
-          <Column id="A24" type="STRING" size="256"/>
-          <Column id="A25" type="STRING" size="256"/>
-          <Column id="A26" type="STRING" size="256"/>
-          <Column id="A27" type="STRING" size="256"/>
-          <Column id="A28" type="STRING" size="256"/>
-          <Column id="A29" type="STRING" size="256"/>
-          <Column id="A30" type="STRING" size="256"/>
-          <Column id="A31" type="STRING" size="256"/>
-          <Column id="A32" type="STRING" size="256"/>
-          <Column id="A33" type="STRING" size="256"/>
-          <Column id="A34" type="STRING" size="256"/>
-          <Column id="A35" type="STRING" size="256"/>
-          <Column id="A36" type="STRING" size="256"/>
-          <Column id="A37" type="STRING" size="256"/>
-          <Column id="A38" type="STRING" size="256"/>
-          <Column id="A39" type="STRING" size="256"/>
-          <Column id="A40" type="STRING" size="256"/>
-          <Column id="A41" type="STRING" size="256"/>
-          <Column id="A42" type="STRING" size="256"/>
-          <Column id="A43" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A08"/>
-            <Col id="A09"/>
-            <Col id="A10">33000012</Col>
-            <Col id="A11">AVERY DENNISON</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831902</Col>
-            <Col id="A14">PRICE TICKET</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A20"/>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">546</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">1</Col>
-            <Col id="A27">1</Col>
-            <Col id="A28">546</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">1</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A16">PRICE TICKET</Col>
-            <Col id="A21">546</Col>
-            <Col id="A33">1</Col>
-            <Col id="A36">546</Col>
-            <Col id="A42">FOB</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A08"/>
-            <Col id="A09"/>
-            <Col id="A10">33000239</Col>
-            <Col id="A11">PAXAR(CHINA)LIMITED</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831904</Col>
-            <Col id="A14">eas label</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A22">PCS</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">536</Col>
-            <Col id="A25">PCS</Col>
-            <Col id="A26">56.85</Col>
-            <Col id="A27">1000</Col>
-            <Col id="A28">30.47</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">1000</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A16">EAS label</Col>
-            <Col id="A21">536</Col>
-            <Col id="A33">56.85</Col>
-            <Col id="A36">30.47</Col>
-            <Col id="A42">FOB</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A08"/>
-            <Col id="A09"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A20">XXS</Col>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">30</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">4.5</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A21">30</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">122</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">18.3</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A20">XS</Col>
-            <Col id="A21">122</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">150</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">22.5</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A20">S</Col>
-            <Col id="A21">150</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">137</Col>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">137</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">20.55</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A20">M</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">90</Col>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">90</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">13.5</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A20">L</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">31</Col>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">31</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">4.65</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A20">XL</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831901</Col>
-            <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">24</Col>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">24</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">15</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">3.6</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATSPY00Y</Col>
-            <Col id="A20">XXL</Col>
-            <Col id="A33">15</Col>
-            <Col id="A36">87.6</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831900</Col>
-            <Col id="A14">MAIN LABEL</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">572</Col>
-            <Col id="A22">EA</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">572</Col>
-            <Col id="A25">EA</Col>
-            <Col id="A26">38.4</Col>
-            <Col id="A27">1000</Col>
-            <Col id="A28">21.96</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">1000</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000580</Col>
-            <Col id="A16">ATATMPY00D</Col>
-            <Col id="A33">38.39</Col>
-            <Col id="A36">21.96</Col>
-            <Col id="A42">EXW</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">VERP</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">NEPTUNE TRADING SERVICING CO.,LTD</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">VA010831903</Col>
-            <Col id="A14">MOBILON TAPE</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">292</Col>
-            <Col id="A22">YD</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">292</Col>
-            <Col id="A25">YD</Col>
-            <Col id="A26">0.42</Col>
-            <Col id="A27">100</Col>
-            <Col id="A28">1.23</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">100</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">33000957</Col>
-            <Col id="A16">MOBILON TAEP @ SD</Col>
-            <Col id="A33">0.42</Col>
-            <Col id="A36">1.23</Col>
-            <Col id="A42">DDU</Col>
-          </Row>
-          <Row>
-            <Col id="A04">1126195724</Col>
-            <Col id="A05">VPC</Col>
-            <Col id="A06">ROH</Col>
-            <Col id="A07">126126126</Col>
-            <Col id="A11">㈜부창텍스피아</Col>
-            <Col id="A12">ALL</Col>
-            <Col id="A13">RA010161964</Col>
-            <Col id="A14">BODY</Col>
-            <Col id="A15"/>
-            <Col id="A17">ALL</Col>
-            <Col id="A18"/>
-            <Col id="A21">1306</Col>
-            <Col id="A22">YD</Col>
-            <Col id="A23">0</Col>
-            <Col id="A24">1306</Col>
-            <Col id="A25">YD</Col>
-            <Col id="A26">3.2</Col>
-            <Col id="A27">1</Col>
-            <Col id="A28">4179.2</Col>
-            <Col id="A29">USD</Col>
-            <Col id="A30">0</Col>
-            <Col id="A31">126</Col>
-            <Col id="A32"/>
-            <Col id="A34">1</Col>
-            <Col id="A35">USD</Col>
-            <Col id="A37">2018-11-09</Col>
-            <Col id="A38">0</Col>
-            <Col id="A39">0</Col>
-            <Col id="A40"/>
-            <Col id="A10">50002063</Col>
-            <Col id="A16">Brushed Nash 97/3 RAYON/SPANDEX</Col>
-            <Col id="A19">Forever Navy</Col>
-            <Col id="A33">3.2</Col>
-            <Col id="A36">4179.2</Col>
-            <Col id="A42">FOB</Col>
-          </Row>
-        </Rows>
-      </Dataset>
       <Dataset id="ds_in">
         <ColumnInfo>
           <Column id="p_mandt" type="STRING" size="256"/>
@@ -11208,91 +10696,6 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
           <Column id="PurchaseOrderNoTo" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_in00">
-        <ColumnInfo>
-          <Column id="SalesOrderNoFrom" type="STRING" size="256"/>
-          <Column id="SalesOrderNoTo" type="STRING" size="256"/>
-          <Column id="StyleNoFrom" type="STRING" size="256"/>
-          <Column id="StyleNoTo" type="STRING" size="256"/>
-          <Column id="VendorCodeFrom" type="STRING" size="256"/>
-          <Column id="VendorCodeTo" type="STRING" size="256"/>
-          <Column id="MaterialCodeFrom" type="STRING" size="256"/>
-          <Column id="MaterialCodeTo" type="STRING" size="256"/>
-          <Column id="PurchaseOrderNoFrom" type="STRING" size="256"/>
-          <Column id="PurchaseOrderNoTo" type="STRING" size="256"/>
-          <Column id="param1" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_initTest">
-        <ColumnInfo>
-          <Column id="p_mandt" type="STRING" size="256"/>
-          <Column id="p_osno1" type="STRING" size="256"/>
-          <Column id="p_osno2" type="STRING" size="256"/>
-          <Column id="p_osno_list" type="STRING" size="256"/>
-          <Column id="p_matnr1" type="STRING" size="256"/>
-          <Column id="p_matnr2" type="STRING" size="256"/>
-          <Column id="p_matnr_list" type="STRING" size="256"/>
-          <Column id="p_mtl_matnr1" type="STRING" size="256"/>
-          <Column id="p_mtl_matnr2" type="STRING" size="256"/>
-          <Column id="p_mtl_matnr_list" type="STRING" size="256"/>
-          <Column id="p_supply1" type="STRING" size="256"/>
-          <Column id="p_supply2" type="STRING" size="256"/>
-          <Column id="p_supply_list" type="STRING" size="256"/>
-          <Column id="p_user_id" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="p_osno1">1126195724</Col>
-            <Col id="p_user_id">160307</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="ds_initTestReturn">
-        <ColumnInfo>
-          <Column id="PR_MENGE" type="STRING" size="256"/>
-          <Column id="VBELN" type="STRING" size="256"/>
-          <Column id="CENTER_CD" type="STRING" size="256"/>
-          <Column id="OS_PRICE" type="STRING" size="256"/>
-          <Column id="SORT_NUM" type="STRING" size="256"/>
-          <Column id="L_NETWR" type="STRING" size="256"/>
-          <Column id="CRT" type="STRING" size="256"/>
-          <Column id="GMT_COL" type="STRING" size="256"/>
-          <Column id="J_3ASIZE" type="STRING" size="256"/>
-          <Column id="PO_DESC" type="STRING" size="256"/>
-          <Column id="MSGBN" type="STRING" size="256"/>
-          <Column id="DOC_TYPE" type="STRING" size="256"/>
-          <Column id="OS_PEINH" type="STRING" size="256"/>
-          <Column id="USAGE" type="STRING" size="256"/>
-          <Column id="REMAIN_MENGE" type="STRING" size="256"/>
-          <Column id="MTL_SIZE_KEY" type="STRING" size="256"/>
-          <Column id="SUPPLIER_NAME" type="STRING" size="256"/>
-          <Column id="TYPE" type="STRING" size="256"/>
-          <Column id="MTL_ITEM" type="STRING" size="256"/>
-          <Column id="MTL_COLOR_KEY" type="STRING" size="256"/>
-          <Column id="MATNR" type="STRING" size="256"/>
-          <Column id="L_WAERK" type="STRING" size="256"/>
-          <Column id="CURRENCY" type="STRING" size="256"/>
-          <Column id="GOODS_MOV" type="STRING" size="256"/>
-          <Column id="MTL_ITEM_CD" type="STRING" size="256"/>
-          <Column id="GMT_ITEM" type="STRING" size="256"/>
-          <Column id="UNIT" type="STRING" size="256"/>
-          <Column id="ITEM_CD" type="STRING" size="256"/>
-          <Column id="CENTER_NM" type="STRING" size="256"/>
-          <Column id="PRICE" type="STRING" size="256"/>
-          <Column id="OS_MENGE" type="STRING" size="256"/>
-          <Column id="SUPPLIER_CODE1" type="STRING" size="256"/>
-          <Column id="PEINH" type="STRING" size="256"/>
-          <Column id="INCO1" type="STRING" size="256"/>
-          <Column id="MEINS" type="STRING" size="256"/>
-          <Column id="OSSTS" type="STRING" size="256"/>
-          <Column id="PURCGRP" type="STRING" size="256"/>
-          <Column id="PO_MENGE" type="STRING" size="256"/>
-          <Column id="GMTMATNR" type="STRING" size="256"/>
-          <Column id="POSNR" type="STRING" size="256"/>
-          <Column id="DELIVERY_DATE" type="STRING" size="256"/>
-          <Column id="LOT_NO" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="ds_POHistory">
         <ColumnInfo>
           <Column id="Sel" type="STRING" size="256"/>
@@ -13495,7 +12898,7 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_POList00">
+      <Dataset id="ds_POList">
         <ColumnInfo>
           <Column id="PR_MENGE" type="STRING" size="256"/>
           <Column id="VBELN" type="STRING" size="256"/>
@@ -13540,2159 +12943,500 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
           <Column id="DELIVERY_DATE" type="STRING" size="256"/>
           <Column id="LOT_NO" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_POList01">
+        <ColumnInfo>
+          <Column id="A01" type="STRING" size="256"/>
+          <Column id="A02" type="STRING" size="256"/>
+          <Column id="A03" type="STRING" size="256"/>
+          <Column id="A04" type="STRING" size="256"/>
+          <Column id="A05" type="STRING" size="256"/>
+          <Column id="A06" type="STRING" size="256"/>
+          <Column id="A07" type="STRING" size="256"/>
+          <Column id="A08" type="STRING" size="256"/>
+          <Column id="A09" type="STRING" size="256"/>
+          <Column id="A10" type="STRING" size="256"/>
+          <Column id="A11" type="STRING" size="256"/>
+          <Column id="A12" type="STRING" size="256"/>
+          <Column id="A13" type="STRING" size="256"/>
+          <Column id="A14" type="STRING" size="256"/>
+          <Column id="A15" type="STRING" size="256"/>
+          <Column id="A16" type="STRING" size="256"/>
+          <Column id="A17" type="STRING" size="256"/>
+          <Column id="A18" type="STRING" size="256"/>
+          <Column id="A19" type="STRING" size="256"/>
+          <Column id="A20" type="STRING" size="256"/>
+          <Column id="A21" type="STRING" size="256"/>
+          <Column id="A22" type="STRING" size="256"/>
+          <Column id="A23" type="STRING" size="256"/>
+          <Column id="A24" type="STRING" size="256"/>
+          <Column id="A25" type="STRING" size="256"/>
+          <Column id="A26" type="STRING" size="256"/>
+          <Column id="A27" type="STRING" size="256"/>
+          <Column id="A28" type="STRING" size="256"/>
+          <Column id="A29" type="STRING" size="256"/>
+          <Column id="A30" type="STRING" size="256"/>
+          <Column id="A31" type="STRING" size="256"/>
+          <Column id="A32" type="STRING" size="256"/>
+          <Column id="A33" type="STRING" size="256"/>
+          <Column id="A34" type="STRING" size="256"/>
+          <Column id="A35" type="STRING" size="256"/>
+          <Column id="A36" type="STRING" size="256"/>
+          <Column id="A37" type="STRING" size="256"/>
+          <Column id="A38" type="STRING" size="256"/>
+          <Column id="A39" type="STRING" size="256"/>
+          <Column id="A40" type="STRING" size="256"/>
+          <Column id="A41" type="STRING" size="256"/>
+          <Column id="A42" type="STRING" size="256"/>
+          <Column id="A43" type="STRING" size="256"/>
+        </ColumnInfo>
         <Rows>
           <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="GMT_COL">EC00</Col>
-            <Col id="J_3ASIZE">IS - Import Third PO</Col>
-            <Col id="PO_DESC">FOB</Col>
-            <Col id="MSGBN">0013000049</Col>
-            <Col id="DOC_TYPE">KT무역</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831905</Col>
-            <Col id="REMAIN_MENGE">TWILL TAPE</Col>
-            <Col id="SUPPLIER_NAME">3/8" W직</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">Forever Navy</Col>
-            <Col id="L_WAERK">1004</Col>
-            <Col id="CURRENCY">YD</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">1004</Col>
-            <Col id="GMT_ITEM">YD</Col>
-            <Col id="UNIT">90</Col>
-            <Col id="ITEM_CD">1</Col>
-            <Col id="CENTER_NM">90360</Col>
-            <Col id="PRICE">KRW</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="GMT_COL">EC00</Col>
-            <Col id="J_3ASIZE">IS - Import Third PO</Col>
-            <Col id="PO_DESC">FOB</Col>
-            <Col id="MSGBN">0013000064</Col>
-            <Col id="DOC_TYPE">한국에이버리알아이에스(유)</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831907</Col>
-            <Col id="REMAIN_MENGE">CARE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ANN-ALL-CC-2017</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">601</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">601</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">13</Col>
-            <Col id="ITEM_CD">1</Col>
-            <Col id="CENTER_NM">7813</Col>
-            <Col id="PRICE">KRW</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="GMT_COL">EC00</Col>
-            <Col id="J_3ASIZE">IS - Import Third PO</Col>
-            <Col id="PO_DESC">FOB</Col>
-            <Col id="MSGBN">0013000085</Col>
-            <Col id="DOC_TYPE">(주)코츠코리아</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831906</Col>
-            <Col id="REMAIN_MENGE">THREAD</Col>
-            <Col id="SUPPLIER_NAME">40S/2 5,000M</Col>
-            <Col id="TYPE">Forever Navy</Col>
-            <Col id="MTL_COLOR_KEY">Forever Navy</Col>
-            <Col id="L_WAERK">52</Col>
-            <Col id="CURRENCY">CN</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">52</Col>
-            <Col id="GMT_ITEM">CN</Col>
-            <Col id="UNIT">2</Col>
-            <Col id="ITEM_CD">10</Col>
-            <Col id="CENTER_NM">10.4</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000012</Col>
-            <Col id="DOC_TYPE">AVERY DENNISON</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831910</Col>
-            <Col id="REMAIN_MENGE">PRICE TICKET</Col>
-            <Col id="SUPPLIER_NAME">PRICE TICKET</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">546</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">546</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">1</Col>
-            <Col id="ITEM_CD">1</Col>
-            <Col id="CENTER_NM">546</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000239</Col>
-            <Col id="DOC_TYPE">PAXAR(CHINA)LIMITED</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831912</Col>
-            <Col id="REMAIN_MENGE">eas label</Col>
-            <Col id="SUPPLIER_NAME">EAS label</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">536</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">536</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">57</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">30.55</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">XXS</Col>
-            <Col id="L_WAERK">30</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">30</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">4.5</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">XS</Col>
-            <Col id="L_WAERK">122</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">122</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">18.3</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">S</Col>
-            <Col id="L_WAERK">150</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">150</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">22.5</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">M</Col>
-            <Col id="L_WAERK">137</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">137</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">20.55</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">L</Col>
-            <Col id="L_WAERK">90</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">90</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">13.5</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">XL</Col>
-            <Col id="L_WAERK">31</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">31</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">4.65</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831909</Col>
-            <Col id="REMAIN_MENGE">SIZE LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATSPY00Y</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MATNR">XXL</Col>
-            <Col id="L_WAERK">24</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">24</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">3.6</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000580</Col>
-            <Col id="DOC_TYPE">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831908</Col>
-            <Col id="REMAIN_MENGE">MAIN LABEL</Col>
-            <Col id="SUPPLIER_NAME">ATATMPY00D</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">572</Col>
-            <Col id="CURRENCY">EA</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">572</Col>
-            <Col id="GMT_ITEM">EA</Col>
-            <Col id="UNIT">39</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">22.31</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0033000957</Col>
-            <Col id="DOC_TYPE">NEPTUNE TRADING SERVICING CO.,LTD</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010831911</Col>
-            <Col id="REMAIN_MENGE">MOBILON TAPE</Col>
-            <Col id="SUPPLIER_NAME">MOBILON TAEP @ SD</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">292</Col>
-            <Col id="CURRENCY">YD</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">292</Col>
-            <Col id="GMT_ITEM">YD</Col>
-            <Col id="UNIT">1</Col>
-            <Col id="ITEM_CD">100</Col>
-            <Col id="CENTER_NM">2.92</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1125195725</Col>
-            <Col id="SORT_NUM">VPC</Col>
-            <Col id="L_NETWR">ROH</Col>
-            <Col id="CRT">12612612</Col>
-            <Col id="MSGBN">0050002063</Col>
-            <Col id="DOC_TYPE">㈜부창텍스피아</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">RA010161965</Col>
-            <Col id="REMAIN_MENGE">BODY</Col>
-            <Col id="SUPPLIER_NAME">Brushed Nash 97/3 RAYON/SPANDEX</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">Forever Navy</Col>
-            <Col id="L_WAERK">1306</Col>
-            <Col id="CURRENCY">YD</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">1306</Col>
-            <Col id="GMT_ITEM">YD</Col>
-            <Col id="UNIT">4</Col>
-            <Col id="ITEM_CD">1</Col>
-            <Col id="CENTER_NM">5224</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">125</Col>
-            <Col id="INCO1">0</Col>
-            <Col id="MEINS">0</Col>
-            <Col id="PURCGRP">0</Col>
-            <Col id="PO_MENGE">2018-11-09</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0013000078</Col>
-            <Col id="DOC_TYPE">SB CORP(에스비코퍼레이션)</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766361</Col>
-            <Col id="REMAIN_MENGE">TAPE</Col>
-            <Col id="SUPPLIER_NAME">TRANSPARANT TAPE MATE CLEAR FILM 1 X 10 CM</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13362</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13362</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">50</Col>
-            <Col id="ITEM_CD">1</Col>
-            <Col id="CENTER_NM">668100</Col>
-            <Col id="PRICE">KRW</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">50</Col>
-            <Col id="MEINS">1</Col>
-            <Col id="OSSTS">KRW</Col>
-            <Col id="PURCGRP">668100</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0013000078</Col>
-            <Col id="DOC_TYPE">SB CORP(에스비코퍼레이션)</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766361</Col>
-            <Col id="REMAIN_MENGE">TAPE</Col>
-            <Col id="SUPPLIER_NAME">TRANSPARANT TAPE MATE CLEAR FILM 1 X 10 CM</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13362</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">13361</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">50</Col>
-            <Col id="ITEM_CD">1</Col>
-            <Col id="CENTER_NM">50</Col>
-            <Col id="PRICE">KRW</Col>
-            <Col id="OS_MENGE">13361</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">50</Col>
-            <Col id="MEINS">1</Col>
-            <Col id="OSSTS">KRW</Col>
-            <Col id="PURCGRP">668100</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">ROH</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">FOB</Col>
-            <Col id="MSGBN">0032000077</Col>
-            <Col id="DOC_TYPE">FAR EASTERN NEW CENTURY CORPORATION</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">RA010144395</Col>
-            <Col id="REMAIN_MENGE">SHELL</Col>
-            <Col id="SUPPLIER_NAME">SHELL H2M467-06B-GRS1 86% POLY 14% SPAN 155GSM</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">52-114 + 10-100 STP MEL</Col>
-            <Col id="L_WAERK">7771</Col>
-            <Col id="CURRENCY">YD</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">7771</Col>
-            <Col id="GMT_ITEM">YD</Col>
-            <Col id="UNIT">2520</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">19582.92</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">2520</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">19582.92</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">ROH</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">FOB</Col>
-            <Col id="MSGBN">0032000077</Col>
-            <Col id="DOC_TYPE">FAR EASTERN NEW CENTURY CORPORATION</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">RA010144395</Col>
-            <Col id="REMAIN_MENGE">SHELL</Col>
-            <Col id="SUPPLIER_NAME">SHELL H2M467-06B-GRS1 86% POLY 14% SPAN 155GSM</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">52-114 + 10-100 STP MEL</Col>
-            <Col id="L_WAERK">7771</Col>
-            <Col id="CURRENCY">YD</Col>
-            <Col id="GOODS_MOV">7770</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">YD</Col>
-            <Col id="UNIT">2520</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">2.52</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">7770</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">2520</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">19582.92</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">XS</Col>
-            <Col id="L_WAERK">989</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">989</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">16.32</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">S</Col>
-            <Col id="L_WAERK">3543</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">3543</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">58.46</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">M</Col>
-            <Col id="L_WAERK">4650</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">4650</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">76.72</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">L</Col>
-            <Col id="L_WAERK">2535</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">2535</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">41.83</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">XL</Col>
-            <Col id="L_WAERK">1502</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">1502</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">24.78</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-MX＾220156-8316-CO</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">XS</Col>
-            <Col id="L_WAERK">14</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">14</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.23</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-MX＾220156-8316-CO</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">S</Col>
-            <Col id="L_WAERK">39</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">39</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.64</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-MX＾220156-8316-CO</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">M</Col>
-            <Col id="L_WAERK">51</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">51</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.84</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-MX＾220156-8316-CO</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">L</Col>
-            <Col id="L_WAERK">33</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">33</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.54</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-MX＾220156-8316-CO</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">XL</Col>
-            <Col id="L_WAERK">19</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">19</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.31</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">XS</Col>
-            <Col id="L_WAERK">1003</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">1003</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">30.09</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">S</Col>
-            <Col id="L_WAERK">3581</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">3581</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">107.43</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">M</Col>
-            <Col id="L_WAERK">4701</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">4701</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">141.03</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">L</Col>
-            <Col id="L_WAERK">2567</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">2567</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">77.01</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">XL</Col>
-            <Col id="L_WAERK">1520</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">1520</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">45.6</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-ME</Col>
-            <Col id="USAGE">VA010766373</Col>
-            <Col id="REMAIN_MENGE">STICKER</Col>
-            <Col id="SUPPLIER_NAME">ME STICKER HMINC98261</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">229</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">229</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">6.15</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">1.41</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">6.15</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">1.41</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-TH</Col>
-            <Col id="USAGE">VA010766376</Col>
-            <Col id="REMAIN_MENGE">STICKER</Col>
-            <Col id="SUPPLIER_NAME">TH STICKER HMINC98265</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">28</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">28</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">6.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.18</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">6.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.18</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-UY</Col>
-            <Col id="USAGE">VA010766377</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">UY LABEL</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">37</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">37</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.56</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">15</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.56</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-ME</Col>
-            <Col id="USAGE">VA010766372</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">ME LABEL HMINC98246</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">229</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">229</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">6</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">1.37</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">6</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">1.37</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-TH</Col>
-            <Col id="USAGE">VA010766375</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">TH LABEL HMINC98264</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">28</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">28</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">5.1</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.14</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">5.1</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.14</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">XS</Col>
-            <Col id="L_WAERK">989</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">989</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">16.32</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">S</Col>
-            <Col id="L_WAERK">3543</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">3543</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">58.46</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">M</Col>
-            <Col id="L_WAERK">4650</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">4650</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">76.72</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">L</Col>
-            <Col id="L_WAERK">2535</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">2535</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">41.83</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-DE＾220156-8316-NL/PL＾220156-8316-CH＾220156-8316-HK＾220156-8316-TR＾220156-8316-RU＾220156-8316-KR＾220156-8316-HR＾220156-8316-CL＾220156-8316-ME＾220156-8316-IX＾220156-8316-TH＾220156-8316-RS＾220156-8316-AU＾220156-8316-ID＾220156-8316-TW＾220156-8316-IN＾220156-8316-ZA＾220156-8316-PE＾220156-8316-NZ＾220156-8316-UY＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-JP＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766370</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">HEAT SEAL LABEL HM14347</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">BLACK</Col>
-            <Col id="MATNR">XL</Col>
-            <Col id="L_WAERK">1502</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">1502</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">16.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">24.78</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">16.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">218.11</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">XS</Col>
-            <Col id="L_WAERK">1003</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">1002</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.03</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">1002</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">M</Col>
-            <Col id="L_WAERK">4701</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">4700</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.03</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">4700</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766358</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">CARE LABEL HM30039</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">WHITE</Col>
-            <Col id="MATNR">XL</Col>
-            <Col id="L_WAERK">1520</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">1519</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.03</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">1519</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">401.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-UY</Col>
-            <Col id="USAGE">VA010766377</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">UY LABEL</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">37</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">36</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">15</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.02</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">36</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">15</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.56</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-ME</Col>
-            <Col id="USAGE">VA010766372</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">ME LABEL HMINC98246</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">229</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">228</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">6</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.01</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">228</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">6</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">1.37</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001564</Col>
-            <Col id="DOC_TYPE">PT. R-PAC INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-TH</Col>
-            <Col id="USAGE">VA010766375</Col>
-            <Col id="REMAIN_MENGE">LABEL</Col>
-            <Col id="SUPPLIER_NAME">TH LABEL HMINC98264</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">28</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">27</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">5.1</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.01</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">27</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">5.1</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.14</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001849</Col>
-            <Col id="DOC_TYPE">PT. SEJAHTERA UNGGUL NUSANTARA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766366</Col>
-            <Col id="REMAIN_MENGE">HANG TAG</Col>
-            <Col id="SUPPLIER_NAME">HANG TAG HM681048 QUICK DRY</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13362</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13362</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">46</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">614.65</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">46</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">614.65</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">EXW</Col>
-            <Col id="MSGBN">0032001893</Col>
-            <Col id="DOC_TYPE">YD COMPANY</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766367</Col>
-            <Col id="REMAIN_MENGE">HANG TAG</Col>
-            <Col id="SUPPLIER_NAME">HANG TAG HM681053 SPORT TRAINING</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13362</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13362</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">28.9</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">386.16</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">28.9</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">386.16</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">EXW</Col>
-            <Col id="MSGBN">0032001893</Col>
-            <Col id="DOC_TYPE">YD COMPANY</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766368</Col>
-            <Col id="REMAIN_MENGE">HANG TAG</Col>
-            <Col id="SUPPLIER_NAME">HANG TAG HM68309 CONSIOUS SMALL 87% POLYESTER</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13362</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13362</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">30</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">400.86</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">30</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">400.86</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032001966</Col>
-            <Col id="DOC_TYPE">PT. STRETCHLINE</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766360</Col>
-            <Col id="REMAIN_MENGE">NECK TAPE</Col>
-            <Col id="SUPPLIER_NAME">NECK TAPE 10 MM</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">09-090</Col>
-            <Col id="L_WAERK">3879</Col>
-            <Col id="CURRENCY">YD</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">3879</Col>
-            <Col id="GMT_ITEM">YD</Col>
-            <Col id="UNIT">141.6</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">549.27</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">141.6</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">549.27</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032002267</Col>
-            <Col id="DOC_TYPE">PT. FOKUS VISITAMA GLOBAL INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-IN</Col>
-            <Col id="USAGE">VA010766371</Col>
-            <Col id="REMAIN_MENGE">PAPER</Col>
-            <Col id="SUPPLIER_NAME">LITHO PAPER 69 X 88 15GR</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">36</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">36</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">27</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.97</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">27</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.97</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0032002267</Col>
-            <Col id="DOC_TYPE">PT. FOKUS VISITAMA GLOBAL INDONESIA</Col>
-            <Col id="OS_PEINH">220156-8316-IN</Col>
-            <Col id="USAGE">VA010766371</Col>
-            <Col id="REMAIN_MENGE">PAPER</Col>
-            <Col id="SUPPLIER_NAME">LITHO PAPER 69 X 88 15GR</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">36</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">35</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">27</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.03</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">35</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">27</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">0.97</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000110</Col>
-            <Col id="DOC_TYPE">PT.AVERY DENNISON PACKAGING INDONES</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766364</Col>
-            <Col id="REMAIN_MENGE">TAG</Col>
-            <Col id="SUPPLIER_NAME">PRICE TAG PT 01</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13504</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13504</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">9.2</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">124.24</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">9.2</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">124.24</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000110</Col>
-            <Col id="DOC_TYPE">PT.AVERY DENNISON PACKAGING INDONES</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-CH＾220156-8316-IX＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766374</Col>
-            <Col id="REMAIN_MENGE">TAG</Col>
-            <Col id="SUPPLIER_NAME">RFID TAG RT 01</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">3641</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">3641</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">58.8</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">214.09</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">58.8</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">214.09</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000110</Col>
-            <Col id="DOC_TYPE">PT.AVERY DENNISON PACKAGING INDONES</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766363</Col>
-            <Col id="REMAIN_MENGE">TAG</Col>
-            <Col id="SUPPLIER_NAME">INFO TAG IT</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13504</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13504</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">10</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">135.04</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">10</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">135.04</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000110</Col>
-            <Col id="DOC_TYPE">PT.AVERY DENNISON PACKAGING INDONES</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766364</Col>
-            <Col id="REMAIN_MENGE">TAG</Col>
-            <Col id="SUPPLIER_NAME">PRICE TAG PT 01</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13504</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">13503</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">9.2</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.01</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">13503</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">9.2</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">124.24</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000110</Col>
-            <Col id="DOC_TYPE">PT.AVERY DENNISON PACKAGING INDONES</Col>
-            <Col id="OS_PEINH">220156-8316-SE＾220156-8316-DK＾220156-8316-CH＾220156-8316-IX＾220156-8316-NO＾220156-8316-NL/BE＾220156-8316-DE/ES＾220156-8316-NL/GB</Col>
-            <Col id="USAGE">VA010766374</Col>
-            <Col id="REMAIN_MENGE">TAG</Col>
-            <Col id="SUPPLIER_NAME">RFID TAG RT 01</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">3641</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">3641</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">58.8</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">214.09</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">58.8</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">214.09</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316-SPEEDY</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000110</Col>
-            <Col id="DOC_TYPE">PT.AVERY DENNISON PACKAGING INDONES</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766363</Col>
-            <Col id="REMAIN_MENGE">TAG</Col>
-            <Col id="SUPPLIER_NAME">INFO TAG IT</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13504</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">13503</Col>
-            <Col id="MTL_ITEM_CD">1</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">10</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">0.01</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">13503</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">10</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">135.04</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000114</Col>
-            <Col id="DOC_TYPE">PT.YOUM KWANG INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766362</Col>
-            <Col id="REMAIN_MENGE">THREAD</Col>
-            <Col id="SUPPLIER_NAME">THREAD 40/2</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">52-114</Col>
-            <Col id="L_WAERK">675</Col>
-            <Col id="CURRENCY">CN</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">675</Col>
-            <Col id="GMT_ITEM">CN</Col>
-            <Col id="UNIT">760</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">513</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">760</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">522.88</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000114</Col>
-            <Col id="DOC_TYPE">PT.YOUM KWANG INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766365</Col>
-            <Col id="REMAIN_MENGE">THREAD</Col>
-            <Col id="SUPPLIER_NAME">THREAD 100D</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">52-114</Col>
-            <Col id="L_WAERK">403</Col>
-            <Col id="CURRENCY">CN</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">403</Col>
-            <Col id="GMT_ITEM">CN</Col>
-            <Col id="UNIT">1350</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">544.05</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">1350</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">544.05</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000114</Col>
-            <Col id="DOC_TYPE">PT.YOUM KWANG INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766362</Col>
-            <Col id="REMAIN_MENGE">THREAD</Col>
-            <Col id="SUPPLIER_NAME">THREAD 40/2</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="MTL_COLOR_KEY">09-090</Col>
-            <Col id="L_WAERK">13</Col>
-            <Col id="CURRENCY">CN</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13</Col>
-            <Col id="GMT_ITEM">CN</Col>
-            <Col id="UNIT">760</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">9.88</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">760</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">522.88</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
-          </Row>
-          <Row>
-            <Col id="OS_PRICE">1204191761</Col>
-            <Col id="SORT_NUM">NPK</Col>
-            <Col id="L_NETWR">VERP</Col>
-            <Col id="CRT">220156-8316</Col>
-            <Col id="PO_DESC">CPT</Col>
-            <Col id="MSGBN">0033000538</Col>
-            <Col id="DOC_TYPE">PT.HALAM INDONESIA</Col>
-            <Col id="OS_PEINH">ALL</Col>
-            <Col id="USAGE">VA010766359</Col>
-            <Col id="REMAIN_MENGE">TAG PIN</Col>
-            <Col id="SUPPLIER_NAME">TAG PIN 1"</Col>
-            <Col id="TYPE">ALL</Col>
-            <Col id="L_WAERK">13362</Col>
-            <Col id="CURRENCY">PCS</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">13362</Col>
-            <Col id="GMT_ITEM">PCS</Col>
-            <Col id="UNIT">0.5</Col>
-            <Col id="ITEM_CD">1000</Col>
-            <Col id="CENTER_NM">6.68</Col>
-            <Col id="PRICE">USD</Col>
-            <Col id="OS_MENGE">0</Col>
-            <Col id="SUPPLIER_CODE1">204</Col>
-            <Col id="INCO1">0.5</Col>
-            <Col id="MEINS">1000</Col>
-            <Col id="OSSTS">USD</Col>
-            <Col id="PURCGRP">6.68</Col>
-            <Col id="PO_MENGE">2018-10-25</Col>
-            <Col id="GMTMATNR">0</Col>
-            <Col id="POSNR">0</Col>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A08"/>
+            <Col id="A09"/>
+            <Col id="A10">33000012</Col>
+            <Col id="A11">AVERY DENNISON</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831902</Col>
+            <Col id="A14">PRICE TICKET</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A20"/>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">546</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">1</Col>
+            <Col id="A27">1</Col>
+            <Col id="A28">546</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">1</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A16">PRICE TICKET</Col>
+            <Col id="A21">546</Col>
+            <Col id="A33">1</Col>
+            <Col id="A36">546</Col>
+            <Col id="A42">FOB</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A08"/>
+            <Col id="A09"/>
+            <Col id="A10">33000239</Col>
+            <Col id="A11">PAXAR(CHINA)LIMITED</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831904</Col>
+            <Col id="A14">eas label</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A22">PCS</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">536</Col>
+            <Col id="A25">PCS</Col>
+            <Col id="A26">56.85</Col>
+            <Col id="A27">1000</Col>
+            <Col id="A28">30.47</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">1000</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A16">EAS label</Col>
+            <Col id="A21">536</Col>
+            <Col id="A33">56.85</Col>
+            <Col id="A36">30.47</Col>
+            <Col id="A42">FOB</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A08"/>
+            <Col id="A09"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A20">XXS</Col>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">30</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">4.5</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A21">30</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">122</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">18.3</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A20">XS</Col>
+            <Col id="A21">122</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">150</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">22.5</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A20">S</Col>
+            <Col id="A21">150</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">137</Col>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">137</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">20.55</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A20">M</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">90</Col>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">90</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">13.5</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A20">L</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">31</Col>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">31</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">4.65</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A20">XL</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831901</Col>
+            <Col id="A14">SIZE LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">24</Col>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">24</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">15</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">3.6</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATSPY00Y</Col>
+            <Col id="A20">XXL</Col>
+            <Col id="A33">15</Col>
+            <Col id="A36">87.6</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831900</Col>
+            <Col id="A14">MAIN LABEL</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">572</Col>
+            <Col id="A22">EA</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">572</Col>
+            <Col id="A25">EA</Col>
+            <Col id="A26">38.4</Col>
+            <Col id="A27">1000</Col>
+            <Col id="A28">21.96</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">1000</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000580</Col>
+            <Col id="A16">ATATMPY00D</Col>
+            <Col id="A33">38.39</Col>
+            <Col id="A36">21.96</Col>
+            <Col id="A42">EXW</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">VERP</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">NEPTUNE TRADING SERVICING CO.,LTD</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">VA010831903</Col>
+            <Col id="A14">MOBILON TAPE</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">292</Col>
+            <Col id="A22">YD</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">292</Col>
+            <Col id="A25">YD</Col>
+            <Col id="A26">0.42</Col>
+            <Col id="A27">100</Col>
+            <Col id="A28">1.23</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">100</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">33000957</Col>
+            <Col id="A16">MOBILON TAEP @ SD</Col>
+            <Col id="A33">0.42</Col>
+            <Col id="A36">1.23</Col>
+            <Col id="A42">DDU</Col>
+          </Row>
+          <Row>
+            <Col id="A04">1126195724</Col>
+            <Col id="A05">VPC</Col>
+            <Col id="A06">ROH</Col>
+            <Col id="A07">126126126</Col>
+            <Col id="A11">㈜부창텍스피아</Col>
+            <Col id="A12">ALL</Col>
+            <Col id="A13">RA010161964</Col>
+            <Col id="A14">BODY</Col>
+            <Col id="A15"/>
+            <Col id="A17">ALL</Col>
+            <Col id="A18"/>
+            <Col id="A21">1306</Col>
+            <Col id="A22">YD</Col>
+            <Col id="A23">0</Col>
+            <Col id="A24">1306</Col>
+            <Col id="A25">YD</Col>
+            <Col id="A26">3.2</Col>
+            <Col id="A27">1</Col>
+            <Col id="A28">4179.2</Col>
+            <Col id="A29">USD</Col>
+            <Col id="A30">0</Col>
+            <Col id="A31">126</Col>
+            <Col id="A32"/>
+            <Col id="A34">1</Col>
+            <Col id="A35">USD</Col>
+            <Col id="A37">2018-11-09</Col>
+            <Col id="A38">0</Col>
+            <Col id="A39">0</Col>
+            <Col id="A40"/>
+            <Col id="A10">50002063</Col>
+            <Col id="A16">Brushed Nash 97/3 RAYON/SPANDEX</Col>
+            <Col id="A19">Forever Navy</Col>
+            <Col id="A33">3.2</Col>
+            <Col id="A36">4179.2</Col>
+            <Col id="A42">FOB</Col>
           </Row>
         </Rows>
       </Dataset>
