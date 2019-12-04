@@ -300,6 +300,64 @@
                       </Format>
                     </Formats>
                   </Grid>
+                  <Grid id="Grid00" taborder="7" left="227" top="237" width="431" height="97" binddataset="ds_in">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="p_user_id"/>
+                          <Cell col="1" text="p_mandt"/>
+                          <Cell col="2" text="p_osno1"/>
+                          <Cell col="3" text="p_osno2"/>
+                          <Cell col="4" text="p_osno_list"/>
+                          <Cell col="5" text="p_matnr1"/>
+                          <Cell col="6" text="p_matnr2"/>
+                          <Cell col="7" text="p_matnr_list"/>
+                          <Cell col="8" text="p_mtl_matnr1"/>
+                          <Cell col="9" text="p_mtl_matnr2"/>
+                          <Cell col="10" text="p_mtl_matnr_list"/>
+                          <Cell col="11" text="p_supply1"/>
+                          <Cell col="12" text="p_supply2"/>
+                          <Cell col="13" text="p_supply_list"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:p_user_id"/>
+                          <Cell col="1" text="bind:p_mandt"/>
+                          <Cell col="2" text="bind:p_osno1"/>
+                          <Cell col="3" text="bind:p_osno2"/>
+                          <Cell col="4" text="bind:p_osno_list"/>
+                          <Cell col="5" text="bind:p_matnr1"/>
+                          <Cell col="6" text="bind:p_matnr2"/>
+                          <Cell col="7" text="bind:p_matnr_list"/>
+                          <Cell col="8" text="bind:p_mtl_matnr1"/>
+                          <Cell col="9" text="bind:p_mtl_matnr2"/>
+                          <Cell col="10" text="bind:p_mtl_matnr_list"/>
+                          <Cell col="11" text="bind:p_supply1"/>
+                          <Cell col="12" text="bind:p_supply2"/>
+                          <Cell col="13" text="bind:p_supply_list"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -448,7 +506,6 @@ this.tfn_getPoListHistoryLoad = function(){
 	this.ds_POList00.clearData();
 	this.ds_POHistory.clearData();
 	this.ds_in.setColumn(0, "p_osno1", "1126195724");
-	this.ds_in.setColumn(0, "p_osno2", "1126195724");
 	this.ds_in.setColumn(0, "p_user_id", "160307");
 	//	http://nyc.panpacific.co.kr/QMENexacroSvr/common/commonAction.ppc
 	//	http://203.229.231.124/QMENexacroSvr/common/commonAction.ppc
@@ -637,17 +694,17 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A05">VPC</Col>
             <Col id="A06">VERP</Col>
             <Col id="A07">126126126</Col>
-            <Col id="A08"></Col>
-            <Col id="A09"></Col>
+            <Col id="A08"/>
+            <Col id="A09"/>
             <Col id="A10">33000012</Col>
             <Col id="A11">AVERY DENNISON</Col>
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831902</Col>
             <Col id="A14">PRICE TICKET</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
-            <Col id="A20"></Col>
+            <Col id="A18"/>
+            <Col id="A20"/>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
             <Col id="A24">546</Col>
@@ -658,13 +715,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">1</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A16">PRICE TICKET</Col>
             <Col id="A21">546</Col>
             <Col id="A33">1</Col>
@@ -676,16 +733,16 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A05">VPC</Col>
             <Col id="A06">VERP</Col>
             <Col id="A07">126126126</Col>
-            <Col id="A08"></Col>
-            <Col id="A09"></Col>
+            <Col id="A08"/>
+            <Col id="A09"/>
             <Col id="A10">33000239</Col>
             <Col id="A11">PAXAR(CHINA)LIMITED</Col>
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831904</Col>
             <Col id="A14">eas label</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A22">PCS</Col>
             <Col id="A23">0</Col>
             <Col id="A24">536</Col>
@@ -696,13 +753,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">1000</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A16">EAS label</Col>
             <Col id="A21">536</Col>
             <Col id="A33">56.85</Col>
@@ -714,16 +771,16 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A05">VPC</Col>
             <Col id="A06">VERP</Col>
             <Col id="A07">126126126</Col>
-            <Col id="A08"></Col>
-            <Col id="A09"></Col>
+            <Col id="A08"/>
+            <Col id="A09"/>
             <Col id="A10">33000580</Col>
             <Col id="A11">SHANGHAI SML CO.,LTD.</Col>
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A20">XXS</Col>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
@@ -735,13 +792,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A21">30</Col>
             <Col id="A33">15</Col>
@@ -757,9 +814,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
             <Col id="A24">122</Col>
@@ -770,13 +827,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A20">XS</Col>
@@ -794,9 +851,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
             <Col id="A24">150</Col>
@@ -807,13 +864,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A20">S</Col>
@@ -831,9 +888,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">137</Col>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
@@ -845,13 +902,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A20">M</Col>
@@ -868,9 +925,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">90</Col>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
@@ -882,13 +939,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A20">L</Col>
@@ -905,9 +962,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">31</Col>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
@@ -919,13 +976,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A20">XL</Col>
@@ -942,9 +999,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831901</Col>
             <Col id="A14">SIZE LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">24</Col>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
@@ -956,13 +1013,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATSPY00Y</Col>
             <Col id="A20">XXL</Col>
@@ -979,9 +1036,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831900</Col>
             <Col id="A14">MAIN LABEL</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">572</Col>
             <Col id="A22">EA</Col>
             <Col id="A23">0</Col>
@@ -993,13 +1050,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">1000</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000580</Col>
             <Col id="A16">ATATMPY00D</Col>
             <Col id="A33">38.39</Col>
@@ -1015,9 +1072,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">VA010831903</Col>
             <Col id="A14">MOBILON TAPE</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">292</Col>
             <Col id="A22">YD</Col>
             <Col id="A23">0</Col>
@@ -1029,13 +1086,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">100</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">33000957</Col>
             <Col id="A16">MOBILON TAEP @ SD</Col>
             <Col id="A33">0.42</Col>
@@ -1051,9 +1108,9 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A12">ALL</Col>
             <Col id="A13">RA010161964</Col>
             <Col id="A14">BODY</Col>
-            <Col id="A15"></Col>
+            <Col id="A15"/>
             <Col id="A17">ALL</Col>
-            <Col id="A18"></Col>
+            <Col id="A18"/>
             <Col id="A21">1306</Col>
             <Col id="A22">YD</Col>
             <Col id="A23">0</Col>
@@ -1065,13 +1122,13 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
             <Col id="A29">USD</Col>
             <Col id="A30">0</Col>
             <Col id="A31">126</Col>
-            <Col id="A32"></Col>
+            <Col id="A32"/>
             <Col id="A34">1</Col>
             <Col id="A35">USD</Col>
             <Col id="A37">2018-11-09</Col>
             <Col id="A38">0</Col>
             <Col id="A39">0</Col>
-            <Col id="A40"></Col>
+            <Col id="A40"/>
             <Col id="A10">50002063</Col>
             <Col id="A16">Brushed Nash 97/3 RAYON/SPANDEX</Col>
             <Col id="A19">Forever Navy</Col>
