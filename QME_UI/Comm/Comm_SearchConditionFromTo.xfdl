@@ -112,11 +112,11 @@ this.fn_popupCallback = function(sPopId, sRtn)
 
 	{	//0.리턴값 받기
 		var objRtn 		= 	JSON.parse(sRtn);
-// 
-// 		dsSetCol 	= 	objRtn.rtnObj;				this.gtrace("dsSetCol--->"	+dsSetCol, gtrcPos);
-// 		sKey		=	objRtn.sRtnKey;				this.gtrace("sKey	--->"	+sKey	, gtrcPos);
-// 		sEtc_00		=	objRtn.sRtnEtc_00;			this.gtrace("sEtc_00--->"	+sEtc_00, gtrcPos);
-// 		sEtc_10		=	objRtn.sRtnEtc_10;			this.gtrace("sEtc_10--->"	+sEtc_10, gtrcPos);
+
+		dsSetCol 	= 	objRtn.rtnObj;				this.gtrace("dsSetCol--->"	+dsSetCol, gtrcPos);
+		sKey		=	objRtn.sRtnKey;				this.gtrace("sKey	--->"	+sKey	, gtrcPos);
+		sEtc_00		=	objRtn.sRtnEtc_00;			this.gtrace("sEtc_00--->"	+sEtc_00, gtrcPos);
+		sEtc_10		=	objRtn.sRtnEtc_10;			this.gtrace("sEtc_10--->"	+sEtc_10, gtrcPos);
 	}
 
 	{	//1.부모데이터셋에 값 세팅, 2.ds_FromTo에 값 세팅
