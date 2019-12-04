@@ -242,7 +242,9 @@ pForm.gfn_getAllInitData = function()
 		if(sArguments !="")
 		{
 				sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);
-			this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
+			
+			//	온로드 트랜잭션 서비스구축 전까지 막음
+			//	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
 		}
 	}
 }
