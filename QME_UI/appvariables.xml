@@ -98,37 +98,31 @@
     </Dataset>
     <Dataset id="gds_User">
       <ColumnInfo>
-        <Column id="UserCode" type="STRING" size="256"/>
-        <Column id="UserName" type="STRING" size="256"/>
-        <Column id="p_user_id" type="STRING" size="256"/>
-        <Column id="AuthorityLevel" type="STRING" size="256"/>
-        <Column id="Org_ID" type="STRING" size="256"/>
-        <Column id="OrgName" type="STRING" size="256"/>
-        <Column id="UserType" type="STRING" size="256"/>
-        <Column id="DB_NM" type="STRING" size="256"/>
-        <Column id="TelNo" type="STRING" size="256"/>
-        <Column id="eMail" type="STRING" size="256"/>
-        <Column id="ret" type="STRING" size="256"/>
-        <Column id="SalesOffice" type="STRING" size="256"/>
-        <Column id="SalesOfficeName" type="STRING" size="256"/>
-        <Column id="SalesChannel" type="STRING" size="256"/>
-        <Column id="SalesChannelName" type="STRING" size="256"/>
-        <Column id="SalesOrg" type="STRING" size="256"/>
-        <Column id="SalesOrgName" type="STRING" size="256"/>
-        <Column id="SalesCount" type="STRING" size="256"/>
-        <Column id="DC_Rate" type="BIGDECIMAL" size="256"/>
-        <Column id="Fee_Rate" type="BIGDECIMAL" size="256"/>
-        <Column id="Customer_ID" type="STRING" size="256"/>
-        <Column id="CustomerName" type="STRING" size="256"/>
-        <Column id="Contract_NO" type="STRING" size="256"/>
-        <Column id="EmployeeCode" type="STRING" size="256"/>
-        <Column id="EmployeeName" type="STRING" size="256"/>
-        <Column id="Duty" type="STRING" size="256"/>
-        <Column id="pwChangeTarget" type="STRING" size="1"/>
-        <Column id="Vendor_ID" type="STRING" size="256"/>
-        <Column id="VendorName" type="STRING" size="256"/>
-        <Column id="AddOrder" type="STRING" size="256"/>
-        <Column id="ServerType" type="STRING" size="256"/>
+        <Column id="USER_ID" type="STRING" size="256"/>
+        <Column id="USER_NM" type="STRING" size="256"/>
+        <Column id="USER_PWD" type="STRING" size="256"/>
+        <Column id="CERTIFY_DIV" type="STRING" size="256"/>
+        <Column id="CENTER_CD" type="STRING" size="256"/>
+        <Column id="BU_CD" type="STRING" size="256"/>
+        <Column id="CUST_CD" type="STRING" size="256"/>
+        <Column id="VENDOR_CD" type="STRING" size="256"/>
+        <Column id="CARRIER_CD" type="STRING" size="256"/>
+        <Column id="SYS_LANG" type="STRING" size="256"/>
+        <Column id="CENTER_NM" type="STRING" size="256"/>
+        <Column id="BU_NM" type="STRING" size="256"/>
+        <Column id="CUST_NM" type="STRING" size="256"/>
+        <Column id="VENDOR_NM" type="STRING" size="256"/>
+        <Column id="CARRIER_NM" type="STRING" size="256"/>
+        <Column id="LOGIN_DATE" type="STRING" size="256"/>
+        <Column id="LOGIN_DATETIME" type="STRING" size="256"/>
+        <Column id="LINE_GROUP_CD" type="STRING" size="256"/>
+        <Column id="BRAND_CD" type="STRING" size="256"/>
+        <Column id="BRAND_NM" type="STRING" size="256"/>
+        <Column id="SEWING_COUNT_YN" type="STRING" size="256"/>
+        <Column id="SYS_CODE" type="STRING" size="256"/>
+        <Column id="EHR_YN" type="STRING" size="256"/>
+        <Column id="GW_ID" type="STRING" size="256"/>
+        <Column id="ADMIN_YN" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
     <Dataset id="gds_OpenMenu">
@@ -345,11 +339,10 @@
     </Dataset>
     <Dataset id="gds_CommCode">
       <ColumnInfo>
-        <Column id="CodeGroup" type="STRING" size="256"/>
-        <Column id="Code" type="STRING" size="256"/>
-        <Column id="CodeName" type="STRING" size="256"/>
-        <Column id="GropName" type="STRING" size="256"/>
-        <Column id="SortSeq" type="STRING" size="256"/>
+        <Column id="CODE_CD" type="STRING" size="256"/>
+        <Column id="CODE_CD_F" type="STRING" size="256"/>
+        <Column id="CODE_NM" type="STRING" size="256"/>
+        <Column id="CODE_CD_FULL_F" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
     <Dataset id="gds_gridPersonal">
@@ -713,9 +706,26 @@
     </Dataset>
     <Dataset id="gds_QmeLogonInfo">
       <ColumnInfo>
-        <Column id="QmeLogonUserId" type="STRING" size="256"/>
-        <Column id="LanguageKey" type="STRING" size="256"/>
-        <Column id="FormId" type="STRING" size="256"/>
+        <Column id="p_user_id" type="STRING" size="256"/>
+        <Column id="p_code_grp" type="STRING" size="256"/>
+        <Column id="p_code_cd" type="STRING" size="256"/>
+        <Column id="p_sub_cd1" type="STRING" size="256"/>
+        <Column id="p_sub_cd2" type="STRING" size="256"/>
+        <Column id="p_sub_cd3" type="STRING" size="256"/>
+        <Column id="p_sub_cd4" type="STRING" size="256"/>
+        <Column id="Column0" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gds_CommCodeIn">
+      <ColumnInfo>
+        <Column id="p_code_grp" type="STRING" size="256"/>
+        <Column id="p_code_cd" type="STRING" size="256"/>
+        <Column id="p_sub_cd1" type="STRING" size="256"/>
+        <Column id="p_sub_cd2" type="STRING" size="256"/>
+        <Column id="p_sub_cd3" type="STRING" size="256"/>
+        <Column id="p_sub_cd4" type="STRING" size="256"/>
+        <Column id="p_sub_cd5" type="STRING" size="256"/>
+        <Column id="p_user_id" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>

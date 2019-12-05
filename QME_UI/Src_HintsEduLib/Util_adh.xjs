@@ -45,9 +45,10 @@ pForm.gtrace = function(strTrc,strPos)
 //						||	strPos == "Comm_SubSum.xfdl.fn_getHeadTextAndBindingInfo"
 //						||	strPos == "POList.xfdl.fn_reset"
 //						||	strPos == "Util_adh.xjs.gfn_getAllInitData"
-						||	strPos == "Util_adh.xjs.gfn_callbackFunction"
+//						||	strPos == "Util_adh.xjs.gfn_callbackFunction"
 //						||	strPos == "Frame.xjs.gfn_setLanguage"
-
+//						||	strPos == "Comm_CrudButton.btnCrud_onclick"
+//						||	strPos == "Comm_CrudButton.form_onload"
 )
 	{
 		trace(strPos+"--------->"+strTrc);
@@ -197,26 +198,20 @@ pForm.gfn_getAllInitData = function()
 	{	//	gds_QmeLogonInfo 데이터셋 세팅
 		if(this.gfn_getNavigator()=="NEXACRO"){	//	넥사크로 전용브라우져 실행시 - 테스트용 데이터
 				this.gtrace("nexacro.getApplication().gds_QmeLogonInfo.rowcount--->"+nexacro.getApplication().gds_QmeLogonInfo.rowcount,gtrcPos);
-			if(nexacro.getApplication().gds_QmeLogonInfo.rowcount==0)
-			{
+// 			if(nexacro.getApplication().gds_QmeLogonInfo.rowcount==0)
+// 			{
+				//무조건 트랜잭션
 				this.gtrace("nexacro전용브라우져--TRANSYES", gtrcPos);
-
+				nexacro.getApplication().gds_QmeLogonInfo.clearData();
 				nexacro.getApplication().gds_QmeLogonInfo.addRow();
-				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "QmeLogonUserId", "NEXACRO_BRAWSER_TESTER");
-				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "LanguageKey", "KO");
-				nexacro.getApplication().LanguageKey, "KO";
-				
-				this.gfn_onloadSequence();	//트랜잭션이 안되서 임시로 이렇게 한다.
-				return;
-			}else{
-				this.gtrace("nexacro전용브라우져--NOTRANS", gtrcPos);
-				
-				this.gfn_onloadSequence();
-				
-				return;
-			}
-			
-			
+				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", "160307");
+// 			}else{
+// 				this.gtrace("nexacro전용브라우져--NOTRANS", gtrcPos);
+// 				
+// 				this.gfn_onloadSequence();
+// 				
+// 				return;
+// 			}
 		}else{
 			//	QME기존시스템에서 띄운 경우 == 무조건 QmeLogonUserId값이 있다고 정의
 			//	QmeLogonUserId값이 있다면 초기세팅트랜잭션 실행 : UserId를 넘김
@@ -224,9 +219,7 @@ pForm.gfn_getAllInitData = function()
 			{
 				nexacro.getApplication().gds_QmeLogonInfo.clearData();
 				nexacro.getApplication().gds_QmeLogonInfo.addRow();
-				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "QmeLogonUserId", sQMELOGONUSERID);
-				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "LanguageKey", sLANGUAGEKEY);
-				
+				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", sQMELOGONUSERID);
 			}else{
 				alert("비정상접근URL--QMELOGONUSERID없음");
 				this.close();
@@ -245,21 +238,55 @@ pForm.gfn_getAllInitData = function()
 		var sArguments 		= "";
 		
 		var iSeq = 0;													//	트랜잭션의 Argument에서는 nexacro.getApplication... 안 붙여도 된다 ?
-		if (nexacro.getApplication().gds_User.rowcount 		== 0)	{sArguments+="SqlId_00002 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;}
- 		if (nexacro.getApplication().gds_word.rowcount 		== 0)	{sArguments+="SqlId_00004 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;}
- 		if (nexacro.getApplication().gds_CommCode.rowcount 	== 0)	{sArguments+="SqlId_00003 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_CommCode=ds_out"+iSeq+" "; 	iSeq++;}
+// 		if (nexacro.getApplication().gds_User.rowcount 		== 0)	{sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;}
+//   	if (nexacro.getApplication().gds_word.rowcount 		== 0)	{sArguments+="SqlId_00004 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;}
+		sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo"+" "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;
+// 		sArguments+="SqlId_00004 "; 				sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo"+" ";		sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;
+
+		//공통코드정보 가져오기 인풋 추가
+		{
+			var arrCmmCode;
+			if(!this.gfn_isNull(this.COMBO_SET_STR))	{arrCmmCode = this.COMBO_SET_STR.split(" ");}
+													//	this.gtrace("arrCmmCode.length--->"+arrCmmCode.length, gtrcPos);
+			for(var k = 0 ; k < arrCmmCode.length ; k++){
+				var tCmmStr = arrCmmCode[k].trim();
+				if(tCmmStr !="") {
+					var tArr = tCmmStr.split("#");						//	this.gtrace("arrCmmCode["+k+"]--->"+arrCmmCode[k], gtrcPos);
+																		this.gtrace("tArr[0]--->"+tArr[0], gtrcPos);
+																		this.gtrace("tArr[1]--->"+tArr[1], gtrcPos);
+					var tCommInDs = new Dataset;
+						var tCommInDsName = "tCommInDs"+k;
+						this.addChild(tCommInDsName, tCommInDs); 
+						tCommInDs.copyData(nexacro.getApplication().gds_CommCodeIn);
+						tCommInDs.setColumn(tCommInDs.addRow(), "p_code_grp", tArr[1]);
+						
+						switch(tArr[1]){	// 특이로직
+							case "CURRENCY" :	tCommInDs.setColumn(0, "p_sub_cd1", "T");	// 통화
+										break;
+							default : break;
+						}
+
+						sArguments	+=	"CommonMapper.getCodeInfo"		+" ";
+						sInDatasets	+=	"ds_in"+iSeq+"="+tCommInDsName	+" ";
+						sOutDatasets+=	tArr[0]+"=ds_out"+iSeq			+" ";
+						iSeq++;
+				}
+			}
+		}
+//   		sArguments+="CommonMapper.getCodeInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";		sOutDatasets+="gds_CommCode=ds_out"+iSeq+" "; 	iSeq++;
+//   		sArguments+="CommonMapper.getCodeInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";		sOutDatasets+="gds_CommCode=ds_out"+iSeq+" "; 	iSeq++;
+
 // 		if (nexacro.getApplication().gds_MsgSet.rowcount 	== 0)	{sArguments+="getMsgSet "; 		sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_MsgSet=ds_out"+iSeq+" "; 	iSeq++;}
 // 		if (nexacro.getApplication().gds_Logon.rowcount 	== 0)	{sArguments+="getLogon "; 		sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_Logon=ds_out"+iSeq+" "; 		iSeq++;}
 																									//	this.gtrace("nexacro.getApplication().gds_User-->"+nexacro.getApplication().gds_User.saveXML(), gtrcPos);
-																										this.gtrace("sInDatasets-->"+sInDatasets, gtrcPos);
-																										this.gtrace("sOutDatasets-->"+sOutDatasets, gtrcPos);
-																										this.gtrace("sArguments-->"+sArguments, gtrcPos);
+																									//	this.gtrace("sInDatasets-->"+sInDatasets, gtrcPos);
+																									//	this.gtrace("sOutDatasets-->"+sOutDatasets, gtrcPos);
+																									//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
 		//	하나라도 있는 경우에만 트랜잭
 		if(sArguments !="")
 		{
-				sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);
-			
-			//	온로드 트랜잭션 서비스구축 전까지 막음
+			sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);
+
 			this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
 		}
 	}
@@ -313,7 +340,10 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 				
 				ex) this.gfn_getCommCode("cbo_pos rdo_gender:0 Div00.form.cbo_dept:1 ds_hobbyE001");
 			 */
-																	this.gtrace("this.COMBO_SET_STR--->"+this.COMBO_SET_STR, gtrcPos);			
+																	this.gtrace("this.COMBO_SET_STR--->"+this.COMBO_SET_STR, gtrcPos);
+																	//	trace("gds_User.saveXML()--->"+nexacro.getApplication().gds_User.saveXML());
+																	//	nexacro.getApplication().gds_User.setColumn(0, "VENDOR_CD", "XXXXX");
+																	//	nexacro.getApplication().gds_User.setColumn(0, "USER_ID", "XXXXX");
 			this.gfn_onloadSequence();
 			break;
 	}
@@ -327,88 +357,5 @@ this.gfn_onloadSequence = function(){
 	this.gfn_formOnLoad(this);
 	
 	// 공통코드
-	this.gfn_getCommCode(this.COMBO_SET_STR);
-}
-
-
-
-// this.XX__gfn_setLanguage = function(Obj, rName)
-// {
-// 											var gtrcPos = "Util_adh.xjs.gfn_setLanguage";
-// 	var tmpRp = -1;
-// 	var tmpStr = "";							this.gtrace("rName---->"+rName, gtrcPos);
-// 												//	this.gtrace("Obj.components---->"+Obj.components, gtrcPos);
-// 	
-// 	var gds_word = nexacro.getApplication().gds_word;
-// 												this.gtrace("gds_word---->"+gds_word.name, gtrcPos);
-// 												this.gtrace("Obj.components.length---->"+Obj.components.length, gtrcPos);
-// 	if(Obj.components)
-// 	{
-// 		for(var i = 0; i < Obj.components.length; i++)	
-// 		{
-// 			if(Obj.components[i] instanceof nexacro.Grid) 
-// 			{
-// 												this.gtrace("<----instanceof nexacro.Grid---->", gtrcPos);
-// 				for(var j = 0; j < Obj.components[i].getCellCount("HEAD"); j++)
-// 				{
-// 					//tmpStr = gds_word.lookup("CD", Obj.components[i].getCellProperty("HEAD", j, "text"), "CDNM");
-// 					if(this.gfn_isNull(Obj.components[i].getCellProperty("HEAD", j, "text"))) continue;
-// 												this.gtrace("(Obj.components[i].tabpages[j].text).toUpperCase()-->"+(Obj.components[i].tabpages[j].text).toUpperCase(), gtrcPos);					
-// 					//	tmpRp = gds_word.findRowExpr("FORM=='" + rName + "'&&CD=='" + (Obj.components[i].tabpages[j].text).toUpperCase() + "'");
-// 					tmpRp = gds_word.findRowExpr("WORD_ID=='" + (Obj.components[i].tabpages[j].text).toUpperCase() + "'");
-// 					if(tmpRp < 0) continue;
-// 					tmpStr = gds_word.getColumn(tmpRp, "CDNM");
-// 					if(!this.gfn_isNull(tmpStr))
-// 					{
-// 						Obj.components[i].setCellProperty("HEAD", j, "text", tmpStr);
-// 						Obj.components[i].setCellProperty("HEAD", j, "tooltiptext", tmpStr);
-// 					}
-// 				}
-// 			}
-// 			else if(Obj.components[i] instanceof nexacro.Tab)
-// 			{
-// 												this.gtrace("<----instanceof nexacro.Tab---->", gtrcPos);
-// 												this.gtrace("Obj.components[i].getTabpageCount()---->"+Obj.components[i].getTabpageCount(), gtrcPos);
-// 				for(var j = 0; j < Obj.components[i].getTabpageCount(); j++)
-// 				{
-// 					if(this.gfn_isNull(Obj.components[i].tabpages[j].text)) continue;
-// 												this.gtrace("(Obj.components[i].tabpages[j].text).toUpperCase()-->"+(Obj.components[i].tabpages[j].text).toUpperCase(), gtrcPos);					
-// 					//	tmpRp = gds_word.findRowExpr("FORM=='" + rName + "'&&CD=='" + (Obj.components[i].tabpages[j].text).toUpperCase() + "'");
-// 					tmpRp = gds_word.findRowExpr("WORD_ID=='" + (Obj.components[i].tabpages[j].text).toUpperCase() + "'");
-// 					if(tmpRp < 0) continue;	
-// 					tmpStr = gds_word.getColumn(tmpRp, "WORD_NAME");		this.gtrace("tmpStr---->"+tmpStr, gtrcPos);
-// 					if(!this.gfn_isNull(tmpStr)) Obj.components[i].tabpages[j].set_text(tmpStr);
-// 				}
-// 			}
-// 			else if(Obj.components[i] instanceof nexacro.Button
-// 				|| 	Obj.components[i] instanceof nexacro.Static			
-// 				|| 	Obj.components[i] instanceof nexacro.CheckBox			 
-// 				|| 	Obj.components[i] instanceof nexacro.GroupBox
-// 				) 
-// 			{
-// 												this.gtrace("<----instanceof nexacro.Button,Static,CheckBox,GroupBox---->", gtrcPos);
-// 				//tmpStr = gds_word.lookup("CD", Obj.components[i].name, "WORD_NAME");
-// 				if(this.gfn_isNull(Obj.components[i].name)) continue;
-// 												this.gtrace("(Obj.components[i].tabpages[j].text).toUpperCase()-->"+(Obj.components[i].tabpages[j].text).toUpperCase(), gtrcPos);					
-// 					//	tmpRp = gds_word.findRowExpr("FORM=='" + rName + "'&&CD=='" + (Obj.components[i].tabpages[j].text).toUpperCase() + "'");
-// 					tmpRp = gds_word.findRowExpr("WORD_ID=='" + (Obj.components[i].tabpages[j].text).toUpperCase() + "'");
-// 				if(tmpRp < 0) continue;
-// 				tmpStr = gds_word.getColumn(tmpRp, "WORD_NAME");
-// 				if(!this.gfn_isNull(tmpStr))
-// 				{
-// 					Obj.components[i].tooltiptext = tmpStr;
-// 					Obj.components[i].set_text(tmpStr);
-// 				}
-// 			} 
-// 			// Calendar language
-// 			else if (Obj.components[i] == "[object Calendar]") 
-// 			{
-// 				if(gvLang == "EN") Obj.components[i].locale = "en_US";
-// 				else if(gvLang == "KO") Obj.components[i].locale = "ko_KR";
-// 				else if(gvLang == "CN") Obj.components[i].locale = "ja_JP";
-// 				else Obj.components[i].locale = "ja_JP";
-// 			}
-// 		}
-// 	}
-// }
-]]></Script>
+	//	this.gfn_getCommCode(this.COMBO_SET_STR);
+}]]></Script>
