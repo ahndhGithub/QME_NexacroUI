@@ -199,13 +199,17 @@ pForm.gfn_getAllInitData = function()
 				this.gtrace("nexacro.getApplication().gds_QmeLogonInfo.rowcount--->"+nexacro.getApplication().gds_QmeLogonInfo.rowcount,gtrcPos);
 			if(nexacro.getApplication().gds_QmeLogonInfo.rowcount==0)
 			{
-				trace("nexacro전용브라우져--TRANSYES");
+				this.gtrace("nexacro전용브라우져--TRANSYES", gtrcPos);
+
 				nexacro.getApplication().gds_QmeLogonInfo.addRow();
 				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "QmeLogonUserId", "NEXACRO_BRAWSER_TESTER");
 				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "LanguageKey", "KO");
 				nexacro.getApplication().LanguageKey, "KO";
+				
+				this.gfn_onloadSequence();	//트랜잭션이 안되서 임시로 이렇게 한다.
+				return;
 			}else{
-				trace("nexacro전용브라우져--NOTRANS");
+				this.gtrace("nexacro전용브라우져--NOTRANS", gtrcPos);
 				
 				this.gfn_onloadSequence();
 				

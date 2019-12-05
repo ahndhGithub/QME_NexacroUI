@@ -3,7 +3,7 @@
   <Form id="POList" width="1280" height="720" titletext="New Form" onload="formOnload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Tab id="Tab00" taborder="1" tabindex="0" left="10" top="119" bottom="16" right="10" border="1px solid gray,1px solid gray,1px solid gray,1px solid gray">
+        <Tab id="TabMain" taborder="1" tabindex="0" left="10" top="159" bottom="11" right="10" border="1px solid gray,1px solid gray,1px solid gray,1px solid gray">
           <Tabpages>
             <Tabpage id="Tabpage1" text="POList" formscrolltype="none">
               <Layouts>
@@ -433,7 +433,7 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Div id="Div03" taborder="0" left="10" top="15" height="109" cssclass="div_WF_search" text="" formscrolltype="none" right="10">
+        <Div id="DivCondition" taborder="0" left="10" top="55" height="109" cssclass="div_WF_search" text="" formscrolltype="none" right="10">
           <Layouts>
             <Layout>
               <Static id="StaticSalesOrder" taborder="0" text="SalesOrder" left="0" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
@@ -617,7 +617,7 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 };
 
-this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.DivCondition_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.tfn_getPoListHistoryLoad();
 };
@@ -13439,16 +13439,16 @@ this.Div03_Button_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEv
       </Dataset>
     </Objects>
     <Bind>
-      <BindItem id="item0" compid="Div03.form.div_SalesOrderFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item1" compid="Div03.form.div_SalesOrderFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item0" compid="DivCondition.form.div_SalesOrderFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item1" compid="DivCondition.form.div_SalesOrderFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
       <BindItem id="item2" compid="div_calFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
       <BindItem id="item3" compid="div_calFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item4" compid="Div03.form.div_StyleFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item5" compid="Div03.form.div_StyleFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item6" compid="Div03.form.div_VendorFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item7" compid="Div03.form.div_VendorFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item8" compid="Div03.form.div_MaterialFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item9" compid="Div03.form.div_MaterialFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item4" compid="DivCondition.form.div_StyleFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item5" compid="DivCondition.form.div_StyleFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item6" compid="DivCondition.form.div_VendorFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item7" compid="DivCondition.form.div_VendorFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item8" compid="DivCondition.form.div_MaterialFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item9" compid="DivCondition.form.div_MaterialFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
     </Bind>
   </Form>
 </FDL>
