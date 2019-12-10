@@ -512,12 +512,21 @@
         </Row>
         <Row>
           <Col id="WORD_ID">insert</Col>
+          <Col id="WORD_NAME">입력</Col>
+          <Col id="KR">입력</Col>
+          <Col id="EN">INSERT</Col>
         </Row>
         <Row>
           <Col id="WORD_ID">delete</Col>
+          <Col id="WORD_NAME">삭제</Col>
+          <Col id="KR">삭제</Col>
+          <Col id="EN">DELETE</Col>
         </Row>
         <Row>
           <Col id="WORD_ID">modify</Col>
+          <Col id="WORD_NAME">수정</Col>
+          <Col id="KR">수정</Col>
+          <Col id="EN">UPDATE</Col>
         </Row>
         <Row>
           <Col id="WORD_ID">save</Col>
@@ -733,6 +742,7 @@
         <Column id="p_country_cd" type="STRING" size="256"/>
         <Column id="DEFAULT_LANG" type="STRING" size="256"/>
         <Column id="LANGUAGE" type="STRING" size="256"/>
+        <Column id="MSG_TYPE" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>

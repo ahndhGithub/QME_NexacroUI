@@ -20,9 +20,11 @@ var pForm = nexacro.Form.prototype;
 {
     var objApp = pForm.gfn_getApplication();
 
-	if(objApp.gds_message.findRow("MSG_ID", strMsgId) < 0) return false;
-	var strMsg = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TEXT");
-
+	//	if(objApp.gds_message.findRow("MSG_ID", strMsgId) < 0) return false;
+	if(objApp.gds_Language.findRow("DEFAULT_LANG", strMsgId) < 0) return false;
+	// var strMsg = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TEXT");
+	var strMsg = objApp.gds_Language.lookup("DEFAULT_LANG", strMsgId, "LANGUAGE");
+	
     if(this.gfn_isNull(strMsg)) strMsg = "확인";
 	
     // 줄바꿈 변경
@@ -30,10 +32,10 @@ var pForm = nexacro.Form.prototype;
 	strMsg = pForm.gfn_convertMessage(strMsg, arrArg);
 	
 //    trace("strMsg : " + strMsg);
-	var strMsgType = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TYPE");	
+	var strMsgType = objApp.gds_Language.lookup("DEFAULT_LANG", strMsgId, "MSG_TYPE");	
 	if(this.gfn_isNull(strPopId)) strPopId = strMsgId;
 	
-	var strMsgUrl ="";
+	var strMsgUrl ="A";
 	switch(strMsgType) {
 		case "A":
 			strMsgUrl = "Comm::Comm_Alert.xfdl";

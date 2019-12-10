@@ -252,6 +252,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 			var tmp = objGrid.getCellProperty("head" , i, "text");
 			if( tmp == "상태" || tmp == "Status"){
 				//return;
+				this.gtrace("tmp---->"+tmp,gtrcPos);
 				objGrid.deleteContentsCol("body", i);
 			}
 		}
@@ -259,16 +260,25 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 		var sInsert = nexacro.wrapQuote(this.gfn_getWord("insert")); //입력
 		var sUpdate = nexacro.wrapQuote(this.gfn_getWord("modify")); //수정
 		var sDelete = nexacro.wrapQuote(this.gfn_getWord("delete")); //삭제
+		
+// 			this.gtrace("sInsert---->"+sInsert,gtrcPos);
+// 			this.gtrace("sUpdate---->"+sUpdate,gtrcPos);
+// 			this.gtrace("sDelete---->"+sDelete,gtrcPos);
+			
 		var sExpr = "expr:"
 				  + "dataset.getRowType(currow)==2?"+sInsert
 				  + ":dataset.getRowType(currow)==4?"+sUpdate
 				  + ":dataset.getRowType(currow)==8?"+sDelete
 				  + ":''";
+				  
+				  
+			this.gtrace("sExpr----->"+sExpr, gtrcPos);
+					//	expr:dataset.getRowType(currow)==2?"입력":dataset.getRowType(currow)==4?"수정":dataset.getRowType(currow)==8?"삭제":''
 		
 		var nSize = 50;
 		if( nexacro.getEnvironmentVariable("evLanguage") == "EN") nSize = 80;
-		
-		objGrid.insertContentsCol(nBodyColIndex);	
+
+		objGrid.insertContentsCol(nBodyColIndex);
 		objGrid.setFormatColProperty(nBodyColIndex, "size", nSize);	
 		objGrid.setCellProperty("head", nHeadColIndex, "text", sStatus);	
 		objGrid.setCellProperty("head", nHeadColIndex, "textAlign","center");
@@ -277,7 +287,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 		objGrid.setCellProperty("body", nBodyColIndex, "textAlign","center");
 		objGrid.mergeContentsCell("head", 0, nBodyColIndex, nHeadCount, nBodyColIndex, nHeadColIndex, false);	
 		objGrid.mergeContentsCell("body", 0, nBodyColIndex, nBodyCount, nBodyColIndex, nBodyColIndex, false);			
-		
+
 		nHeadColIndex++;
  		nBodyColIndex++;
 	}	

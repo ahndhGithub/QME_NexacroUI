@@ -50,8 +50,8 @@ pForm.gtrace = function(strTrc,strPos)
 //						||	strPos == "Comm_CrudButton.btnCrud_onclick"
 //						||	strPos == "Comm_CrudButton.form_onload"
 						||	strPos == "Grid.xjs._gfnGridCheckboxNoStatusAdd"
-						||	strPos == "Transaction.xjs.gfn_callback"
-						||	strPos == "Transaction.xjs.gfn_transaction"
+// 						||	strPos == "Transaction.xjs.gfn_callback"
+// 						||	strPos == "Transaction.xjs.gfn_transaction"
 )
 	{
 		trace(strPos+"--------->"+strTrc);
@@ -355,7 +355,12 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 																	//	trace("gds_User.saveXML()--->"+nexacro.getApplication().gds_User.saveXML());
 																	//	nexacro.getApplication().gds_User.setColumn(0, "VENDOR_CD", "XXXXX");
 																	//	nexacro.getApplication().gds_User.setColumn(0, "USER_ID", "XXXXX");
+			
 			this.gfn_onloadSequence();
+			
+			//{0}의 입력값의 길이는 {1} 이하이어야 합니다.
+			this.gfn_alert("지시 조회", ["사원번호", "5자리"], "A");		
+
 			break;
 	}
 }
