@@ -154,39 +154,46 @@ pForm._gfnGridAddProp = function (objGrid)
 */
 pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 {	
+								var gtrcPos = "Grid.xjs._gfnGridCheckboxNoStatusAdd";
 	var nHeadColIndex;
+												// true : this.gtrace("this.gfn_isNull(objDs.insertheadcell)-->"+this.gfn_isNull(objDs.insertheadcell), gtrcPos);
 	if(this.gfn_isNull(objDs.insertheadcell)) nHeadColIndex = 0;
-	else nHeadColIndex = objDs.insertheadcell;	
+	else nHeadColIndex = objDs.insertheadcell;		
+												// 0 : this.gtrace("nHeadColIndex-->"+nHeadColIndex, gtrcPos);
 
 	var nBodyColIndex;
 	if(this.gfn_isNull(objDs.insertbodycell)) nBodyColIndex = 0;
 	else nBodyColIndex = objDs.insertbodycell;
-	
+												//	this.gtrace("nBodyColIndex-->"+nBodyColIndex, gtrcPos);	// 0
 	var nFormatRowCount = objGrid.getFormatRowCount();
+												//2 : this.gtrace("nFormatRowCount-->"+nFormatRowCount, gtrcPos);
 	var nHeadCount=-1;
 	var nBodyCount=-1;
 	for (var i=0; i<nFormatRowCount; i++)
 	{
-		if (objGrid.getFormatRowProperty(i, "band") == "head") nHeadCount++;
-		if (objGrid.getFormatRowProperty(i, "band") == "body") nBodyCount++;
+		if (objGrid.getFormatRowProperty(i, "band") == "head") nHeadCount++;	
+		if (objGrid.getFormatRowProperty(i, "band") == "body") nBodyCount++;	
 	}
-
-	var sNo = this.gfn_getWord("cmm.no");		// 순번
+												//0 : this.gtrace("nHeadCount-->"+nHeadCount, gtrcPos);
+	                                            //0 : this.gtrace("nBodyCount-->"+nBodyCount, gtrcPos);
+	var sNo = this.gfn_getWord("cmm.no");		// 순번		
 	var sStatus = this.gfn_getWord("cmm.status");// 상태
-
+												//undefined : this.gtrace("sNo-->"+sNo, gtrcPos);
+												//undefined : this.gtrace("sStatus-->"+sStatus, gtrcPos);
 	//체크박스
 	if( addProp == "checkbox")
 	{
 		objDs.set_enableevent(false); 
 		var idx=-1;
 		for( var j=0; j<objDs.getColCount(); j++){
-			var tmpcol = objDs.getColID(j);
+			var tmpcol = objDs.getColID(j);			//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
 			if( tmpcol == "gridcmmcheck"){
 				idx = j;
 			}
 		}
+													// 0 : this.gtrace("idx-->"+idx, gtrcPos);
 		if( idx < 0 ) objDs.addColumn("gridcmmcheck", "STRING", 1);
-		
+														//42 : this.gtrace("objGrid.getCellCount(head)-->"+objGrid.getCellCount("head"), gtrcPos);
 		for( var i=0; i<objGrid.getCellCount("head"); i++){
 			//헤드텍스트
 			var tmp = objGrid.getCellProperty("head" , i, "text");
@@ -197,11 +204,11 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 				var columnName = this._gfnGridGetBindColumnNameByIndex(objGrid, bodyCellIndex);
 				if(columnName == "gridcmmcheck") {
 					//return;
-					objGrid.deleteContentsCol("body", i);
+					objGrid.deleteContentsCol("body", i);	//	Grid 에 현재 표시된 포맷에서 특정 Column 을 삭제하는 메소드입니다.
 				}
 			}
 		}
-		objGrid.insertContentsCol(nBodyColIndex);			
+		objGrid.insertContentsCol(nBodyColIndex);			//	Grid 에 현재 표시된 포맷의 특정 위치에 Column 을 삽입하는 메소드입니다.
 		objGrid.setFormatColProperty(nBodyColIndex, "size", "40");	
 		objGrid.setCellProperty("head", nHeadColIndex, "displaytype", "checkboxcontrol");
 		objGrid.setCellProperty("head", nHeadColIndex, "edittype", "checkbox");
@@ -215,6 +222,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 		
 		nHeadColIndex++;
  		nBodyColIndex++;
+																					//	this.gtrace("nHeadCount-->"+objDs.saveXML(), gtrcPos);
 	}
 	//번호
 	if(addProp == "no")

@@ -19,11 +19,14 @@
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="EMPL_ID"/>
-                <Cell col="1" text="FULL_NAME"/>
+                <Cell/>
+                <Cell col="1"/>
+                <Cell row="1" text="EMPL_ID"/>
+                <Cell row="1" col="1" text="FULL_NAME"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:EMPL_ID"/>
@@ -500,7 +503,10 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/*
+    <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
+
+
+/*
     그리드기능
     * 체크박스(checkbox), 순번(no), 상태(status), 정렬(sort), 
      행고정(rowfix), 열고정(colfix), 필터(filter), 

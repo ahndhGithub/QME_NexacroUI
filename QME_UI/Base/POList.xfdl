@@ -8,7 +8,7 @@
             <Tabpage id="TabpagePOList" text="POList" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Grid id="GridPoList00" left="10" top="12" right="10" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="4" binddataset="ds_POList" taborder="6">
+                  <Grid id="GridPoList00" left="10" top="12" right="10" summarytype="top" showselection="true" griduserproperty="checkbox,no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="4" binddataset="ds_POList" taborder="6" visible="true">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -150,7 +150,7 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Grid id="GridPoList" left="1001" top="71" right="-981" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="236" binddataset="ds_POList01" taborder="0" visible="false">
+                  <Grid id="GridPoList" left="10" right="10" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="4" binddataset="ds_POList01" taborder="0" visible="true" height="229">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -542,7 +542,7 @@
           </Layouts>
         </Div>
         <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl"/>
-        <Grid id="Grid00" taborder="3" left="30" top="560" height="92" binddataset="gds_User" right="311">
+        <Grid id="Grid00" taborder="3" left="30" top="280" height="92" binddataset="gds_User" right="311" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -633,7 +633,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="4" left="871" top="398" width="254" height="122" binddataset="ds_cmbCurrency">
+        <Grid id="Grid01" taborder="4" left="871" top="398" width="254" height="122" binddataset="ds_cmbCurrency" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -661,7 +661,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01_00" taborder="5" left="592" top="398" width="254" height="130" binddataset="ds_cmbIncoterms">
+        <Grid id="Grid01_00" taborder="5" left="592" top="398" width="254" height="130" binddataset="ds_cmbIncoterms" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -689,7 +689,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01_00_00" taborder="6" left="313" top="398" width="254" height="130" binddataset="ds_cmbDocumentType">
+        <Grid id="Grid01_00_00" taborder="6" left="313" top="398" width="254" height="130" binddataset="ds_cmbDocumentType" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -717,7 +717,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01_00_00_00" taborder="7" left="34" top="398" width="254" height="130" binddataset="ds_cmbPaymentTerms">
+        <Grid id="Grid01_00_00_00" taborder="7" left="34" top="398" width="254" height="130" binddataset="ds_cmbPaymentTerms" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -815,7 +815,8 @@ this.tfn_getPoListHistoryLoad = function(){
 	var sOutDatasets 	= "ds_POList=ds_out0 ds_POHistory=ds_out1";
 	var sArguments 		= "sqlId=" + nexacro.wrapQuote("POMapper.getPOList POMapper.getPOHisList");
 
-	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
+	//공통 트랜잭션 사용
+	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
 }
 /********************************************************************************************
 @desc	6. Callback
@@ -840,7 +841,8 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			break;
  		
 			case "getPoListHistoryLoad"	:
-				
+				//	this.ds_POList.addColumn("gridcmmcheck", "STRING", 1);
+													//	this.gtrace(this.ds_POList.saveXML(), gtrcPos);
 				break;
  	}
 }
@@ -10940,7 +10942,7 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_POHistory">
+      <Dataset id="ds_POHistory" useclientlayout="true">
         <ColumnInfo>
           <Column id="Sel" type="STRING" size="256"/>
           <Column id="Status" type="STRING" size="256"/>
@@ -10987,7 +10989,7 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
           <Column id="Remark" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_POList">
+      <Dataset id="ds_POList" useclientlayout="true">
         <ColumnInfo>
           <Column id="PR_MENGE" type="STRING" size="256"/>
           <Column id="VBELN" type="STRING" size="256"/>
