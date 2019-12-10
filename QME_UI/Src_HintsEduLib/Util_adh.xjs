@@ -208,6 +208,10 @@ pForm.gfn_getAllInitData = function()
 				nexacro.getApplication().gds_QmeLogonInfo.clearData();
 				nexacro.getApplication().gds_QmeLogonInfo.addRow();
 				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", "160307");
+				nexacro.getApplication().gds_Language.clearData();
+				nexacro.getApplication().gds_Language.addRow();
+				nexacro.getApplication().gds_Language.setColumn(0, "p_country_cd", "VI");		//	한국 : KO / 베트남 : VI / 인도네시아 : ID
+
 // 			}else{
 // 				this.gtrace("nexacro전용브라우져--NOTRANS", gtrcPos);
 // 				
@@ -223,6 +227,9 @@ pForm.gfn_getAllInitData = function()
 				nexacro.getApplication().gds_QmeLogonInfo.clearData();
 				nexacro.getApplication().gds_QmeLogonInfo.addRow();
 				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", sQMELOGONUSERID);
+				nexacro.getApplication().gds_Language.clearData();
+				nexacro.getApplication().gds_Language.addRow();
+				nexacro.getApplication().gds_Language.setColumn(0, "p_country_cd", sLANGUAGEKEY);
 			}else{
 				alert("비정상접근URL--QMELOGONUSERID없음");
 				this.close();
@@ -243,8 +250,9 @@ pForm.gfn_getAllInitData = function()
 		var iSeq = 0;													//	트랜잭션의 Argument에서는 nexacro.getApplication... 안 붙여도 된다 ?
 // 		if (nexacro.getApplication().gds_User.rowcount 		== 0)	{sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;}
 //   	if (nexacro.getApplication().gds_word.rowcount 		== 0)	{sArguments+="SqlId_00004 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;}
-		sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo"+" "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;
-// 		sArguments+="SqlId_00004 "; 				sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo"+" ";		sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;
+
+		sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo"+" "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace("iSeq-->"+iSeq, gtrcPos);
+ 		sArguments+="CommonMapper.getMultiLang "; 	sInDatasets+="ds_in"+iSeq+"=gds_Language"+" ";	sOutDatasets+="gds_Language=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
 
 		//공통코드정보 가져오기 인풋 추가
 		{
@@ -255,8 +263,8 @@ pForm.gfn_getAllInitData = function()
 				var tCmmStr = arrCmmCode[k].trim();
 				if(tCmmStr !="") {
 					var tArr = tCmmStr.split("#");						//	this.gtrace("arrCmmCode["+k+"]--->"+arrCmmCode[k], gtrcPos);
-																		this.gtrace("tArr[0]--->"+tArr[0], gtrcPos);
-																		this.gtrace("tArr[1]--->"+tArr[1], gtrcPos);
+																		//	this.gtrace("tArr[0]--->"+tArr[0], gtrcPos);
+																		//	this.gtrace("tArr[1]--->"+tArr[1], gtrcPos);
 					var tCommInDs = new Dataset;
 						var tCommInDsName = "tCommInDs"+k;
 						this.addChild(tCommInDsName, tCommInDs); 
@@ -269,7 +277,7 @@ pForm.gfn_getAllInitData = function()
 							default : break;
 						}
 
-						sArguments	+=	"CommonMapper.getCodeInfo"		+" ";
+						sArguments	+=	"CommonMapper.getCodeInfo"		+" ";	//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
 						sInDatasets	+=	"ds_in"+iSeq+"="+tCommInDsName	+" ";
 						sOutDatasets+=	tArr[0]+"=ds_out"+iSeq			+" ";
 						iSeq++;
@@ -282,14 +290,14 @@ pForm.gfn_getAllInitData = function()
 // 		if (nexacro.getApplication().gds_MsgSet.rowcount 	== 0)	{sArguments+="getMsgSet "; 		sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_MsgSet=ds_out"+iSeq+" "; 	iSeq++;}
 // 		if (nexacro.getApplication().gds_Logon.rowcount 	== 0)	{sArguments+="getLogon "; 		sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_Logon=ds_out"+iSeq+" "; 		iSeq++;}
 																									//	this.gtrace("nexacro.getApplication().gds_User-->"+nexacro.getApplication().gds_User.saveXML(), gtrcPos);
-																									//	this.gtrace("sInDatasets-->"+sInDatasets, gtrcPos);
-																									//	this.gtrace("sOutDatasets-->"+sOutDatasets, gtrcPos);
-																									//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
+																										this.gtrace("sInDatasets-->"+sInDatasets, gtrcPos);
+																										this.gtrace("sOutDatasets-->"+sOutDatasets, gtrcPos);
+																									
 		//	하나라도 있는 경우에만 트랜잭
 		if(sArguments !="")
 		{
-			sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);
-
+			sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);										this.gtrace("sArguments-->"+sArguments, gtrcPos);
+			
 			this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
 		}
 	}

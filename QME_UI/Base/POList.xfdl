@@ -532,7 +532,7 @@
               <Static id="StaticSalesOrder" taborder="0" text="SalesOrder" left="0" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
               <Static id="StaticStyleNo" taborder="1" text="Style#" left="0" top="33" width="108" cssclass="sta_WF_searchLabel" height="21"/>
               <Static id="StaticVendor" taborder="2" text="Vendor" left="0" top="58" width="108" cssclass="sta_WF_searchLabel" height="21"/>
-              <Static id="StaticMaterial" taborder="6" text="Material" left="540" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticMaterial" taborder="6" text="STYLE :" left="540" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
               <Div id="div_SalesOrderFromTo" taborder="3" text="Div00" left="118" top="8" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesOrderNo,ds_in,p_osno1,p_osno2,p_osno_list"/>
               <Div id="div_StyleFromTo" taborder="4" text="Div00" left="118" top="33" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2,p_matnr_list"/>
               <Div id="div_VendorFromTo" taborder="5" text="Div00" left="118" top="58" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="VendorCode,ds_in,p_supply1,p_supply2,p_supply_list"/>
@@ -745,6 +745,31 @@
             </Format>
           </Formats>
         </Grid>
+        <Grid id="Grid01_00_00_00_00" taborder="8" left="663" top="350" width="608" height="339" binddataset="gds_Language" visible="true" griduserproperty="export">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="300"/>
+                <Column size="300"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="p_country_cd"/>
+                <Cell col="1" text="DEFAULT_LANG"/>
+                <Cell col="2" text="LANGUAGE"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:p_country_cd"/>
+                <Cell col="1" text="bind:DEFAULT_LANG"/>
+                <Cell col="2" text="bind:LANGUAGE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
@@ -769,7 +794,7 @@ this.COMBO_SET_STR = "ds_cmbPaymentTerms"	+"#"+"ZTERM"		+" "
 /********************************************************************************************
 @desc	3. OnLoad
 ********************************************************************************************/
-/*
+/* 
  *	초기화 함수
  */
 this.fn_reset = function()

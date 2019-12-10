@@ -244,7 +244,7 @@ pForm.gfn_getServerUrl = function()
 this.gfn_setLanguage = function(Obj, rName)
 {
 														var gtrcPos = "Frame.xjs.gfn_setLanguage";
-	var gds_word 	= this.gfn_getApplication().gds_word;										//	this.gtrace("gds_word---->"+gds_word.name, gtrcPos);
+	var gds_Language 	= this.gfn_getApplication().gds_Language;										//	this.gtrace("gds_Language---->"+gds_Language.name, gtrcPos);
 	var LanguageKey = nexacro.getApplication().gds_QmeLogonInfo.getColumn(0, "LanguageKey");	//	this.gtrace("LanguageKey---->"+LanguageKey, gtrcPos);
 	
 	if(	Obj instanceof nexacro.Button
@@ -255,7 +255,9 @@ this.gfn_setLanguage = function(Obj, rName)
 	{															//	this.gtrace("<----instanceof nexacro.Button,Static,CheckBox,GroupBox---->", gtrcPos);
  		if(!this.gfn_isNull(Obj.name)){                			//	this.gtrace("Obj.name---->"+Obj.name, gtrcPos);
 
-			var tmpStr = gds_word.lookup("WORD_ID", Obj.name, "WORD_NAME");	if(Obj.name=="StaticSalesOrder"){ this.gtrace("tmpStr---->"+tmpStr, gtrcPos);}
+			//id 기준 : Obj.name    /  text기준 : Obj.text
+//			var tmpStr = gds_Language.lookup("DEFAULT_LANG", Obj.name, "LANGUAGE");	if(Obj.name=="StaticSalesOrder"){ this.gtrace("tmpStr---->"+tmpStr, gtrcPos);}
+			var tmpStr = gds_Language.lookup("DEFAULT_LANG", Obj.text, "LANGUAGE");	if(Obj.name=="StaticSalesOrder"){ this.gtrace("tmpStr---->"+tmpStr, gtrcPos);}
 			
 			if(!this.gfn_isNull(tmpStr))
 			{
@@ -276,8 +278,8 @@ this.gfn_setLanguage = function(Obj, rName)
 							
  			if(!this.gfn_isNull(sHeadText)) {
 								//	if(Obj.name=="GridPoList00") this.gtrace("sHeadText-->"+sHeadText, gtrcPos);
-				var tmpStr = gds_word.lookup("WORD_ID", sHeadText, "WORD_NAME");
-								//	if(Obj.name=="GridPoList00") this.gtrace("findRow-->"+gds_word.findRow("WORD_ID=='"+sHeadText+"'"), gtrcPos);
+				var tmpStr = gds_Language.lookup("DEFAULT_LANG", sHeadText, "LANGUAGE");
+								//	if(Obj.name=="GridPoList00") this.gtrace("findRow-->"+gds_Language.findRow("WORD_ID=='"+sHeadText+"'"), gtrcPos);
 								//	if(Obj.name=="GridPoList00") this.gtrace("tmpStr-->"+tmpStr, gtrcPos);
 				if(!this.gfn_isNull(tmpStr))
 				{
@@ -296,7 +298,7 @@ this.gfn_setLanguage = function(Obj, rName)
 			var sTpageTxt = Obj.tabpages[j].text;
 			if(!this.gfn_isNull(sTpageTxt)) {
 										this.gtrace("sTpageTxt-->"+sTpageTxt, gtrcPos);
-				var tmpStr = gds_word.lookup("WORD_ID", sTpageTxt, "WORD_NAME");
+				var tmpStr = gds_Language.lookup("DEFAULT_LANG", sTpageTxt, "LANGUAGE");
 										this.gtrace("tmpStr-->"+tmpStr, gtrcPos);
 				if(!this.gfn_isNull(tmpStr)) Obj.tabpages[j].set_text(tmpStr);
 			}

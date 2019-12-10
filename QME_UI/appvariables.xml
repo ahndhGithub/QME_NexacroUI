@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <AppVariables version="2.0">
   <Datasets>
-    <Dataset id="gds_Menu">
+    <Dataset id="gds_Menu" useclientlayout="true">
       <ColumnInfo>
         <Column id="MenuID" type="INT" size="256"/>
         <Column id="MenuCode" type="STRING" size="256"/>
@@ -87,7 +87,7 @@
         </Row>
       </Rows>
     </Dataset>
-    <Dataset id="gds_Logon">
+    <Dataset id="gds_Logon" useclientlayout="true">
       <ColumnInfo>
         <Column id="UserCode" type="STRING" size="256"/>
         <Column id="passWord" type="STRING" size="256"/>
@@ -96,7 +96,7 @@
         <Column id="CDTYP" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_User">
+    <Dataset id="gds_User" useclientlayout="true">
       <ColumnInfo>
         <Column id="USER_ID" type="STRING" size="256"/>
         <Column id="USER_NM" type="STRING" size="256"/>
@@ -125,7 +125,7 @@
         <Column id="ADMIN_YN" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_OpenMenu">
+    <Dataset id="gds_OpenMenu" useclientlayout="true">
       <ColumnInfo>
         <Column id="FORM_ID" type="STRING" size="256"/>
         <Column id="MenuCode" type="STRING" size="256"/>
@@ -134,7 +134,7 @@
         <Column id="DupCount" type="INT" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_UserGridSet">
+    <Dataset id="gds_UserGridSet" useclientlayout="true">
       <ColumnInfo>
         <Column id="FormCode" type="STRING" size="256"/>
         <Column id="GridID" type="STRING" size="256"/>
@@ -142,7 +142,7 @@
         <Column id="xmlString" type="STRING" size="9999"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_MsgSet">
+    <Dataset id="gds_MsgSet" useclientlayout="true">
       <ColumnInfo>
         <Column id="idx" type="STRING" size="256"/>
         <Column id="EnMsg" type="STRING" size="256"/>
@@ -155,7 +155,7 @@
         <Column id="EO_Trace" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_UserGridSetOut">
+    <Dataset id="gds_UserGridSetOut" useclientlayout="true">
       <ColumnInfo>
         <Column id="FormCode" type="STRING" size="256"/>
         <Column id="GridCode" type="STRING" size="256"/>
@@ -163,7 +163,7 @@
         <Column id="xmlString" type="STRING" size="9999"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_gridPopupMenu">
+    <Dataset id="gds_gridPopupMenu" useclientlayout="true">
       <ColumnInfo>
         <Column id="id" type="STRING" size="256"/>
         <Column id="level" type="STRING" size="256"/>
@@ -337,7 +337,7 @@
         </Row>
       </Rows>
     </Dataset>
-    <Dataset id="gds_CommCode">
+    <Dataset id="gds_CommCode" useclientlayout="true">
       <ColumnInfo>
         <Column id="CODE_CD" type="STRING" size="256"/>
         <Column id="CODE_CD_F" type="STRING" size="256"/>
@@ -345,14 +345,14 @@
         <Column id="CODE_CD_FULL_F" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_gridPersonal">
+    <Dataset id="gds_gridPersonal" useclientlayout="true">
       <ColumnInfo>
         <Column id="sFormatId" type="STRING" size="256"/>
         <Column id="sFormat" type="STRING" size="2147483647"/>
         <Column id="sOrgFormat" type="STRING" size="2147483647"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_word">
+    <Dataset id="gds_word" useclientlayout="false">
       <ColumnInfo>
         <Column id="WORD_ID" type="STRING" size="256"/>
         <Column id="WORD_NAME" type="STRING" size="256"/>
@@ -704,7 +704,7 @@
         </Row>
       </Rows>
     </Dataset>
-    <Dataset id="gds_QmeLogonInfo">
+    <Dataset id="gds_QmeLogonInfo" useclientlayout="true">
       <ColumnInfo>
         <Column id="p_user_id" type="STRING" size="256"/>
         <Column id="p_code_grp" type="STRING" size="256"/>
@@ -716,7 +716,7 @@
         <Column id="Column0" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_CommCodeIn">
+    <Dataset id="gds_CommCodeIn" useclientlayout="true">
       <ColumnInfo>
         <Column id="p_code_grp" type="STRING" size="256"/>
         <Column id="p_code_cd" type="STRING" size="256"/>
@@ -726,6 +726,13 @@
         <Column id="p_sub_cd4" type="STRING" size="256"/>
         <Column id="p_sub_cd5" type="STRING" size="256"/>
         <Column id="p_user_id" type="STRING" size="256"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gds_Language" useclientlayout="true">
+      <ColumnInfo>
+        <Column id="p_country_cd" type="STRING" size="256"/>
+        <Column id="DEFAULT_LANG" type="STRING" size="256"/>
+        <Column id="LANGUAGE" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>

@@ -37,7 +37,7 @@ pForm.gfn_excelExport = function(objGrid,  sSheetName, sFileName)
 		sSheetName =  "sheet1";
 	}
 
-	var svcUrl = "AppSvr::XExportImport.do";
+	var svcUrl = "AppSvrLocalMsSql::XExportImport.do";
 	this.objExport = null
 	this.objExport = new ExcelExportObject();
 	
