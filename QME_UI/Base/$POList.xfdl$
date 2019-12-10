@@ -937,7 +937,7 @@ this.COMBO_SET_STR = "ds_cmbPaymentTerms"	+"#"+"ZTERM"		+" "
 					+"ds_cmbDocumentType"	+"#"+"ERP_DOC"      +" "
 					+"ds_cmbIncoterms"		+"#"+"INCO1"        +" "
 					+"ds_cmbCurrency"		+"#"+"CURRENCY"     +" "
-					; 
+					;  
 					
 /********************************************************************************************
 @desc	3. OnLoad
