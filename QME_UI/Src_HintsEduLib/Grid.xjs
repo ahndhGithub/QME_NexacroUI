@@ -73,7 +73,7 @@ pForm.gfn_setGrid = function(objGrid)
 	/*********************************************** 이벤트추가 START ***********************************************/
 	
 	objGrid.addEventHandler("onheadclick", this.gfn_grid_onheadclick, this); 	this.gtrace("헤드클릭이벤트추가 gfn_grid_onheadclick", gtrcPos);
-																				
+	objGrid.addEventHandler("oncellclick", this._gfn_oneTouchComboDropdown, this);	// 클릭한번으로 콤보활성
 																				this.gtrace("userproperties중 하나라도 popupmenulist에 하나라도 있다면 우클릭 이벤트 추가", gtrcPos);
 																				this.gtrace("		userproperties(arrProp)---->"+arrProp, gtrcPos);
 																				this.gtrace("		popupmenulist---->"+this.popupmenulist, gtrcPos);
@@ -95,6 +95,8 @@ pForm.gfn_setGrid = function(objGrid)
 			objGrid.addEventHandler("onkeydown", this.gfn_grid_onkeydown, this);
 		}
 	}
+	
+	
 	/*********************************************** 이벤트추가 END *************************************************/
 	objGrid.set_enableevent(true);
 	objGrid.set_enableredraw(true);	
@@ -159,7 +161,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 												// true : this.gtrace("this.gfn_isNull(objDs.insertheadcell)-->"+this.gfn_isNull(objDs.insertheadcell), gtrcPos);
 	if(this.gfn_isNull(objDs.insertheadcell)) nHeadColIndex = 0;
 	else nHeadColIndex = objDs.insertheadcell;		
-												// 0 : this.gtrace("nHeadColIndex-->"+nHeadColIndex, gtrcPos);
+												this.gtrace("nHeadColIndex-->"+nHeadColIndex, gtrcPos);
 
 	var nBodyColIndex;
 	if(this.gfn_isNull(objDs.insertbodycell)) nBodyColIndex = 0;
@@ -176,8 +178,8 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 	}
 												//0 : this.gtrace("nHeadCount-->"+nHeadCount, gtrcPos);
 	                                            //0 : this.gtrace("nBodyCount-->"+nBodyCount, gtrcPos);
-	var sNo = this.gfn_getWord("cmm.no");		// 순번		
-	var sStatus = this.gfn_getWord("cmm.status");// 상태
+	var sNo 	= this.gfn_getWord("순번");		
+	var sStatus = this.gfn_getWord("상태값");
 												//undefined : this.gtrace("sNo-->"+sNo, gtrcPos);
 												//undefined : this.gtrace("sStatus-->"+sStatus, gtrcPos);
 	//체크박스
@@ -185,15 +187,17 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 	{
 		objDs.set_enableevent(false); 
 		var idx=-1;
+
 		for( var j=0; j<objDs.getColCount(); j++){
 			var tmpcol = objDs.getColID(j);			//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
-			if( tmpcol == "gridcmmcheck"){
+			if( tmpcol == "ROW_CHK"){
 				idx = j;
 			}
 		}
 													// 0 : this.gtrace("idx-->"+idx, gtrcPos);
-		if( idx < 0 ) objDs.addColumn("gridcmmcheck", "STRING", 1);
-														//42 : this.gtrace("objGrid.getCellCount(head)-->"+objGrid.getCellCount("head"), gtrcPos);
+		if( idx < 0 ) objDs.addColumn("ROW_CHK", "STRING", 1);
+														this.gtrace("objGrid.getCellCount(head)-->"+objGrid.getCellCount("head"), gtrcPos);
+														
 		for( var i=0; i<objGrid.getCellCount("head"); i++){
 			//헤드텍스트
 			var tmp = objGrid.getCellProperty("head" , i, "text");
@@ -202,7 +206,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 				var bodyCellIndex = this._gfnGridGetBodyCellIndex(objGrid, i);
 				// body cell index 에 해당하는 바인드 컬럼명
 				var columnName = this._gfnGridGetBindColumnNameByIndex(objGrid, bodyCellIndex);
-				if(columnName == "gridcmmcheck") {
+				if(columnName == "ROW_CHK") {
 					//return;
 					objGrid.deleteContentsCol("body", i);	//	Grid 에 현재 표시된 포맷에서 특정 Column 을 삭제하는 메소드입니다.
 				}
@@ -215,7 +219,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 		objGrid.setCellProperty("head", nHeadColIndex, "text", "0");
 		objGrid.setCellProperty("body", nBodyColIndex, "displaytype", "checkboxcontrol");
 		objGrid.setCellProperty("body", nBodyColIndex, "edittype", "checkbox");
-		objGrid.setCellProperty("body", nBodyColIndex, "text", "bind:gridcmmcheck");
+		objGrid.setCellProperty("body", nBodyColIndex, "text", "bind:ROW_CHK");
 		
 		objGrid.mergeContentsCell("head", 0, nBodyColIndex, nHeadCount, nBodyColIndex, nHeadColIndex, false);	
 		objGrid.mergeContentsCell("body", 0, nBodyColIndex, nBodyCount, nBodyColIndex, nBodyColIndex, false);		
@@ -235,7 +239,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 			}
 		}
 		objGrid.insertContentsCol(nBodyColIndex);	
-		objGrid.setFormatColProperty(nBodyColIndex, "size", "50");	
+		objGrid.setFormatColProperty(nBodyColIndex, "size", "60");	
  		objGrid.setCellProperty("head", nHeadColIndex, "text", sNo);	
 		objGrid.setCellProperty("head", nHeadColIndex, "textAlign","center");
 		objGrid.setCellProperty("body", nBodyColIndex, "text","expr:currow+1");
@@ -248,50 +252,152 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 	}
 	//상태
 	if ( addProp == "status"){
-		for( var i=0; i<objGrid.getCellCount("head"); i++){
-			var tmp = objGrid.getCellProperty("head" , i, "text");
-			if( tmp == "상태" || tmp == "Status"){
-				//return;
-				this.gtrace("tmp---->"+tmp,gtrcPos);
-				objGrid.deleteContentsCol("body", i);
+		{	// 데이터셋
+			var idx=-1;
+
+			for( var p=0; p<objDs.getColCount(); p++){
+				var tmpcol = objDs.getColID(p);				//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
+				if( tmpcol == "ROW_STS"){
+					idx = p;
+				}
 			}
+														 //	this.gtrace("idx-->"+idx, gtrcPos);	//0
+			if( idx < 0 ) objDs.addColumn("ROW_STS", "STRING", 1);
+
+			objDs.addEventHandler("oncolumnchanged", this.gfn_multiDatasetChanged, this);
+			//	objDs.addEventHandler("onrowposchanged", this._gfn_getRowType, this);	//	디버깅용
+			
 		}
-		
-		var sInsert = nexacro.wrapQuote(this.gfn_getWord("insert")); //입력
-		var sUpdate = nexacro.wrapQuote(this.gfn_getWord("modify")); //수정
-		var sDelete = nexacro.wrapQuote(this.gfn_getWord("delete")); //삭제
-		
+														//42 : this.gtrace("objGrid.getCellCount(head)-->"+objGrid.getCellCount("head"), gtrcPos);
+		{	// 그리드
+			for( var i=0; i<objGrid.getCellCount("head"); i++){
+				var tmp = objGrid.getCellProperty("head" , i, "text");
+				if( tmp == "상태" || tmp == "Status"){
+					this.gtrace("tmp---->"+tmp,gtrcPos);
+					objGrid.deleteContentsCol("body", i);
+				}
+			}
+			
+			{//상태를 텍스트로 나타내기 : 막음 - 필요없으면 삭제할 것
+// 			var sInsert = nexacro.wrapQuote(this.gfn_getWord("insert")); //입력
+// 			var sUpdate = nexacro.wrapQuote(this.gfn_getWord("modify")); //수정
+// 			var sDelete = nexacro.wrapQuote(this.gfn_getWord("delete")); //삭제
+// 			
 // 			this.gtrace("sInsert---->"+sInsert,gtrcPos);
 // 			this.gtrace("sUpdate---->"+sUpdate,gtrcPos);
 // 			this.gtrace("sDelete---->"+sDelete,gtrcPos);
+// 				
+// 			var sExpr = "expr:"
+// 					  + "dataset.getRowType(currow)==2?"+sInsert
+// 					  + ":dataset.getRowType(currow)==4?"+sUpdate
+// 					  + ":dataset.getRowType(currow)==8?"+sDelete
+// 					  + ":''";
+			}
 			
-		var sExpr = "expr:"
-				  + "dataset.getRowType(currow)==2?"+sInsert
-				  + ":dataset.getRowType(currow)==4?"+sUpdate
-				  + ":dataset.getRowType(currow)==8?"+sDelete
-				  + ":''";
-				  
-				  
-			this.gtrace("sExpr----->"+sExpr, gtrcPos);
-					//	expr:dataset.getRowType(currow)==2?"입력":dataset.getRowType(currow)==4?"수정":dataset.getRowType(currow)==8?"삭제":''
-		
-		var nSize = 50;
-		if( nexacro.getEnvironmentVariable("evLanguage") == "EN") nSize = 80;
+			var sExpr ="expr:comp.parent.gfn_setRowStatus(ROW_STS)";
+					  
+				this.gtrace("sExpr----->"+sExpr, gtrcPos);
+						//	expr:dataset.getRowType(currow)==2?"입력":dataset.getRowType(currow)==4?"수정":dataset.getRowType(currow)==8?"삭제":''
+			
+			var nSize = 50;
+			if( nexacro.getEnvironmentVariable("evLanguage") == "EN") nSize = 80;
 
-		objGrid.insertContentsCol(nBodyColIndex);
-		objGrid.setFormatColProperty(nBodyColIndex, "size", nSize);	
-		objGrid.setCellProperty("head", nHeadColIndex, "text", sStatus);	
-		objGrid.setCellProperty("head", nHeadColIndex, "textAlign","center");
-		objGrid.setCellProperty("body", nBodyColIndex, "displaytype", "expr:dataset.getRowType(currow) != 1 ? 'text' : ''");
-		objGrid.setCellProperty("body", nBodyColIndex, "text", sExpr);		
-		objGrid.setCellProperty("body", nBodyColIndex, "textAlign","center");
-		objGrid.mergeContentsCell("head", 0, nBodyColIndex, nHeadCount, nBodyColIndex, nHeadColIndex, false);	
-		objGrid.mergeContentsCell("body", 0, nBodyColIndex, nBodyCount, nBodyColIndex, nBodyColIndex, false);			
+			objGrid.insertContentsCol(nBodyColIndex);
+			objGrid.setFormatColProperty(nBodyColIndex, "size", nSize);	
+			objGrid.setCellProperty("head", nHeadColIndex, "text", sStatus);
+			objGrid.setCellProperty("head", nHeadColIndex, "textAlign","center");
+			objGrid.setCellProperty("body", nBodyColIndex, "displaytype", "imagecontrol");
+			objGrid.setCellProperty("body", nBodyColIndex, "text", sExpr);
+			objGrid.setCellProperty("body", nBodyColIndex, "textAlign","center");
+			objGrid.mergeContentsCell("head", 0, nBodyColIndex, nHeadCount, nBodyColIndex, nHeadColIndex, false);	
+			objGrid.mergeContentsCell("body", 0, nBodyColIndex, nBodyCount, nBodyColIndex, nBodyColIndex, false);			
 
-		nHeadColIndex++;
- 		nBodyColIndex++;
-	}	
+			nHeadColIndex++;
+			nBodyColIndex++;
+		}
+	}
 };
+
+/////////////////////////////////////////////////////////////////
+// method name	: _gfn_getRowType
+// description	: 
+// parameter	: 
+// return		: 
+// example		: 
+/////////////////////////////////////////////////////////////////
+pForm._gfn_getRowType = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInf)
+{
+														var gtrcPos = "Grid.xjs._gfn_getRowType";
+	var iRowType = obj.getRowType(e.newrow);
+	var sRowTypeName;
+	switch(iRowType){
+		case  0 : sRowTypeName	=	"Dataset.ROWTYPE_EMPTY  0 존재하지 않는 행의 상태"; break;
+		case  1 : sRowTypeName	=	"Dataset.ROWTYPE_NORMAL 1 초기 행의 상태 "; break;
+		case  2 : sRowTypeName	=	"Dataset.ROWTYPE_INSERT 2 추가된 행의 상태 "; break;
+		case  4 : sRowTypeName	=	"Dataset.ROWTYPE_UPDATE 4 수정된 행의 상태 "; break;
+		case  8 : sRowTypeName	=	"Dataset.ROWTYPE_DELETE 8 삭제된 행의 상태 "; break;
+		case 16 : sRowTypeName	=	"Dataset.ROWTYPE_GROUP 16 그룹 정보 행의 상태 "; break;
+	
+		default : break;
+	}
+	
+	this.gtrace(e.newrow+" 행---sRowTypeName-------->"+sRowTypeName, gtrcPos);
+}
+/////////////////////////////////////////////////////////////////
+// method name	: gfn_multiDatasetChanged
+// description	: 역할1 : ROW_STS, ROW_CHK 변경값은 Skip, 2 : ROW_STS에 세팅
+// parameter	: 
+// return		: 
+// example		: 
+/////////////////////////////////////////////////////////////////
+pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo) 
+{
+											var gtrcPos = "Grid.xjs.gfn_multiDatasetChanged";
+													this.gtrace("e.columnid--->"+e.columnid, gtrcPos);
+	if(e.columnid == "ROW_STS" || e.columnid == "ROW_CHK") return;
+
+	var iRow = e.row;
+	var iRowType = obj.getRowType(iRow);			this.gtrace("iRowType--->"+iRowType, gtrcPos);
+	var sRowSts = obj.getColumn(iRow, "ROW_STS");
+	//	var sRowChk = obj.getColumn(iRow, "ROW_CHK");
+	
+	// cmmGridAddDelButton.xfdl을 사용하면 이벤트에 있으므로 I로 셋하는 것은 필요 없겠지만
+	// 다른 addRow 상황을 대비하여 추가.
+	if (iRowType == Dataset.ROWTYPE_INSERT) 		//	2
+	{
+		if (sRowSts != "I") {
+			obj.setColumn(iRow, "ROW_STS", "I");
+		}
+	} 
+	else if (iRowType == Dataset.ROWTYPE_UPDATE)	//	4
+	{
+		// sRowSts == I 인 경우는 U로 바꾸지 않는다. I는 계속 I 임(데이터셋의 기본적세팅과 동일)
+		if (sRowSts == undefined || sRowSts == "" || sRowSts == "N") {
+			obj.setColumn(iRow, "ROW_STS", "U");
+		}
+	}
+
+	return iRow;
+}
+
+/**
+ * @class  멀티그리드 상태 그림
+ * @param 
+ * @param    
+ * @return  N/A
+ * @example
+ */
+ pForm.gfn_setRowStatus = function(sStatus) 
+{
+	if (sStatus == null) return;
+	
+	if (sStatus == "I") 		sStatus = "theme://Images\\"+"grid_add.png";
+	else if (sStatus == "D") 	sStatus = "theme://Images\\"+"RecycleBin_Empty_18.png";
+	else if (sStatus == "U") 	sStatus = "theme://Images\\"+"grid_edit.png";
+	else if (sStatus == "") 	sStatus = "";
+	
+	return sStatus;
+}
 
 /**
  * @class  그리드헤드클릭 이벤트 [Sort, Checkbox]
@@ -1012,7 +1118,7 @@ pForm._gfnHeadCheckSelectAll = function (objGrid, e)
 		var bodyCellIndex = this._gfnGridGetBodyCellIndex(objGrid, nHeadCell);
 		// body cell index 에 해당하는 바인드 컬럼명
 		var columnName = this._gfnGridGetBindColumnNameByIndex(objGrid, bodyCellIndex);
-		if(columnName == "gridcmmcheck") {
+		if(columnName == "ROW_CHK") {
 			 sChk="";
 		}else{
 			sChk="0";
@@ -2585,4 +2691,12 @@ pForm._createTextarea = function(innerText)
 	ta.select();
 
 	return ta;
+};
+
+pForm._gfn_oneTouchComboDropdown = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//	http://support.tobesoft.co.kr/Support/index.html
+	//	433852 문의 그리드에서 콤보사용시 클릭한번으로 콤보활성
+	obj.set_autoenter("select");
+	obj.dropdownCombo();
 };]]></Script>

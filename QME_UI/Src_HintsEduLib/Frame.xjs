@@ -245,7 +245,7 @@ this.gfn_setLanguage = function(Obj, rName)
 {
 														var gtrcPos = "Frame.xjs.gfn_setLanguage";
 	var gds_Language 	= this.gfn_getApplication().gds_Language;										//	this.gtrace("gds_Language---->"+gds_Language.name, gtrcPos);
-	var LanguageKey = nexacro.getApplication().gds_QmeLogonInfo.getColumn(0, "LanguageKey");	//	this.gtrace("LanguageKey---->"+LanguageKey, gtrcPos);
+	var LanguageKey 	= nexacro.getApplication().gds_QmeLogonInfo.getColumn(0, "LanguageKey");	//	this.gtrace("LanguageKey---->"+LanguageKey, gtrcPos);
 	
 	if(	Obj instanceof nexacro.Button
 	|| 	Obj instanceof nexacro.Static			

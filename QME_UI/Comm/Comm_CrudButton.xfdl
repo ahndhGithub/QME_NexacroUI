@@ -7,6 +7,7 @@
         <Button id="btn_add" taborder="1" text="New" top="4" width="72" height="24" visible="true" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="80" enable="false"/>
         <Button id="btn_delete" taborder="2" text="Delete" top="4" width="72" height="24" visible="true" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="232"/>
         <Button id="btn_save" taborder="3" text="Save" top="4" width="72" height="24" visible="true" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="156"/>
+        <Static id="Static00" taborder="4" text="2019-12-11. 이 메세지가 보이면 Git Pull 최신 상태입니다." left="354" top="4" width="423" height="23"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";

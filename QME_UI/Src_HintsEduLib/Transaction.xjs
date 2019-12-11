@@ -150,12 +150,12 @@ pForm.gfn_callback = function(svcID, errorCode, errorMsg)
 	if (errorCode == 0)
 	{
 		sMsg = "gfn_callback : svcID>>"+objSvcID.svcId+ ",  svcUrl>>"+objSvcID.svcUrl+ ",  errorCode>>"+errorCode + ", errorMsg>>"+errorMsg + ", isAsync>>" + objSvcID.isAsync + ", sStartDate>>" + sStartDate + ", sEndDate>>"+sEndDate + ", nElapseTime>>"+nElapseTime;
-		trace(sMsg);
+		//	trace(sMsg);
 	}
 	else {
 		sMsg = "gfn_callback : svcID>>"+objSvcID.svcId+ ",  svcUrl>>"+objSvcID.svcUrl+ ",  errorCode>>"+errorCode + ", isAsync>>" + objSvcID.isAsync + ", sStartDate>>" + sStartDate + ", sEndDate>>"+sEndDate + ", nElapseTime>>"+nElapseTime;
 		sMsg += "\n==================== errorMsg =======================\n"+errorMsg+"\n==================================================";
-		trace(sMsg);
+		//	trace(sMsg);
 	}
 																this.gtrace("this[objSvcID.outData]--->"+this[objSvcID.outData], gtrcPos);
 	// form에 callback 함수가 있을때

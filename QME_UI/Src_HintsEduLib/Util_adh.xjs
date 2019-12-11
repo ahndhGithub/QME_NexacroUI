@@ -14,7 +14,7 @@ var pForm = nexacro.Form.prototype;
  */
 pForm.gtrace = function(strTrc,strPos)
 {
-	// 주석 처리 여부가 기능에 영향을 주어서는 안된다.
+	// 주석 처리 여부가 기능에 영향을 주어서는 안된다. 
 	if ( pForm.gfn_isNull(strPos)				//strPos 없이 넘어 오면 무조건 찍는다.
 // 						||	strPos == "Grid.xjs.gfn_setGrid"				// 그리드 세팅
 //  					||	strPos == "Grid.xjs._getUniqueId"				// 그리드의 유니크 아이디 가져오기
@@ -39,7 +39,7 @@ pForm.gtrace = function(strTrc,strPos)
 // 						||	strPos == "PopupSalesOrder.xfdl.btn_ok_onclick"
 // 						||	strPos == "Util_adh.xjs._getUserProperty"
 // 						||	strPos == "POList.xfdl.Button_SortGroup_onclick"
- 						||	strPos == "POList.xfdl.callbackFunction"
+// 						||	strPos == "POList.xfdl.callbackFunction"
 // 						||	strPos == "Comm_SubSum.xfdl.form_onload"
 //						||	strPos == "Comm_SubSum.xfdl.btn_ok_onclick"
 //						||	strPos == "Comm_SubSum.xfdl.fn_getHeadTextAndBindingInfo"
@@ -49,11 +49,15 @@ pForm.gtrace = function(strTrc,strPos)
 //						||	strPos == "Frame.xjs.gfn_setLanguage"
 //						||	strPos == "Comm_CrudButton.btnCrud_onclick"
 //						||	strPos == "Comm_CrudButton.form_onload"
-						||	strPos == "Grid.xjs._gfnGridCheckboxNoStatusAdd"
+//						||	strPos == "Grid.xjs._gfnGridCheckboxNoStatusAdd"
 // 						||	strPos == "Transaction.xjs.gfn_callback"
 // 						||	strPos == "Transaction.xjs.gfn_transaction"
-)
-	{
+//  						||	strPos == "Grid.xjs.gfn_multiDatasetChanged"
+//  						||	strPos == "Comm_GridAddDelButton.form_onload"
+//  						||	strPos == "cmmGridAddDelButton.xfdl.btn_del_onclick"
+//  						||	strPos == "Grid.xjs._gfn_getRowType"
+// 						||	strPos == "cmmGridAddDelButton.xfdl.fn_deleteRow"						
+)	{
 		trace(strPos+"--------->"+strTrc);
 	}
 };
@@ -210,7 +214,7 @@ pForm.gfn_getAllInitData = function()
 				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", "160307");
 				nexacro.getApplication().gds_Language.clearData();
 				nexacro.getApplication().gds_Language.addRow();
-				nexacro.getApplication().gds_Language.setColumn(0, "p_country_cd", "VI");		//	한국 : KO / 베트남 : VI / 인도네시아 : ID
+				nexacro.getApplication().gds_Language.setColumn(0, "p_country_cd", "KO");		//	한국 : KO / 베트남 : VI / 인도네시아 : ID
 
 // 			}else{
 // 				this.gtrace("nexacro전용브라우져--NOTRANS", gtrcPos);
@@ -359,7 +363,7 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			this.gfn_onloadSequence();
 			
 			//{0}의 입력값의 길이는 {1} 이하이어야 합니다.
-			this.gfn_alert("지시 조회", ["사원번호", "5자리"], "A");		
+			//	테스트용 : this.gfn_alert("지시 조회", ["사원번호", "5자리"], "A");		
 
 			break;
 	}
