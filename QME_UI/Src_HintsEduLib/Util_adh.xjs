@@ -53,10 +53,20 @@ pForm.gtrace = function(strTrc,strPos)
 // 						||	strPos == "Transaction.xjs.gfn_callback"
 // 						||	strPos == "Transaction.xjs.gfn_transaction"
 //  						||	strPos == "Grid.xjs.gfn_multiDatasetChanged"
-//  						||	strPos == "Comm_GridAddDelButton.form_onload"
+
+//						||	strPos == "Comm_GridAddDelButton.form_onload"
+						
 //  						||	strPos == "cmmGridAddDelButton.xfdl.btn_del_onclick"
 //  						||	strPos == "Grid.xjs._gfn_getRowType"
-// 						||	strPos == "cmmGridAddDelButton.xfdl.fn_deleteRow"						
+// 						||	strPos == "cmmGridAddDelButton.xfdl.fn_deleteRow"
+// 						||	strPos == "Validation.xjs.gfn_clearValidation"
+
+
+//						||	strPos == "Validation.xjs.gfn_setValidation"
+// 						||	strPos == "Validation.xjs.gfn_validation" 
+// 						||	strPos == "Validation.xjs.gfn_validationCheckRule"
+// 						||	strPos == "Message.xjs.gfn_alert"
+
 )	{
 		trace(strPos+"--------->"+strTrc);
 	}
@@ -261,32 +271,35 @@ pForm.gfn_getAllInitData = function()
 		//공통코드정보 가져오기 인풋 추가
 		{
 			var arrCmmCode;
-			if(!this.gfn_isNull(this.COMBO_SET_STR))	{arrCmmCode = this.COMBO_SET_STR.split(" ");}
+			if(!this.gfn_isNull(this.COMBO_SET_STR))
+			{
+				arrCmmCode = this.COMBO_SET_STR.split(" ");
 													//	this.gtrace("arrCmmCode.length--->"+arrCmmCode.length, gtrcPos);
-			for(var k = 0 ; k < arrCmmCode.length ; k++){
-				var tCmmStr = arrCmmCode[k].trim();
-				if(tCmmStr !="") {
-					var tArr = tCmmStr.split("#");						//	this.gtrace("arrCmmCode["+k+"]--->"+arrCmmCode[k], gtrcPos);
-																		//	this.gtrace("tArr[0]--->"+tArr[0], gtrcPos);
-																		//	this.gtrace("tArr[1]--->"+tArr[1], gtrcPos);
-					var tCommInDs = new Dataset;
-						var tCommInDsName = "tCommInDs"+k;
-						this.addChild(tCommInDsName, tCommInDs); 
-						tCommInDs.copyData(nexacro.getApplication().gds_CommCodeIn);
-						tCommInDs.setColumn(tCommInDs.addRow(), "p_code_grp", tArr[1]);
-						
-						switch(tArr[1]){	// 특이로직
-							case "CURRENCY" :	tCommInDs.setColumn(0, "p_sub_cd1", "T");	// 통화
-										break;
-							default : break;
-						}
+					for(var k = 0 ; k < arrCmmCode.length ; k++){
+						var tCmmStr = arrCmmCode[k].trim();
+						if(tCmmStr !="") {
+							var tArr = tCmmStr.split("#");						//	this.gtrace("arrCmmCode["+k+"]--->"+arrCmmCode[k], gtrcPos);
+																				//	this.gtrace("tArr[0]--->"+tArr[0], gtrcPos);
+																				//	this.gtrace("tArr[1]--->"+tArr[1], gtrcPos);
+							var tCommInDs = new Dataset;
+								var tCommInDsName = "tCommInDs"+k;
+								this.addChild(tCommInDsName, tCommInDs); 
+								tCommInDs.copyData(nexacro.getApplication().gds_CommCodeIn);
+								tCommInDs.setColumn(tCommInDs.addRow(), "p_code_grp", tArr[1]);
+								
+								switch(tArr[1]){	// 특이로직
+									case "CURRENCY" :	tCommInDs.setColumn(0, "p_sub_cd1", "T");	// 통화
+												break;
+									default : break;
+								}
 
-						sArguments	+=	"CommonMapper.getCodeInfo"		+" ";	//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
-						sInDatasets	+=	"ds_in"+iSeq+"="+tCommInDsName	+" ";
-						sOutDatasets+=	tArr[0]+"=ds_out"+iSeq			+" ";
-						iSeq++;
+								sArguments	+=	"CommonMapper.getCodeInfo"		+" ";	//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
+								sInDatasets	+=	"ds_in"+iSeq+"="+tCommInDsName	+" ";
+								sOutDatasets+=	tArr[0]+"=ds_out"+iSeq			+" ";
+								iSeq++;
+						}
+					}
 				}
-			}
 		}
 //   		sArguments+="CommonMapper.getCodeInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";		sOutDatasets+="gds_CommCode=ds_out"+iSeq+" "; 	iSeq++;
 //   		sArguments+="CommonMapper.getCodeInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";		sOutDatasets+="gds_CommCode=ds_out"+iSeq+" "; 	iSeq++;
@@ -359,7 +372,32 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 																	//	trace("gds_User.saveXML()--->"+nexacro.getApplication().gds_User.saveXML());
 																	//	nexacro.getApplication().gds_User.setColumn(0, "VENDOR_CD", "XXXXX");
 																	//	nexacro.getApplication().gds_User.setColumn(0, "USER_ID", "XXXXX");
-			
+			var gdsLan = this.gfn_getApplication().gds_Language;
+			var aRp;
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.length");		gdsLan.setColumn(aRp, "LANGUAGE", "{0} 의 입력값은 {1} 자리이어야 합니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.rangelength	");	gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.rangelength");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.maxlength");	gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.maxlength");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.minlength");	gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.minlength");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.maxlength");	gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.maxlength");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.minlength");	gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.minlength");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.digits");		gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) 숫자만 입력 가능합니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.min");			gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) {1} 이상의 숫자만 입력 가능합니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.max");			gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) {1} 이하의 숫자만 입력 가능합니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.declimit");		gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) 소숫점 {1} 자리로 구성되어야 합니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.date");			gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) 유효하지 않은 날짜 형식입니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.dateym");		gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.dateym");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.range");		gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.range");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.code");			gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.code");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.equalto");		gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.equalto");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.fromto");		gdsLan.setColumn(aRp, "LANGUAGE", "{0} 의 날짜가 {1} 의 날짜보다 작습니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.comparebig");	gdsLan.setColumn(aRp, "LANGUAGE", "{0} 이(가) {1} 보다 작습니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.comparesmall");	gdsLan.setColumn(aRp, "LANGUAGE", "{0} 이(가) {1} 보다 큽니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.ssn");			gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) 올바른 주민번호가 아닙니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.email");		gdsLan.setColumn(aRp, "LANGUAGE", "msg.err.validator.email");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator.required");		gdsLan.setColumn(aRp, "LANGUAGE", "{0} 은(는) 필수 입력 항목입니다.");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "아이디");						gdsLan.setColumn(aRp, "LANGUAGE", "IIIIIIIIIIIIIIIIId");
+				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator");				gdsLan.setColumn(aRp, "LANGUAGE", "{0}");
+
 			this.gfn_onloadSequence();
 			
 			//{0}의 입력값의 길이는 {1} 이하이어야 합니다.

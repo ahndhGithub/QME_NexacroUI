@@ -155,7 +155,7 @@
                   <Button id="Button_tp1_SortPlus" taborder="2" text="S:SO+FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
                   <Button id="Button_tp1_GroupPlus" taborder="3" text="G:SO+FAC" left="140" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
                   <Button id="Button_tp1_InitSortGroup" taborder="4" text="INIT_SortGroup" left="267" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Div id="DivBtnAddDel_GridPoList00" taborder="6" text="" left="13" top="6" width="340" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList00"/>
+                  <Div id="DivBtnAddDel_GridPoList00" taborder="6" text="" left="10" top="6" width="340" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList00" visible="true"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -785,10 +785,6 @@ include "Src_HintsEduLib::All_EduLib.xjs";
 @desc	2. Form 변수 선언 ---------------
 ********************************************************************************************/
 //공통코드 세팅
-// this.COMBO_SET_STR = "ds_cmbPaymentTermsP001:1"+" "
-// 						+"ds_cmbDocumentTypeD001:0"+" "
-// 						+"ds_cmbIncotermsI001:1"
-// 					;
 this.COMBO_SET_STR = "ds_cmbPaymentTerms"	+"#"+"ZTERM"		+" "
 					+"ds_cmbDocumentType"	+"#"+"ERP_DOC"      +" "
 					+"ds_cmbIncoterms"		+"#"+"INCO1"        +" "
@@ -892,7 +888,17 @@ this.callbackFunc_pop = function(strID, variant)
  */
 this.cfn_search = function()
 {
-	this.tfn_getPoListHistoryLoad();
+	{	//Validation 세팅 : Sample_Validation.xfdl 참조
+		this.gfn_clearValidation(this.ds_in);
+		//this.gfn_setValidation(this.ds_in, "p_osno1", "오더번호", "required,length:10");
+		this.gfn_setValidation(this.ds_in, "p_osno1", "오더번호", "required");
+	}
+	
+  	if(this.gfn_validation(this.ds_in, "A"))	// Validation == true 이면
+	{
+		// 조회실행
+		this.tfn_getPoListHistoryLoad();
+	}
 };
 
 /*
@@ -933,26 +939,6 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.fn_reset();
 };
-
-// 입력
-this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-    var nRow = this.ds_status.addRow();
-    this.ds_status.setRowType(nRow, Dataset.ROWTYPE_INSERT);
-};
-//삭제
-this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var nRow = this.ds_status.rowposition;
-	this.ds_status.setRowType(nRow, Dataset.ROWTYPE_DELETE);
-};
-//수정
-this.ds_status_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
-{
-	this.ds_status.setRowType(e.row, Dataset.ROWTYPE_UPDATE);	
-};
-
-
 ]]></Script>
     <Objects>
       <Dataset id="ds_in">

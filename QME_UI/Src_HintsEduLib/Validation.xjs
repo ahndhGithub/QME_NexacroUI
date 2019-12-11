@@ -20,6 +20,8 @@ pForm.useErrorClass = false;
  */  
 pForm.gfn_clearValidation = function(objDs)
 {
+			var gtrcPos = "Validation.xjs.gfn_clearValidation";
+				this.gtrace("objDs.validationRuleSet----->"+objDs.validationRuleSet, gtrcPos);
 	objDs.validationRuleSet = "";
 };
 
@@ -33,16 +35,18 @@ pForm.gfn_clearValidation = function(objDs)
  */
 pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
 {
+			var gtrcPos = "Validation.xjs.gfn_setValidation";
 	var arrValidation = new Array();
 	
 	// title이 2개가 올 경우 구분자를 변경
 	// checkrule == "equalto" || checkrule == "fromto" || checkrule == "comparebig" || checkrule == "comparesmall"
 	//if (sColName.indexOf(",") != -1) sColName = nexacro.replaceAll(sColName, ",", "^_^");
-    
+										this.gtrace("this.gfn_isNull(objDs.validationRuleSet)-->"+this.gfn_isNull(objDs.validationRuleSet), gtrcPos);
+
 	// Dataset에 RuleSet이 존재하면
 	if(!this.gfn_isNull(objDs.validationRuleSet))
     {
-		arrValidation = JSON.parse(objDs.validationRuleSet);
+		arrValidation = JSON.parse(objDs.validationRuleSet); 
 		for(var index in arrValidation)
 		{
 			// 기존 RuleSet에 컬럼에 대한 Rule이 존재하면 변경
@@ -63,11 +67,13 @@ pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
 	}
 	
 	// RuleSet 
+	//							objDs	  , sColID		  , sColName		   , sRule
+	// this.gfn_setValidation(this.ds_data, "COL_ID"      , "아이디"          , "required,length:5"); 
 	var validationRule = 
 	{
-		name  : sColID		// Column
-	   ,title : sColName	// Title
-	   ,value : sRule		// 정합성 Rule
+		name  : sColID		// Column		:	COL_ID
+	   ,title : sColName	// Title		: 	아이디
+	   ,value : sRule		// 정합성 Rule	:	required,length:5
 	};
     
 	// RuleSet에 필수여부 추가
@@ -91,13 +97,16 @@ pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
  */
 pForm.gfn_validation = function()
 {
+							var gtrcPos = "Validation.xjs.gfn_validation";
 	var nUpdateCnt = 0;
 	var targetlist  = new Array();
 	var sCheckMode   = "U";
-
+												this.gtrace("arguments.length--->"+arguments.length, gtrcPos);
+												this.gtrace("arguments[0].name--->"+arguments[0].name, gtrcPos);
+												this.gtrace("arguments[1]--->"+arguments[1], gtrcPos);
 	// Check 대상과 Check Mode(A/U)를 지정
 	for(var m=0; m<arguments.length; m++)
-	{    
+	{    									//	this.gtrace("m--->"+m, gtrcPos);
 		// Check 모드(A-전체 row, U-변경된 row) 설정
 		if(this.gfn_typeOf(arguments[m]) == "string")
 		{
@@ -174,20 +183,25 @@ pForm.gfn_validation = function()
 			else {
 				++nUpdateCnt;
 			}
-
+																					//	this.gtrace("arrValidation.length--->"+arrValidation.length, gtrcPos);
 			// Rule 만큼 처리
 			for(var j=0; j<arrValidation.length; j++)
 			{
-				var sColID     = arrValidation[j].name;
-				var sColName   = new String(arrValidation[j].title);
-				var sColValue  = String(objDs.getColumn(i, sColID)).trim();
-                trace(sColValue);
-				var arrRule    = (""+arrValidation[j].value).split(","); //required,length:5
-				var bNullCheck = arrValidation[j].notnull;
+				var sColID     = arrValidation[j].name;								if(j==0)this.gtrace("sColID--->"+sColID, gtrcPos);
+				var sColName   = new String(arrValidation[j].title);				if(j==0)this.gtrace("sColName--->"+sColName, gtrcPos);
+				var sColValue  = String(objDs.getColumn(i, sColID)).trim();			if(j==0)this.gtrace("sColValue--->"+sColValue, gtrcPos);
 
+				var arrRule    = (""+arrValidation[j].value).split(","); //required,length:5
+																					if(j==0)this.gtrace("arrRule--->"+arrRule, gtrcPos);
+				var bNullCheck = arrValidation[j].notnull;
+																					if(j==0)this.gtrace("bNullCheck--->"+bNullCheck, gtrcPos);
 				// 필수입력 체크
-				if(bNullCheck == true){
+				if(bNullCheck == true){		//required가 있으므로 nullCheck를 하라
+																					if(j==0)this.gtrace("this.gfn_nvl(sColValue,'')--->"+this.gfn_nvl(sColValue,""), gtrcPos);
+
+				//	if(this.gfn_nvl(sColValue,"")==""){	//공백인 경우도체크 undefined인 경우는 ??
 					if(this.gfn_isNull(sColValue)){
+																					if(j==0)this.gtrace("<---------------------->", gtrcPos);
 						// row 이동 및 focus 저장
 						objDs.set_rowposition(i);
 						this.validationObject = arguments[m];
@@ -200,24 +214,32 @@ pForm.gfn_validation = function()
 						else {
 							titile = sColName;
 						}
-
+																			//	this.gfn_setValidation(this.ds_data	, "COL_ID"  , "아이디" , "required,length:5");    
+																			//								objDs	, sColID	, sColName	, sRule
+																			if(j==0)this.gtrace("[titile]-------------->"+[titile], gtrcPos);	//	[titile]-------------->아이디
 						// 메시지 처리 : ${} 필수 입력 항목입니다.
 						//this.gfnAlert("msg.err.validator", [this.gfn_getKoreanTarget(titile, "은(는)")+" 필수 입력 항목입니다."], null, "gfnValidationCallback");
 						// 메시지 처리 : {0} 은(는) 필수 입력 항목입니다.
-						this.gfn_alert("msg.err.validator.required", [titile], null, "gfn_validationCallback");						
+						this.gfn_alert("msg.err.validator.required", [titile], null, "gfn_validationCallback", "A");	
+						
 						return false;
 					}
 				}
 
-				// 필수값이 아닌 경우는 체크할 값이 null이 아닌 경우에만 체크
-				if(!this.gfn_isNull(sColValue)){
+				// 필수값이 아닌 경우는 체크할 값이 null이 아닌 경우에만 체크 <-- 코멘트가 틀린 듯.
+				//		if(!this.gfn_isNull(sColValue)){
+				if(this.gfn_nvl(sColValue,"")!=""){	
 					// Rule에 따른 정합성 체크
+												if(j==0)this.gtrace("arrRule.length-------->"+arrRule.length, gtrcPos);
 					for(var k=0; k<arrRule.length; k++)
 					{
 						var msg = "";                        
 						// 컬럼의 두개의 값을 이용해서 처리하는 check 대상
-						var checkrule =  arrRule[k].split(":")[0];
-						if (checkrule == "equalto" || checkrule == "fromto" || checkrule == "comparebig" || checkrule == "comparesmall")
+						var checkrule =  arrRule[k].split(":")[0];	if(j==0)this.gtrace("checkrule------->"+checkrule, gtrcPos);
+						if (checkrule == "equalto"
+						 || checkrule == "fromto" 
+						 || checkrule == "comparebig" 
+						 || checkrule == "comparesmall")
 						{
 							var compare1;
 							var compare2;
@@ -233,7 +255,9 @@ pForm.gfn_validation = function()
 						}
 						// 컬럼의 한개 값을 이용해서 처리하는 check 대상
 						else {
+											if(j==2)this.gtrace("<--------컬럼의 한개 값을 이용해서 처리하는 check 대상------->"+checkrule, gtrcPos);
 							msg = this.gfn_validationCheckRule(sColName, sColValue, arrRule[k]);
+											if(j==2)this.gtrace("msg------->"+msg, gtrcPos);
 						}
 
 						// 에러시
@@ -244,7 +268,7 @@ pForm.gfn_validation = function()
 							this.validationColumn = sColID;
 
 							// 메시지 처리 : ${}
-							this.gfn_alert("msg.err.validator", [msg], null, "gfn_validationCallback");
+							this.gfn_alert("msg.err.validator", [msg], null, "gfn_validationCallback", "A");
 							
 							return false;
 						}
@@ -277,6 +301,7 @@ pForm.gfn_validation = function()
  
 pForm.gfn_validationCheckRule = function(itemName, itemValue, validationRuleSet, compare1, compare2)
 {
+							var gtrcPos = "Validation.xjs.gfn_validationCheckRule";
 	var titile     = "";
 	var columname1 = "";
 	var columname2 = "";
@@ -288,17 +313,23 @@ pForm.gfn_validationCheckRule = function(itemName, itemValue, validationRuleSet,
 	else {
 		titile = itemName;
 	}
-				
+	
+	//타이틀도 언어셋에 의해 변환
+	titile = (this.gfn_getWord(titile)==undefined?title:this.gfn_getWord(titile));
+	
 	var arrItem2  =  validationRuleSet.split(":");
 	var checkrule =  arrItem2[0];
 
-	checkrule = checkrule.toLowerCase();
+	checkrule = checkrule.toLowerCase();		//this.gtrace("checkrule--->"+checkrule, gtrcPos);
+												//this.gtrace("(itemValue+'').length--->"+(itemValue+"").length, gtrcPos);
+												//this.gtrace(" parseInt(arrItem2[1])--->"+ parseInt(arrItem2[1]), gtrcPos);
 	switch(checkrule)
 	{
 		// size 크기 지정 : length:7
 		case "length":
 			if( (itemValue+"").length != parseInt(arrItem2[1]))
 			{
+												this.gtrace(" titile--->"+ titile, gtrcPos);
 				//return this.gfn_getKoreanTarget(titile, "은(는)")+" "+arrItem2[1]+"자리 입니다.";
 				// {0} 의 입력값은 {1} 자리이어야 합니다.
 				return this.gfn_getMessage("msg.err.validator.length",[titile, arrItem2[1]]);
@@ -378,7 +409,7 @@ pForm.gfn_validationCheckRule = function(itemName, itemValue, validationRuleSet,
 			break;
 		// 소숫점 자리수 비교 - declimit:3
 		case "declimit":
-			var isExistDot = itemValue.indexOf(".");
+			var isExistDot = itemValue.indexOf(".");	this.gtrace("isExistDot--->"+isExistDot, gtrcPos);
 			if (isExistDot == -1)
 			{
 				//return this.gfn_getKoreanTarget(titile, "은(는)")+" 소숫점 "+arrItem2[1]+" 자리로 구성되어야 합니다.";
@@ -387,7 +418,7 @@ pForm.gfn_validationCheckRule = function(itemName, itemValue, validationRuleSet,
 			}
 			else
 			{
-				var decLen = itemValue.substr(isExistDot + 1, itemValue.length);
+				var decLen = itemValue.substr(isExistDot + 1, itemValue.length);	this.gtrace("parseInt(arrItem2[1])--->"+parseInt(arrItem2[1]), gtrcPos);
 				if (decLen.length != parseInt(arrItem2[1]))
 				{
 					//return this.gfn_getKoreanTarget(titile, "은(는)")+" 소숫점 "+arrItem2[1]+" 자리로 구성되어야 합니다.";

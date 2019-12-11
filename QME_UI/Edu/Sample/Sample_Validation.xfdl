@@ -3,7 +3,7 @@
   <Form id="Sample_Validation" left="0" top="0" width="814" height="529" titletext="Sample_Validation" onload="Form_onload" ontimer="Form_Emp_ontimer">
     <Layouts>
       <Layout height="529" width="814">
-        <Grid id="grd_list" taborder="0" left="10" top="50" right="10" bottom="10" leftbase="" bottombase="" widthbase="" heightbase="" binddataset="ds_data" onheadclick="grd_list_onheadclick">
+        <Grid id="grd_list" taborder="0" left="10" top="50" right="10" bottom="10" leftbase="" bottombase="" widthbase="" heightbase="" binddataset="ds_data" onheadclick="grd_list_onheadclick" griduserproperty="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -90,6 +90,70 @@
           <Row>
             <Col id="COL_ID">AA002</Col>
             <Col id="COL_SSN">8002031028213</Col>
+            <Col id="COL_DATE_FR">20180201</Col>
+            <Col id="COL_DATE_TO">20180208</Col>
+            <Col id="COL_NUM_MAX">6</Col>
+            <Col id="COL_NUM_DEC">2.02</Col>
+            <Col id="COL_COMPARE1">12</Col>
+            <Col id="COL_COMPARE2">13</Col>
+          </Row>
+          <Row>
+            <Col id="COL_ID">BB001</Col>
+            <Col id="COL_SSN">8002031028213</Col>
+            <Col id="COL_DATE_FR">20180520</Col>
+            <Col id="COL_DATE_TO">20180520</Col>
+            <Col id="COL_NUM_MAX">10</Col>
+            <Col id="COL_NUM_DEC">3.15</Col>
+            <Col id="COL_COMPARE1">11</Col>
+            <Col id="COL_COMPARE2">111</Col>
+          </Row>
+          <Row>
+            <Col id="COL_ID">BB002</Col>
+            <Col id="COL_SSN">8002031028213</Col>
+            <Col id="COL_DATE_FR">20181010</Col>
+            <Col id="COL_DATE_TO">20181210</Col>
+            <Col id="COL_NUM_MAX">9</Col>
+            <Col id="COL_NUM_DEC">4.32</Col>
+            <Col id="COL_COMPARE1">1</Col>
+            <Col id="COL_COMPARE2">11</Col>
+          </Row>
+          <Row>
+            <Col id="COL_ID">CC001</Col>
+            <Col id="COL_SSN">8002031028213</Col>
+            <Col id="COL_DATE_FR">20150110</Col>
+            <Col id="COL_DATE_TO">20171110</Col>
+            <Col id="COL_NUM_MAX">7</Col>
+            <Col id="COL_NUM_DEC">5.56</Col>
+            <Col id="COL_COMPARE1">4</Col>
+            <Col id="COL_COMPARE2">11</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_data_original_backup" keystring="" cancolumnchange="ds_emp_cancolumnchange" onrowsetchanged="ds_emp_onrowsetchanged" onrowposchanged="ds_emp_onrowposchanged">
+        <ColumnInfo>
+          <Column id="COL_ID" type="STRING" size="10"/>
+          <Column id="COL_SSN" type="STRING" size="50"/>
+          <Column id="COL_DATE_FR" type="STRING" size="10"/>
+          <Column id="COL_DATE_TO" type="STRING" size="10"/>
+          <Column id="COL_NUM_MAX" type="STRING" size="10"/>
+          <Column id="COL_NUM_DEC" type="STRING" size="10"/>
+          <Column id="COL_COMPARE1" type="STRING" size="10"/>
+          <Column id="COL_COMPARE2" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="COL_ID"/>
+            <Col id="COL_SSN">8002031028213</Col>
+            <Col id="COL_DATE_FR">20180101</Col>
+            <Col id="COL_DATE_TO">20180131</Col>
+            <Col id="COL_NUM_MAX">8</Col>
+            <Col id="COL_NUM_DEC">1.36</Col>
+            <Col id="COL_COMPARE1">11</Col>
+            <Col id="COL_COMPARE2">12</Col>
+          </Row>
+          <Row>
+            <Col id="COL_ID">AA</Col>
+            <Col id="COL_SSN">8002031028213</Col>
             <Col id="COL_DATE_FR">201802</Col>
             <Col id="COL_DATE_TO">20180208</Col>
             <Col id="COL_NUM_MAX">A</Col>
@@ -130,7 +194,9 @@
         </Rows>
       </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/*
+    <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
+
+/*
 
 1. Validation 공통함수
 
@@ -178,7 +244,8 @@
 
 this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.gfn_formOnLoad(this);
+	//	this.gfn_formOnLoad(this);
+	this.gfn_getAllInitData();
 };
 
 // Add Button
@@ -198,16 +265,20 @@ this.btn_check_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.gfn_clearValidation(this.ds_data);
 
  	this.gfn_setValidation(this.ds_data, "COL_ID"      , "아이디"          , "required,length:5");    
+ 	this.gfn_setValidation(this.ds_data, "COL_DATE_FR" , "시작일"          , "required,date");						// 유효일자 체크 : 201802-->20180213
+ 	this.gfn_setValidation(this.ds_data, "COL_DATE_TO" , "종료일,시작일"  , "required,date,fromto:COL_DATE_FR"); 	// 종료일자,시작일자
+ 	this.gfn_setValidation(this.ds_data, "COL_NUM_MAX" , "최대값"          , "required,digits,max:10,min:3");  	// 숫자형식,최대값,최소값
+ 	this.gfn_setValidation(this.ds_data, "COL_NUM_DEC" , "COL_NUM_DEC컬럼" , "required,digits,declimit:2");  		// 소수점 2자리 체크
+	
+	
  	this.gfn_setValidation(this.ds_data, "COL_SSN"     , "주민번호"        , "required,isssn");	// 	
- 	this.gfn_setValidation(this.ds_data, "COL_DATE_FR" , "시작일"          , "required,date");	// 유효일자 체크
- 	this.gfn_setValidation(this.ds_data, "COL_DATE_TO" , "종료일,시작일"  , "required,date,fromto:COL_DATE_FR"); // 종료일자,시작일자
- 	this.gfn_setValidation(this.ds_data, "COL_NUM_MAX" , "최대값"          , "required,digits,max:10");  // 최대값
- 	this.gfn_setValidation(this.ds_data, "COL_NUM_DEC" , "COL_NUM_DEC컬럼" , "required,digits,declimit:2");  // 소수점 2자리 체크
- 	this.gfn_setValidation(this.ds_data, "COL_COMPARE1","1번째값"          , "required,digits");	  // 1번째값
+ 	this.gfn_setValidation(this.ds_data, "COL_COMPARE1", "1번째값"         , "required,digits");	  // 1번째값
  	this.gfn_setValidation(this.ds_data, "COL_COMPARE2", "2번째값,1번째값", "required,digits,comparebig:COL_COMPARE1");  // COL_COMPARE1 칼럼의 값보다 큰지 체크
-
+ 
     // 수정된 Row가 아닌 전체 Row에 대해 Validation check
+
   	if(this.gfn_validation(this.ds_data, "A") == false) return;
+	else{trace("OK");}
 
 
 /*    

@@ -3,9 +3,9 @@
   <Form id="cmmGridAddDelButton" width="200" height="32" onload="form_onload" scrolltype="none">
     <Layouts>
       <Layout height="32" width="200">
-        <Button id="btn_del" taborder="0" text="삭제" left="50" top="5" width="40" height="22" onclick="btn_del_onclick"/>
-        <Button id="btn_add" taborder="1" text="추가" left="5" top="5" width="40" height="22" onclick="btn_add_onclick"/>
-        <Button id="btn_delMulti" taborder="2" text="체크삭제" left="96" top="5" width="80" height="22" onclick="btn_delMulti_onclick"/>
+        <Button id="btn_del" taborder="0" text="삭제" left="45" top="5" width="40" height="22" onclick="btn_del_onclick"/>
+        <Button id="btn_add" taborder="1" text="추가" left="0" top="5" width="40" height="22" onclick="btn_add_onclick"/>
+        <Button id="btn_delMulti" taborder="2" text="체크삭제" left="91" top="5" width="80" height="22" onclick="btn_delMulti_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
@@ -51,6 +51,7 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			
 		while(!(eval(sEvFrm) instanceof nexacro.Frame)){
 			sEvFrm += ".parent";
+					//	this.gtrace("this.gfn_typeOf(eval(sEvFrm))--->"+this.gfn_typeOf(eval(sEvFrm)), gtrcPos);
 		}
 		
 		// 한단계 전으로

@@ -8,6 +8,7 @@
     <Variables>
       <Variable id="QME" initval=""/>
       <Variable id="ev_Val" initval=""/>
+      <Variable id="ev_messagePopup" initval="true"/>
     </Variables>
     <Cookies>
       <Cookie id="JSESSIONID" initval="" secure="false"/>
