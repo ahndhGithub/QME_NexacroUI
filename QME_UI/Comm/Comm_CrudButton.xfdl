@@ -3,31 +3,35 @@
   <Form id="cmmCrudButton" width="800" height="32" onload="form_onload" scrolltype="none">
     <Layouts>
       <Layout height="32" width="800">
-        <Button id="btn_search" taborder="0" text="Search" top="4" width="72" height="24" visible="true" cssclass="btn_WF_main1" onclick="btn_Crud_onclick" left="4"/>
-        <Button id="btn_add" taborder="1" text="New" top="4" width="72" height="24" visible="true" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="80" enable="false"/>
-        <Button id="btn_delete" taborder="2" text="Delete" top="4" width="72" height="24" visible="true" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="232"/>
-        <Button id="btn_save" taborder="3" text="Save" top="4" width="72" height="24" visible="true" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="156"/>
+        <Button id="btn_search" taborder="0" text="Search" top="4" width="72" height="24" visible="false" cssclass="btn_WF_main1" onclick="btn_Crud_onclick" left="4"/>
+        <Button id="btn_add" taborder="1" text="New" top="4" width="72" height="24" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="80" enable="true"/>
+        <Button id="btn_delete" taborder="2" text="Delete" top="4" width="72" height="24" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="232"/>
+        <Button id="btn_save" taborder="3" text="Save" top="4" width="72" height="24" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="156"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
- 
-this.oFrmParnt;	//부모폼
 
+//userproperty : InitCompVisEna
+this.InitCompVisEna;	// 초기 콤보의 세팅( visible,enable ) 1:1:1:1,1:0:1:1 
+this.oFrmParnt;			// 부모폼
+this.arrBtns = Array();
+	
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 									var gtrcPos = "Comm_CrudButton.form_onload";
 	// 0.선언
 	var sEvFrm;
 	
-	{	//	1. 스콥 확인용
-// 											this.gtrace("this.parent.form.name--->"+this.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.name--->"+this.parent.form.parent.name, gtrcPos);
-// 												this.gtrace("this.parent.form.parent.form.name--->"+this.parent.form.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.name--->"+this.parent.form.parent.parent.parent.name, gtrcPos);
-// 													this.gtrace("this.parent.form.parent.parent.form.name--->"+this.parent.form.parent.parent.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.parent.name, gtrcPos);
+	// 이 순서를 바꾸지 말자
+	this.arrBtns.push(this.btn_search);		//1.
+	this.arrBtns.push(this.btn_add);		//2.
+	this.arrBtns.push(this.btn_save);		//3.
+	this.arrBtns.push(this.btn_delete);		//4.
+	
+	{	//	1. UserProperty 가져오기
+						
+		this.InitCompVisEna 	= this.parent.form.parent.InitCompVisEna;
+						this.gtrace("InitCompVisEnad--->"+this.InitCompVisEna, gtrcPos);
 	}
 
 	{	//	2. 상위 폼 찾아 오기
@@ -46,10 +50,18 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
  	}
 
  	{	//	4. 버튼 Enable / Disable 처리 : 부모폼의 세팅값(미정)에 따라 활성화 여부를 결정하는 로직 향후 필요함.
-		
+		var arrInitSts = this.InitCompVisEna.split(",");
+		var arrVis = arrInitSts[0].split(":");
+		var arrEna = arrInitSts[1].split(":");
+					this.gtrace("this.arrBtns.length--->"+this.arrBtns.length, gtrcPos);
+					
+		for(var i=0;i<this.arrBtns.length;i++){
+			this.arrBtns[i].set_visible((arrVis[i]=="1"?true:false));
+			this.arrBtns[i].set_enable((arrEna[i]=="1"?true:false));
+		}
  	}
 
-// 	{	//  9. 기본호출 ( 그리드, 초기화 ) : 안한다.
+// 	{	//  9. 기본호출 ( 그리드, 초기화 ) : 한다.
 // 		this.gfn_formOnLoad(this);
 // 		this.fn_init();
 // 	}

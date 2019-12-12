@@ -386,9 +386,9 @@
           <Layouts>
             <Layout>
               <Static id="StaticSalesOrder" taborder="0" text="SalesOrder" left="0" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
-              <Static id="StaticStyleNo" taborder="1" text="Style#" left="0" top="33" width="108" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticStyleNo" taborder="1" text="STYLE :" left="0" top="33" width="108" cssclass="sta_WF_searchLabel" height="21"/>
               <Static id="StaticVendor" taborder="2" text="Vendor" left="0" top="58" width="108" cssclass="sta_WF_searchLabel" height="21"/>
-              <Static id="StaticMaterial" taborder="6" text="STYLE :" left="540" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticMaterial" taborder="6" text="Material" left="540" top="8" width="108" cssclass="sta_WF_searchLabel" height="21"/>
               <Div id="div_SalesOrderFromTo" taborder="3" text="Div00" left="118" top="8" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesOrderNo,ds_in,p_osno1,p_osno2,p_osno_list"/>
               <Div id="div_StyleFromTo" taborder="4" text="Div00" left="118" top="33" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2,p_matnr_list"/>
               <Div id="div_VendorFromTo" taborder="5" text="Div00" left="118" top="58" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="VendorCode,ds_in,p_supply1,p_supply2,p_supply_list"/>
@@ -397,7 +397,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl"/>
+        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" InitCompVisEna="1:1:1:1,1:0:1:1"/>
         <Grid id="Grid01_00_00_00" taborder="7" left="34" top="398" width="254" height="130" binddataset="ds_cmbPaymentTerms" visible="false">
           <Formats>
             <Format id="default">

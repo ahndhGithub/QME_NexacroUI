@@ -4,8 +4,8 @@
     <Layouts>
       <Layout height="21" width="391">
         <Static id="Static00" taborder="1" text="To" left="181" top="0" width="28" height="21" textAlign="center"/>
-        <Edit id="EditFrom" taborder="1" left="0" height="21" top="0" cssclass="essential" width="150"/>
-        <Edit id="EditTo" taborder="2" left="220" height="21" top="0" cssclass="essential" width="150"/>
+        <Edit id="EditFrom" taborder="1" left="0" height="21" top="0" cssclass="essential" width="150" autoselect="true"/>
+        <Edit id="EditTo" taborder="2" left="220" height="21" top="0" cssclass="essential" width="150" autoselect="true"/>
         <Button id="btnFrom" taborder="3" left="150" top="0" width="21" height="21" cssclass="btn_WF_search" text="" onclick="div_search_btn_onclick" EditNameToApply="From"/>
         <Button id="btnTo" taborder="4" left="370" top="0" width="21" height="21" cssclass="btn_WF_search" text="" onclick="div_search_btn_onclick" EditNameToApply="To"/>
       </Layout>
@@ -157,17 +157,20 @@ this.ds_FromTo_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
           </Row>
           <Row>
             <Col id="TypeCode">StyleNo</Col>
-            <Col id="PopupUrl">Popup::PopupSalesOrder.xfdl</Col>
+            <Col id="PopupUrl">Popup::PopupStyle.xfdl</Col>
           </Row>
           <Row>
             <Col id="TypeCode">VendorCode</Col>
-            <Col id="PopupUrl">Popup::PopupSalesOrder.xfdl</Col>
+            <Col id="PopupUrl">Popup::PopupSuppler.xfdl</Col>
           </Row>
           <Row>
             <Col id="TypeCode">MaterialCode</Col>
-            <Col id="PopupUrl">Popup::PopupSalesOrder.xfdl</Col>
+            <Col id="PopupUrl">Popup::PopupMaterial.xfdl</Col>
           </Row>
-          <Row/>
+          <Row>
+            <Col id="TypeCode">PurchaseOrderNo</Col>
+            <Col id="PopupUrl">Popup::PopupPurchaseOrder.xfdl</Col>
+          </Row>
         </Rows>
       </Dataset>
       <Dataset id="ds_FromTo" oncolumnchanged="ds_FromTo_oncolumnchanged">
