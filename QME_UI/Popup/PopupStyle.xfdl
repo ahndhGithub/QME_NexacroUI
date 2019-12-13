@@ -115,11 +115,13 @@ this.tfn_StyleSearch = function(){
 
 	{ // 기본세팅 : clear , 사용자, 센터CD
 		this.ds_StyleList.clearData();
-		//	this.ds_in.setColumn(0, "p_osno1", "1126195724");
+
+		//사용자
 		var sUserId 	= this.gfn_getApplication().gds_User.getColumn(0, "USER_ID");
-		var sCENTER_CD = this.gfn_getApplication().gds_User.getColumn(0, "CENTER_CD");
-		
 		this.ds_in.setColumn(0, "p_user_id"		, sUserId);
+		
+		//센터CD
+		var sCENTER_CD = this.gfn_getApplication().gds_User.getColumn(0, "CENTER_CD");
 		this.ds_in.setColumn(0, "p_center_cd"	, sCENTER_CD);	//	1000 공장코드 (사용자세션)
 	}
 	{	// 개별세팅
@@ -132,9 +134,11 @@ this.tfn_StyleSearch = function(){
 	
 	var sSvcID 			= "StyleSearch";
 	var sURL 			= "AppSvr::common/commonAction.ppc";
+			//	var sURL 			= "AppSvrLocalMsSql::CommonSaveAction_Return.do";
 	var sInDatasets 	= "ds_in0=ds_in";
 	var sOutDatasets 	= "ds_StyleList=ds_out0";
 	var sArguments 		= "sqlId=" + nexacro.wrapQuote("PopupMapper.getStylePopup");
+			//	var sArguments 		= "sqlId=" + nexacro.wrapQuote("PopupMapper_getStylePopup");
 
 	//공통 트랜잭션 사용
 	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
