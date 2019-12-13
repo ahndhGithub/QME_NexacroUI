@@ -8,7 +8,7 @@
             <Tabpage id="TabpagePOList" text="POList" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Grid id="GridPoList00" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="status,checkbox,no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,subsum" bottom="4" binddataset="ds_POList" taborder="5" visible="true" autoupdatetype="itemselect" oncellclick="TabMain_TabpagePOList_GridPoList00_oncellclick">
+                  <Grid id="GridPoList00" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="status,checkbox,no,export,colfix,rowfix,sort,filter,initial,!cellcopypase,cellcopy,colhide,personal,subsum,seltype" bottom="4" binddataset="ds_POList" taborder="5" visible="true" autoupdatetype="itemselect" oncellclick="TabMain_TabpagePOList_GridPoList00_oncellclick">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -393,7 +393,9 @@
               <Div id="div_StyleFromTo" taborder="4" text="Div00" left="118" top="33" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2"/>
               <Div id="div_VendorFromTo" taborder="5" text="Div00" left="118" top="58" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="VendorCode,ds_in,p_supply1,p_supply2"/>
               <Div id="div_MaterialFromTo" taborder="7" text="Div00" left="658" top="8" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2"/>
-              <Edit id="Edit00" taborder="8" left="552" top="48" width="299" height="24" readonly="true" value="1126195724" text="1126195724" visible="true"/>
+              <Edit id="Edit00" taborder="8" left="562" top="36" width="299" height="24" readonly="true" value="1126195724" text="1126195724" visible="true"/>
+              <Static id="StaticMaterial00" taborder="9" text="Sales Order별" left="540" top="58" width="118" cssclass="sta_WF_searchLabel" height="21"/>
+              <CheckBox id="CheckBox00" taborder="10" text="" left="658" top="58" width="21" height="21" value="true"/>
             </Layout>
           </Layouts>
         </Div>

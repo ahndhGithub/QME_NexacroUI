@@ -3,7 +3,7 @@
   <Form id="GridSample_01" width="1280" height="720" titletext="New Form" onload="gridHeadButton_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Grid id="Grid00" left="20" top="15" binddataset="Dataset00" right="20" summarytype="top" showselection="true" griduserproperty="!no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="15">
+        <Grid id="Grid00" left="20" top="15" binddataset="Dataset00" right="20" summarytype="top" showselection="true" griduserproperty="!cellcopypaste,cellcopy,seltype" bottom="15" griduserproperty_backup="!no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype">
           <Formats>
             <Format id="default">
               <Columns>

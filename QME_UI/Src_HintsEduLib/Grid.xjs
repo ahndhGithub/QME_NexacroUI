@@ -91,8 +91,20 @@ pForm.gfn_setGrid = function(objGrid)
 			}
 		}
 		if( arrProp[k] == "cellcopypaste"){
-																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onrbuttondown", gtrcPos);
+																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onkeydown", gtrcPos);
 			objGrid.addEventHandler("onkeydown", this.gfn_grid_onkeydown, this);
+		}
+
+		if( arrProp[k] == "cellcopy"){
+																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onkeydowncopy", gtrcPos);
+			objGrid.addEventHandler("onkeydown", this.gfn_grid_onkeydowncopy, this);
+		}
+
+		if( arrProp[k] == "seltype"){
+																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : _gfn_selTypeArea,Row", gtrcPos);
+			objGrid.addEventHandler("onlbuttondown", this._gfn_selTypeArea, this);
+			//	objGrid.addEventHandler("ondrag", this._gfn_selTypeArea, this);
+			objGrid.addEventHandler("oncellclick", this._gfn_selTypeRow, this);
 		}
 	}
 	
@@ -463,6 +475,22 @@ pForm.gfn_grid_onkeydown =function(objGrid, e){
 		}
 	}
 };
+
+pForm.gfn_grid_onkeydowncopy =function(objGrid, e){
+	var keycode = e.keycode;
+	var sBrowser = system.navigatorname;
+	if(e.ctrlkey){
+		if(keycode == 67){
+			//copy
+			if( sBrowser == "nexacro" || sBrowser == "IE"){
+				this._gfnGridCopyEventForRuntime(objGrid, e);
+			}else {
+				this._gfnGridCopyEventForChrome(objGrid, e);
+			}
+		}
+	}
+};
+
 
 /**
  * @class 유저헤더사용여부반환
@@ -2699,4 +2727,12 @@ pForm._gfn_oneTouchComboDropdown = function(obj:nexacro.Grid,e:nexacro.GridClick
 	//	433852 문의 그리드에서 콤보사용시 클릭한번으로 콤보활성
 	obj.set_autoenter("select");
 	obj.dropdownCombo();
-};]]></Script>
+};
+
+pForm._gfn_selTypeArea = function(objGrid){
+	objGrid.set_selecttype("area");
+}
+
+pForm._gfn_selTypeRow = function(objGrid){
+	objGrid.set_selecttype("row");
+}]]></Script>

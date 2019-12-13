@@ -19,7 +19,7 @@
                 <Cell col="1" text="Description"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:MATNR"/>
+                <Cell text="bind:ITEM_CD"/>
                 <Cell col="1" text="bind:ITEM_NM"/>
               </Band>
             </Format>
@@ -37,7 +37,19 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_StyleList"/>
+      <Dataset id="ds_StyleList" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="BU_NM" type="STRING" size="256"/>
+          <Column id="TTL_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="ITEM_CD" type="STRING" size="256"/>
+          <Column id="SO_NUM" type="STRING" size="256"/>
+          <Column id="YEAR" type="STRING" size="256"/>
+          <Column id="ITEM_NM" type="STRING" size="256"/>
+          <Column id="USER_NM" type="STRING" size="256"/>
+          <Column id="REG_DATETIME" type="STRING" size="256"/>
+          <Column id="SO_KEY" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
       <Dataset id="ds_in">
         <ColumnInfo>
           <Column id="p_user_id" type="STRING" size="256"/>
@@ -127,9 +139,9 @@ this.tfn_StyleSearch = function(){
 	{	// 개별세팅
 		//센터CD : 기본세팅에서...
 		this.ds_in.setColumn(0, "p_so_num"			, ""	);      //	p_so_num		""
-		this.ds_in.setColumn(0, "p_item_nm"			, "%"	);		//	p_item_nm		아이템명
+		this.ds_in.setColumn(0, "p_item_nm"			, ""	);		//	p_item_nm		아이템명
 		this.ds_in.setColumn(0, "p_new_yn"			, "Y"	);      //	p_new_yn		Y	
-		trace(this.ds_in.saveXML());
+		//	trace(this.ds_in.saveXML());
 	}
 	
 	var sSvcID 			= "StyleSearch";
@@ -167,7 +179,7 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
  		
 		case "StyleSearch"	:
 
-					trace(this.ds_StyleList.saveXML());
+					//	trace(this.ds_StyleList.saveXML());
 
 				break;
  	}
@@ -221,7 +233,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     var sCode="";
     var sName="";
 
-		sCode = this.ds_StyleList.getColumn(this.ds_StyleList.rowposition, "MATNR");
+		sCode = this.ds_StyleList.getColumn(this.ds_StyleList.rowposition, "ITEM_CD");
 		sName = this.ds_StyleList.getColumn(this.ds_StyleList.rowposition, "ITEM_NM");
 //     this.close(sCode+"|"+sName);
 														this.gtrace("sCode--->"+sCode, gtrcPos);
@@ -241,8 +253,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
-};
-]]></Script>
+};]]></Script>
     <Bind>
       <BindItem id="item0" compid="EditStyleNo" propid="value" datasetid="ds_in" columnid=""/>
     </Bind>
