@@ -104,6 +104,7 @@
       <File url="Popup\PopupStyle.xfdl" checksum="20191212163217" errormsg=""/>
       <File url="Popup\PopupGIT.xfdl" checksum="20191213094853" errormsg=""/>
       <File url="Popup\PopupGIT_2.xfdl" checksum="20191213094853" errormsg=""/>
+      <File url="Popup\GIT_TEST.xfdl" checksum="20191213094853" errormsg=""/>
     </Info>
   </GenInfo>
 </root>
