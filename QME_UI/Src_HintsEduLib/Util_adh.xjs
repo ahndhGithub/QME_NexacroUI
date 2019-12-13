@@ -44,7 +44,7 @@ pForm.gtrace = function(strTrc,strPos)
 //						||	strPos == "Comm_SubSum.xfdl.btn_ok_onclick"
 //						||	strPos == "Comm_SubSum.xfdl.fn_getHeadTextAndBindingInfo"
 //						||	strPos == "POList.xfdl.fn_reset"
-						||	strPos == "Util_adh.xjs.gfn_getAllInitData"
+//						||	strPos == "Util_adh.xjs.gfn_getAllInitData"
 //						||	strPos == "Util_adh.xjs.gfn_callbackFunction"
 //						||	strPos == "Frame.xjs.gfn_setLanguage"
 //						||	strPos == "Comm_CrudButton.btnCrud_onclick"
