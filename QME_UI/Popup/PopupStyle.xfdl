@@ -97,7 +97,8 @@ var paramObj;
 this.fn_reset = function()
 {
 												var gtrcPos = "PopupStyle.xfdl.Form_onload";
-	this.gfn_formOnLoad(this);
+	//	this.gfn_formOnLoad(this);
+	this.gfn_getAllInitData();
     paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+paramStr, gtrcPos);
     paramNum = this.getOwnerFrame().pNum;			this.gtrace("paramNum--->"+paramNum, gtrcPos);
     paramObj = this.getOwnerFrame().pObj;			this.gtrace("paramObj--->"+paramObj, gtrcPos);

@@ -895,6 +895,8 @@ this.cfn_search = function()
 		//this.gfn_setValidation(this.ds_in, "p_osno1", "오더번호", "required,length:10");
 		this.gfn_setValidation(this.ds_in, "p_osno1", "오더번호", "required");
 	}
+
+	//	trace("this.gfn_validation(this.ds_in, 'A')--->"+this.gfn_validation(this.ds_in, "A"));
 	
   	if(this.gfn_validation(this.ds_in, "A"))	// Validation == true 이면
 	{

@@ -738,7 +738,6 @@
     </Dataset>
     <Dataset id="gds_Language" useclientlayout="true">
       <ColumnInfo>
-        <Column id="p_country_cd" type="STRING" size="256"/>
         <Column id="DEFAULT_LANG" type="STRING" size="256"/>
         <Column id="LANGUAGE" type="STRING" size="256"/>
         <Column id="MSG_TYPE" type="STRING" size="256"/>
@@ -753,6 +752,128 @@
       <ColumnInfo>
         <Column id="p_country_cd" type="STRING" size="256"/>
       </ColumnInfo>
+    </Dataset>
+    <Dataset id="gds_Lang">
+      <ColumnInfo>
+        <Column id="DEFAULT_LANG" type="STRING" size="256"/>
+        <Column id="LANG_KO" type="STRING" size="256"/>
+        <Column id="LANG_VI" type="STRING" size="256"/>
+        <Column id="LANG_ID" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.length</Col>
+          <Col id="LANG_KO">{0} 의 입력값은 {1} 자리이어야 합니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.rangelength</Col>
+          <Col id="LANG_KO">msg.err.validator.rangelength </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.maxlength</Col>
+          <Col id="LANG_KO">msg.err.validator.maxlength </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.minlength</Col>
+          <Col id="LANG_KO">msg.err.validator.minlength </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.maxlength</Col>
+          <Col id="LANG_KO">msg.err.validator.maxlength </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.minlength</Col>
+          <Col id="LANG_KO">msg.err.validator.minlength </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.digits</Col>
+          <Col id="LANG_KO">{0} 은(는) 숫자만 입력 가능합니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.min</Col>
+          <Col id="LANG_KO">{0} 은(는) {1} 이상의 숫자만 입력 가능합니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.max</Col>
+          <Col id="LANG_KO">{0} 은(는) {1} 이하의 숫자만 입력 가능합니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.declimit</Col>
+          <Col id="LANG_KO">{0} 은(는) 소숫점 {1} 자리로 구성되어야 합니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.date</Col>
+          <Col id="LANG_KO">{0} 은(는) 유효하지 않은 날짜 형식입니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.dateym</Col>
+          <Col id="LANG_KO">msg.err.validator.dateym </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.range</Col>
+          <Col id="LANG_KO">msg.err.validator.range </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.code</Col>
+          <Col id="LANG_KO">msg.err.validator.code </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.equalto</Col>
+          <Col id="LANG_KO">msg.err.validator.equalto </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.fromto</Col>
+          <Col id="LANG_KO">{0} 의 날짜가 {1} 의 날짜보다 작습니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.comparebig</Col>
+          <Col id="LANG_KO">{0} 이(가) {1} 보다 작습니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.comparesmall</Col>
+          <Col id="LANG_KO">{0} 이(가) {1} 보다 큽니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.ssn</Col>
+          <Col id="LANG_KO">{0} 은(는) 올바른 주민번호가 아닙니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.email</Col>
+          <Col id="LANG_KO">msg.err.validator.email </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.required</Col>
+          <Col id="LANG_KO">{0} 은(는) 필수 입력 항목입니다. </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator </Col>
+          <Col id="LANG_KO">{0} </Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">아이디 </Col>
+          <Col id="LANG_KO">ID</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.salesorder</Col>
+          <Col id="LANG_KO">판매오더검색</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.material</Col>
+          <Col id="LANG_KO">자재검색</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.style</Col>
+          <Col id="LANG_KO">스타일검색</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.vendor</Col>
+          <Col id="LANG_KO">공급처검색</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.purchaseorder</Col>
+          <Col id="LANG_KO">구매오더검색</Col>
+        </Row>
+      </Rows>
     </Dataset>
   </Datasets>
   <Variables>

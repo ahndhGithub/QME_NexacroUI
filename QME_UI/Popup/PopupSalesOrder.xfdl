@@ -66,11 +66,12 @@ var paramNum;
 var paramObj;
 
 //공통코드 세팅 -- 할 일이 있다면 ...
-// this.COMBO_SET_STR = "ds_cmbPaymentTerms"+"#"+"ZTERM"		+" "
+this.COMBO_SET_STR = ""
+//					+"ds_cmbPaymentTerms"+"#"+"ZTERM"		+" "
 // 					+"ds_cmbDocumentType"	+"#"+"ERP_DOC"      +" "
 // 					+"ds_cmbIncoterms"		+"#"+"INCO1"        +" "
 // 					+"ds_cmbCurrency"		+"#"+"CURRENCY"     +" "
-// 					;  
+ 					;  
 					
 /********************************************************************************************
 @desc	3. OnLoad

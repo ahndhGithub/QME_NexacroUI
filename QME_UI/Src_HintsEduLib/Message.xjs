@@ -24,13 +24,16 @@ var pForm = nexacro.Form.prototype;
 
 	//	if(objApp.gds_message.findRow("MSG_ID", strMsgId) < 0) return false;
 												this.gtrace("strMsgId------>"+strMsgId,gtrcPos);
-												this.gtrace("gds_Language.findRow------>"+objApp.gds_Language.findRow('DEFAULT_LANG', strMsgId), gtrcPos);
-	if(objApp.gds_Language.findRow("DEFAULT_LANG", strMsgId) < 0) return false;
+												this.gtrace("gds_Language.findRow------>"+objApp.gds_Language.findRow("DEFAULT_LANG", strMsgId), gtrcPos);
+	
+	//	메세지셋에 없으면 strMsgId를 그대로 출력 하도록 수정하기 위해 아래 막음
+	//	if(objApp.gds_Language.findRow("DEFAULT_LANG", strMsgId) < 0) return false;
+	
 	// var strMsg = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TEXT");
 	var strMsg = objApp.gds_Language.lookup("DEFAULT_LANG", strMsgId, "LANGUAGE");
 												this.gtrace("strMsg------>"+strMsg, gtrcPos);
-	
-    if(this.gfn_isNull(strMsg)) strMsg = "확인";
+		strMsg = this.gfn_nvl(strMsg, strMsgId);	//	메세지셋에 없으면 strMsgId를 그대로 출력
+    //	if(this.gfn_isNull(strMsg)) strMsg = "확인";
 	
     // 줄바꿈 변경
 	strMsg = strMsg.replace(/\\n/g, String.fromCharCode(10));

@@ -90,11 +90,13 @@ this.div_search_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 			
 	{ //	1. 팝업 띄우기
 		var sPopUrl 	= this.ds_SearchConditionType.lookup("TypeCode",this.sSearchConditionType, "PopupUrl");		this.gtrace("sPopUrl--->"+sPopUrl, gtrcPos);
+		//팝업의 TitleText
+		var sPopTitle	= this.gfn_getWord(this.ds_SearchConditionType.lookup("TypeCode",this.sSearchConditionType, "PopupTitle"));	this.gtrace("sPopTitle--->"+sPopTitle, gtrcPos);
 		var sPopupId  	= "modalPopup";
 		var sUrl      	= sPopUrl;
 		var oArg      	= {pStr:"Nexacro", pNum:1234, pObj:obj.EditNameToApply};
 		var sCallBack 	= "fn_popupCallback";
-		var oOption   	= {title : this.gfn_getWord("popup.modal")};	//팝업의 TitleText ( 다국어 관련, 변경해 줄 것 )
+		var oOption   	= {title : sPopTitle};	
 		
 		this.gfn_openPopup(sPopupId, sUrl, oArg, sCallBack, oOption);
 	}
@@ -110,9 +112,11 @@ this.fn_popupCallback = function(sPopId, sRtn)
 	var sKey			;
 	var	sEtc_00			;
 	var	sEtc_10			;
-
+	
+	if(!this.gfn_isNull(sRtn))
 	{	//0.리턴값 데이터셋에 세팅
-		var objRtn 		= 	JSON.parse(sRtn);
+													this.gtrace("JSON.parse(sRtn)--->"	+JSON.parse(sRtn), gtrcPos);
+		var objRtn 		= 	JSON.parse(sRtn);		this.gtrace("objRtn--->"	+objRtn, gtrcPos);
 
 		dsSetCol 	= 	objRtn.rtnObj;				this.gtrace("dsSetCol--->"	+dsSetCol, gtrcPos);
 		sKey		=	objRtn.sRtnKey;				this.gtrace("sKey	--->"	+sKey	, gtrcPos);
@@ -149,27 +153,33 @@ this.ds_FromTo_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
         <ColumnInfo>
           <Column id="TypeCode" type="STRING" size="256"/>
           <Column id="PopupUrl" type="STRING" size="256"/>
+          <Column id="PopupTitle" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
             <Col id="TypeCode">SalesOrderNo</Col>
             <Col id="PopupUrl">Popup::PopupSalesOrder.xfdl</Col>
+            <Col id="PopupTitle">popup.salesorder</Col>
           </Row>
           <Row>
             <Col id="TypeCode">StyleNo</Col>
             <Col id="PopupUrl">Popup::PopupStyle.xfdl</Col>
+            <Col id="PopupTitle">popup.style</Col>
           </Row>
           <Row>
             <Col id="TypeCode">VendorCode</Col>
             <Col id="PopupUrl">Popup::PopupVendor.xfdl</Col>
+            <Col id="PopupTitle">popup.vendor</Col>
           </Row>
           <Row>
             <Col id="TypeCode">MaterialCode</Col>
             <Col id="PopupUrl">Popup::PopupMaterial.xfdl</Col>
+            <Col id="PopupTitle">popup.material</Col>
           </Row>
           <Row>
             <Col id="TypeCode">PurchaseOrderNo</Col>
             <Col id="PopupUrl">Popup::PopupPurchaseOrder.xfdl</Col>
+            <Col id="PopupTitle">popup.purchaseorder</Col>
           </Row>
         </Rows>
       </Dataset>

@@ -220,6 +220,7 @@ pForm.gfn_validation = function()
 						// 메시지 처리 : ${} 필수 입력 항목입니다.
 						//this.gfnAlert("msg.err.validator", [this.gfn_getKoreanTarget(titile, "은(는)")+" 필수 입력 항목입니다."], null, "gfnValidationCallback");
 						// 메시지 처리 : {0} 은(는) 필수 입력 항목입니다.
+						if(j==0)this.gtrace("gfn_alert실행------>msg.err.validator.required-->title:"+[titile], gtrcPos);	//	[titile]-------------->아이디
 						this.gfn_alert("msg.err.validator.required", [titile], null, "gfn_validationCallback", "A");	
 						
 						return false;

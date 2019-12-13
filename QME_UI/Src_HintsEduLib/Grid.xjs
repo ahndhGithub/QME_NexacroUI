@@ -102,8 +102,8 @@ pForm.gfn_setGrid = function(objGrid)
 
 		if( arrProp[k] == "seltype"){
 																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : _gfn_selTypeArea,Row", gtrcPos);
-			objGrid.addEventHandler("onlbuttondown", this._gfn_selTypeArea, this);
-			//	objGrid.addEventHandler("ondrag", this._gfn_selTypeArea, this);
+			//objGrid.addEventHandler("onlbuttondown", this._gfn_selTypeArea, this);
+			objGrid.addEventHandler("ondrag", this._gfn_selTypeArea, this);
 			objGrid.addEventHandler("oncellclick", this._gfn_selTypeRow, this);
 		}
 	}
