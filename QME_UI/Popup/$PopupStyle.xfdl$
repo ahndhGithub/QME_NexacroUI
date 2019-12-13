@@ -3,7 +3,7 @@
   <Form id="PopupStyle" width="600" height="400" titletext="Sample_PopupSub" onload="Form_onload">
     <Layouts>
       <Layout height="400" width="600">
-        <Grid id="grd_list" taborder="0" left="16" top="56" right="16" binddataset="ds_StyleList" autofittype="col" oncelldblclick="fn_ok" leftbase="" topbase="" bottombase="" rightbase="" widthbase="" heightbase="" bottom="64" griduserproperty="no,sort,initial,export,!colfix,!rowfix,!filter,!cellcopypaste,!colhide,!personal,!subsum">
+        <Grid id="grd_list" taborder="0" left="16" top="56" right="16" binddataset="ds_StyleList" autofittype="col" oncelldblclick="btn_ok_onclick" leftbase="" topbase="" bottombase="" rightbase="" widthbase="" heightbase="" bottom="64" griduserproperty="no,sort,initial,export,!colfix,!rowfix,!filter,!cellcopypaste,!colhide,!personal,!subsum">
           <Formats>
             <Format id="default">
               <Columns>

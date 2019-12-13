@@ -35,7 +35,7 @@ pForm.gtrace = function(strTrc,strPos)
 //						||	strPos == "Comm_SearchConditionFromTo.xfdl.EditFrom_onchanged"
 //						||	strPos == "Comm_SearchConditionFromTo.xfdl.fn_popupCallback"
 //						||	strPos == "Comm_SearchConditionFromTo.xfdl.ds_FromTo_oncolumnchanged"
- 						||	strPos == "PopupSalesOrder.xfdl.Form_onload"
+// 						||	strPos == "PopupSalesOrder.xfdl.Form_onload"
 // 						||	strPos == "PopupSalesOrder.xfdl.btn_ok_onclick"
 // 						||	strPos == "Util_adh.xjs._getUserProperty"
 // 						||	strPos == "POList.xfdl.Button_SortGroup_onclick"
@@ -44,11 +44,11 @@ pForm.gtrace = function(strTrc,strPos)
 //						||	strPos == "Comm_SubSum.xfdl.btn_ok_onclick"
 //						||	strPos == "Comm_SubSum.xfdl.fn_getHeadTextAndBindingInfo"
 //						||	strPos == "POList.xfdl.fn_reset"
-//						||	strPos == "Util_adh.xjs.gfn_getAllInitData"
+						||	strPos == "Util_adh.xjs.gfn_getAllInitData"
 //						||	strPos == "Util_adh.xjs.gfn_callbackFunction"
 //						||	strPos == "Frame.xjs.gfn_setLanguage"
 //						||	strPos == "Comm_CrudButton.btnCrud_onclick"
-						||	strPos == "Comm_CrudButton.form_onload"
+//						||	strPos == "Comm_CrudButton.form_onload"
 //						||	strPos == "Grid.xjs._gfnGridCheckboxNoStatusAdd"
 // 						||	strPos == "Transaction.xjs.gfn_callback"
 // 						||	strPos == "Transaction.xjs.gfn_transaction"
@@ -219,12 +219,12 @@ pForm.gfn_getAllInitData = function()
 // 			{
 				//무조건 트랜잭션
 				this.gtrace("nexacro전용브라우져--TRANSYES", gtrcPos);
-				nexacro.getApplication().gds_QmeLogonInfo.clearData();
-				nexacro.getApplication().gds_QmeLogonInfo.addRow();
-				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", "160307");
-				nexacro.getApplication().gds_Language.clearData();
-				nexacro.getApplication().gds_Language.addRow();
-				nexacro.getApplication().gds_Language.setColumn(0, "p_country_cd", "KO");		//	한국 : KO / 베트남 : VI / 인도네시아 : ID
+				nexacro.getApplication().gds_QmeLogonInfo_in.clearData();
+				nexacro.getApplication().gds_QmeLogonInfo_in.addRow();
+				nexacro.getApplication().gds_QmeLogonInfo_in.setColumn(0, "p_user_id", "160307");
+				nexacro.getApplication().gds_Language_in.clearData();
+				nexacro.getApplication().gds_Language_in.addRow();
+				nexacro.getApplication().gds_Language_in.setColumn(0, "p_country_cd", "KO");		//	한국 : KO / 베트남 : VI / 인도네시아 : ID
 
 // 			}else{
 // 				this.gtrace("nexacro전용브라우져--NOTRANS", gtrcPos);
@@ -238,12 +238,12 @@ pForm.gfn_getAllInitData = function()
 			//	QmeLogonUserId값이 있다면 초기세팅트랜잭션 실행 : UserId를 넘김
 			if(!this.gfn_isNull(sQMELOGONUSERID))
 			{
-				nexacro.getApplication().gds_QmeLogonInfo.clearData();
-				nexacro.getApplication().gds_QmeLogonInfo.addRow();
-				nexacro.getApplication().gds_QmeLogonInfo.setColumn(0, "p_user_id", sQMELOGONUSERID);
-				nexacro.getApplication().gds_Language.clearData();
-				nexacro.getApplication().gds_Language.addRow();
-				nexacro.getApplication().gds_Language.setColumn(0, "p_country_cd", sLANGUAGEKEY);
+				nexacro.getApplication().gds_QmeLogonInfo_in.clearData();
+				nexacro.getApplication().gds_QmeLogonInfo_in.addRow();
+				nexacro.getApplication().gds_QmeLogonInfo_in.setColumn(0, "p_user_id", sQMELOGONUSERID);
+				nexacro.getApplication().gds_Language_in.clearData();
+				nexacro.getApplication().gds_Language_in.addRow();
+				nexacro.getApplication().gds_Language_in.setColumn(0, "p_country_cd", sLANGUAGEKEY);
 			}else{
 				alert("비정상접근URL--QMELOGONUSERID없음");
 				this.close();
@@ -264,15 +264,23 @@ pForm.gfn_getAllInitData = function()
 		var iSeq = 0;													//	트랜잭션의 Argument에서는 nexacro.getApplication... 안 붙여도 된다 ?
 // 		if (nexacro.getApplication().gds_User.rowcount 		== 0)	{sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;}
 //   	if (nexacro.getApplication().gds_word.rowcount 		== 0)	{sArguments+="SqlId_00004 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;}
-
-		sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo"+" "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace("iSeq-->"+iSeq, gtrcPos);
- 		sArguments+="CommonMapper.getMultiLang "; 	sInDatasets+="ds_in"+iSeq+"=gds_Language"+" ";	sOutDatasets+="gds_Language=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
-
-		//공통코드정보 가져오기 인풋 추가
-		{
+		
+		this.gtrace("gds_User.rowcount--->"+this.gfn_getApplication().gds_User.rowcount, gtrcPos);
+		if(this.gfn_getApplication().gds_User.rowcount == 0 )
+		{	// 사용자로그인정보 가져오기 : 있다면 스킵 ( ex. 팝업 )
+			sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo_in"+" "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace("iSeq-->"+iSeq, gtrcPos);		
+		}
+		
+		this.gtrace("gds_Language.rowcount--->"+this.gfn_getApplication().gds_Language.rowcount, gtrcPos);
+		if(this.gfn_getApplication().gds_Language.rowcount == 0 )
+		{	// 언어 가져오기
+			sArguments+="CommonMapper.getMultiLang "; 	sInDatasets+="ds_in"+iSeq+"=gds_Language_in"+" ";	sOutDatasets+="gds_Language=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace("sArguments-->"+sArguments, gtrcPos);
+		}
+		
+		{	//공통코드정보 가져오기 인풋 추가
 			var arrCmmCode;
 			if(!this.gfn_isNull(this.COMBO_SET_STR))
-			{
+			{	// COMBO_SET_STR이 없다면 스킵
 				arrCmmCode = this.COMBO_SET_STR.split(" ");
 													//	this.gtrace("arrCmmCode.length--->"+arrCmmCode.length, gtrcPos);
 					for(var k = 0 ; k < arrCmmCode.length ; k++){
@@ -309,13 +317,16 @@ pForm.gfn_getAllInitData = function()
 																									//	this.gtrace("nexacro.getApplication().gds_User-->"+nexacro.getApplication().gds_User.saveXML(), gtrcPos);
 																										this.gtrace("sInDatasets-->"+sInDatasets, gtrcPos);
 																										this.gtrace("sOutDatasets-->"+sOutDatasets, gtrcPos);
-																									
 		//	하나라도 있는 경우에만 트랜잭
+						this.gtrace("sArguments-->"+sArguments, gtrcPos);
 		if(sArguments !="")
 		{
-			sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);										this.gtrace("sArguments-->"+sArguments, gtrcPos);
+			sArguments = "sqlId=" + nexacro.wrapQuote(sArguments);										
 			
 			this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
+		}else{
+			//	트랜잭션을 하던 안하던 실행되는 함수
+			this.gfn_onloadSequence();
 		}
 	}
 }
@@ -398,6 +409,7 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "아이디");						gdsLan.setColumn(aRp, "LANGUAGE", "IIIIIIIIIIIIIIIIId");
 				aRp = gdsLan.addRow(); gdsLan.setColumn(aRp, "DEFAULT_LANG", "msg.err.validator");				gdsLan.setColumn(aRp, "LANGUAGE", "{0}");
 
+			//	트랜잭션을 하던 안하던 실행되는 함수
 			this.gfn_onloadSequence();
 			
 			//{0}의 입력값의 길이는 {1} 이하이어야 합니다.
@@ -413,7 +425,4 @@ this.gfn_onloadSequence = function(){
 	
 	// 공통화	--> 폼 콤포넌트 전체 돌기 실행 ( 포함 : 다국어 + ... )
 	this.gfn_formOnLoad(this);
-	
-	// 공통코드
-	//	this.gfn_getCommCode(this.COMBO_SET_STR);
 }]]></Script>
