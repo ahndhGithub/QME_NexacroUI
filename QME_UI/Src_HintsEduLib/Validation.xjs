@@ -283,8 +283,8 @@ pForm.gfn_validation = function()
 	// 정합성 체크 건수 확인
 	if (nUpdateCnt == 0)
 	{
-		trace("정합성 체크 대상이 없어 Validation을 체크가 되지 않았습니다.");
-		return false;
+		this.gtrace("정합성 체크 대상이 없어 Validation을 체크가 되지 않았습니다.", gtrcPos);
+		return true; // 체크할 게 없는 경우 통과하도록 수정 191216.ADH.
 	}
 
 	return true;

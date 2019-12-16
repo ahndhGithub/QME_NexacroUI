@@ -97,7 +97,8 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     var nRow = this.oTargetDs.addRow();
 						//	this.oTargetDs.setRowType(nRow, Dataset.ROWTYPE_INSERT); // 해도그만 안해도 그만
 	//	AddRow 상황에서는 oncolumnchanged 이벤트가 안일어나므로 ROW_STS에 I를 셋 해 주어야 한다.
-	this.oTargetDs.setColumn(nRow, "ROW_STS", "I");
+	//	onrowposchanged 이벤트에 넣었으므로 여기서 I 추가할 필요 없다. 191215.
+	//	this.oTargetDs.setColumn(nRow, "ROW_STS", "I");
 };
 
 //삭제

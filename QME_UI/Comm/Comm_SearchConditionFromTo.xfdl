@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.0">
-  <Form id="cmmSearchConditionFromTo" width="391" height="21" onload="form_onload" scrolltype="none">
+  <Form id="cmmSearchConditionFromTo" width="440" height="21" onload="form_onload" scrolltype="none">
     <Layouts>
-      <Layout height="21" width="391">
+      <Layout height="21" width="440">
         <Static id="Static00" taborder="1" text="To" left="181" top="0" width="28" height="21" textAlign="center"/>
         <Edit id="EditFrom" taborder="1" left="0" height="21" top="0" cssclass="essential" width="150" autoselect="true"/>
         <Edit id="EditTo" taborder="2" left="220" height="21" top="0" cssclass="essential" width="150" autoselect="true"/>
         <Button id="btnFrom" taborder="3" left="150" top="0" width="21" height="21" cssclass="btn_WF_search" text="" onclick="div_search_btn_onclick" EditNameToApply="From"/>
         <Button id="btnTo" taborder="4" left="370" top="0" width="21" height="21" cssclass="btn_WF_search" text="" onclick="div_search_btn_onclick" EditNameToApply="To"/>
+        <Button id="btnMultiSelect" taborder="5" left="400" top="0" width="21" height="21" cssclass="btn_WF_pop1" text="" EditNameToApply="List" onclick="div_search_btn_onclick"/>
+        <Edit id="EditList" taborder="6" left="0" height="21" top="30" cssclass="essential" width="391" autoselect="true" visible="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
@@ -29,7 +31,8 @@ this.sSearchConditionType  	;
 this.oBindDs  				;
 this.oBindFromCol 			;
 this.oBindToCol 			;
-
+this.oBindListCol 			;
+var ds_SearchConditionType = this.gfn_getApplication().gds_SearchConditionType;
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 			var gtrcPos = "Comm_SearchConditionFromTo.xfdl.form_onload";
@@ -60,7 +63,8 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.sSearchConditionType  	= arrUserProp[0];									this.gtrace("sSearchConditionType--->"+this.sSearchConditionType, gtrcPos);
 		this.oBindDs  				= eval(sEvFrm+"."+arrUserProp[1]);      			this.gtrace("oBindDs.name --->"+this.oBindDs.name, gtrcPos);
 		this.oBindFromCol 			= arrUserProp[2];                           		this.gtrace("oBindFromCol--->"+this.oBindFromCol, gtrcPos);
-		this.oBindToCol 			= arrUserProp[3];                           		this.gtrace("oBindToCol--->"+this.oBindToCol, gtrcPos);
+		this.oBindToCol 			= arrUserProp[3];                          			this.gtrace("oBindToCol--->"+this.oBindToCol, gtrcPos);
+		this.oBindListCol			= arrUserProp[4];                          			this.gtrace("oBindListCol--->"+this.oBindListCol, gtrcPos);
 	}
 	
 	{	//  9. 기본호출 ( 그리드, 초기화 )
@@ -79,6 +83,9 @@ this.fn_init = function()
 	//1.데이터셋
 	this.ds_FromTo.clearData();
 	this.ds_FromTo.addRow();
+	
+	//2.리스트창 위치를 맞춤
+	this.EditList.set_top(0);
 };
 
 /**
@@ -87,14 +94,28 @@ this.fn_init = function()
 this.div_search_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 			var gtrcPos = "Comm_SearchConditionFromTo.xfdl.div_search_btn_onclick";	// trace위치 세팅
-			
+	var sSearchCond;
+	var sPopupId;
+	var sPrevMultiText;
+	var sSrchCndTp = this.sSearchConditionType;
+	
 	{ //	1. 팝업 띄우기
-		var sPopUrl 	= this.ds_SearchConditionType.lookup("TypeCode",this.sSearchConditionType, "PopupUrl");		this.gtrace("sPopUrl--->"+sPopUrl, gtrcPos);
+		if(obj.name == "btnMultiSelect"){
+			sSearchCond = "MultiSelect";
+			sPopupId = sSearchCond;
+			sPrevMultiText = this.ds_FromTo.getColumn(0, "List");
+		}
+		else{
+			sSearchCond = this.sSearchConditionType;
+			sPopupId 	= "modalPopup";
+			sPrevMultiText = "";
+		}
+		//팝업의 URL
+		var sPopUrl 	= ds_SearchConditionType.lookup("TypeCode",sSearchCond, "PopupUrl");		this.gtrace("sPopUrl--->"+sPopUrl, gtrcPos);
 		//팝업의 TitleText
-		var sPopTitle	= this.gfn_getWord(this.ds_SearchConditionType.lookup("TypeCode",this.sSearchConditionType, "PopupTitle"));	this.gtrace("sPopTitle--->"+sPopTitle, gtrcPos);
-		var sPopupId  	= "modalPopup";
+		var sPopTitle	= this.gfn_getWord(ds_SearchConditionType.lookup("TypeCode",sSearchCond, "PopupTitle"));	this.gtrace("sPopTitle--->"+sPopTitle, gtrcPos);
 		var sUrl      	= sPopUrl;
-		var oArg      	= {pStr:"Nexacro", pNum:1234, pObj:obj.EditNameToApply};
+		var oArg      	= {pStr:sPrevMultiText, pNum:sSrchCndTp, pObj:obj.EditNameToApply};
 		var sCallBack 	= "fn_popupCallback";
 		var oOption   	= {title : sPopTitle};	
 		
@@ -108,22 +129,31 @@ this.div_search_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 this.fn_popupCallback = function(sPopId, sRtn)
 {
 			var gtrcPos = "Comm_SearchConditionFromTo.xfdl.fn_popupCallback";
-	var dsSetCol 		;
-	var sKey			;
-	var	sEtc_00			;
-	var	sEtc_10			;
-	
-	if(!this.gfn_isNull(sRtn))
-	{	//0.리턴값 데이터셋에 세팅
-													this.gtrace("JSON.parse(sRtn)--->"	+JSON.parse(sRtn), gtrcPos);
-		var objRtn 		= 	JSON.parse(sRtn);		this.gtrace("objRtn--->"	+objRtn, gtrcPos);
+													this.gtrace("sPopId--->"+sPopId, gtrcPos);
+	switch(sPopId)
+	{
+		default : 
+			var dsSetCol 		;
+			var sKey			;
+			var sName			;
+			var	sEtc_00			;
+			var	sEtc_10			;
+			
+			if(!this.gfn_isNull(sRtn))
+			{	//0.리턴값 데이터셋에 세팅
+															this.gtrace("JSON.parse(sRtn)--->"	+JSON.parse(sRtn), gtrcPos);
+				var objRtn 		= 	JSON.parse(sRtn);		this.gtrace("objRtn--->"	+objRtn, gtrcPos);	
+																											   
+				dsSetCol 	= 	objRtn.rtnObj;				this.gtrace("dsSetCol--->"	+dsSetCol, gtrcPos);
+				sKey		=	objRtn.sRtnKey;				this.gtrace("sKey	--->"	+sKey	, gtrcPos);    
+				sName		=	objRtn.sRtnName;			this.gtrace("sName	--->"	+sName	, gtrcPos);    
+				sEtc_00		=	objRtn.sRtnEtc_00;			this.gtrace("sEtc_00--->"	+sEtc_00, gtrcPos);    
+				sEtc_10		=	objRtn.sRtnEtc_10;			this.gtrace("sEtc_10--->"	+sEtc_10, gtrcPos);    
+																											   
+				this.ds_FromTo.setColumn(0, dsSetCol, sKey);	//	oncolumnchanged 이벤트 --> 부모 데이터셋에 바로 세팅
+			}
 
-		dsSetCol 	= 	objRtn.rtnObj;				this.gtrace("dsSetCol--->"	+dsSetCol, gtrcPos);
-		sKey		=	objRtn.sRtnKey;				this.gtrace("sKey	--->"	+sKey	, gtrcPos);
-		sEtc_00		=	objRtn.sRtnEtc_00;			this.gtrace("sEtc_00--->"	+sEtc_00, gtrcPos);
-		sEtc_10		=	objRtn.sRtnEtc_10;			this.gtrace("sEtc_10--->"	+sEtc_10, gtrcPos);
-		
-		this.ds_FromTo.setColumn(0, dsSetCol, sKey);	//	oncolumnchanged 이벤트 --> 부모 데이터셋에 바로 세팅
+			break;
 	}
 }
 
@@ -134,12 +164,21 @@ this.ds_FromTo_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
 												this.gtrace("sSearchConditionTypes	>"+this.sSearchConditionType		,gtrcPos);
 												this.gtrace("oBindFromCol			>"+this.oBindFromCol				,gtrcPos);
 												this.gtrace("oBindToCol				>"+this.oBindToCol					,gtrcPos);
+												this.gtrace("oBindListCol			>"+this.oBindListCol				,gtrcPos);
 
 	{	//부모데이터셋에 값 세팅
 		var sParentSetCol;
 		switch(e.columnid){
 			case "From" : sParentSetCol = this.oBindFromCol;	break;
 			case "To" 	: sParentSetCol = this.oBindToCol; 		break;
+			case "List" : sParentSetCol = this.oBindListCol;
+						  // 값이 없는 경우 List 메세지를 숨김
+						  if(this.gfn_nvl(obj.getColumn(0, "List"),"")==""){
+							this.EditList.set_visible(false);
+						  }else{
+							this.EditList.set_visible(true);
+						  }
+					break;
 			default : 	break;
 		}
 		
@@ -147,52 +186,21 @@ this.ds_FromTo_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
 	}
 	
 };
+
 ]]></Script>
     <Objects>
-      <Dataset id="ds_SearchConditionType">
-        <ColumnInfo>
-          <Column id="TypeCode" type="STRING" size="256"/>
-          <Column id="PopupUrl" type="STRING" size="256"/>
-          <Column id="PopupTitle" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="TypeCode">SalesOrderNo</Col>
-            <Col id="PopupUrl">Popup::PopupSalesOrder.xfdl</Col>
-            <Col id="PopupTitle">popup.salesorder</Col>
-          </Row>
-          <Row>
-            <Col id="TypeCode">StyleNo</Col>
-            <Col id="PopupUrl">Popup::PopupStyle.xfdl</Col>
-            <Col id="PopupTitle">popup.style</Col>
-          </Row>
-          <Row>
-            <Col id="TypeCode">VendorCode</Col>
-            <Col id="PopupUrl">Popup::PopupVendor.xfdl</Col>
-            <Col id="PopupTitle">popup.vendor</Col>
-          </Row>
-          <Row>
-            <Col id="TypeCode">MaterialCode</Col>
-            <Col id="PopupUrl">Popup::PopupMaterial.xfdl</Col>
-            <Col id="PopupTitle">popup.material</Col>
-          </Row>
-          <Row>
-            <Col id="TypeCode">PurchaseOrderNo</Col>
-            <Col id="PopupUrl">Popup::PopupPurchaseOrder.xfdl</Col>
-            <Col id="PopupTitle">popup.purchaseorder</Col>
-          </Row>
-        </Rows>
-      </Dataset>
       <Dataset id="ds_FromTo" oncolumnchanged="ds_FromTo_oncolumnchanged">
         <ColumnInfo>
           <Column id="From" type="STRING" size="256"/>
           <Column id="To" type="STRING" size="256"/>
+          <Column id="List" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="EditFrom" propid="value" datasetid="ds_FromTo" columnid="From"/>
       <BindItem id="item1" compid="EditTo" propid="value" datasetid="ds_FromTo" columnid="To"/>
+      <BindItem id="item2" compid="EditList" propid="value" datasetid="ds_FromTo" columnid="List"/>
     </Bind>
   </Form>
 </FDL>

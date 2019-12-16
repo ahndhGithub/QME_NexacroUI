@@ -62,6 +62,12 @@ pForm.gtrace = function(strTrc,strPos)
 // 		||	strPos == "Validation.xjs.gfn_validation" 
 // 		||	strPos == "Validation.xjs.gfn_validationCheckRule"
 // 		||	strPos == "Message.xjs.gfn_alert"
+// 		||	strPos == "Grid.xjs._gfnGridPasteEvent"
+// 		||	strPos == "Grid.xjs.gfn_multiDatasetAdded"
+// 		||	strPos == "Comm_CnC.xfdl.fn_reset"
+// 		||	strPos == "Comm_CnC.xfdl.btn_ok_onclick"
+// 		||	strPos == "PopupMultiSelect.xfdl.Form_onload"
+// 		||	strPos == "PopupMultiSelect.xfdl.grd_list_onexpandup"
 )	{
 		trace(strPos+"--------->"+strTrc);
 	}

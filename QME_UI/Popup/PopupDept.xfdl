@@ -93,15 +93,15 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
-var paramStr;
-var paramNum;
-var paramObj;
+this.paramStr;
+this.paramNum;
+this.paramObj;
 
 this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 													var gtrcPos = "PopupSalesOrder.xfdl.Form_onload";
-    paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+paramStr, gtrcPos);
-    paramNum = this.getOwnerFrame().pNum;			this.gtrace("paramNum--->"+paramNum, gtrcPos);
+    this.paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+paramStr, gtrcPos);
+    this.paramNum = this.getOwnerFrame().pNum;			this.gtrace("paramNum--->"+paramNum, gtrcPos);
     paramObj = this.getOwnerFrame().pObj;			this.gtrace("paramObj--->"+paramObj, gtrcPos);
 };
 
@@ -115,9 +115,9 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 														this.gtrace("sCode--->"+sCode, gtrcPos);
 														this.gtrace("sName--->"+sName, gtrcPos);
 	var objRtn = { 
-					rtnStr 		: paramStr,
-					rtnNum 		: paramNum,
-					rtnObj 		: paramObj,		//	여기까지 받은 변수 그대로 넘김
+					rtnStr 		: this.paramStr,
+					rtnNum 		: this.paramNum,
+					rtnObj 		: this.paramObj,		//	여기까지 받은 변수 그대로 넘김
 					sRtnKey		: sCode,
 					sRtnEtc_00	: sName,
 					sRtnEtc_10	: ""			

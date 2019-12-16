@@ -873,11 +873,56 @@
           <Col id="DEFAULT_LANG">popup.purchaseorder</Col>
           <Col id="LANG_KO">구매오더검색</Col>
         </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.multiselect</Col>
+          <Col id="LANG_KO">멀티선택</Col>
+          <Col id="LANG_VI"/>
+        </Row>
+      </Rows>
+    </Dataset>
+    <Dataset id="gds_SearchConditionType">
+      <ColumnInfo>
+        <Column id="TypeCode" type="STRING" size="256"/>
+        <Column id="PopupUrl" type="STRING" size="256"/>
+        <Column id="PopupTitle" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="TypeCode">SalesOrderNo</Col>
+          <Col id="PopupUrl">Popup::PopupSalesOrder.xfdl</Col>
+          <Col id="PopupTitle">popup.salesorder</Col>
+        </Row>
+        <Row>
+          <Col id="TypeCode">StyleNo</Col>
+          <Col id="PopupUrl">Popup::PopupStyle.xfdl</Col>
+          <Col id="PopupTitle">popup.style</Col>
+        </Row>
+        <Row>
+          <Col id="TypeCode">VendorCode</Col>
+          <Col id="PopupUrl">Popup::PopupVendor.xfdl</Col>
+          <Col id="PopupTitle">popup.vendor</Col>
+        </Row>
+        <Row>
+          <Col id="TypeCode">MaterialCode</Col>
+          <Col id="PopupUrl">Popup::PopupMaterial.xfdl</Col>
+          <Col id="PopupTitle">popup.material</Col>
+        </Row>
+        <Row>
+          <Col id="TypeCode">PurchaseOrderNo</Col>
+          <Col id="PopupUrl">Popup::PopupPurchaseOrder.xfdl</Col>
+          <Col id="PopupTitle">popup.purchaseorder</Col>
+        </Row>
+        <Row>
+          <Col id="TypeCode">MultiSelect</Col>
+          <Col id="PopupUrl">Popup::PopupMultiSelect.xfdl</Col>
+          <Col id="PopupTitle">popup.multiselect</Col>
+        </Row>
       </Rows>
     </Dataset>
   </Datasets>
   <Variables>
     <Variable id="QmeLogonUserId"/>
     <Variable id="LanguageKey"/>
+    <Variable id="MultiTxtSplitChar" initval="＾"/>
   </Variables>
 </AppVariables>

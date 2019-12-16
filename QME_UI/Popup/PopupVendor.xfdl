@@ -3,7 +3,7 @@
   <Form id="PopupVendor" width="600" height="400" titletext="Sample_PopupSub" onload="Form_onload">
     <Layouts>
       <Layout height="400" width="600">
-        <Grid id="grd_list" taborder="0" left="16" top="56" right="16" binddataset="ds_VendorList" autofittype="col" oncelldblclick="btn_ok_onclick" leftbase="" topbase="" bottombase="" rightbase="" widthbase="" heightbase="" bottom="64" griduserproperty="no,sort,initial,export,!colfix,!rowfix,!filter,!cellcopypaste,!colhide,!personal,!subsum">
+        <Grid id="grd_list" taborder="0" left="16" top="56" right="16" binddataset="ds_VendorList" autofittype="col" leftbase="" topbase="" bottombase="" rightbase="" widthbase="" heightbase="" bottom="64" griduserproperty="no,sort,initial,export,!colfix,!rowfix,!filter,!cellcopypaste,!colhide,!personal,!subsum">
           <Formats>
             <Format id="default">
               <Columns>
@@ -19,8 +19,8 @@
                 <Cell col="1" text="Description"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:MATNR"/>
-                <Cell col="1" text="bind:ITEM_NM"/>
+                <Cell text="bind:LIFNR"/>
+                <Cell col="1" text="bind:SUPPLY_F"/>
               </Band>
             </Format>
           </Formats>
@@ -28,19 +28,26 @@
         <Static id="Static08" taborder="1" left="0" top="0" width="16" cssclass="sta_WF_guideRed" visible="false" text="w&#13;&#10;16" height="100%"/>
         <Static id="Static02" taborder="2" top="0" width="16" cssclass="sta_WF_guideRed" visible="false" text="w&#13;&#10;16" right="0" height="100%"/>
         <Static id="Static03" taborder="3" left="0" cssclass="sta_WF_guideRed" visible="false" text="h16" bottom="0" height="16" width="100%"/>
-        <Button id="btn_cancel" taborder="4" text="취소" left="524" height="28" cssclass="btn_WF_pop2" onclick="btn_cancel_onclick" right="16" bottom="16"/>
-        <Button id="btn_ok" taborder="5" text="확인" left="458" height="28" cssclass="btn_WF_pop1" onclick="btn_ok_onclick" right="82" bottom="16"/>
-        <Static id="Static16" taborder="6" left="16" cssclass="sta_WF_guideBlue" visible="false" text="h20" right="16" height="20" bottom="44"/>
-        <Div id="DivCrudButton" left="270" top="12" height="32" text="" formscrolltype="none" right="16" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="7" InitCompVisEna="1:0:0:0,1:0:0:0" background="transparent" border="0px none"/>
-        <Static id="StaticVendor" taborder="8" text="Vendor" left="0" top="16" width="100" cssclass="sta_WF_searchLabel" height="24"/>
-        <Edit id="EditVendorNo" taborder="9" left="118" height="24" top="16" cssclass="essential" width="150"/>
+        <Static id="Static16" taborder="4" left="16" cssclass="sta_WF_guideBlue" visible="false" text="h20" right="16" height="20" bottom="44"/>
+        <Div id="DivCrudButton" left="270" top="12" height="32" text="" formscrolltype="none" right="16" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="5" InitCompVisEna="1:0:0:0,1:0:0:0" background="transparent" border="0px none"/>
+        <Static id="StaticVendor" taborder="6" text="Vendor" left="0" top="16" width="100" cssclass="sta_WF_searchLabel" height="24"/>
+        <Edit id="EditVendorNo" taborder="7" left="118" height="24" top="16" cssclass="essential" width="150"/>
+        <Div id="DivCnc" taborder="8" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="grd_list,LIFNR,SUPPLY_F" right="16" bottom="16"/>
       </Layout>
     </Layouts>
     <Objects>
       <Dataset id="ds_VendorList" useclientlayout="true">
         <ColumnInfo>
-          <Column id="MATNR" type="STRING" size="32"/>
-          <Column id="ITEM_NM" type="STRING" size="256"/>
+          <Column id="SORT2" type="STRING" size="256"/>
+          <Column id="SUPPLY_F" type="STRING" size="256"/>
+          <Column id="WAERS" type="STRING" size="256"/>
+          <Column id="SORT1" type="STRING" size="256"/>
+          <Column id="INCO1" type="STRING" size="256"/>
+          <Column id="LAND1" type="STRING" size="256"/>
+          <Column id="LIFNR" type="STRING" size="256"/>
+          <Column id="ZTERM" type="STRING" size="256"/>
+          <Column id="NAME1" type="STRING" size="256"/>
+          <Column id="SaveUser" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_in">
@@ -60,9 +67,9 @@ include "Src_HintsEduLib::All_EduLib.xjs";
 /********************************************************************************************
 @desc	2. Form 변수 선언 ---------------
 ********************************************************************************************/
-var paramStr;
-var paramNum;
-var paramObj;
+this.paramStr;
+this.paramNum;
+this.paramObj;
 
 //공통코드 세팅 -- 할 일이 있다면 ...
 // this.COMBO_SET_STR = "ds_cmbPaymentTerms"+"#"+"ZTERM"		+" "
@@ -82,9 +89,9 @@ this.fn_reset = function()
 												var gtrcPos = "PopupVendor.xfdl.Form_onload";
 	//	this.gfn_formOnLoad(this);
 	this.gfn_getAllInitData();
-    paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+paramStr, gtrcPos);
-    paramNum = this.getOwnerFrame().pNum;			this.gtrace("paramNum--->"+paramNum, gtrcPos);
-    paramObj = this.getOwnerFrame().pObj;			this.gtrace("paramObj--->"+paramObj, gtrcPos);
+    this.paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+this.paramStr, gtrcPos);
+    this.paramNum = this.getOwnerFrame().pNum;			this.gtrace("paramNum--->"+this.paramNum, gtrcPos);
+    this.paramObj = this.getOwnerFrame().pObj;			this.gtrace("paramObj--->"+this.paramObj, gtrcPos);
 	
 	{	// 데이터셋 초기화
 		this.ds_in.clearData();
@@ -158,7 +165,7 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
  		
 		case "VendorSearch"	:
 
-//					trace(this.ds_VendorList.saveXML());
+				//	trace(this.ds_VendorList.saveXML());
 
 				break;
  	}
@@ -205,34 +212,6 @@ this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.fn_reset();
 };
 
-
-this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-													var gtrcPos = "PopupVendor.xfdl.btn_ok_onclick";
-    var sCode="";
-    var sName="";
-
-		sCode = this.ds_VendorList.getColumn(this.ds_VendorList.rowposition, "MATNR");
-		sName = this.ds_VendorList.getColumn(this.ds_VendorList.rowposition, "ITEM_NM");
-//     this.close(sCode+"|"+sName);
-														this.gtrace("sCode--->"+sCode, gtrcPos);
-														this.gtrace("sName--->"+sName, gtrcPos);
-	var objRtn = { 
-					rtnStr 		: paramStr,
-					rtnNum 		: paramNum,
-					rtnObj 		: paramObj,		//	여기까지 받은 변수 그대로 넘김
-					sRtnKey		: sCode,
-					sRtnEtc_00	: "",			//	넘길게 없음.
-					sRtnEtc_10	: ""			
-					};
-
-	this.close(JSON.stringify(objRtn));
-};
-
-this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.close();
-};
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="EditVendorNo" propid="value" datasetid="ds_in" columnid="p_name"/>

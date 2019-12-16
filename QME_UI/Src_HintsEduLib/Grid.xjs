@@ -277,7 +277,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 			if( idx < 0 ) objDs.addColumn("ROW_STS", "STRING", 1);
 
 			objDs.addEventHandler("oncolumnchanged", this.gfn_multiDatasetChanged, this);
-			//	objDs.addEventHandler("onrowposchanged", this._gfn_getRowType, this);	//	디버깅용
+			objDs.addEventHandler("onrowposchanged", this.gfn_multiDatasetAdded, this);	//	디버깅용
 			
 		}
 														//42 : this.gtrace("objGrid.getCellCount(head)-->"+objGrid.getCellCount("head"), gtrcPos);
@@ -375,13 +375,16 @@ pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSC
 	
 	// cmmGridAddDelButton.xfdl을 사용하면 이벤트에 있으므로 I로 셋하는 것은 필요 없겠지만
 	// 다른 addRow 상황을 대비하여 추가.
-	if (iRowType == Dataset.ROWTYPE_INSERT) 		//	2
-	{
-		if (sRowSts != "I") {
-			obj.setColumn(iRow, "ROW_STS", "I");
-		}
-	} 
-	else if (iRowType == Dataset.ROWTYPE_UPDATE)	//	4
+	// 어차피 oncolumnchanged 상황에서는 안 타므로 막음. 191215.
+// 	if (iRowType == Dataset.ROWTYPE_INSERT) 		//	2
+// 	{
+// 		if (sRowSts != "I") {
+// 			obj.setColumn(iRow, "ROW_STS", "I");
+// 		}
+// 	} 
+// 	else 
+	
+	if (iRowType == Dataset.ROWTYPE_UPDATE)	//	4
 	{
 		// sRowSts == I 인 경우는 U로 바꾸지 않는다. I는 계속 I 임(데이터셋의 기본적세팅과 동일)
 		if (sRowSts == undefined || sRowSts == "" || sRowSts == "N") {
@@ -391,7 +394,33 @@ pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSC
 
 	return iRow;
 }
+/////////////////////////////////////////////////////////////////
+// method name	: gfn_multiDatasetAdded
+// description	: 역할1 : ROW_STS, ROW_CHK 변경값은 Skip, 2 : ROW_STS에 세팅
+// parameter	: 
+// return		: 
+// example		: 
+/////////////////////////////////////////////////////////////////
+pForm.gfn_multiDatasetAdded = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo) 
+{
+											var gtrcPos = "Grid.xjs.gfn_multiDatasetAdded";
+													this.gtrace("e.columnid--->"+e.columnid, gtrcPos);
+	//	if(e.columnid == "ROW_STS" || e.columnid == "ROW_CHK") return;
 
+	var iRow = e.newrow;
+	var iRowType = obj.getRowType(iRow);			this.gtrace("iRowType--->"+iRowType, gtrcPos);
+	var sRowSts = obj.getColumn(iRow, "ROW_STS");
+	//	var sRowChk = obj.getColumn(iRow, "ROW_CHK");
+
+	if (iRowType == Dataset.ROWTYPE_INSERT) 		//	2
+	{
+		if (sRowSts != "I") {
+			obj.setColumn(iRow, "ROW_STS", "I");
+		}
+	} 
+
+	return iRow;
+}
 /**
  * @class  멀티그리드 상태 그림
  * @param 
@@ -1099,8 +1128,8 @@ pForm._gfnGridSetCssclass = function (objGrid)
  */
 pForm._gfnHeadCheckSelectAll = function (objGrid, e)
 {																			var gtrcPos = "Grid.xjs._gfnHeadCheckSelectAll";
-																			this.gtrace("체크박스전체선택기능---checkbox의truevalue/falsevalue를 별도로 세팅할 필요 없다. 기본 : 1 과 0 이다", gtrcPos);
-																			this.gtrace("objGrid.readonly==true이면 return된다---->"+objGrid.readonly, gtrcPos);
+																			//this.gtrace("체크박스전체선택기능---checkbox의truevalue/falsevalue를 별도로 세팅할 필요 없다. 기본 : 1 과 0 이다", gtrcPos);
+																			//this.gtrace("objGrid.readonly==true이면 return된다---->"+objGrid.readonly, gtrcPos);
 	if(objGrid.readonly == true) return;					
 	
 	var sType;
@@ -1108,35 +1137,35 @@ pForm._gfnHeadCheckSelectAll = function (objGrid, e)
 	var sVal;
 	var sChkVal;
 	var oDsObj;
-	var nHeadCell  = e.cell;												this.gtrace("e.cell-->nHeadCell---->"+nHeadCell, gtrcPos);
+	var nHeadCell  = e.cell;												//this.gtrace("e.cell-->nHeadCell---->"+nHeadCell, gtrcPos);
 	var nBodyCell;
 	var nSubCnt = objGrid.getSubCellCount("head", nHeadCell);
 
-	oDsObj  = objGrid.getBindDataset();										this.gtrace("바인딩된 데이터셋 : oDsObj---->"+oDsObj.name, gtrcPos);
+	oDsObj  = objGrid.getBindDataset();										//this.gtrace("바인딩된 데이터셋 : oDsObj---->"+oDsObj.name, gtrcPos);
 
-	if(oDsObj.getRowCount() < 1) return;									this.gtrace("oDsObj의 행의 갯수 < 1이면 리턴 oDsObj.getRowCount()---->"+oDsObj.getRowCount(), gtrcPos);
-																			this.gtrace("objGrid.getCellCount(body)---->"+objGrid.getCellCount("body"), gtrcPos);
-																			this.gtrace("objGrid.getCellCount(head)---->"+objGrid.getCellCount("head"), gtrcPos);
+	if(oDsObj.getRowCount() < 1) return;									//this.gtrace("oDsObj의 행의 갯수 < 1이면 리턴 oDsObj.getRowCount()---->"+oDsObj.getRowCount(), gtrcPos);
+																			//this.gtrace("objGrid.getCellCount(body)---->"+objGrid.getCellCount("body"), gtrcPos);
+																			//this.gtrace("objGrid.getCellCount(head)---->"+objGrid.getCellCount("head"), gtrcPos);
 																			
-																			this.gtrace("이벤트가 발생한 셀번호 가져오기", gtrcPos);
+																			//this.gtrace("이벤트가 발생한 셀번호 가져오기", gtrcPos);
 	if(objGrid.getCellCount("body") != objGrid.getCellCount("head")) {
-		nBodyCell = parseInt(objGrid.getCellProperty("head", nHeadCell, "col"));	this.gtrace("body head getCellCount가 다르므로 head의 프로퍼티에서 가져온다.nBodyCell---->"+nBodyCell, gtrcPos);
+		nBodyCell = parseInt(objGrid.getCellProperty("head", nHeadCell, "col"));	//this.gtrace("body head getCellCount가 다르므로 head의 프로퍼티에서 가져온다.nBodyCell---->"+nBodyCell, gtrcPos);
 	} else {
-		nBodyCell = e.cell;													this.gtrace("body head getCellCount가 같으므로 nBodyCell == e.cell---->"+e.cell, gtrcPos);
+		nBodyCell = e.cell;													//this.gtrace("body head getCellCount가 같으므로 nBodyCell == e.cell---->"+e.cell, gtrcPos);
 	}
-																			this.gtrace("<----체크박스에 바인딩된 텍스트가공 : sChkVal---->", gtrcPos);
-	sChkVal = objGrid.getCellProperty("body", nBodyCell, "text");			this.gtrace("body의 "+nBodyCell+"번 셀의 text값 sChkVal---->"+sChkVal, gtrcPos);
-	sChkVal = sChkVal.toString().replace("bind:", "");						this.gtrace("sChkVal.toString().replace('bind:','')---->"+sChkVal, gtrcPos);
+																			//this.gtrace("<----체크박스에 바인딩된 텍스트가공 : sChkVal---->", gtrcPos);
+	sChkVal = objGrid.getCellProperty("body", nBodyCell, "text");			//this.gtrace("body의 "+nBodyCell+"번 셀의 text값 sChkVal---->"+sChkVal, gtrcPos);
+	sChkVal = sChkVal.toString().replace("bind:", "");						//this.gtrace("sChkVal.toString().replace('bind:','')---->"+sChkVal, gtrcPos);
 		
 	// Merge한 셀이 없는 경우
-	sType = objGrid.getCellProperty("head", nHeadCell, "displaytype");		this.gtrace("head의 displayType--->sType---->"+sType+"checkboxcontrol이 아니면 리턴된다", gtrcPos);
+	sType = objGrid.getCellProperty("head", nHeadCell, "displaytype");		//this.gtrace("head의 displayType--->sType---->"+sType+"checkboxcontrol이 아니면 리턴된다", gtrcPos);
 
 	if(sType != "checkboxcontrol") {
 		return;
 	}
-																			this.gtrace("<----objGrid.getCellProperty('head', nHeadCell, 'text')-->sVal 기준으로 Head, Body 세팅한다.---->"+sType+"checkboxcontrol이 아니면 리턴된다", gtrcPos);
+																			//this.gtrace("<----objGrid.getCellProperty('head', nHeadCell, 'text')-->sVal 기준으로 Head, Body 세팅한다.---->"+sType+"checkboxcontrol이 아니면 리턴된다", gtrcPos);
 	// Head셋팅
-	sVal = objGrid.getCellProperty("head", nHeadCell, "text");
+	sVal = objGrid.getCellProperty("head", nHeadCell, "text");				this.gtrace("sVal-->"+sVal, gtrcPos);
 
 	if (sVal == "0") {
 		objGrid.setCellProperty("head", nHeadCell, "text", "1");
@@ -2531,6 +2560,7 @@ pForm._gfnGirdGetPasteData = function (browser)
 */
 pForm._gfnGridPasteEvent = function (obj, e)
 {
+						var gtrcPos = "Grid.xjs._gfnGridPasteEvent";
 	var browser = system.navigatorname;
 	var copyData = this._gfnGirdGetPasteData(browser);
 	
@@ -2553,7 +2583,7 @@ pForm._gfnGridPasteEvent = function (obj, e)
 	
 	obj.set_enableevent(false);
 	obj.set_enableredraw(false); 
-
+	
 	var datasetName = obj.binddataset;
 	var ds = obj.getBindDataset();
 
@@ -2583,12 +2613,14 @@ pForm._gfnGridPasteEvent = function (obj, e)
 	var cellIndex = startcol;
 	var maxColumnCount = 0;
 	var checkIndex = {};	
-
+												this.gtrace("ds.name-->"+ds.name,gtrcPos);
+	var iColIdx = ds.getColIndex( "ROW_STS" ); 	this.gtrace("iColIdx-->"+iColIdx,gtrcPos);
 	for (var i = 0; i < rowDataCount; i++)
 	{
 		if(rowCount <= currRow)
 		{
-			ds.addRow();
+			var iAddRp = ds.addRow();
+			if(iColIdx>-1){ds.setColumn(iAddRp, "ROW_STS", "I");}
 		}
 
 		var columnData = rowData[i].split(colSeperator);
