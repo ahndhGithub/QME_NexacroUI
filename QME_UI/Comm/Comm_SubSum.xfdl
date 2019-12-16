@@ -175,6 +175,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		}
 	}
 														this.gtrace("sNewKeyStr--->"+sNewKeyStr, gtrcPos);
+	this.fv_targetDataset.set_keystring("");	// 초기화
 	this.fv_targetDataset.set_keystring(sNewKeyStr);		
 
 	this.fv_targetGrid.set_enableredraw(true);

@@ -727,15 +727,110 @@
 	-nexa-padding : 3px;
 	background : #ffffff;
 }
+.Grid .body .row .cell.lv2
+{
+	-nexa-background-odd : #f9f9f9;
+	-nexa-border : 1px solid #dddddd;
+	-nexa-padding : 3px;
+	background : #ffffff;
+}
+.Grid .body .row .cell.lv3
+{
+	-nexa-background-odd : #f1f2cb;
+	-nexa-border : 1px solid #dddddd;
+	-nexa-padding : 3px;
+	background : #feffd6;
+}
+.Grid .body .row .cell.lv4
+{
+	-nexa-background-odd : #c4c4c4;
+	-nexa-border : 1px solid #dddddd;
+	-nexa-padding : 3px;
+	background : #c4c4c4;
+}
+.Grid .body .row .cell.lv4.grd_WF_cell_fixed
+{
+	-nexa-background-odd : #c4c4c4;
+	-nexa-border : 1px solid #dddddd;
+	-nexa-padding : 3px;
+	background : #c4c4c4;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}
 .Grid .body .row .cell[status=focused],.Grid .body .row .cell[status=mouseover]
 {
 	-nexa-background-odd : #f1f9fe;
 	background : #f1f9fe;
 }
+.Grid .body .row .cell.lv3[status=focused],.Grid .body .row .cell.lv3[status=mouseover]
+{
+	-nexa-background-odd : #fff8f0;
+	background : #fff8f0;
+}
+.Grid .body .row .cell.lv3.grd_WF_cell_fixed[status=focused],.Grid .body .row .cell.lv3.grd_WF_cell_fixed[status=mouseover]
+{
+	-nexa-background-odd : #fff8f0;
+	background : #fff8f0;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}
+.Grid .body .row .cell.lv4[status=focused],.Grid .body .row .cell.lv4[status=mouseover]
+{
+	-nexa-background-odd : #c4c4c4;
+	background : #c4c4c4;
+}
+.Grid .body .row .cell.lv4.grd_WF_cell_fixed[status=focused],.Grid .body .row .cell.lv4.grd_WF_cell_fixed[status=mouseover]
+{
+	-nexa-background-odd : #c4c4c4;
+	background : #c4c4c4;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}
+.Grid .body .row .cell.lv2[status=focused],.Grid .body .row .cell.lv2[status=mouseover]
+{
+	-nexa-background-odd : #f1f9fe;
+	background : #f1f9fe;
+}
+.Grid .body .row .cell.lv2.grd_WF_cell_fixed[status=focused],.Grid .body .row .cell.lv2.grd_WF_cell_fixed[status=mouseover]
+{
+	-nexa-background-odd : #f1f9fe;
+	background : #f1f9fe;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}
 .Grid .body .row .cell[userstatus=selected]
 {
 	-nexa-background-odd : #d1ebfc;
 	background : #d1ebfc;
+}
+.Grid .body .row .cell.lv3[userstatus=selected]
+{
+	-nexa-background-odd : #dfebb2;
+	background : #dfebb2;
+}
+.Grid .body .row .cell.lv3.grd_WF_cell_fixed[userstatus=selected]
+{
+	-nexa-background-odd : #ffecd4;
+	background : #ffecd4;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}
+.Grid .body .row .cell.lv4[userstatus=selected]
+{
+	-nexa-background-odd : #c4c4c4;
+	background : #c4c4c4;
+}
+.Grid .body .row .cell.lv4.grd_WF_cell_fixed[userstatus=selected]
+{
+	-nexa-background-odd : #c4c4c4;
+	background : #c4c4c4;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}
+.Grid .body .row .cell.lv2[userstatus=selected]
+{
+	-nexa-background-odd : #d1ebfc;
+	background : #d1ebfc;
+}
+.Grid .body .row .cell.lv2.grd_WF_cell_fixed[userstatus=selected]
+{
+	-nexa-background-odd : #d1ebfc;
+	background : #d1ebfc;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
 }
 .Grid .body .row .cell .cellbutton,.Grid .body .row .cell .cellbutton[userstatus=selected]
 {
@@ -2486,8 +2581,21 @@
 {
 	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
 }
-
-.MaskEdit.msk_WF_center,.MaskEdit.msk_WF_center[status=focused],.MaskEdit.msk_WF_center[status=mouseover],.MaskEdit.msk_WF_center[status=readonly],.MaskEdit.msk_WF_center[status=disabled]
+.Grid .body .row .cell.lv2.grd_WF_cell_fixed
+{
+	-nexa-background-odd : #f9f9f9;
+	-nexa-border : 1px solid #dddddd;
+	-nexa-padding : 3px;
+	background : #ffffff;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}.Grid .body .row .cell.lv3.grd_WF_cell_fixed
+{
+	-nexa-background-odd : #f1f2cb;
+	-nexa-border : 1px solid #dddddd;
+	-nexa-padding : 3px;
+	background : #feffd6;
+	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+}.MaskEdit.msk_WF_center,.MaskEdit.msk_WF_center[status=focused],.MaskEdit.msk_WF_center[status=mouseover],.MaskEdit.msk_WF_center[status=readonly],.MaskEdit.msk_WF_center[status=disabled]
 {
 	-nexa-text-align : center;
 }

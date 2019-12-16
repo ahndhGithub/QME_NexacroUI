@@ -67,6 +67,7 @@ pForm.gfn_setGrid = function(objGrid)
 	
 	objGrid.arrprop = arrProp;
 																this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnGridAddProp 를 실행", gtrcPos);
+	this._gfnGridSetCssclass(objGrid);
 	this._gfnGridAddProp(objGrid);
 																this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnMakeGridPopupMenu 를 실행", gtrcPos);
 	this._gfnMakeGridPopupMenu(objGrid,arrProp);	//popupmenu 생성	
@@ -151,6 +152,7 @@ pForm._gfnGridAddProp = function (objGrid)
 																this.gtrace("arrProp["+i+"]-->"+arrProp[i]+"-->objGrid.sort = 'true'--실행", gtrcPos);
 				objGrid.sort = "true";
 				break;
+				
 			default: break;
 		}
 	}
@@ -283,6 +285,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 														//42 : this.gtrace("objGrid.getCellCount(head)-->"+objGrid.getCellCount("head"), gtrcPos);
 		{	// 그리드
 			for( var i=0; i<objGrid.getCellCount("head"); i++){
+
 				var tmp = objGrid.getCellProperty("head" , i, "text");
 				if( tmp == "상태" || tmp == "Status"){
 					this.gtrace("tmp---->"+tmp,gtrcPos);
@@ -1099,23 +1102,33 @@ pForm.gfn_popupmenu_onmenuclick = function (objMenu, e)
 pForm._gfnGridSetCssclass = function (objGrid)
 {
 																var gtrcPos = "Grid.xjs._gfnGridSetCssclass";
-																this.gtrace("_gfnGridSetCssclass : 행고정/해제시 css설정---> 시작", gtrcPos);
-	var clname = "grd_WF_cell_fixed";							this.gtrace("clname------>"+clname, gtrcPos);
-	clname = nexacro.wrapQuote(clname);							this.gtrace("wrapQuote(clname)------>"+clname, gtrcPos);
+																//this.gtrace("_gfnGridSetCssclass : 행고정/해제시 css설정---> 시작", gtrcPos);
+	var clname = "grd_WF_cell_fixed";							//this.gtrace("clname------>"+clname, gtrcPos);
 			
-	objGrid.set_enableredraw(false);							this.gtrace("objGrid.set_enableredraw(false)설정------>"+objGrid.name, gtrcPos);
-																this.gtrace("objGrid.getFormatColCount()--------------->"+objGrid.getFormatColCount(), gtrcPos);
-																this.gtrace("objGrid.fixedRow----------->"+objGrid.fixedRow, gtrcPos);
+	objGrid.set_enableredraw(false);							//this.gtrace("objGrid.set_enableredraw(false)설정------>"+objGrid.name, gtrcPos);
+																//this.gtrace("objGrid.getFormatColCount()--------------->"+objGrid.getFormatColCount(), gtrcPos);
+																//this.gtrace("objGrid.fixedRow----------->"+objGrid.fixedRow, gtrcPos);
+	var sFixedRow_EXPR= "(comp.fixedRow==currow?";
+	var sRowLvl_EXPR  = "(dataset.getRowLevel(currow)==0?";
+	var sROW_STS_EXPR = "(!(ROW_STS == 'I'||ROW_STS == 'D'||ROW_STS == 'U') ? ";
+	var sLvlExpr = "'lv2' : 'lv3' ) : 'lv4' )";
+	var sLvlFixedExpr = "'lv2."+clname+"' : 'lv3."+clname+"' ) : 'lv4."+clname+"' )";
+
 	for( var k=0; k<objGrid.getFormatColCount(); k++){
 		var expr = "";
 		if( objGrid.fixedRow >= 0 ){
-			expr = "expr:comp.fixedRow==currow?"+clname+":''";	this.gtrace("k--->"+k+"---> objGrid.fixedRow >= 0 이므로 expr----------->"+expr, gtrcPos);
+			expr = "expr:" + sFixedRow_EXPR + sRowLvl_EXPR + sROW_STS_EXPR + sLvlFixedExpr + ":"+ sRowLvl_EXPR + sROW_STS_EXPR + sLvlExpr+")";
+		}else{
+			expr = "expr:" + sRowLvl_EXPR + sROW_STS_EXPR + sLvlExpr;
 		}
+		
 		objGrid.setCellProperty("body", k, "cssclass", expr);
 	}
 	objGrid.set_enableredraw(true);
 	objGrid.setFixedRow(objGrid.fixedRow);
-																this.gtrace("---------------end-------------------------_gfnGridSetCssclass----------------------------------------", gtrcPos);
+
+	//	trace("objGrid.fixedRow---->"+objGrid.fixedRow);
+															this.gtrace("---------------end-------------------------_gfnGridSetCssclass----------------------------------------", gtrcPos);
 };
 
 /**
