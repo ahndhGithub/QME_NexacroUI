@@ -1327,6 +1327,7 @@ pForm._getGridUserProperty = function (objGrid)
  */
 pForm._gfnGridcellFix = function (objGrid, nCellIdx, nRowIdx)
 {
+										var gtrcPos = "Grid.xjs._gfnGridcellFix";
 	var sBandType;
 	if(nRowIdx == -1) sBandType = "Head";
 	else if(nRowIdx == -2) sBandType = "Summary";

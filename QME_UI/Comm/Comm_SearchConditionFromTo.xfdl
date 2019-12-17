@@ -8,7 +8,7 @@
         <Edit id="EditTo" taborder="2" left="220" height="21" top="0" cssclass="essential" width="150" autoselect="true"/>
         <Button id="btnFrom" taborder="3" left="150" top="0" width="21" height="21" cssclass="btn_WF_search" text="" onclick="div_search_btn_onclick" EditNameToApply="From"/>
         <Button id="btnTo" taborder="4" left="370" top="0" width="21" height="21" cssclass="btn_WF_search" text="" onclick="div_search_btn_onclick" EditNameToApply="To"/>
-        <Button id="btnMultiSelect" taborder="5" left="400" top="0" width="21" height="21" cssclass="btn_WF_pop1" text="" EditNameToApply="List" onclick="div_search_btn_onclick"/>
+        <Button id="btnMultiSelect" taborder="5" left="392" top="0" width="21" height="21" cssclass="btn_WF_pop1" text="" EditNameToApply="List" onclick="div_search_btn_onclick"/>
         <Edit id="EditList" taborder="6" left="0" height="21" top="30" cssclass="essential" width="391" autoselect="true" visible="false"/>
       </Layout>
     </Layouts>

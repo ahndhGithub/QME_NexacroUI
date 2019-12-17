@@ -3,11 +3,10 @@
   <Form id="Comm_ColumnHide" width="300" height="415" titletext="그리드컬럼숨김" onload="form_onload">
     <Layouts>
       <Layout height="415" mobileorientation="landscape" width="300">
-        <Grid id="grd_list" taborder="0" left="20" top="20" height="327" right="19" binddataset="ds_filter" autofittype="col" griduserproperty="!sort,!rowfix,!colfix,!filter,!initial">
+        <Grid id="grd_list" taborder="0" left="20" top="20" height="327" right="19" binddataset="ds_filter" autofittype="col" griduserproperty="!sort,checkbox,!sort,!rowfix,!colfix,!filter,!initial">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="30" band="left"/>
                 <Column size="225"/>
               </Columns>
               <Rows>
@@ -15,12 +14,10 @@
                 <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell displaytype="checkbox" edittype="checkbox"/>
-                <Cell col="1" text="컬럼선택" expandchar="popup.columnselect"/>
+                <Cell text="컬럼선택" expandchar="popup.columnselect"/>
               </Band>
               <Band id="body">
-                <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" text="bind:columnText"/>
+                <Cell text="bind:columnText"/>
               </Band>
             </Format>
           </Formats>
@@ -36,10 +33,9 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_filter">
+      <Dataset id="ds_filter" keystring="S:+ROW_CHK">
         <ColumnInfo>
           <Column id="columnText" type="STRING" size="256"/>
-          <Column id="chk" type="STRING" size="256"/>
           <Column id="columnIndex" type="STRING" size="256"/>
           <Column id="body" type="STRING" size="256"/>
           <Column id="orgSize" type="STRING" size="256"/>
@@ -74,6 +70,9 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	
 	//compare grid setting
 	this.fn_setGrd();
+	
+	//체크된 것 위로
+	this.ds_filter.set_keystring("S:-ROW_CHK+currow");
 };
 
 /************************************************************************************************
@@ -136,7 +135,7 @@ this.fn_getHeadTextAndBindingInfo = function ()
 		if( columnText == "[0]" && this.fv_targetGrid.getCellProperty("Body", i, "text") == "bind:gridcmmcheck" ) continue;
 		var nRow = this.ds_filter.addRow();
 		this.ds_filter.setColumn(nRow, "columnText",  columnText);
-		this.ds_filter.setColumn(nRow, "chk",  		 nchk);
+		this.ds_filter.setColumn(nRow, "ROW_CHK",  		 nchk);
 		this.ds_filter.setColumn(nRow, "columnIndex", columnIndex);
 		this.ds_filter.setColumn(nRow, "bindCol", this.fv_targetGrid.getCellProperty("Body", i, "text").replace("bind:",""));
 	}
@@ -148,7 +147,7 @@ this.fn_getHeadTextAndBindingInfo = function ()
 																//				this.gtrace("arrKeyStrBindCol["+k+"]--->"+arrKeyStrBindCol[k], gtrcPos);
 		var tempBindCol = arrKeyStrBindCol[k].replace("G:","");					this.gtrace("tempBindCol--->"+tempBindCol, gtrcPos);
 		var fRow = this.ds_filter.findRow("bindCol",tempBindCol);	this.gtrace("fRow--->"+fRow, gtrcPos);
-		this.ds_filter.setColumn(fRow, "chk","1");
+		this.ds_filter.setColumn(fRow, "ROW_CHK","1");
 	}
 
 this.grd_list.set_enableredraw(true);
@@ -166,7 +165,7 @@ this.btn_ok_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
  	var nRowCnt = this.ds_filter.getRowCount();			this.gtrace("nRowCnt--->"+nRowCnt, gtrcPos);
 	for( var i=0; i<nRowCnt; i++)
 	{
-		var nChk    = this.ds_filter.getColumn(i, "chk");
+		var nChk    = this.ds_filter.getColumn(i, "ROW_CHK");
 		var sBindCol= this.ds_filter.getColumn(i, "bindCol");
 
 		if(nChk == 1)

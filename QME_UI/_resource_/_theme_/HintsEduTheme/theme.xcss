@@ -747,6 +747,7 @@
 	-nexa-border : 1px solid #dddddd;
 	-nexa-padding : 3px;
 	background : #c4c4c4;
+	font : bold italic 13px/normal "Malgun Gothic","Verdana";
 }
 .Grid .body .row .cell.lv4.grd_WF_cell_fixed
 {
@@ -755,6 +756,7 @@
 	-nexa-padding : 3px;
 	background : #c4c4c4;
 	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+	font : bold italic 13px/normal "Malgun Gothic","Verdana";
 }
 .Grid .body .row .cell[status=focused],.Grid .body .row .cell[status=mouseover]
 {
@@ -776,12 +778,14 @@
 {
 	-nexa-background-odd : #c4c4c4;
 	background : #c4c4c4;
+	font : bold italic 13px/normal "Malgun Gothic","Verdana";
 }
 .Grid .body .row .cell.lv4.grd_WF_cell_fixed[status=focused],.Grid .body .row .cell.lv4.grd_WF_cell_fixed[status=mouseover]
 {
 	-nexa-background-odd : #c4c4c4;
 	background : #c4c4c4;
 	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+	font : bold italic 13px/normal "Malgun Gothic","Verdana";
 }
 .Grid .body .row .cell.lv2[status=focused],.Grid .body .row .cell.lv2[status=mouseover]
 {
@@ -814,12 +818,14 @@
 {
 	-nexa-background-odd : #c4c4c4;
 	background : #c4c4c4;
+	font : bold italic 13px/normal "Malgun Gothic","Verdana";
 }
 .Grid .body .row .cell.lv4.grd_WF_cell_fixed[userstatus=selected]
 {
 	-nexa-background-odd : #c4c4c4;
 	background : #c4c4c4;
 	-nexa-border : 1px solid #cacaca, 1px solid #cacaca, 2px solid black, 1px solid #cacaca;
+	font : bold italic 13px/normal "Malgun Gothic","Verdana";
 }
 .Grid .body .row .cell.lv2[userstatus=selected]
 {

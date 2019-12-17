@@ -26,6 +26,7 @@ pForm.gtrace = function(strTrc,strPos)
 //		||	strPos == "Grid.xjs._gfnMakeGridPopupMenu"		// 우클릭 팝업메뉴
 //		||	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"	// 우클릭 팝업메뉴--메뉴클릭시
 //		||	strPos == "Grid.xjs._gfnGridFilter"				// 필터설정
+		||	strPos == "Grid.xjs._gfnGridcellFix"
 //		||	strPos == "Comm_GridFilter.xfdl.btn_filter_onclick"	// 필터적용 버튼
 //		||	strPos == "Grid.xjs._gfnGridSetCssclass"		// 	틀고정 행 실행/해제
 //		||	strPos == "Excel.xjs.gfn_excelExport"					// 엑셀 내보내기
