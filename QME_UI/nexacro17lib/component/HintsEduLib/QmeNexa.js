@@ -262,12 +262,12 @@ pForm.gfn_getAllInitData = function()
 					// 	sInDatasets+="ds_in"+iSeq+"=tFormatInDs"+" ";
 					// 	sOutDatasets+="tFormatInDs=ds_out"+iSeq;
 					//	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
-			this.transaction( "formatSearchOnload"
-								, "AppSvrLocalMsSql::CommonSaveAction_Return.do"
-								, "ds_in0=tFormatInDs"
-								, "tFormatInDs=ds_out0"
-								, "sqlId=" + nexacro.wrapQuote("formatSearchOnload")
-								, "gfn_callbackFunction");
+// 			this.transaction( "formatSearchOnload"
+// 								, "AppSvrLocalMsSql::CommonSaveAction_Return.do"
+// 								, "ds_in0=tFormatInDs"
+// 								, "tFormatInDs=ds_out0"
+// 								, "sqlId=" + nexacro.wrapQuote("formatSearchOnload")
+// 								, "gfn_callbackFunction");
 		}
 		
 		//	하나라도 있는 경우에만 트랜잭
@@ -349,7 +349,7 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 				
 				ex) this.gfn_getCommCode("cbo_pos rdo_gender:0 Div00.form.cbo_dept:1 ds_hobbyE001");
 			 */
-			 trace("here33333333333333333333333333333333333"+strSvcID);
+
 																	this.gtrace("this.COMBO_SET_STR--->"+this.COMBO_SET_STR, gtrcPos);
 																	//	trace("gds_User.saveXML()--->"+nexacro.getApplication().gds_User.saveXML());
 																	//	nexacro.getApplication().gds_User.setColumn(0, "VENDOR_CD", "XXXXX");
