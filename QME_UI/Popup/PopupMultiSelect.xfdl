@@ -26,9 +26,9 @@
         <Static id="Static02" taborder="2" top="0" width="16" cssclass="sta_WF_guideRed" visible="false" text="w&#13;&#10;16" right="0" height="100%"/>
         <Static id="Static03" taborder="3" left="0" cssclass="sta_WF_guideRed" visible="false" text="h16" bottom="0" height="16" width="100%"/>
         <Static id="Static16" taborder="4" left="16" cssclass="sta_WF_guideBlue" visible="false" text="h20" right="16" height="20" bottom="44"/>
-        <Div id="DivBtnAddDel_grd_list" taborder="5" text="" left="16" top="4" width="340" height="32" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="grd_list" visible="true"/>
+        <Div id="DivBtnAddDel_grd_list" taborder="5" text="" left="16" top="4" width="340" height="32" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="grd_list" visible="true" InitCompVisEna="1:1:1,1:1:1"/>
         <Edit id="Edit00" taborder="6" left="371" top="7" width="213" height="28" readonly="true" text="expr:comp.parent.ds_MultiSelectList.rowcount" value="expr:comp.parent.ds_MultiSelectList.rowcount" visible="false"/>
-        <Div id="DivCnc" taborder="7" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="grd_list,MultiText" right="16" bottom="16"/>
+        <Div id="DivCnc" taborder="7" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="MultiText" right="16" bottom="16" targetGrid="grd_list"/>
       </Layout>
     </Layouts>
     <Objects>

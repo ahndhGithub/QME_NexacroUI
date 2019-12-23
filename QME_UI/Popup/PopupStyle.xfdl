@@ -32,7 +32,7 @@
         <Div id="DivCrudButton" left="270" top="12" height="32" text="" formscrolltype="none" right="16" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="5" InitCompVisEna="1:0:0:0,1:0:0:0" background="transparent" border="0px none"/>
         <Static id="StaticStyle" taborder="6" text="Style" left="0" top="16" width="100" cssclass="sta_WF_searchLabel" height="24"/>
         <Edit id="EditStyleNo" taborder="7" left="118" height="24" top="16" cssclass="essential" width="150"/>
-        <Div id="DivCnc" taborder="8" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="grd_list,ITEM_CD,ITEM_NM" right="16" bottom="16"/>
+        <Div id="DivCnc" taborder="8" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="ITEM_CD,ITEM_NM" right="16" bottom="16" targetGrid="grd_list"/>
       </Layout>
     </Layouts>
     <Objects>

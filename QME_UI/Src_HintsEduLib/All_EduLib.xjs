@@ -10,4 +10,5 @@ include "Src_HintsEduLib::Util.xjs";
 include "Src_HintsEduLib::Validation.xjs";
 
 include "Src_HintsEduLib::Util_adh.xjs";
+include "Src_HintsEduLib::QmeNexa.xjs";
 include "Src_HintsEduLib::ExportObject.xjs";]]></Script>

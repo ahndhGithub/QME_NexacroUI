@@ -1,74 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.0">
-  <Form id="cmmGridAddDelButton" width="200" height="32" onload="form_onload" scrolltype="none">
+  <Form id="cmmGridAddDelButton" width="208" height="28" onload="form_onload" scrolltype="none">
     <Layouts>
-      <Layout height="32" width="200">
-        <Button id="btn_del" taborder="0" text="삭제" left="45" top="5" width="40" height="22" onclick="btn_del_onclick"/>
-        <Button id="btn_add" taborder="1" text="추가" left="0" top="5" width="40" height="22" onclick="btn_add_onclick"/>
-        <Button id="btn_delMulti" taborder="2" text="체크삭제" left="91" top="5" width="80" height="22" onclick="btn_delMulti_onclick"/>
+      <Layout height="28" width="208">
+        <Button id="btn_del" taborder="0" text="삭제" left="72" top="0" width="64" height="28" onclick="btn_del_onclick" visible="false"/>
+        <Button id="btn_add" taborder="1" text="추가" left="0" top="0" width="64" height="28" onclick="btn_add_onclick" visible="false"/>
+        <Button id="btn_delMulti" taborder="2" text="체크삭제" left="144" top="0" height="28" onclick="btn_delMulti_onclick" width="64" visible="false"/>
+        <Static id="StaticDevTxt" taborder="3" text="cmmGridAddDelButton.xfdl" left="14" width="180" height="14" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Verdana&quot;" textAlign="center" bottom="0"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
  
-this.oTargetDs;	//타겟데이터셋 : ROW_CHK, ROW_STS 컬럼만 존재하면 작동함 (그리드의 Status 속성여부와 무관함)
-this.InitCompVisEna;
+// this.oDivParnt;			// 부모Div
+// this.oTargetDs;			//타겟데이터셋 : ROW_CHK, ROW_STS 컬럼만 존재하면 작동함 (그리드의 Status 속성여부와 무관함)
+// this.sInitCompVisEna;
 this.arrBtns = Array();
 
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	this.StaticDevTxt.set_visible(false);	//	개발자용텍스트 숨기기
+	
 									var gtrcPos = "Comm_GridAddDelButton.form_onload";
-	// 0.선언
-	var sEvFrm;
-	
-	{	//	1. 스콥 확인용
-// 											this.gtrace("this.parent.form.name--->"+this.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.name--->"+this.parent.form.parent.name, gtrcPos);
-// 												this.gtrace("this.parent.form.parent.form.name--->"+this.parent.form.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.name--->"+this.parent.form.parent.parent.parent.name, gtrcPos);
-// 													this.gtrace("this.parent.form.parent.parent.form.name--->"+this.parent.form.parent.parent.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.parent.parent.parent.name, gtrcPos);
-	}
-	
-	var arrTargetGrid;
-	var pFormName;
-	var pTargeGridName;
-	
-	{	//	1. UserProperty 가져오기
-						this.gtrace("this.parent.form.parent.targetGrid--->"+this.parent.form.parent.targetGrid, gtrcPos);
-		strTargetGrid 		= this.parent.form.parent.targetGrid;
-		this.InitCompVisEna = this.parent.form.parent.InitCompVisEna;
-	}
+									
+	this.gfn_getParentForm();	// 공통화폼의 경우 무조건 실행
 
-	{	//	2. 그리드 --> 데이터셋 찾아 오기 by Frame 개념
-		//     - Frame 바로 전 단계의 폼을 가져온다.
-		var sGridFullName;
-		var oTargetGrid;
-			sEvFrm = "this.parent.form";	//cmmGridAddDelButton
-			
-		while(!(eval(sEvFrm) instanceof nexacro.Frame)){
-			sEvFrm += ".parent";
-					//	this.gtrace("this.gfn_typeOf(eval(sEvFrm))--->"+this.gfn_typeOf(eval(sEvFrm)), gtrcPos);
-		}
-		
-		// 한단계 전으로
-		sEvFrm = sEvFrm.replace("this.parent.form.parent","this.parent.form");	//	this.parent.form.parent.parent.parent.parent.parent.parent
-															this.gtrace("sEvFrm ---->"+sEvFrm,gtrcPos);
-		// 그리드와 데이터셋
-		sGridFullName = sEvFrm+"."+strTargetGrid;
-		oTargetGrid 	= eval(sGridFullName);
-		this.oTargetDs 	= oTargetGrid.getBindDataset();		this.gtrace("this.oTargetDs--->"+this.oTargetDs.name, gtrcPos);
-	}
+};
 
+this.fn_setButtonVisEna = function()
+{
+					var gtrcPos = "cmmGridAddDelButton.fn_setButtonVisEna";
+
+	{	//	1. 부모Div 담기, UserProperty 가져오기
+		this.sInitCompVisEna 	= this.oDivParnt.InitCompVisEna;
+						this.gtrace("this.sInitCompVisEna--->"+this.sInitCompVisEna, gtrcPos);
+	}
 
  	{	//	3. 버튼 Enable / Disable 처리 : 부모폼의 세팅값(미정)에 따라 활성화 여부를 결정하는 로직 향후 필요함.
-		var arrInitSts = this.InitCompVisEna.split(",");
+		var arrInitSts = this.sInitCompVisEna.split(",");
 		var arrVis = arrInitSts[0].split(":");
 		var arrEna = arrInitSts[1].split(":");
 					this.gtrace("this.arrBtns.length--->"+this.arrBtns.length, gtrcPos);
@@ -82,9 +50,12 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 			this.arrBtns[i].set_visible((arrVis[i]=="1"?true:false));
 			this.arrBtns[i].set_enable((arrEna[i]=="1"?true:false));
 		}
+
+		//	Visible 여부와 부모Div의 좌우정렬에 따라 버튼의 위치를 자동배치
+		this.gfn_commButtonAlignByVisible(this.oDivParnt, this.arrBtns, [this.btn_add.left, this.btn_del.left, this.btn_delMulti.left])
 	}
-		this.gtrace("<-------------------END------------------->", gtrcPos);
-};
+}
+
 
 this.fn_deleteRow = function(delRow, multiSingleType)
 { 

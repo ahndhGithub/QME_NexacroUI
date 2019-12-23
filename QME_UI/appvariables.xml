@@ -878,6 +878,12 @@
           <Col id="LANG_KO">멀티선택</Col>
           <Col id="LANG_VI"/>
         </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">popup.SaveLayout</Col>
+          <Col id="LANG_KO">레이아웃저장</Col>
+          <Col id="LANG_VI">Save Layout</Col>
+          <Col id="LANG_ID">Save Layout</Col>
+        </Row>
       </Rows>
     </Dataset>
     <Dataset id="gds_SearchConditionType">
@@ -918,6 +924,18 @@
           <Col id="PopupTitle">popup.multiselect</Col>
         </Row>
       </Rows>
+    </Dataset>
+    <Dataset id="gds_FormatInOutDs" useclientlayout="true">
+      <ColumnInfo>
+        <Column id="SEQ" type="STRING" size="256"/>
+        <Column id="PROGRAMID" type="STRING" size="256"/>
+        <Column id="USERID" type="STRING" size="256"/>
+        <Column id="GRIDID" type="STRING" size="256"/>
+        <Column id="FORMAT_ID" type="STRING" size="256"/>
+        <Column id="LAYOUT_NM" type="STRING" size="256"/>
+        <Column id="DEFAULT_LAYOUT" type="STRING" size="256"/>
+        <Column id="JSONDATA" type="STRING" size="256"/>
+      </ColumnInfo>
     </Dataset>
   </Datasets>
   <Variables>

@@ -30,7 +30,7 @@
         <Static id="StaticSalesOrder" taborder="6" text="SalesOrder" left="0" top="16" width="100" cssclass="sta_WF_searchLabel" height="24"/>
         <Edit id="EditSalesOrderNo" taborder="7" left="118" height="24" top="16" cssclass="essential" width="150"/>
         <Edit id="Edit00" taborder="8" left="351" top="16" width="233" height="24" readonly="true" value="1126195724" text="1126195724" visible="true"/>
-        <Div id="DivCnc" taborder="9" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="grd_list,VBELN" right="16" bottom="16"/>
+        <Div id="DivCnc" taborder="9" text="Div00" width="128" height="28" url="Comm::Comm_CnC.xfdl" returnparms="VBELN" right="16" bottom="16" targetGrid="grd_list"/>
       </Layout>
     </Layouts>
     <Objects>

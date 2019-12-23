@@ -47,7 +47,15 @@
       </Dataset>
       <Dataset id="ds_copy"/>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/**
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************************
+@desc	1. Include
+********************************************************************************************/
+include "Src_HintsEduLib::All_EduLib.xjs";/**
+
+
+
+
+
 *  @Desction    그리드 컬럼 숨기기/보이기 공통팝업
 */
 
@@ -62,15 +70,16 @@ this.fv_targetDataset; //대상데이터셋 OBJECT
 /***********************************************************************************************/
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+											var gtrcPos = "Comm_ColumnHide.xfdl.form_onload";
 	this.gfn_formOnLoad(this);
 		
 	//초기값 설정
-	this.fv_targetGrid    = this.getOwnerFrame().pvGrid;
-	this.fv_targetDataset = this.fv_targetGrid.getBindDataset();
-	this.fn_getHeadText();
+	this.fv_targetGrid    = this.getOwnerFrame().pvGrid;		this.gtrace("타겟그리드-->"+this.fv_targetGrid.name+"<--(fv_targetGrid)", gtrcPos);		
+	this.fv_targetDataset = this.fv_targetGrid.getBindDataset();this.gtrace("타겟데이터셋-->"+this.fv_targetDataset.name+"<--(fv_targetDataset)", gtrcPos);		
+	this.fn_getHeadText();										this.gtrace("fn_getHeadText-->"+"<--(fn_getHeadText)", gtrcPos);		
 	
 	//compare grid setting
-	this.fn_setGrd();
+	this.fn_setGrd();											this.gtrace("fn_setGrd-->"+"<--(fn_setGrd)", gtrcPos);
 };
 
 /************************************************************************************************
@@ -89,6 +98,8 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 */
 this.fn_setGrd = function()
 {
+						var gtrcPos = "Comm_ColumnHide.xfdl.fn_setGrd";
+										this.gtrace("org포맷-->"+this.fv_targetGrid.orgformat2, gtrcPos);
 	this.grd00.set_enableredraw(false);
 	this.grd00.set_formats(this.fv_targetGrid.orgformat2);
 	this.grd00.set_enableredraw(true);

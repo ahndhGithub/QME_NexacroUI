@@ -820,29 +820,7 @@ this.gfn_getGridFormat = function (objGrid)
 // DATABASE
 
 
-/**********************************************************************************
- * Function Name: gfn_setUser
- * Description  : 데이터셋의 SaveUser에 사용자를 등록
- * Arguments    : 
- * Return       : 
- **********************************************************************************/
-this.gfn_setUser = function(oDs) 
-{
-	oDs.enableevent = false;
-	
-	// 변경
-	for( var i=0; i < oDs.rowcount; i++){
-		if(this.gfn_ExistColumnId(oDs, "SaveUser"))
-			oDs.setColumn(i, "SaveUser", HINTS.USERCODE);
-		
-		if(this.gfn_ExistColumnId(oDs, "UserCode"))
-			oDs.setColumn(i, "UserCode", HINTS.USERCODE);
-	}
-	
-	oDs.enableevent = true;
-	
-	return oDs;
-}
+
 
 /**********************************************************************************
  * Function Name: gfn_ExistColumnId

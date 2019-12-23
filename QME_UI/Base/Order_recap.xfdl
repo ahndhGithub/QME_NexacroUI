@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="Order_recap" width="1280" height="720" titletext="New Form" onload="formOnload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="0" InitCompVisEna="1:1:1:1,1:0:1:1"/>
+        <Div id="DivCondition" taborder="1" left="8" top="40" height="155" cssclass="div_WF_search" text="" formscrolltype="none" width="1264">
+          <Layouts>
+            <Layout>
+              <Static id="StaticCompany" taborder="0" text="Company" left="0" top="8" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticSalesOrder_onclick"/>
+              <Static id="StaticSoldToParty" taborder="1" text="Sold-To Party" left="0" top="33" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticSalesOrder" taborder="2" text="Sales Order" left="0" top="58" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticSalesGroup" taborder="5" text="Sales Group" left="580" top="8" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Div id="div_StyleFromTo" taborder="3" text="Div00" left="148" top="33" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2,p_matnr_list"/>
+              <Div id="div_VendorFromTo" taborder="4" text="Div00" left="148" top="58" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="VendorCode,ds_in,p_supply1,p_supply2,p_supply_list"/>
+              <Div id="div_MaterialFromTo" taborder="6" text="Div00" left="728" top="8" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
+              <Static id="StaticOS" taborder="7" text="OS 작업지" left="580" top="33" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Div id="div_MaterialFromTo00" taborder="8" text="Div00" left="728" top="33" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
+              <Static id="StaticBuyDate" taborder="9" text="Buy Date" left="580" top="58" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor00_onclick"/>
+              <Static id="StaticBuyerStyle" taborder="10" text="Buyer Style" left="0" top="83" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Div id="div_StyleFromTo00" taborder="11" text="Div00" left="148" top="83" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2,p_matnr_list"/>
+              <Static id="StaticBuyerPONO" taborder="12" text="Buyer PO NO" left="580" top="83" width="138" cssclass="sta_WF_searchLabel" height="21"/>
+              <Div id="div_MaterialFromTo00_00" taborder="13" text="Div00" left="728" top="83" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
+              <Static id="StaticPOIssueDate" taborder="14" text="PO Issue Date" left="0" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Static id="StaticStyle" taborder="15" text="Style" left="0" top="133" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Combo id="cbo_dept" taborder="16" left="148" top="8" width="150" height="21" innerdataset="ds_outCompanyCode" codecolumn="CENTER_CD" datacolumn="CENTER_NM" index="0" text="" value="4"/>
+              <Div id="div_calFromTo" taborder="17" text="Div00" left="728" top="58" width="296" height="21" url="Edu_Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback"/>
+              <Div id="div_calFromTo00" taborder="18" text="Div00" left="148" top="108" width="296" height="21" url="Edu_Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback"/>
+              <Radio id="Radio00" taborder="19" left="148" top="131" width="995" height="23" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" index="0" text="PO INFO 1 - color" value="00" fittocontents="width">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">00</Col>
+                      <Col id="datacolumn">PO INFO 1 - color</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">01</Col>
+                      <Col id="datacolumn">PO INFO 2 - color &amp; size</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">02</Col>
+                      <Col id="datacolumn">생산</Col>
+                    </Row>
+                    <Row>
+                      <Col id="datacolumn">샘플</Col>
+                      <Col id="codecolumn">03</Col>
+                    </Row>
+                    <Row>
+                      <Col id="datacolumn">ETC</Col>
+                      <Col id="codecolumn">04</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="2" left="8" top="220" width="1264" height="480" binddataset="ds_OrderRecap">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Buyer"/>
+                <Cell col="1" text="Year"/>
+                <Cell col="2" text="Column0"/>
+                <Cell col="3" text="Column1"/>
+                <Cell col="4" text="Column2"/>
+                <Cell col="5" text="Column3"/>
+                <Cell col="6" text="Column4"/>
+                <Cell col="7" text="Column5"/>
+                <Cell col="8" text="Column6"/>
+                <Cell col="9" text="Column7"/>
+                <Cell col="10" text="Column8"/>
+                <Cell col="11" text="Column9"/>
+                <Cell col="12" text="Column10"/>
+                <Cell col="13" text="Column11"/>
+                <Cell col="14" text="Column12"/>
+                <Cell col="15" text="Column13"/>
+                <Cell col="16" text="Column14"/>
+                <Cell col="17" text="Column15"/>
+                <Cell col="18" text="Column16"/>
+                <Cell col="19" text="Column17"/>
+                <Cell col="20" text="Column18"/>
+                <Cell col="21" text="Column19"/>
+                <Cell col="22" text="Column20"/>
+                <Cell col="23" text="Column21"/>
+                <Cell col="24" text="Column22"/>
+                <Cell col="25" text="Column23"/>
+                <Cell col="26" text="Column24"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:Buyer"/>
+                <Cell col="1" text="bind:Year"/>
+                <Cell col="2" text="bind:Column0"/>
+                <Cell col="3" text="bind:Column1"/>
+                <Cell col="4" text="bind:Column2"/>
+                <Cell col="5" text="bind:Column3"/>
+                <Cell col="6" text="bind:Column4"/>
+                <Cell col="7" text="bind:Column5"/>
+                <Cell col="8" text="bind:Column6"/>
+                <Cell col="9" text="bind:Column7"/>
+                <Cell col="10" text="bind:Column8"/>
+                <Cell col="11" text="bind:Column9"/>
+                <Cell col="12" text="bind:Column10"/>
+                <Cell col="13" text="bind:Column11"/>
+                <Cell col="14" text="bind:Column12"/>
+                <Cell col="15" text="bind:Column13"/>
+                <Cell col="16" text="bind:Column14"/>
+                <Cell col="17" text="bind:Column15"/>
+                <Cell col="18" text="bind:Column16"/>
+                <Cell col="19" text="bind:Column17"/>
+                <Cell col="20" text="bind:Column18"/>
+                <Cell col="21" text="bind:Column19"/>
+                <Cell col="22" text="bind:Column20"/>
+                <Cell col="23" text="bind:Column21"/>
+                <Cell col="24" text="bind:Column22"/>
+                <Cell col="25" text="bind:Column23"/>
+                <Cell col="26" text="bind:Column24"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item2" compid="DivCondition.form.div_StyleFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item3" compid="DivCondition.form.div_StyleFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item4" compid="DivCondition.form.div_VendorFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item5" compid="DivCondition.form.div_VendorFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item6" compid="DivCondition.form.div_MaterialFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item7" compid="DivCondition.form.div_MaterialFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item0" compid="DivCondition.form.div_MaterialFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item1" compid="DivCondition.form.div_MaterialFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item10" compid="DivCondition.form.div_StyleFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item11" compid="DivCondition.form.div_StyleFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item12" compid="DivCondition.form.div_MaterialFromTo00_00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item13" compid="DivCondition.form.div_MaterialFromTo00_00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item8" compid="DivCondition.form.div_calFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item9" compid="DivCondition.form.div_calFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item14" compid="div_calFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item15" compid="div_calFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item16" compid="DivCondition.form.div_calFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
+      <BindItem id="item17" compid="DivCondition.form.div_calFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************************
+@desc	1. Include
+********************************************************************************************/
+include "Src_HintsEduLib::All_EduLib.xjs";
+
+/********************************************************************************************
+@desc	2. Form 변수 선언 ---------------
+********************************************************************************************/
+					
+/********************************************************************************************
+@desc	3. OnLoad
+********************************************************************************************/
+/* 
+ *	초기화 함수
+ */
+this.fn_reset = function()
+{
+		this.ds_inCompanyCode.clearData();
+		this.ds_inCompanyCode.addRow();	
+		this.ds_outCompanyCode.clearData();
+		
+		this.ds_inCompanyCode.setColumn(0, "p_user_id", "131206");
+		this.ds_inCompanyCode.setColumn(1, "p_country_cd", "%");
+		
+		var sSvcID 			= "getUserCenter";
+		var sURL 			= "AppSvr::common/commonAction.ppc";		//운영계
+		var sInDatasets 	= "ds_in0=ds_inCompanyCode";
+		var sOutDatasets 	= "ds_outCompanyCode=ds_out0";
+		var sArguments 		= "sqlId=" + nexacro.wrapQuote("UserMapper.getUserCenter");
+	    
+		//공통 트랜잭션 사용
+		this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");		
+}
+
+/********************************************************************************************
+@desc	4. Validation 처리
+********************************************************************************************/
+
+/********************************************************************************************
+@desc	5. 서비스 호출(Transaction)
+********************************************************************************************/
+/*++
+@desc	POList , POHistory Load
+*/
+this.tfn_getPoListHistoryLoad = function(){
+/*
+	this.ds_POList.clearData();
+	this.ds_POHistory.clearData();
+	//	this.ds_in.setColumn(0, "p_osno1", "1126195724");
+	this.ds_in.setColumn(0, "p_user_id", this.gfn_getApplication().gds_User.getColumn(0, "USER_ID"));
+	
+	//	http://nyc.panpacific.co.kr/QMENexacroSvr/common/commonAction.ppc
+	//	http://203.229.231.124/QMENexacroSvr/common/commonAction.ppc
+	//	AppSvr	JSP	-- http://nyc.panpacific.co.kr/QMENexacroSvr/
+	var sSvcID 			= "getPoListHistoryLoad";
+	var sURL 			= "AppSvr::common/commonAction.ppc";
+	var sInDatasets 	= "ds_in0=ds_in ds_in1=ds_in";
+	var sOutDatasets 	= "ds_POList=ds_out0 ds_POHistory=ds_out1";
+	var sArguments 		= "sqlId=" + nexacro.wrapQuote("POMapper.getPOList POMapper.getPOHisList");
+	
+	//공통 트랜잭션 사용
+	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
+*/	
+}
+/********************************************************************************************
+@desc	6. Callback
+********************************************************************************************/
+/*++
+@desc	Callback Function
+*/
+this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
+{
+	var gtrcPos = "POList.xfdl.callbackFunction"
+	
+	// 에러 체크 영역
+	if (nErrorCode < 0)
+	{
+		//	alert(this.gfn_removeJavaErrMsg(strErrorMsg));
+		alert(strErrorMsg);
+		return;
+	}
+
+	switch (strSvcID) 
+	{
+		default:
+			break;
+ 		
+			case "getUserCenter"	:
+				this.DivCondition.form.cbo_dept.set_index(0);
+				break;
+ 	}
+}
+
+/*++
+@desc	Popup Callback
+*/
+this.callbackFunc_pop = function(strID, variant)
+{
+}
+
+/********************************************************************************************
+@desc	7. Common Function
+********************************************************************************************/
+/*
+ *	조회
+ */
+this.cfn_search = function()
+{
+	this.tfn_getPoListHistoryLoad();
+};
+
+/*
+ *	입력
+ */
+this.cfn_add = function()
+{
+};
+
+/*
+ *	삭제
+ */
+this.cfn_del = function()
+{
+	trace("---------------------cfn_del----------------------------------------");
+};
+
+/*
+ *	저장
+ */
+this.cfn_save = function()
+{
+	trace("---------------------cfn_save----------------------------------------");
+};
+
+/********************************************************************************************/
+/**   8. 사용자 함수                                                                        */
+/********************************************************************************************/
+
+
+/********************************************************************************************/
+/**   9. 이벤트(Event) 처리                                                                 */
+/********************************************************************************************/
+/*
+ *	온로드
+ */
+this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//this.gfn_getAllInitData();
+	this.fn_reset();
+};
+
+// 입력
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    var nRow = this.ds_status.addRow();
+    this.ds_status.setRowType(nRow, Dataset.ROWTYPE_INSERT);
+};
+//삭제
+this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_status.rowposition;
+	this.ds_status.setRowType(nRow, Dataset.ROWTYPE_DELETE);
+};
+//수정
+this.ds_status_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	this.ds_status.setRowType(e.row, Dataset.ROWTYPE_UPDATE);	
+};
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_outCompanyCode">
+        <ColumnInfo>
+          <Column id="CENTER_CD" type="STRING" size="256"/>
+          <Column id="DEF_CENTER_CD" type="STRING" size="256"/>
+          <Column id="CENTER_NM" type="STRING" size="256"/>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="CENTER_CD_F" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_inCompanyCode">
+        <ColumnInfo>
+          <Column id="p_user_id" type="STRING" size="20"/>
+          <Column id="p_country_cd" type="STRING" size="10"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_in">
+        <ColumnInfo>
+          <Column id="P_USER_ID" type="STRING" size="20"/>
+          <Column id="P_CENTER_CD" type="STRING" size="10"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_OrderRecap">
+        <ColumnInfo>
+          <Column id="Buyer" type="STRING" size="20"/>
+          <Column id="Year" type="STRING" size="10"/>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+          <Column id="Column8" type="STRING" size="256"/>
+          <Column id="Column9" type="STRING" size="256"/>
+          <Column id="Column10" type="STRING" size="256"/>
+          <Column id="Column11" type="STRING" size="256"/>
+          <Column id="Column12" type="STRING" size="256"/>
+          <Column id="Column13" type="STRING" size="256"/>
+          <Column id="Column14" type="STRING" size="256"/>
+          <Column id="Column15" type="STRING" size="256"/>
+          <Column id="Column16" type="STRING" size="256"/>
+          <Column id="Column17" type="STRING" size="256"/>
+          <Column id="Column18" type="STRING" size="256"/>
+          <Column id="Column19" type="STRING" size="256"/>
+          <Column id="Column20" type="STRING" size="256"/>
+          <Column id="Column21" type="STRING" size="256"/>
+          <Column id="Column22" type="STRING" size="256"/>
+          <Column id="Column23" type="STRING" size="256"/>
+          <Column id="Column24" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,73 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.0">
-  <Form id="cmmCrudButton" width="800" height="32" onload="form_onload" scrolltype="none">
+  <Form id="cmmCrudButton" width="300" height="28" onload="form_onload" scrolltype="none">
     <Layouts>
-      <Layout height="32" width="800">
-        <Button id="btn_search" taborder="0" text="Search" top="4" width="72" height="24" visible="false" cssclass="btn_WF_main1" onclick="btn_Crud_onclick" left="4"/>
-        <Button id="btn_add" taborder="1" text="New" top="4" width="72" height="24" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="80" enable="true"/>
-        <Button id="btn_delete" taborder="2" text="Delete" top="4" width="72" height="24" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="232"/>
-        <Button id="btn_save" taborder="3" text="Save" top="4" width="72" height="24" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="156"/>
+      <Layout height="28" width="300">
+        <Button id="btn_search" taborder="0" text="Search" top="0" width="72" height="28" visible="false" cssclass="btn_WF_main1" onclick="btn_Crud_onclick" left="0"/>
+        <Button id="btn_add" taborder="1" text="New" top="0" width="72" height="28" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="76" enable="true"/>
+        <Button id="btn_delete" taborder="2" text="Delete" top="0" width="72" height="28" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="228"/>
+        <Button id="btn_save" taborder="3" text="Save" top="0" width="72" height="28" visible="false" onclick="btn_Crud_onclick" cssclass="btn_WF_main1" left="152"/>
+        <Static id="StaticDevTxt" taborder="4" text="Comm_CrudButton.xfdl" left="80" width="140" height="14" font="bold 12px/normal &quot;Malgun Gothic&quot;,&quot;Verdana&quot;" textAlign="center" bottom="0"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Src_HintsEduLib::All_EduLib.xjs";
 
-//userproperty : InitCompVisEna
-this.InitCompVisEna;	// 초기 콤보의 세팅( visible,enable ) 1:1:1:1,1:0:1:1 
-this.oFrmParnt;			// 부모폼
 this.arrBtns = Array();
-	
+
+
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-									var gtrcPos = "Comm_CrudButton.form_onload";
-	// 0.선언
-	var sEvFrm;
+	this.StaticDevTxt.set_visible(false);	//	개발자용텍스트 숨기기
 	
-	{	//	1. UserProperty 가져오기
-						
-		this.InitCompVisEna 	= this.parent.form.parent.InitCompVisEna;
-						this.gtrace("InitCompVisEnad--->"+this.InitCompVisEna, gtrcPos);
-	}
-
-	{	//	2. 상위 폼 찾아 오기
-			sEvFrm = "this.parent.form.parent";
-		
-		while(eval(sEvFrm) instanceof nexacro.Form){
-			sEvFrm += ".parent";
-		}																				
-			sEvFrm += ".parent";
-											this.gtrace("sEvFrm--->"+sEvFrm, gtrcPos);
-	}
+	var gtrcPos = "Comm_CrudButton.form_onload";
 	
- 	{	//	3. 부모폼 담기
-											
- 		this.oFrmParnt = eval(sEvFrm);		this.gtrace("this.oFrmParnt --->"+this.oFrmParnt.name, gtrcPos);
- 	}
-
- 	{	//	4. 버튼 Enable / Disable 처리 : 부모폼의 세팅값(미정)에 따라 활성화 여부를 결정하는 로직 향후 필요함.
-		var arrInitSts = this.InitCompVisEna.split(",");
-		var arrVis = arrInitSts[0].split(":");
-		var arrEna = arrInitSts[1].split(":");
-					this.gtrace("this.arrBtns.length--->"+this.arrBtns.length, gtrcPos);
-	
-		// 이 순서를 바꾸지 말자
-		this.arrBtns.push(this.btn_search);		//1.
-		this.arrBtns.push(this.btn_add);		//2.
-		this.arrBtns.push(this.btn_save);		//3.
-		this.arrBtns.push(this.btn_delete);		//4.
-
-		for(var i=0;i<this.arrBtns.length;i++){
-			this.arrBtns[i].set_visible((arrVis[i]=="1"?true:false));
-			this.arrBtns[i].set_enable((arrEna[i]=="1"?true:false));
-		}
- 	}
-
-// 	{	//  9. 기본호출 ( 그리드, 초기화 ) : 한다.
-// 		this.gfn_formOnLoad(this);
-// 		this.fn_init();
-// 	}
-			
-			this.gtrace("<-------------------END------------------->", gtrcPos);
+	this.gfn_getParentForm();	// 공통화폼의 경우 무조건 실행
 };
+
+
+this.fn_setButtonVisEna = function()
+{
+					var gtrcPos = "Comm_CrudButton.fn_setButtonVisEna";
+
+	this.sInitCompVisEna = this.oDivParnt.InitCompVisEna;
+						this.gtrace("InitCompVisEna--->"+this.sInitCompVisEna, gtrcPos);
+						
+	var arrInitSts = this.sInitCompVisEna.split(",");
+	var arrVis = arrInitSts[0].split(":");
+	var arrEna = arrInitSts[1].split(":");
+				
+	// 이 순서를 바꾸지 말자
+	this.arrBtns.push(this.btn_search);		//1.
+	this.arrBtns.push(this.btn_add);		//2.
+	this.arrBtns.push(this.btn_save);		//3.
+	this.arrBtns.push(this.btn_delete);		//4.
+
+				this.gtrace("this.arrBtns.length--->"+this.arrBtns.length, gtrcPos);
+
+	for(var i=0;i<this.arrBtns.length;i++){
+					this.gtrace("arrVis[i]--->"+arrVis[i], gtrcPos);
+		this.arrBtns[i].set_visible((arrVis[i]=="1"?true:false));
+		this.arrBtns[i].set_enable((arrEna[i]=="1"?true:false));
+	}
+	
+	//	Visible 여부와 부모Div의 좌우정렬에 따라 버튼의 위치를 자동배치
+		this.gfn_commButtonAlignByVisible(this.oDivParnt, this.arrBtns, [0, 76, 152, 228])
+}
 
 this.btn_Crud_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
