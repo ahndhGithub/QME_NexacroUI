@@ -59,6 +59,7 @@ if (!nexacro.ExcelExportObject) {
 
 
 	nexacro.ExcelExportObject = function (name, parent) {
+						trace("there");
 		this.id = this.name = name;
 
 		if (!parent) {
@@ -567,7 +568,10 @@ if (!nexacro.ExcelExportObject) {
 	};
 
 	_pExcelExport.exportData = function (argsParam, argsDsParam, nOrgValueType, bFileDownload) {
-		this._argsParam = argsParam;
+								trace("here");
+							var gtrcPos = "ExportObject.xjs.exportData";
+												this.gtrace("● 익스포트데이터",gtrcPos);
+		this._argsParam = argsParam;				this.gtrace(" - 아규먼트 (this._argsParam)--->"+this._argsParam,gtrcPos);
 		this._argsDsParam = argsDsParam;
 		if (typeof nOrgValueType == "string") {
 			nOrgValueType = nOrgValueType.toLowerCase();

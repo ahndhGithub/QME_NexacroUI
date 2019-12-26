@@ -55,7 +55,8 @@ pForm.gfn_setGrid = function(objGrid)
 																this.gtrace(objGds.saveXML(), gtrcPos);
 	var nFindRow = objGds.findRow("sFormatId", sFormatId);		this.gtrace("gds_gridPersonal에 sFormatId "+sFormatId+"가 있는지 확인 nFindRow--->"+nFindRow, gtrcPos);
 	if( nFindRow > -1){
-		objGrid.orgformat2 = objGds.getColumn(nFindRow, "sOrgFormat");
+		//	objGrid.orgformat2 = objGds.getColumn(nFindRow, "sOrgFormat");
+		objGrid.orgformat2 = objGrid.getFormatString();			//	191225.mod.
 																this.gtrace("gds_gridPersonal에 있을경우 sOrgFormat컬럼값을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
 		sFormat = "<Formats>" + objGds.getColumn(nFindRow, "sFormat") + "</Formats>";
 																this.gtrace("gds_gridPersonal의 sFormat컬럼값을 sFormat 스트링에 담아서"+objGrid.name+"그리드의 포맺으로 지정", gtrcPos);
@@ -1034,6 +1035,7 @@ pForm.gfn_grid_onrbuttondown = function (objGrid, e)
 pForm.gfn_popupmenu_onmenuclick = function (objMenu, e)
 {
 											var gtrcPos = "Grid.xjs.gfn_popupmenu_onmenuclick";
+												this.gtrace("● 팝업메뉴클릭이벤트", gtrcPos);
 	var selectId   = e.id;						//	this.gtrace("selectId--->"+selectId, gtrcPos);
 	var grid 	   = objMenu.grid;				//	this.gtrace("grid.name--->"+grid.name, gtrcPos);
 	var nCellIndex = objMenu.cellindex;			//	this.gtrace("nCellIndex--->"+nCellIndex, gtrcPos);
@@ -1041,60 +1043,60 @@ pForm.gfn_popupmenu_onmenuclick = function (objMenu, e)
 
 	switch(selectId) {
 		case "colfix"://틀고정 열
-											this.gtrace("selectId-->"+selectId+"-->(틀고정 열)", gtrcPos);
+											this.gtrace(" - 틀고정 열 (selectId)-->"+selectId, gtrcPos);
 			this.fv_CellIndex = nCellIndex;
 			this._gfnGridcellFix(grid, this.fv_CellIndex, nRowIndex);
 			break;
 		case "colfixfree"://틀고정 열 해제
-											this.gtrace("selectId-->"+selectId+"-->(틀고정 열 해제)", gtrcPos);
+											this.gtrace(" - 틀고정 열 해제 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridCellFree(grid);
 			break;
 		case "rowfix"://틀고정 행
-											this.gtrace("selectId-->"+selectId+"-->(틀고정 행)", gtrcPos);
+											this.gtrace(" - 틀고정 행 (selectId)-->"+selectId, gtrcPos);
 			if(nRowIndex<0) return;
 			grid.fixedRow = nRowIndex;
 			this._gfnGridSetCssclass(grid);
 			break;
 		case "rowfixfree"://틀고정 행 해제
-											this.gtrace("selectId-->"+selectId+"-->(틀고정 행 해제)", gtrcPos);
+											this.gtrace(" - 틀고정 행 해제 (selectId)-->"+selectId, gtrcPos);
 			grid.fixedRow = -1;
 			this._gfnGridSetCssclass(grid);
 			break;
 		case "filter"://필터
-											this.gtrace("selectId-->"+selectId+"-->(필터)", gtrcPos);
+											this.gtrace(" - 필터 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridFilter(grid);		
 			break;
 		case "filterfree"://필터해제
-											this.gtrace("selectId-->"+selectId+"-->(필터해제)", gtrcPos);
+											this.gtrace(" - 필터해제 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridCellFilterFree(grid);
 			break;
 		case "replace"://찾기/바꾸기
-											this.gtrace("selectId-->"+selectId+"-->(찾기/바꾸기)", gtrcPos);
+											this.gtrace(" - 찾기/바꾸기 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridCellReplace(grid, nCellIndex, nRowIndex);
 			break;
 		case "colhide"://컬럼숨기기
-											this.gtrace("selectId-->"+selectId+"-->(컬럼숨기기)", gtrcPos);
+											this.gtrace(" - 컬럼숨기기 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridColHideShow(grid, nRowIndex);
 			break;
 		case "subsum"://부분합
-											this.gtrace("selectId-->"+selectId+"-->(subsum)", gtrcPos);
+											this.gtrace(" - 부분합 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridSubSum(grid, nRowIndex);
 			break;
 			
 		case "export"://엑셀내보내기
-											this.gtrace("selectId-->"+selectId+"-->(엑셀내보내기)", gtrcPos);
+											this.gtrace(" - 엑셀내보내기 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridExcelExport(grid, nRowIndex);		// 결국, Excel.js.gfn_excelExport를 호출함
 			break;	
 		case "import"://엑셀가져오기
-											this.gtrace("selectId-->"+selectId+"-->(엑셀가져오기)", gtrcPos);
+											this.gtrace(" - 엑셀가져오기 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridExcelImport(grid, nRowIndex);
 			break;	
 		case "personal" : //개인화
-											this.gtrace("selectId-->"+selectId+"-->(개인화)", gtrcPos);
+											this.gtrace(" - 개인화 (selectId)-->"+selectId, gtrcPos);
 			this._gfnGridPersonalize(grid);
 			break;
 		case "initial"://초기화
-											this.gtrace("selectId-->"+selectId+"-->(초기화)", gtrcPos);
+											this.gtrace(" - 초기화 (selectId)-->"+selectId, gtrcPos);
 			grid.set_formats("<Formats>" + grid.orgformat2 + "</Formats>");
 			//this._gfnGridCellFree(grid);
 			//this._gfnClearSortMark(grid);
@@ -1102,7 +1104,6 @@ pForm.gfn_popupmenu_onmenuclick = function (objMenu, e)
 			break;
 		default: break;
 	}
-	this.gtrace("---------------end-------------------------gfn_popupmenu_onmenuclick----------------------------------------", gtrcPos);
 };
 
 /**
@@ -1489,11 +1490,14 @@ pForm._gfnGridCellReplace = function(objGrid,nCellIndex,nRowIndex)
  */
 pForm._gfnGridColHideShow = function(objGrid)
 {
-	var sTitle = this.gfn_getWord("popup.colshwohide");
+								var gtrcPos = "Grid.xjs._gfnGridColHideShow";
+									this.gtrace("● 컬럼 숨기기/보이기", gtrcPos);
+	var sTitle = this.gfn_getWord("popup.colshwohide");		this.gtrace(" - 타이틀(sTitle)------------>"+sTitle, gtrcPos);
 	
-	var oArg = {pvGrid:objGrid};
+	var oArg = {pvGrid:objGrid};							this.gtrace(" - 아규먼트(oArg.pvGrid.name)------------>"+oArg.pvGrid.name, gtrcPos);
 	var oOption = {title:sTitle};	//top, left를 지정하지 않으면 가운데정렬 //"top=20,left=370"
-	var sPopupCallBack = "gfn_columnHidCallback";
+															this.gtrace(" - 옵션(oOption.title)------------>"+oOption.title, gtrcPos);
+	var sPopupCallBack = "gfn_columnHidCallback";			this.gtrace(" - 콜백(팝업,sPopupCallBack)------------>"+sPopupCallBack, gtrcPos);
 	this.gfn_openPopup( "Comm_ColumnHide","Comm::Comm_ColumnHide.xfdl",oArg,sPopupCallBack,oOption);	
 };
 
@@ -1526,6 +1530,8 @@ pForm._gfnGridSubSum = function(objGrid)
  */
 pForm._gfnGridExcelExport = function(objGrid)
 {
+					var gtrcPos = "Grid.xjs._gfnGridExcelExport";
+									this.gtrace("● 엑셀익스포트 : _gfnGridExcelExport", gtrcPos);
 	//	this.gfn_excelExport(objGrid, "*?*?*?*?*?*?*?","");
 	this.gfn_excelExport(objGrid, objGrid.name, this.parent.name);
 };

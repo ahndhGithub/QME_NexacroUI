@@ -58,6 +58,7 @@
     <Service prefixid="Edu_Sample" type="form" cachelevel="session" url="./Edu/Sample/" version="0" communicationversion="0"/>
     <Service prefixid="Popup" type="form" cachelevel="session" url="./Popup/" version="0" communicationversion="0"/>
     <Service prefixid="AppSvrLocalMsSql" type="JSP" cachelevel="session" url="http://localhost:8080/QME/" version="0" communicationversion="0"/>
+    <Service prefixid="ComComp" type="js" cachelevel="session" url="./nexacro17lib/component/ComComp/" version="0" communicationversion="0"/>
   </Services>
   <Protocols/>
   <Update/>

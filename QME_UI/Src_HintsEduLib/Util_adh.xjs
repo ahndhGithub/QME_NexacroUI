@@ -6,6 +6,55 @@
 var pForm = nexacro.Form.prototype;
 //var pForm = this;		// 탭 페이지 안에 있는 그리드의 경우 this로 하면 안 먹는다.
 
+
+/**
+ * @class
+ * @param 
+ * @param 
+ * @return
+ * @desc	- 날짜 : 191224.
+			- 증상 : 숨기기 후 컬럼 사라짐
+			- 원인 : 타겟그리드의org포맷(orgformat2)--> undefined
+			- 수정 : Grid.xjs.gfn_setGridobjGrid.orgformat2 = objGrid.getFormatString()
+ */
+pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
+{	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
+	if(	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"		//	우클릭메뉴에서 해당메뉴 선택
+	||	strPos == "Grid.xjs._gfnGridColHideShow"
+	||	strPos == "Comm_ColumnHide.xfdl.form_onload"
+	||	strPos == "Comm_ColumnHide.xfdl.fn_getHeadText"
+	||	strPos == "Comm_ColumnHide.xfdl.fn_setGrd"
+	||	strPos == "Comm_ColumnHide.xfdl.btn_ok_onclick"		//	팝업메뉴에서 확인 버튼
+	||	strPos == "Grid.xjs.gfn_columnHidCallback"
+	){
+		trace(strPos+"--------->"+strTrc);
+	}
+}
+
+/**
+ * @class
+ * @param 
+ * @param 
+ * @return
+ * @desc	- 날짜 : 191225.
+			- 증상 : 엑셀Export헤더필드 없음.(디폴트그리드세팅이 적용된 경우)
+			- 원인 : 찾지못함
+			- 수정 : 타겟그리드의org포맷(orgformat2)--> undefined 조치 이후에 증상 사라짐.
+ */
+pForm.gtrace_191225_ExcelExport = function(strTrc,strPos)
+{	//	엑셀export
+	if(	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"		//	우클릭메뉴에서 해당메뉴 선택
+	||	strPos == "Grid.xjs._gfnGridExcelExport"
+ 	||	strPos == "Excel.xjs.gfn_excelExport"
+ 	||	strPos == "ExportObject.xjs.exportData"
+	){	
+		trace(strPos+"--------->"+strTrc);
+	}
+}
+
+
+
+
 /**
  * @class
  * @param 
@@ -14,6 +63,12 @@ var pForm = nexacro.Form.prototype;
  */
 pForm.gtrace = function(strTrc,strPos)
 {
+	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
+	//	this.gtrace_191224_ColumnHide(strTrc,strPos);
+		
+	//	엑셀내보내기
+	//	this.gtrace_191225_ExcelExport(strTrc,strPos);
+
 	// 주석 처리 여부가 기능에 영향을 주어서는 안된다. 
 	if ( pForm.gfn_isNull(strPos)				//strPos 없이 넘어 오면 무조건 찍는다.
 
@@ -54,7 +109,7 @@ pForm.gtrace = function(strTrc,strPos)
 //		||	strPos == "Frame.xjs.gfn_setLanguage"
 //		||	strPos == "Comm_CrudButton.btnCrud_onclick"
 //		||	strPos == "Comm_CrudButton.form_onload"
-		||	strPos == "Grid.xjs._gfnGridCheckboxNoStatusAdd"
+//		||	strPos == "Grid.xjs._gfnGridCheckboxNoStatusAdd"
 // 		||	strPos == "Transaction.xjs.gfn_callback"
 // 		||	strPos == "Transaction.xjs.gfn_transaction"
 //  	||	strPos == "Grid.xjs.gfn_multiDatasetChanged"
@@ -81,10 +136,12 @@ pForm.gtrace = function(strTrc,strPos)
 // 		||	strPos == "Util_adh.xjs.gfn_setUser"
 // 		||	strPos == "Util_adh.xjs.gfn_getParentForm"
 // 		||	strPos == "PopupSaveLayout.xfdl.callbackFunc_pop"
+// 		||	strPos == "Grid.xjs._gfnGridColHideShow"
 
 )	{
 		trace(strPos+"--------->"+strTrc);
 	}
+	
 };
 
 ]]></Script>

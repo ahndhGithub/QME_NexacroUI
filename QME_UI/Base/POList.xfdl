@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.0">
-  <Form id="POList" width="1280" height="720" titletext="New Form" onload="formOnload">
+  <Form id="POList" width="1280" height="720" titletext="New Form" onload="formOnload" onclick="POList_onclick">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Tab id="TabMain" taborder="1" tabindex="0" left="8" top="146" bottom="8" right="8" border="1px solid gray,1px solid gray,1px solid gray,1px solid gray">
@@ -618,6 +618,12 @@ this.cfn_save = function()
 this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.fn_reset();
+};
+
+this.POList_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
+{
+	trace("clientPos-->("+e.clientx+","+e.clienty+")");
+	trace("canvasPos-->("+e.canvasx+","+e.canvasy+")");
 };
 ]]></Script>
     <Objects>
