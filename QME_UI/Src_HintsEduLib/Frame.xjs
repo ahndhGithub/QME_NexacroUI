@@ -53,7 +53,7 @@ pForm.gfn_formOnLoad = function(objForm)
 					arrComp[i].addEventHandler("ondropdown", this.gfn_openMultiCombo, this);
                 }
             }
-            
+			
 			//다국어
 				this.gfn_setLanguage(arrComp[i]);
 		}

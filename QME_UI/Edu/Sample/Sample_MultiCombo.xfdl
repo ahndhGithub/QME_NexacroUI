@@ -25,7 +25,7 @@
         <Button id="btn_init" taborder="19" text="초기화" left="115" top="113" width="100" height="24" onclick="btn_init_onclick" cssclass="btn_WF_sub1"/>
         <Static id="Static06" taborder="20" text="Display Count" left="9" top="317" width="191" height="30" cssclass="sta_WF_title_sub"/>
         <Static id="Static04" taborder="21" text="Combo로 구성한 Multi Combo -  User Prop" left="425" top="53" width="265" height="30" cssclass="sta_WF_title_sub"/>
-        <Combo id="Combo01" taborder="22" text="Combo00" left="435" top="83" width="155" height="21" popuptype="none" type="search" value="" index="-1" u_innerdataset="ds_data1" u_codecolumn="CODE" u_datacolumn="CODE_NAME" u_type="multi" u_callback="fn_mComboCallback2" u_maxcount="10"/>
+        <Combo id="Combo01" taborder="22" text="Combo00" left="435" top="83" width="155" height="21" popuptype="none" type="search" value="" index="-1" u_innerdataset="ds_data1" u_codecolumn="CODE" u_datacolumn="NAME" u_type="multi" u_callback="fn_mComboCallback2" u_maxcount="10"/>
         <Div id="Div00" taborder="23" text="Div00" left="425" top="114" width="265" height="74" border="1px solid #cccccc">
           <Layouts>
             <Layout>
@@ -182,7 +182,6 @@ this.btn_essential_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInf
 	var objForm = this.div_mCombo1.form;    
     this.fv_essential = (this.fv_essential ? false: true);
     objForm.fn_setRequired(this.fv_essential);
-	
 };
 
 /************************************************************************************************

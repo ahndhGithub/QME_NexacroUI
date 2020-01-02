@@ -60,15 +60,15 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	{	//	3. userproperty를 통해 전역에 타입,바인딩DS,컬럼 세팅
 		var arrUserProp = this._getUserProperty("this.parent","SearchConditionType");	this.gtrace("this.parent.SearchConditionType--->"+this.parent.SearchConditionType, gtrcPos);
 
-		this.sSearchConditionType  	= arrUserProp[0];									this.gtrace("sSearchConditionType--->"+this.sSearchConditionType, gtrcPos);
-		this.oBindDs  				= eval(sEvFrm+"."+arrUserProp[1]);      			this.gtrace("oBindDs.name --->"+this.oBindDs.name, gtrcPos);
-		this.oBindFromCol 			= arrUserProp[2];                           		this.gtrace("oBindFromCol--->"+this.oBindFromCol, gtrcPos);
-		this.oBindToCol 			= arrUserProp[3];                          			this.gtrace("oBindToCol--->"+this.oBindToCol, gtrcPos);
-		this.oBindListCol			= arrUserProp[4];                          			this.gtrace("oBindListCol--->"+this.oBindListCol, gtrcPos);
+		this.sSearchConditionType  	= nexacro.trim(this.gfn_nvl(arrUserProp[0],""));					this.gtrace("sSearchConditionType--->"+this.sSearchConditionType, gtrcPos);
+		this.oBindDs  				= eval(sEvFrm+"."+nexacro.trim(this.gfn_nvl(arrUserProp[1],"")));	this.gtrace("oBindDs.name --->"+this.oBindDs.name, gtrcPos);
+		this.oBindFromCol 			= nexacro.trim(this.gfn_nvl(arrUserProp[2],""));                    this.gtrace("oBindFromCol--->"+this.oBindFromCol, gtrcPos);
+		this.oBindToCol 			= nexacro.trim(this.gfn_nvl(arrUserProp[3],""));                    this.gtrace("oBindToCol--->"+this.oBindToCol, gtrcPos);
+		this.oBindListCol			= nexacro.trim(this.gfn_nvl(arrUserProp[4],""));                    this.gtrace("oBindListCol--->"+this.oBindListCol, gtrcPos);
 	}
 	
 	{	//  9. 기본호출 ( 그리드, 초기화 )
-		this.gfn_formOnLoad(this);
+		//	this.gfn_formOnLoad(this);
 		this.fn_init();
 	}
 			

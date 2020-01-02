@@ -3,30 +3,21 @@
   <Form id="Order_recap" width="1280" height="720" titletext="New Form" onload="formOnload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="0" InitCompVisEna="1:1:1:1,1:0:1:1"/>
-        <Div id="DivCondition" taborder="1" left="8" top="40" height="155" cssclass="div_WF_search" text="" formscrolltype="none" width="1264">
+        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="0" InitCompVisEna="1:0:0:0,1:1:1:1"/>
+        <Div id="DivCondition" taborder="1" left="8" top="40" height="170" cssclass="div_WF_search" text="" formscrolltype="none" right="8">
           <Layouts>
             <Layout>
               <Static id="StaticCompany" taborder="0" text="Company" left="0" top="8" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticSalesOrder_onclick"/>
-              <Static id="StaticSoldToParty" taborder="1" text="Sold-To Party" left="0" top="33" width="131" cssclass="sta_WF_searchLabel" height="21"/>
-              <Static id="StaticSalesOrder" taborder="2" text="Sales Order" left="0" top="58" width="131" cssclass="sta_WF_searchLabel" height="21"/>
-              <Static id="StaticSalesGroup" taborder="5" text="Sales Group" left="580" top="8" width="131" cssclass="sta_WF_searchLabel" height="21"/>
-              <Div id="div_StyleFromTo" taborder="3" text="Div00" left="148" top="33" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2,p_matnr_list"/>
-              <Div id="div_VendorFromTo" taborder="4" text="Div00" left="148" top="58" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="VendorCode,ds_in,p_supply1,p_supply2,p_supply_list"/>
-              <Div id="div_MaterialFromTo" taborder="6" text="Div00" left="728" top="8" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
-              <Static id="StaticOS" taborder="7" text="OS 작업지" left="580" top="33" width="131" cssclass="sta_WF_searchLabel" height="21"/>
-              <Div id="div_MaterialFromTo00" taborder="8" text="Div00" left="728" top="33" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
-              <Static id="StaticBuyDate" taborder="9" text="Buy Date" left="580" top="58" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor00_onclick"/>
-              <Static id="StaticBuyerStyle" taborder="10" text="Buyer Style" left="0" top="83" width="131" cssclass="sta_WF_searchLabel" height="21"/>
-              <Div id="div_StyleFromTo00" taborder="11" text="Div00" left="148" top="83" width="391" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_matnr1,p_matnr2,p_matnr_list"/>
-              <Static id="StaticBuyerPONO" taborder="12" text="Buyer PO NO" left="580" top="83" width="138" cssclass="sta_WF_searchLabel" height="21"/>
-              <Div id="div_MaterialFromTo00_00" taborder="13" text="Div00" left="728" top="83" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="391" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
-              <Static id="StaticPOIssueDate" taborder="14" text="PO Issue Date" left="0" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
-              <Static id="StaticStyle" taborder="15" text="Style" left="0" top="133" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
-              <Combo id="cbo_dept" taborder="16" left="148" top="8" width="150" height="21" innerdataset="ds_outCompanyCode" codecolumn="CENTER_CD" datacolumn="CENTER_NM" index="0" text="" value="4"/>
-              <Div id="div_calFromTo" taborder="17" text="Div00" left="728" top="58" width="296" height="21" url="Edu_Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback"/>
-              <Div id="div_calFromTo00" taborder="18" text="Div00" left="148" top="108" width="296" height="21" url="Edu_Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback"/>
-              <Radio id="Radio00" taborder="19" left="148" top="131" width="995" height="23" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" index="0" text="PO INFO 1 - color" value="00" fittocontents="width">
+              <Static id="StaticSalesOrder" taborder="1" text="Sales Order" left="0" top="33" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticSalesGroup" taborder="2" text="Sales Group" left="660" top="8" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticOSFactory" taborder="3" text="OS Factory" left="660" top="33" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticBuyDate" taborder="4" text="Buy Date" left="660" top="58" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor00_onclick"/>
+              <Static id="StaticStyle" taborder="5" text="Style" left="0" top="58" width="131" cssclass="sta_WF_searchLabel" height="21"/>
+              <Static id="StaticYear" taborder="6" text="Year" left="0" top="83" width="151" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Static id="StaticOption" taborder="7" text="Option" left="0" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Combo id="div_company" taborder="8" left="148" top="8" width="171" height="21" innerdataset="ds_cmcdCompanyCode" codecolumn="CENTER_CD" datacolumn="CENTER_NM" index="0" text="" value="4"/>
+              <Div id="div_calFromTo" taborder="9" text="Div00" left="808" top="58" width="431" height="21" url="Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback"/>
+              <Radio id="Radio00" taborder="10" left="148" top="106" width="443" height="53" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="horizontal" index="0" text="Style" fittocontents="width" columncount="4" rowcount="2" value="1">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -34,149 +25,1054 @@
                   </ColumnInfo>
                   <Rows>
                     <Row>
-                      <Col id="codecolumn">00</Col>
-                      <Col id="datacolumn">PO INFO 1 - color</Col>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">Style</Col>
                     </Row>
                     <Row>
-                      <Col id="codecolumn">01</Col>
-                      <Col id="datacolumn">PO INFO 2 - color &amp; size</Col>
+                      <Col id="codecolumn">2</Col>
+                      <Col id="datacolumn">PO INFO 1</Col>
                     </Row>
                     <Row>
-                      <Col id="codecolumn">02</Col>
+                      <Col id="codecolumn">3</Col>
+                      <Col id="datacolumn">PO INFO 2 - color</Col>
+                    </Row>
+                    <Row>
+                      <Col id="datacolumn">PO INFO 3 - color &amp; size</Col>
+                      <Col id="codecolumn">4</Col>
+                    </Row>
+                    <Row>
+                      <Col id="datacolumn">OS</Col>
+                      <Col id="codecolumn">5</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">6</Col>
                       <Col id="datacolumn">생산</Col>
                     </Row>
                     <Row>
+                      <Col id="codecolumn">7</Col>
                       <Col id="datacolumn">샘플</Col>
-                      <Col id="codecolumn">03</Col>
-                    </Row>
-                    <Row>
-                      <Col id="datacolumn">ETC</Col>
-                      <Col id="codecolumn">04</Col>
                     </Row>
                   </Rows>
                 </Dataset>
               </Radio>
+              <Static id="StaticSeason" taborder="11" text="Season" left="660" top="83" width="151" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <CheckBox id="CheckBoxShipment" taborder="12" text="Shipment" left="808" top="106" width="97" height="23" value="N" truevalue="Y" falsevalue="N"/>
+              <Radio id="Radio01" taborder="13" left="808" top="128" width="181" height="28" direction="vertical" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="Sewing" value="00" fittocontents="width" visible="true">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">SEWING</Col>
+                      <Col id="datacolumn">Sewing</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">END-LINE</Col>
+                      <Col id="datacolumn">End-line pass</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Div id="div_SalesOrderFromTo" taborder="14" text="Div00" left="148" top="33" width="431" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesOrderNo,ds_in,p_so_key_sta,p_so_key_end,p_so_key_list"/>
+              <Div id="div_StyleFromTo" taborder="15" text="Div00" left="148" top="58" width="431" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_item_cd_sta,p_item_cd_end,p_item_cd_list"/>
+              <Static id="StaticSubOption" taborder="16" text="Sub Option" left="660" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Static id="StaticProductionOption" taborder="17" text="생산 Option" left="660" top="133" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Div id="div_YearFromTo" taborder="18" text="Div00" left="148" top="83" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="Year,ds_in,ds_cmcdYear,p_year_sta,p_year_end"/>
+              <Div id="div_OsFactory" taborder="19" text="Div00" left="808" top="33" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="OsFactory,ds_in,ds_cmcdOSFactory,p_jakji_sta,p_jakji_end,p_jakji_list"/>
+              <Div id="div_SalesGroup" taborder="20" left="808" top="8" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesGroup,ds_in,ds_cmcdSalesGroup,p_sales_team_sta,p_sales_team_end,p_sales_team_list"/>
+              <Div id="div_Season" taborder="21" text="Div00" left="808" top="83" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="Season,ds_in,ds_cmcdSeason,p_season_sta,p_season_end,p_season_list"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="2" left="8" top="220" width="1264" height="480" binddataset="ds_OrderRecap">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="Buyer"/>
-                <Cell col="1" text="Year"/>
-                <Cell col="2" text="Column0"/>
-                <Cell col="3" text="Column1"/>
-                <Cell col="4" text="Column2"/>
-                <Cell col="5" text="Column3"/>
-                <Cell col="6" text="Column4"/>
-                <Cell col="7" text="Column5"/>
-                <Cell col="8" text="Column6"/>
-                <Cell col="9" text="Column7"/>
-                <Cell col="10" text="Column8"/>
-                <Cell col="11" text="Column9"/>
-                <Cell col="12" text="Column10"/>
-                <Cell col="13" text="Column11"/>
-                <Cell col="14" text="Column12"/>
-                <Cell col="15" text="Column13"/>
-                <Cell col="16" text="Column14"/>
-                <Cell col="17" text="Column15"/>
-                <Cell col="18" text="Column16"/>
-                <Cell col="19" text="Column17"/>
-                <Cell col="20" text="Column18"/>
-                <Cell col="21" text="Column19"/>
-                <Cell col="22" text="Column20"/>
-                <Cell col="23" text="Column21"/>
-                <Cell col="24" text="Column22"/>
-                <Cell col="25" text="Column23"/>
-                <Cell col="26" text="Column24"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:Buyer"/>
-                <Cell col="1" text="bind:Year"/>
-                <Cell col="2" text="bind:Column0"/>
-                <Cell col="3" text="bind:Column1"/>
-                <Cell col="4" text="bind:Column2"/>
-                <Cell col="5" text="bind:Column3"/>
-                <Cell col="6" text="bind:Column4"/>
-                <Cell col="7" text="bind:Column5"/>
-                <Cell col="8" text="bind:Column6"/>
-                <Cell col="9" text="bind:Column7"/>
-                <Cell col="10" text="bind:Column8"/>
-                <Cell col="11" text="bind:Column9"/>
-                <Cell col="12" text="bind:Column10"/>
-                <Cell col="13" text="bind:Column11"/>
-                <Cell col="14" text="bind:Column12"/>
-                <Cell col="15" text="bind:Column13"/>
-                <Cell col="16" text="bind:Column14"/>
-                <Cell col="17" text="bind:Column15"/>
-                <Cell col="18" text="bind:Column16"/>
-                <Cell col="19" text="bind:Column17"/>
-                <Cell col="20" text="bind:Column18"/>
-                <Cell col="21" text="bind:Column19"/>
-                <Cell col="22" text="bind:Column20"/>
-                <Cell col="23" text="bind:Column21"/>
-                <Cell col="24" text="bind:Column22"/>
-                <Cell col="25" text="bind:Column23"/>
-                <Cell col="26" text="bind:Column24"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
+        <Tab id="TabOrderRecap" taborder="2" tabindex="0" left="8" top="216" bottom="7" right="8">
+          <Tabpages>
+            <Tabpage id="TabpageStyle" text="Style">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listStyle" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="OSH_MARK_UP_RATE"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:OSH_MARK_UP_RATE"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Grid id="Grid00" taborder="1" left="8" top="120" height="96" binddataset="ds_in" right="22" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="p_center_cd"/>
+                          <Cell col="1" text="p_so_key_sta"/>
+                          <Cell col="2" text="p_so_key_end"/>
+                          <Cell col="3" text="p_so_key_list"/>
+                          <Cell col="4" text="p_item_cd_sta"/>
+                          <Cell col="5" text="p_item_cd_end"/>
+                          <Cell col="6" text="p_item_cd_list"/>
+                          <Cell col="7" text="p_buyer_cd_sta"/>
+                          <Cell col="8" text="p_buyer_cd_end"/>
+                          <Cell col="9" text="p_buyer_cd_list"/>
+                          <Cell col="10" text="p_sales_team_sta"/>
+                          <Cell col="11" text="p_sales_team_end"/>
+                          <Cell col="12" text="p_sales_team_list"/>
+                          <Cell col="13" text="p_jakji_sta"/>
+                          <Cell col="14" text="p_jakji_end"/>
+                          <Cell col="15" text="p_jakji_list"/>
+                          <Cell col="16" text="p_year_sta"/>
+                          <Cell col="17" text="p_year_end"/>
+                          <Cell col="18" text="p_season_sta"/>
+                          <Cell col="19" text="p_season_end"/>
+                          <Cell col="20" text="p_season_list"/>
+                          <Cell col="21" text="p_buy_date_sta"/>
+                          <Cell col="22" text="p_buy_date_end"/>
+                          <Cell col="23" text="p_user_id"/>
+                          <Cell col="24" text="p_radio"/>
+                          <Cell col="25" text="p_shipment_yn"/>
+                          <Cell col="26" text="p_sewi_type"/>
+                          <Cell col="27" text="p_perf_date"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:p_center_cd"/>
+                          <Cell col="1" text="bind:p_so_key_sta"/>
+                          <Cell col="2" text="bind:p_so_key_end"/>
+                          <Cell col="3" text="bind:p_so_key_list"/>
+                          <Cell col="4" text="bind:p_item_cd_sta"/>
+                          <Cell col="5" text="bind:p_item_cd_end"/>
+                          <Cell col="6" text="bind:p_item_cd_list"/>
+                          <Cell col="7" text="bind:p_buyer_cd_sta"/>
+                          <Cell col="8" text="bind:p_buyer_cd_end"/>
+                          <Cell col="9" text="bind:p_buyer_cd_list"/>
+                          <Cell col="10" text="bind:p_sales_team_sta"/>
+                          <Cell col="11" text="bind:p_sales_team_end"/>
+                          <Cell col="12" text="bind:p_sales_team_list"/>
+                          <Cell col="13" text="bind:p_jakji_sta"/>
+                          <Cell col="14" text="bind:p_jakji_end"/>
+                          <Cell col="15" text="bind:p_jakji_list"/>
+                          <Cell col="16" text="bind:p_year_sta"/>
+                          <Cell col="17" text="bind:p_year_end"/>
+                          <Cell col="18" text="bind:p_season_sta"/>
+                          <Cell col="19" text="bind:p_season_end"/>
+                          <Cell col="20" text="bind:p_season_list"/>
+                          <Cell col="21" text="bind:p_buy_date_sta"/>
+                          <Cell col="22" text="bind:p_buy_date_end"/>
+                          <Cell col="23" text="bind:p_user_id"/>
+                          <Cell col="24" text="bind:p_radio"/>
+                          <Cell col="25" text="bind:p_shipment_yn"/>
+                          <Cell col="26" text="bind:p_sewi_type"/>
+                          <Cell col="27" text="bind:p_perf_date"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Grid id="Grid01" taborder="2" left="792" top="166" width="249" height="292" binddataset="ds_cmcdSalesGroup" visible="false">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="BU_NM"/>
+                          <Cell col="1" text="BU_CD_F"/>
+                          <Cell col="2" text="BU_CD"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:BU_NM"/>
+                          <Cell col="1" text="bind:BU_CD_F"/>
+                          <Cell col="2" text="bind:BU_CD"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="TabpagePoInfo_1" text="PO INFO 1">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo1" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="PO_OPM_PO_DESC"/>
+                          <Cell col="21" text="PO_OPD_ORDER_QTY"/>
+                          <Cell col="22" text="PO_SALES_PRICE"/>
+                          <Cell col="23" text="PO_SALES_AMOUNT"/>
+                          <Cell col="24" text="PO_OPM_DELIVERY_DATE"/>
+                          <Cell col="25" text="PO_OPM_NATIONAL_VAL"/>
+                          <Cell col="26" text="PO_OPM_REDAT"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:PO_OPM_PO_DESC"/>
+                          <Cell col="21" text="bind:PO_OPD_ORDER_QTY"/>
+                          <Cell col="22" text="bind:PO_SALES_PRICE"/>
+                          <Cell col="23" text="bind:PO_SALES_AMOUNT"/>
+                          <Cell col="24" text="bind:PO_OPM_DELIVERY_DATE"/>
+                          <Cell col="25" text="bind:PO_OPM_NATIONAL_VAL"/>
+                          <Cell col="26" text="bind:PO_OPM_REDAT"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="TabpagePoInfo_2" text="PO INFO 2 - color">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo2" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="PO_OPM_PO_DESC"/>
+                          <Cell col="21" text="CC1_COLOR_DESC"/>
+                          <Cell col="22" text="CS1_SIZE_DESC"/>
+                          <Cell col="23" text="PO_OPD_ORDER_QTY"/>
+                          <Cell col="24" text="PO_SALES_PRICE"/>
+                          <Cell col="25" text="PO_SALES_AMOUNT"/>
+                          <Cell col="26" text="PO_OPM_DELIVERY_DATE"/>
+                          <Cell col="27" text="PO_OPM_NATIONAL_VAL"/>
+                          <Cell col="28" text="PO_OPM_REDAT"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:PO_OPM_PO_DESC"/>
+                          <Cell col="21" text="bind:CC1_COLOR_DESC"/>
+                          <Cell col="22" text="bind:CS1_SIZE_DESC"/>
+                          <Cell col="23" text="bind:PO_OPD_ORDER_QTY"/>
+                          <Cell col="24" text="bind:PO_SALES_PRICE"/>
+                          <Cell col="25" text="bind:PO_SALES_AMOUNT"/>
+                          <Cell col="26" text="bind:PO_OPM_DELIVERY_DATE"/>
+                          <Cell col="27" text="bind:PO_OPM_NATIONAL_VAL"/>
+                          <Cell col="28" text="bind:PO_OPM_REDAT"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="TabpagePoInfo_3" text="PO INFO 3 - color size">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo3" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="PO_OPM_PO_DESC"/>
+                          <Cell col="21" text="CC1_COLOR_DESC"/>
+                          <Cell col="22" text="CS1_SIZE_DESC"/>
+                          <Cell col="23" text="PO_OPD_ORDER_QTY"/>
+                          <Cell col="24" text="PO_SALES_PRICE"/>
+                          <Cell col="25" text="PO_SALES_AMOUNT"/>
+                          <Cell col="26" text="PO_OPM_DELIVERY_DATE"/>
+                          <Cell col="27" text="PO_OPM_NATIONAL_VAL"/>
+                          <Cell col="28" text="PO_OPM_REDAT"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:PO_OPM_PO_DESC"/>
+                          <Cell col="21" text="bind:CC1_COLOR_DESC"/>
+                          <Cell col="22" text="bind:CS1_SIZE_DESC"/>
+                          <Cell col="23" text="bind:PO_OPD_ORDER_QTY"/>
+                          <Cell col="24" text="bind:PO_SALES_PRICE"/>
+                          <Cell col="25" text="bind:PO_SALES_AMOUNT"/>
+                          <Cell col="26" text="bind:PO_OPM_DELIVERY_DATE"/>
+                          <Cell col="27" text="bind:PO_OPM_NATIONAL_VAL"/>
+                          <Cell col="28" text="bind:PO_OPM_REDAT"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="TabpageOs" text="OS">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listOs" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="CFDATE"/>
+                          <Cell col="21" text="AMOND"/>
+                          <Cell col="22" text="OSH_MARK_UP_RATE"/>
+                          <Cell col="23" text="OSSTS_NM"/>
+                          <Cell col="24" text="APPTY_NM"/>
+                          <Cell col="25" text="REMARK"/>
+                          <Cell col="26" text="MEMO"/>
+                          <Cell col="27" text="U_WAERK"/>
+                          <Cell col="28" text="NETWR"/>
+                          <Cell col="29" text="ROH_COST"/>
+                          <Cell col="30" text="VERP_COST"/>
+                          <Cell col="31" text="EXPORT_COST"/>
+                          <Cell col="32" text="T2001"/>
+                          <Cell col="33" text="T2002"/>
+                          <Cell col="34" text="T2003"/>
+                          <Cell col="35" text="T2004"/>
+                          <Cell col="36" text="T2005"/>
+                          <Cell col="37" text="T2006"/>
+                          <Cell col="38" text="T2011"/>
+                          <Cell col="39" text="T3011"/>
+                          <Cell col="40" text="T3012"/>
+                          <Cell col="41" text="T3013"/>
+                          <Cell col="42" text="T3014"/>
+                          <Cell col="43" text="T3015"/>
+                          <Cell col="44" text="T3016"/>
+                          <Cell col="45" text="T3021"/>
+                          <Cell col="46" text="T3022"/>
+                          <Cell col="47" text="T3023"/>
+                          <Cell col="48" text="T3031"/>
+                          <Cell col="49" text="T3051"/>
+                          <Cell col="50" text="T3061"/>
+                          <Cell col="51" text="T3071"/>
+                          <Cell col="52" text="T3072"/>
+                          <Cell col="53" text="T3073"/>
+                          <Cell col="54" text="T3111"/>
+                          <Cell col="55" text="T3301"/>
+                          <Cell col="56" text="T3801"/>
+                          <Cell col="57" text="T3802"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:CFDATE"/>
+                          <Cell col="21" text="bind:AMOND"/>
+                          <Cell col="22" text="bind:OSH_MARK_UP_RATE"/>
+                          <Cell col="23" text="bind:OSSTS_NM"/>
+                          <Cell col="24" text="bind:APPTY_NM"/>
+                          <Cell col="25" text="bind:REMARK"/>
+                          <Cell col="26" text="bind:MEMO"/>
+                          <Cell col="27" text="bind:U_WAERK"/>
+                          <Cell col="28" text="bind:NETWR"/>
+                          <Cell col="29" text="bind:ROH_COST"/>
+                          <Cell col="30" text="bind:VERP_COST"/>
+                          <Cell col="31" text="bind:EXPORT_COST"/>
+                          <Cell col="32" text="bind:T2001"/>
+                          <Cell col="33" text="bind:T2002"/>
+                          <Cell col="34" text="bind:T2003"/>
+                          <Cell col="35" text="bind:T2004"/>
+                          <Cell col="36" text="bind:T2005"/>
+                          <Cell col="37" text="bind:T2006"/>
+                          <Cell col="38" text="bind:T2011"/>
+                          <Cell col="39" text="bind:T3011"/>
+                          <Cell col="40" text="bind:T3012"/>
+                          <Cell col="41" text="bind:T3013"/>
+                          <Cell col="42" text="bind:T3014"/>
+                          <Cell col="43" text="bind:T3015"/>
+                          <Cell col="44" text="bind:T3016"/>
+                          <Cell col="45" text="bind:T3021"/>
+                          <Cell col="46" text="bind:T3022"/>
+                          <Cell col="47" text="bind:T3023"/>
+                          <Cell col="48" text="bind:T3031"/>
+                          <Cell col="49" text="bind:T3051"/>
+                          <Cell col="50" text="bind:T3061"/>
+                          <Cell col="51" text="bind:T3071"/>
+                          <Cell col="52" text="bind:T3072"/>
+                          <Cell col="53" text="bind:T3073"/>
+                          <Cell col="54" text="bind:T3111"/>
+                          <Cell col="55" text="bind:T3301"/>
+                          <Cell col="56" text="bind:T3801"/>
+                          <Cell col="57" text="bind:T3802"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="TabpageProduction" text="생산">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listProduction" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="LINE_NM"/>
+                          <Cell col="21" text="PRD_S_DATE"/>
+                          <Cell col="22" text="PRD_E_DATE"/>
+                          <Cell col="23" text="WORKING_DAYS"/>
+                          <Cell col="24" text="LINE_PREVIOUS_QTY"/>
+                          <Cell col="25" text="LINE_PRD_QTY"/>
+                          <Cell col="26" text="LINE_ACC_PRD_QTY"/>
+                          <Cell col="27" text="AVG_TAR"/>
+                          <Cell col="28" text="AVG_LINE_PRD_QTY"/>
+                          <Cell col="29" text="TTL_CT_QTY"/>
+                          <Cell col="30" text="TTL_SW_QTY"/>
+                          <Cell col="31" text="TTL_FS_QTY"/>
+                          <Cell col="32" text="TTL_PL_QTY"/>
+                          <Cell col="33" text="TTL_PK_QTY"/>
+                          <Cell col="34" text="TTL_SHIP_QTY"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:LINE_NM"/>
+                          <Cell col="21" text="bind:PRD_S_DATE"/>
+                          <Cell col="22" text="bind:PRD_E_DATE"/>
+                          <Cell col="23" text="bind:WORKING_DAYS"/>
+                          <Cell col="24" text="bind:LINE_PREVIOUS_QTY"/>
+                          <Cell col="25" text="bind:LINE_PRD_QTY"/>
+                          <Cell col="26" text="bind:LINE_ACC_PRD_QTY"/>
+                          <Cell col="27" text="bind:AVG_TAR"/>
+                          <Cell col="28" text="bind:AVG_LINE_PRD_QTY"/>
+                          <Cell col="29" text="bind:TTL_CT_QTY"/>
+                          <Cell col="30" text="bind:TTL_SW_QTY"/>
+                          <Cell col="31" text="bind:TTL_FS_QTY"/>
+                          <Cell col="32" text="bind:TTL_PL_QTY"/>
+                          <Cell col="33" text="bind:TTL_PK_QTY"/>
+                          <Cell col="34" text="bind:TTL_SHIP_QTY"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="TabpageSample" text="샘플">
+              <Layouts>
+                <Layout>
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listSample" cellsizingtype="col">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row band="head" size="24"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="OSM_ZYEAR"/>
+                          <Cell col="2" text="OSM_ZSEASON"/>
+                          <Cell col="3" text="CB_BU_NM"/>
+                          <Cell col="4" text="CI_MANAGER"/>
+                          <Cell col="5" text="V1_JAKJI_NM"/>
+                          <Cell col="6" text="OSM_WSHOP"/>
+                          <Cell col="7" text="REF_ITEM_NM"/>
+                          <Cell col="8" text="CI_ITEM_NM"/>
+                          <Cell col="9" text="OSM_VBELN"/>
+                          <Cell col="10" text="CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="OPD_ORDER_QTY"/>
+                          <Cell col="13" text="OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="SALES_PRICE"/>
+                          <Cell col="15" text="SALES_AMOUNT"/>
+                          <Cell col="16" text="OSC_U_CPRICE"/>
+                          <Cell col="17" text="V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="OSD_START_PD_DATE"/>
+                          <Cell col="19" text="OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="FIT_STATUS"/>
+                          <Cell col="21" text="FIT_APPRV_DATE"/>
+                          <Cell col="22" text="PP_PACK_DUE_DATE"/>
+                          <Cell col="23" text="PP_SUBM_DUE_DATE"/>
+                          <Cell col="24" text="PP_APPRV_DATE"/>
+                          <Cell col="25" text="PRD_S_DATE"/>
+                          <Cell col="26" text="GMT_TEST_DUE_DATE"/>
+                          <Cell col="27" text="GMT_ACT_TEST_DATE"/>
+                          <Cell col="28" text="TOP_SUBM_DUE_DATE"/>
+                          <Cell col="29" text="FIRST_SHIP_DATE"/>
+                          <Cell col="30" text="REMARK1"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CC_CUST_SHORT_NM"/>
+                          <Cell col="1" text="bind:OSM_ZYEAR"/>
+                          <Cell col="2" text="bind:OSM_ZSEASON"/>
+                          <Cell col="3" text="bind:CB_BU_NM"/>
+                          <Cell col="4" text="bind:CI_MANAGER"/>
+                          <Cell col="5" text="bind:V1_JAKJI_NM"/>
+                          <Cell col="6" text="bind:OSM_WSHOP"/>
+                          <Cell col="7" text="bind:REF_ITEM_NM"/>
+                          <Cell col="8" text="bind:CI_ITEM_NM"/>
+                          <Cell col="9" text="bind:OSM_VBELN"/>
+                          <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
+                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="12" text="bind:OPD_ORDER_QTY"/>
+                          <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
+                          <Cell col="14" text="bind:SALES_PRICE"/>
+                          <Cell col="15" text="bind:SALES_AMOUNT"/>
+                          <Cell col="16" text="bind:OSC_U_CPRICE"/>
+                          <Cell col="17" text="bind:V4_SET_TYPE_NM"/>
+                          <Cell col="18" text="bind:OSD_START_PD_DATE"/>
+                          <Cell col="19" text="bind:OSD_MTL_TAR_ETA"/>
+                          <Cell col="20" text="bind:FIT_STATUS"/>
+                          <Cell col="21" text="bind:FIT_APPRV_DATE"/>
+                          <Cell col="22" text="bind:PP_PACK_DUE_DATE"/>
+                          <Cell col="23" text="bind:PP_SUBM_DUE_DATE"/>
+                          <Cell col="24" text="bind:PP_APPRV_DATE"/>
+                          <Cell col="25" text="bind:PRD_S_DATE"/>
+                          <Cell col="26" text="bind:GMT_TEST_DUE_DATE"/>
+                          <Cell col="27" text="bind:GMT_ACT_TEST_DATE"/>
+                          <Cell col="28" text="bind:TOP_SUBM_DUE_DATE"/>
+                          <Cell col="29" text="bind:FIRST_SHIP_DATE"/>
+                          <Cell col="30" text="bind:REMARK1"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
       </Layout>
     </Layouts>
     <Bind>
-      <BindItem id="item2" compid="DivCondition.form.div_StyleFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item3" compid="DivCondition.form.div_StyleFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item4" compid="DivCondition.form.div_VendorFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item5" compid="DivCondition.form.div_VendorFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item6" compid="DivCondition.form.div_MaterialFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item7" compid="DivCondition.form.div_MaterialFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item0" compid="DivCondition.form.div_MaterialFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item1" compid="DivCondition.form.div_MaterialFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item10" compid="DivCondition.form.div_StyleFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item11" compid="DivCondition.form.div_StyleFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item12" compid="DivCondition.form.div_MaterialFromTo00_00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item13" compid="DivCondition.form.div_MaterialFromTo00_00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item8" compid="DivCondition.form.div_calFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item9" compid="DivCondition.form.div_calFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item14" compid="div_calFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item15" compid="div_calFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
-      <BindItem id="item16" compid="DivCondition.form.div_calFromTo00.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
-      <BindItem id="item17" compid="DivCondition.form.div_calFromTo00.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item8" compid="DivCondition.form.div_calFromTo.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
+      <BindItem id="item9" compid="DivCondition.form.div_calFromTo.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
+      <BindItem id="item14" compid="div_calFromTo00.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
+      <BindItem id="item15" compid="div_calFromTo00.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
+      <BindItem id="item4" compid="DivCondition.form.div_SalesOrderFromTo.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
+      <BindItem id="item5" compid="DivCondition.form.div_SalesOrderFromTo.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
+      <BindItem id="item10" compid="DivCondition.form.div_StyleFromTo.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
+      <BindItem id="item11" compid="DivCondition.form.div_StyleFromTo.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
+      <BindItem id="item1" compid="DivCondition.form.Radio00" propid="value" datasetid="ds_in" columnid="p_radio"/>
+      <BindItem id="item2" compid="DivCondition.form.div_company" propid="value" datasetid="ds_in" columnid="p_center_cd"/>
+      <BindItem id="item0" compid="DivCondition.form.CheckBoxShipment" propid="value" datasetid="ds_in" columnid="p_shipment_yn"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
 @desc	1. Include
@@ -184,32 +1080,61 @@
 include "Src_HintsEduLib::All_EduLib.xjs";
 
 /********************************************************************************************
-@desc	2. Form 변수 선언 ---------------
+@desc	2. Form 변수 선언
 ********************************************************************************************/
-					
+//공통코드 세팅
+this.COMBO_SET_STR = "ds_cmcdOSFactory"		+"#"+"JAKJI"						+" "
+					+"ds_cmcdSeason"		+"#"+"SEASON"   					+" "
+					+"ds_cmcdYear"			+"#"+"ZYEAR"    					+" "
+					+"ds_cmcdCompanyCode"	+"#"+"UserMapper.getUserCenter"		+" "
+					+"ds_cmcdSalesGroup"	+"#"+"CommonMapper.getSalesGroup"   +" "
+					;
+			
 /********************************************************************************************
 @desc	3. OnLoad
 ********************************************************************************************/
+/*
+ *	온로드
+ */
+this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_reset();
+};
+
 /* 
  *	초기화 함수
  */
 this.fn_reset = function()
 {
-		this.ds_inCompanyCode.clearData();
-		this.ds_inCompanyCode.addRow();	
-		this.ds_outCompanyCode.clearData();
+	var gtrcPos = "fn_reset";	gtrcPos = this.name+".xfdl."+gtrcPos;
+	//	var gtrcPos = this.name+"."+arguments.callee.toString().match(/function ([^\(]+)/)[1];
+	
+	// 기본 데이터 가져오기(공통코드등)+ word
+	{	 
+		this.gfn_getAllInitData();
+	}
+	
+	// 멀티 콤보 데이타 설정 함수 호출 - innerdataset은 user prop. 지정한 값
+ 	//this.DivCondition.form.div_MultiComboSalesGroup.form.fn_setDataset();  
+
+	{
+		this.ds_in.addRow();
+		this.ds_in.setColumn(0, "p_radio", "1");
 		
-		this.ds_inCompanyCode.setColumn(0, "p_user_id", "131206");
-		this.ds_inCompanyCode.setColumn(1, "p_country_cd", "%");
-		
-		var sSvcID 			= "getUserCenter";
-		var sURL 			= "AppSvr::common/commonAction.ppc";		//운영계
-		var sInDatasets 	= "ds_in0=ds_inCompanyCode";
-		var sOutDatasets 	= "ds_outCompanyCode=ds_out0";
-		var sArguments 		= "sqlId=" + nexacro.wrapQuote("UserMapper.getUserCenter");
-	    
-		//공통 트랜잭션 사용
-		this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");		
+		//	this.ds_in.setColumn(0, "p_radio", this.DivCondition.form.CheckBoxShipment.falsevalue);
+		//	trace("this.DivCondition.form.CheckBoxShipment.truevalue---->"+this.DivCondition.form.CheckBoxShipment.truevalue);
+		//	trace("this.DivCondition.form.CheckBoxShipment.getBindDataset()---->"+this.DivCondition.form.CheckBoxShipment.value);
+		//	trace(BindItem.item0.compid);
+		//	trace(this.DivCondition.form.CheckBoxShipment.BindItem);
+// var objBindItem = new BindItem();
+// objBindItem.init("item"+yearStr, "divContents00.form.chkBox"+yearStr, "value", "dsMaster", "chkBox"+yearStr);
+// this.addChild("item"+yearStr, objBindItem);
+// objBindItem.bind();
+
+
+// 		this.DivCondition.form.Radio01.readonly    = true;
+// 		this.DivCondition.form.Calendar00.readonly = true;
+	}
 }
 
 /********************************************************************************************
@@ -220,28 +1145,44 @@ this.fn_reset = function()
 @desc	5. 서비스 호출(Transaction)
 ********************************************************************************************/
 /*++
-@desc	POList , POHistory Load
+@desc	Order Recap 트랜잭션
 */
-this.tfn_getPoListHistoryLoad = function(){
-/*
-	this.ds_POList.clearData();
-	this.ds_POHistory.clearData();
-	//	this.ds_in.setColumn(0, "p_osno1", "1126195724");
-	this.ds_in.setColumn(0, "p_user_id", this.gfn_getApplication().gds_User.getColumn(0, "USER_ID"));
+this.tfn_orderRecapSearch = function(){
+					
+	this.gfn_setUser(this.ds_in, "p_user_id");
+	var sTargetListDs;
+	var iSearchOption = this.ds_in.getColumn(0, "p_radio");
 	
-	//	http://nyc.panpacific.co.kr/QMENexacroSvr/common/commonAction.ppc
-	//	http://203.229.231.124/QMENexacroSvr/common/commonAction.ppc
-	//	AppSvr	JSP	-- http://nyc.panpacific.co.kr/QMENexacroSvr/
+	var sTmpOutDs;
+	switch(iSearchOption)
+	{
+		case	"1"	:	sTmpOutDs	=	"ds_listStyle";
+			break;
+		case	"2"	:	sTmpOutDs	=	"ds_listPoInfo1";
+			break;
+		case	"3"	:	sTmpOutDs	=	"ds_listPoInfo2";
+			break;
+		case	"4"	:	sTmpOutDs	=	"ds_listPoInfo3";
+			break;
+		case	"5"	:	sTmpOutDs	=	"ds_listOs";
+			break;
+		case	"6"	:	sTmpOutDs	=	"ds_listProduction";
+			break;
+		case	"7"	:	sTmpOutDs	=	"ds_listSample";
+			break;
+		default		:	break;
+	}
+	
 	var sSvcID 			= "getPoListHistoryLoad";
 	var sURL 			= "AppSvr::common/commonAction.ppc";
-	var sInDatasets 	= "ds_in0=ds_in ds_in1=ds_in";
-	var sOutDatasets 	= "ds_POList=ds_out0 ds_POHistory=ds_out1";
-	var sArguments 		= "sqlId=" + nexacro.wrapQuote("POMapper.getPOList POMapper.getPOHisList");
+	var sInDatasets 	= "ds_in0=ds_in";
+	var sOutDatasets 	= sTmpOutDs+"=ds_out0";
+	var sArguments 		= "sqlId=" + nexacro.wrapQuote("OrderRecapMapper.getOrderRecapList");
 	
 	//공통 트랜잭션 사용
 	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
-*/	
 }
+
 /********************************************************************************************
 @desc	6. Callback
 ********************************************************************************************/
@@ -250,8 +1191,6 @@ this.tfn_getPoListHistoryLoad = function(){
 */
 this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 {
-	var gtrcPos = "POList.xfdl.callbackFunction"
-	
 	// 에러 체크 영역
 	if (nErrorCode < 0)
 	{
@@ -266,8 +1205,9 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			break;
  		
 			case "getUserCenter"	:
-				this.DivCondition.form.cbo_dept.set_index(0);
+				this.DivCondition.form.div_company.set_index(0);
 				break;
+			
  	}
 }
 
@@ -286,7 +1226,7 @@ this.callbackFunc_pop = function(strID, variant)
  */
 this.cfn_search = function()
 {
-	this.tfn_getPoListHistoryLoad();
+	this.tfn_orderRecapSearch();
 };
 
 /*
@@ -320,37 +1260,32 @@ this.cfn_save = function()
 /********************************************************************************************/
 /**   9. 이벤트(Event) 처리                                                                 */
 /********************************************************************************************/
-/*
- *	온로드
- */
-this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	//this.gfn_getAllInitData();
-	this.fn_reset();
-};
 
-// 입력
-this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.DivCondition_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
 {
-    var nRow = this.ds_status.addRow();
-    this.ds_status.setRowType(nRow, Dataset.ROWTYPE_INSERT);
+// 	if (e.postvalue == "1" || e.postvalue == "2" || e.postvalue == "3" || e.postvalue == "4") {
+// 		this.DivCondition.form.CheckBoxShipment.readonly   = false;
+// 		this.DivCondition.form.Radio01.set_index("0");
+// 		this.DivCondition.form.Radio01.readonly    = true;
+// 		this.DivCondition.form.Calendar00.set_value("");
+// 		this.DivCondition.form.Calendar00.readonly = true;		
+// 	} else if (e.postvalue == "6") {
+// 	    this.DivCondition.form.CheckBoxShipment.set_value("N");
+// 		this.DivCondition.form.CheckBoxShipment.readonly   = true;
+// 		this.DivCondition.form.Radio01.readonly    = false;
+// 		this.DivCondition.form.Calendar00.readonly = false;		
+// 	} else {
+// 	    this.DivCondition.form.CheckBoxShipment.set_value("N");
+// 		this.DivCondition.form.CheckBoxShipment.readonly   = true;
+// 		this.DivCondition.form.Radio01.set_index("0");
+// 		this.DivCondition.form.Radio01.readonly    = true;
+// 		this.DivCondition.form.Calendar00.set_value("");
+// 		this.DivCondition.form.Calendar00.readonly = true;
+// 	}	
 };
-//삭제
-this.btn_del_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var nRow = this.ds_status.rowposition;
-	this.ds_status.setRowType(nRow, Dataset.ROWTYPE_DELETE);
-};
-//수정
-this.ds_status_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
-{
-	this.ds_status.setRowType(e.row, Dataset.ROWTYPE_UPDATE);	
-};
-
-
 ]]></Script>
     <Objects>
-      <Dataset id="ds_outCompanyCode">
+      <Dataset id="ds_cmcdCompanyCode">
         <ColumnInfo>
           <Column id="CENTER_CD" type="STRING" size="256"/>
           <Column id="DEF_CENTER_CD" type="STRING" size="256"/>
@@ -359,47 +1294,713 @@ this.ds_status_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
           <Column id="CENTER_CD_F" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_inCompanyCode">
+      <Dataset id="ds_cmcdSalesGroup">
         <ColumnInfo>
-          <Column id="p_user_id" type="STRING" size="20"/>
-          <Column id="p_country_cd" type="STRING" size="10"/>
+          <Column id="BU_NM" type="STRING" size="50"/>
+          <Column id="BU_CD_F" type="STRING" size="50"/>
+          <Column id="BU_CD" type="STRING" size="10"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cmcdOSFactory">
+        <ColumnInfo>
+          <Column id="CODE_CD" type="STRING" size="30"/>
+          <Column id="CODE_CD_F" type="STRING" size="30"/>
+          <Column id="CODE_NM" type="STRING" size="30"/>
+          <Column id="CODE_CD_FULL_F" type="STRING" size="30"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cmcdYear">
+        <ColumnInfo>
+          <Column id="CODE_CD" type="STRING" size="30"/>
+          <Column id="CODE_CD_F" type="STRING" size="30"/>
+          <Column id="CODE_NM" type="STRING" size="30"/>
+          <Column id="CODE_CD_FULL_F" type="STRING" size="30"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cmcdSeason">
+        <ColumnInfo>
+          <Column id="CODE_CD" type="STRING" size="30"/>
+          <Column id="CODE_CD_F" type="STRING" size="30"/>
+          <Column id="CODE_NM" type="STRING" size="30"/>
+          <Column id="CODE_CD_FULL_F" type="STRING" size="30"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grdDic">
+        <ColumnInfo>
+          <Column id="BindCol" type="STRING" size="256"/>
+          <Column id="HeaderText" type="STRING" size="256"/>
+          <Column id="ColWidth" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="BindCol">CC_CUST_SHORT_NM</Col>
+            <Col id="HeaderText">Buyer</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSM_ZYEAR</Col>
+            <Col id="HeaderText">Year</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSM_ZSEASON</Col>
+            <Col id="HeaderText">Season</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CB_BU_NM</Col>
+            <Col id="HeaderText">Sales Team</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CI_MANAGER</Col>
+            <Col id="HeaderText">Sales Person</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">V1_JAKJI_NM</Col>
+            <Col id="HeaderText">Factory</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSM_WSHOP</Col>
+            <Col id="HeaderText">Workshop</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">REF_ITEM_NM</Col>
+            <Col id="HeaderText">Parent S/#</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CI_ITEM_NM</Col>
+            <Col id="HeaderText">S/#</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSM_VBELN</Col>
+            <Col id="HeaderText">SO#</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CI_ITEM_DESCRIPTION</Col>
+            <Col id="HeaderText">Style Descrption</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CI_ITEM_IMAGE_THUMB</Col>
+            <Col id="HeaderText">Sketch</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OPD_ORDER_QTY</Col>
+            <Col id="HeaderText">Order Q'TY</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OPM_DELIVERY_DATE</Col>
+            <Col id="HeaderText">S/D</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SALES_PRICE</Col>
+            <Col id="HeaderText">FOB</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SALES_AMOUNT</Col>
+            <Col id="HeaderText">AMOUNT</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSC_U_CPRICE</Col>
+            <Col id="HeaderText">OS CM</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">V4_SET_TYPE_NM</Col>
+            <Col id="HeaderText">Set type</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSD_START_PD_DATE</Col>
+            <Col id="HeaderText">Plan Cutting Date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSD_MTL_TAR_ETA</Col>
+            <Col id="HeaderText">Material Target ETA</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSH_MARK_UP_RATE</Col>
+            <Col id="HeaderText">MU</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_OPM_PO_DESC</Col>
+            <Col id="HeaderText">PO#</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CC1_COLOR_DESC</Col>
+            <Col id="HeaderText">COLOR</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CS1_SIZE_DESC</Col>
+            <Col id="HeaderText">SIZE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_OPD_ORDER_QTY</Col>
+            <Col id="HeaderText">PO Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_SALES_PRICE</Col>
+            <Col id="HeaderText">FOB Price</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_SALES_AMOUNT</Col>
+            <Col id="HeaderText">FOB Amount</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_OPM_DELIVERY_DATE</Col>
+            <Col id="HeaderText">Ship date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_OPM_NATIONAL_VAL</Col>
+            <Col id="HeaderText">Destination</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_OPM_REDAT</Col>
+            <Col id="HeaderText">PO Issue Date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SHIP_E_OUTPUT_DATE</Col>
+            <Col id="HeaderText">Garment actual X-factory date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SIHP_QTY</Col>
+            <Col id="HeaderText">Garment actual shipment q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CFDATE</Col>
+            <Col id="HeaderText">Approval Date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">AMOND</Col>
+            <Col id="HeaderText">Amend</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSSTS_NM</Col>
+            <Col id="HeaderText">Progress</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">APPTY_NM</Col>
+            <Col id="HeaderText">Approval Type</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">REMARK</Col>
+            <Col id="HeaderText">Remark</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MEMO</Col>
+            <Col id="HeaderText">Memo</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">U_WAERK</Col>
+            <Col id="HeaderText">Currency</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">ROH_COST</Col>
+            <Col id="HeaderText">Raw Material Cost</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">VERP_COST</Col>
+            <Col id="HeaderText">Trim Material Cost</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">EXPORT_COST</Col>
+            <Col id="HeaderText">Export Cost</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2001</Col>
+            <Col id="HeaderText">CM1-1</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2002</Col>
+            <Col id="HeaderText">COST OF KOREA</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2003</Col>
+            <Col id="HeaderText">EXPENSES FOR FQA_PCQS_LOCAL HEAD OFFICE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2004</Col>
+            <Col id="HeaderText">CM1-2</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2005</Col>
+            <Col id="HeaderText">CM3</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2006</Col>
+            <Col id="HeaderText">CM1-3</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T2011</Col>
+            <Col id="HeaderText">SHARE OF INVESTMENT COSTS</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3011</Col>
+            <Col id="HeaderText">QUILTING CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3012</Col>
+            <Col id="HeaderText">PRINT CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3013</Col>
+            <Col id="HeaderText">WASHING CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3014</Col>
+            <Col id="HeaderText">EMBROIDERY CHAR</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3015</Col>
+            <Col id="HeaderText">BEAD CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3016</Col>
+            <Col id="HeaderText">PACKING CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3021</Col>
+            <Col id="HeaderText">FREIGHT CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3022</Col>
+            <Col id="HeaderText">INLAND CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3023</Col>
+            <Col id="HeaderText">HANDLING CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3031</Col>
+            <Col id="HeaderText">SAMPLE CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3051</Col>
+            <Col id="HeaderText">INSPECTION CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3061</Col>
+            <Col id="HeaderText">COMMISSION</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3071</Col>
+            <Col id="HeaderText">DDP CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3072</Col>
+            <Col id="HeaderText">DDU CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3073</Col>
+            <Col id="HeaderText">TRUCKING CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3111</Col>
+            <Col id="HeaderText">EPD CHARGE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3301</Col>
+            <Col id="HeaderText">COMMON COSTS</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3801</Col>
+            <Col id="HeaderText">OTHERS 1</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">T3802</Col>
+            <Col id="HeaderText">OTHERS 2</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">LINE_NM</Col>
+            <Col id="HeaderText">Line#</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PRD_S_DATE</Col>
+            <Col id="HeaderText">Start date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PRD_E_DATE</Col>
+            <Col id="HeaderText">End date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">WORKING_DAYS</Col>
+            <Col id="HeaderText">"Working</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">Days"</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">LINE_PREVIOUS_QTY</Col>
+            <Col id="HeaderText">"Line Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">(-1Days)"</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">LINE_PRD_QTY</Col>
+            <Col id="HeaderText">Line Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">LINE_ACC_PRD_QTY</Col>
+            <Col id="HeaderText">Acc Output Each Line</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">AVG_TAR</Col>
+            <Col id="HeaderText">Target Output</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">AVG_LINE_PRD_QTY</Col>
+            <Col id="HeaderText">Avg. Line Output Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TTL_CT_QTY</Col>
+            <Col id="HeaderText">Cutting Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TTL_SW_QTY</Col>
+            <Col id="HeaderText">Sewing Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TTL_FS_QTY</Col>
+            <Col id="HeaderText">Metal Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TTL_PL_QTY</Col>
+            <Col id="HeaderText">Polybag Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TTL_PK_QTY</Col>
+            <Col id="HeaderText">Packing Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TTL_SHIP_QTY</Col>
+            <Col id="HeaderText">Shipping Q'ty</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">FIT_STATUS</Col>
+            <Col id="HeaderText">FIT STATUS</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">FIT_APPRV_DATE</Col>
+            <Col id="HeaderText">FIT APPROVed date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PP_PACK_DUE_DATE</Col>
+            <Col id="HeaderText">PP PACKAGE  DUE DATE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PP_SUBM_DUE_DATE</Col>
+            <Col id="HeaderText">PP Submit DUE DATE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PP_APPRV_DATE</Col>
+            <Col id="HeaderText">PP Approval Due</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GMT_TEST_DUE_DATE</Col>
+            <Col id="HeaderText">Garment Test due date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GMT_ACT_TEST_DATE</Col>
+            <Col id="HeaderText">Garment Actual Test date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TOP_SUBM_DUE_DATE</Col>
+            <Col id="HeaderText">TOP SUBMIT DUE DATE</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">FIRST_SHIP_DATE</Col>
+            <Col id="HeaderText">first Ship date</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">REMARK1</Col>
+            <Col id="HeaderText">Remark</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="ds_in">
         <ColumnInfo>
-          <Column id="P_USER_ID" type="STRING" size="20"/>
-          <Column id="P_CENTER_CD" type="STRING" size="10"/>
+          <ConstColumn id="ConstColumn0" type="STRING" size="30"/>
+          <Column id="p_center_cd" type="STRING" size="256"/>
+          <Column id="p_so_key_sta" type="STRING" size="256"/>
+          <Column id="p_so_key_end" type="STRING" size="256"/>
+          <Column id="p_so_key_list" type="STRING" size="256"/>
+          <Column id="p_item_cd_sta" type="STRING" size="256"/>
+          <Column id="p_item_cd_end" type="STRING" size="256"/>
+          <Column id="p_item_cd_list" type="STRING" size="256"/>
+          <Column id="p_buyer_cd_sta" type="STRING" size="256"/>
+          <Column id="p_buyer_cd_end" type="STRING" size="256"/>
+          <Column id="p_buyer_cd_list" type="STRING" size="256"/>
+          <Column id="p_sales_team_sta" type="STRING" size="256"/>
+          <Column id="p_sales_team_end" type="STRING" size="256"/>
+          <Column id="p_sales_team_list" type="STRING" size="256"/>
+          <Column id="p_jakji_sta" type="STRING" size="256"/>
+          <Column id="p_jakji_end" type="STRING" size="256"/>
+          <Column id="p_jakji_list" type="STRING" size="256"/>
+          <Column id="p_year_sta" type="STRING" size="256"/>
+          <Column id="p_year_end" type="STRING" size="256"/>
+          <Column id="p_season_sta" type="STRING" size="256"/>
+          <Column id="p_season_end" type="STRING" size="256"/>
+          <Column id="p_season_list" type="STRING" size="256"/>
+          <Column id="p_buy_date_sta" type="STRING" size="256"/>
+          <Column id="p_buy_date_end" type="STRING" size="256"/>
+          <Column id="p_user_id" type="STRING" size="256"/>
+          <Column id="p_radio" type="STRING" size="256"/>
+          <Column id="p_shipment_yn" type="STRING" size="256"/>
+          <Column id="p_sewi_type" type="STRING" size="256"/>
+          <Column id="p_perf_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_OrderRecap">
+      <Dataset id="ds_listStyle">
         <ColumnInfo>
-          <Column id="Buyer" type="STRING" size="20"/>
-          <Column id="Year" type="STRING" size="10"/>
-          <Column id="Column0" type="STRING" size="256"/>
-          <Column id="Column1" type="STRING" size="256"/>
-          <Column id="Column2" type="STRING" size="256"/>
-          <Column id="Column3" type="STRING" size="256"/>
-          <Column id="Column4" type="STRING" size="256"/>
-          <Column id="Column5" type="STRING" size="256"/>
-          <Column id="Column6" type="STRING" size="256"/>
-          <Column id="Column7" type="STRING" size="256"/>
-          <Column id="Column8" type="STRING" size="256"/>
-          <Column id="Column9" type="STRING" size="256"/>
-          <Column id="Column10" type="STRING" size="256"/>
-          <Column id="Column11" type="STRING" size="256"/>
-          <Column id="Column12" type="STRING" size="256"/>
-          <Column id="Column13" type="STRING" size="256"/>
-          <Column id="Column14" type="STRING" size="256"/>
-          <Column id="Column15" type="STRING" size="256"/>
-          <Column id="Column16" type="STRING" size="256"/>
-          <Column id="Column17" type="STRING" size="256"/>
-          <Column id="Column18" type="STRING" size="256"/>
-          <Column id="Column19" type="STRING" size="256"/>
-          <Column id="Column20" type="STRING" size="256"/>
-          <Column id="Column21" type="STRING" size="256"/>
-          <Column id="Column22" type="STRING" size="256"/>
-          <Column id="Column23" type="STRING" size="256"/>
-          <Column id="Column24" type="STRING" size="256"/>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="OSH_MARK_UP_RATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_listPoInfo1">
+        <ColumnInfo>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="PO_OPM_PO_DESC" type="STRING" size="256"/>
+          <Column id="PO_OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="PO_SALES_PRICE" type="STRING" size="256"/>
+          <Column id="PO_SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="PO_OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="PO_OPM_NATIONAL_VAL" type="STRING" size="256"/>
+          <Column id="PO_OPM_REDAT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_listPoInfo2">
+        <ColumnInfo>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="PO_OPM_PO_DESC" type="STRING" size="256"/>
+          <Column id="CC1_COLOR_DESC" type="STRING" size="256"/>
+          <Column id="CS1_SIZE_DESC" type="STRING" size="256"/>
+          <Column id="PO_OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="PO_SALES_PRICE" type="STRING" size="256"/>
+          <Column id="PO_SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="PO_OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="PO_OPM_NATIONAL_VAL" type="STRING" size="256"/>
+          <Column id="PO_OPM_REDAT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_listPoInfo3">
+        <ColumnInfo>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="PO_OPM_PO_DESC" type="STRING" size="256"/>
+          <Column id="CC1_COLOR_DESC" type="STRING" size="256"/>
+          <Column id="CS1_SIZE_DESC" type="STRING" size="256"/>
+          <Column id="PO_OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="PO_SALES_PRICE" type="STRING" size="256"/>
+          <Column id="PO_SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="PO_OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="PO_OPM_NATIONAL_VAL" type="STRING" size="256"/>
+          <Column id="PO_OPM_REDAT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_listOs">
+        <ColumnInfo>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="CFDATE" type="STRING" size="256"/>
+          <Column id="AMOND" type="STRING" size="256"/>
+          <Column id="OSH_MARK_UP_RATE" type="STRING" size="256"/>
+          <Column id="OSSTS_NM" type="STRING" size="256"/>
+          <Column id="APPTY_NM" type="STRING" size="256"/>
+          <Column id="REMARK" type="STRING" size="256"/>
+          <Column id="MEMO" type="STRING" size="256"/>
+          <Column id="U_WAERK" type="STRING" size="256"/>
+          <Column id="NETWR" type="STRING" size="256"/>
+          <Column id="ROH_COST" type="STRING" size="256"/>
+          <Column id="VERP_COST" type="STRING" size="256"/>
+          <Column id="EXPORT_COST" type="STRING" size="256"/>
+          <Column id="T2001" type="STRING" size="256"/>
+          <Column id="T2002" type="STRING" size="256"/>
+          <Column id="T2003" type="STRING" size="256"/>
+          <Column id="T2004" type="STRING" size="256"/>
+          <Column id="T2005" type="STRING" size="256"/>
+          <Column id="T2006" type="STRING" size="256"/>
+          <Column id="T2011" type="STRING" size="256"/>
+          <Column id="T3011" type="STRING" size="256"/>
+          <Column id="T3012" type="STRING" size="256"/>
+          <Column id="T3013" type="STRING" size="256"/>
+          <Column id="T3014" type="STRING" size="256"/>
+          <Column id="T3015" type="STRING" size="256"/>
+          <Column id="T3016" type="STRING" size="256"/>
+          <Column id="T3021" type="STRING" size="256"/>
+          <Column id="T3022" type="STRING" size="256"/>
+          <Column id="T3023" type="STRING" size="256"/>
+          <Column id="T3031" type="STRING" size="256"/>
+          <Column id="T3051" type="STRING" size="256"/>
+          <Column id="T3061" type="STRING" size="256"/>
+          <Column id="T3071" type="STRING" size="256"/>
+          <Column id="T3072" type="STRING" size="256"/>
+          <Column id="T3073" type="STRING" size="256"/>
+          <Column id="T3111" type="STRING" size="256"/>
+          <Column id="T3301" type="STRING" size="256"/>
+          <Column id="T3801" type="STRING" size="256"/>
+          <Column id="T3802" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_listProduction">
+        <ColumnInfo>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="LINE_NM" type="STRING" size="256"/>
+          <Column id="PRD_S_DATE" type="STRING" size="256"/>
+          <Column id="PRD_E_DATE" type="STRING" size="256"/>
+          <Column id="WORKING_DAYS" type="STRING" size="256"/>
+          <Column id="LINE_PREVIOUS_QTY" type="STRING" size="256"/>
+          <Column id="LINE_PRD_QTY" type="STRING" size="256"/>
+          <Column id="LINE_ACC_PRD_QTY" type="STRING" size="256"/>
+          <Column id="AVG_TAR" type="STRING" size="256"/>
+          <Column id="AVG_LINE_PRD_QTY" type="STRING" size="256"/>
+          <Column id="TTL_CT_QTY" type="STRING" size="256"/>
+          <Column id="TTL_SW_QTY" type="STRING" size="256"/>
+          <Column id="TTL_FS_QTY" type="STRING" size="256"/>
+          <Column id="TTL_PL_QTY" type="STRING" size="256"/>
+          <Column id="TTL_PK_QTY" type="STRING" size="256"/>
+          <Column id="TTL_SHIP_QTY" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_listSample">
+        <ColumnInfo>
+          <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
+          <Column id="OSM_ZYEAR" type="STRING" size="256"/>
+          <Column id="OSM_ZSEASON" type="STRING" size="256"/>
+          <Column id="CB_BU_NM" type="STRING" size="256"/>
+          <Column id="CI_MANAGER" type="STRING" size="256"/>
+          <Column id="V1_JAKJI_NM" type="STRING" size="256"/>
+          <Column id="OSM_WSHOP" type="STRING" size="256"/>
+          <Column id="REF_ITEM_NM" type="STRING" size="256"/>
+          <Column id="CI_ITEM_NM" type="STRING" size="256"/>
+          <Column id="OSM_VBELN" type="STRING" size="256"/>
+          <Column id="CI_ITEM_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CI_ITEM_IMAGE_THUMB" type="STRING" size="256"/>
+          <Column id="OPD_ORDER_QTY" type="STRING" size="256"/>
+          <Column id="OPM_DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="SALES_PRICE" type="STRING" size="256"/>
+          <Column id="SALES_AMOUNT" type="STRING" size="256"/>
+          <Column id="OSC_U_CPRICE" type="STRING" size="256"/>
+          <Column id="V4_SET_TYPE_NM" type="STRING" size="256"/>
+          <Column id="OSD_START_PD_DATE" type="STRING" size="256"/>
+          <Column id="OSD_MTL_TAR_ETA" type="STRING" size="256"/>
+          <Column id="FIT_STATUS" type="STRING" size="256"/>
+          <Column id="FIT_APPRV_DATE" type="STRING" size="256"/>
+          <Column id="PP_PACK_DUE_DATE" type="STRING" size="256"/>
+          <Column id="PP_SUBM_DUE_DATE" type="STRING" size="256"/>
+          <Column id="PP_APPRV_DATE" type="STRING" size="256"/>
+          <Column id="PRD_S_DATE" type="STRING" size="256"/>
+          <Column id="GMT_TEST_DUE_DATE" type="STRING" size="256"/>
+          <Column id="GMT_ACT_TEST_DATE" type="STRING" size="256"/>
+          <Column id="TOP_SUBM_DUE_DATE" type="STRING" size="256"/>
+          <Column id="FIRST_SHIP_DATE" type="STRING" size="256"/>
+          <Column id="REMARK1" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

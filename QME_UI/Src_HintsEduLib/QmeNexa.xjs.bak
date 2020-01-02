@@ -405,29 +405,29 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 // 			}
 			
 			//	트랜잭션을 하던 안하던 실행되는 함수
-				this.gfn_onloadSequence();
+			//	this.gfn_onloadSequence();
 
 			//	위와 아래는 맛보기임.
 		{	// 	
-// 			var tFormatInDs = new Dataset;
-// 				var tFormatInDsName = "tFormatInDs";
-// 				this.addChild(tFormatInDsName, tFormatInDs); 
-// 				tFormatInDs.copyData(this.gfn_getApplication().gds_FormatInOutDs);
-// 				tFormatInDs.addRow();
-// 				this.gfn_setUser(tFormatInDs, "USERID");
-// 				tFormatInDs.setColumn(0, "PROGRAMID", this.name);
-// 				//	trace(tFormatInDs.saveXML());
-// 					//	this.gtrace("tFormatInDs.saveXML()-->"+tFormatInDs.saveXML(), gtrcPos);
-// 					// 	sArguments+="formatSearchOnload "; 
-// 					// 	sInDatasets+="ds_in"+iSeq+"=tFormatInDs"+" ";
-// 					// 	sOutDatasets+="tFormatInDs=ds_out"+iSeq;
-// 					//	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
-// 			this.transaction( "formatSearchOnload"
-// 								, "AppSvrLocalMsSql::CommonSaveAction_Return.do"
-// 								, "ds_in0=tFormatInDs"
-// 								, "tFormatInDs=ds_out0"
-// 								, "sqlId=" + nexacro.wrapQuote("formatSearchOnload")
-// 								, "gfn_callbackFunction");
+			var tFormatInDs = new Dataset;
+				var tFormatInDsName = "tFormatInDs";
+				this.addChild(tFormatInDsName, tFormatInDs); 
+				tFormatInDs.copyData(this.gfn_getApplication().gds_FormatInOutDs);
+				tFormatInDs.addRow();
+				this.gfn_setUser(tFormatInDs, "USERID");
+				tFormatInDs.setColumn(0, "PROGRAMID", this.name);
+				//	trace(tFormatInDs.saveXML());
+					//	this.gtrace(" - tFormatInDs.saveXML()-->"+tFormatInDs.saveXML(), gtrcPos);
+					// 	sArguments+="formatSearchOnload "; 
+					// 	sInDatasets+="ds_in"+iSeq+"=tFormatInDs"+" ";
+					// 	sOutDatasets+="tFormatInDs=ds_out"+iSeq;
+					//	this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
+			this.transaction( "formatSearchOnload"
+								, "AppSvrLocalMsSql::CommonSaveAction_Return.do"
+								, "ds_in0=tFormatInDs"
+								, "tFormatInDs=ds_out0"
+								, "sqlId=" + nexacro.wrapQuote("formatSearchOnload")
+								, "gfn_callbackFunction");
 		}
 
 

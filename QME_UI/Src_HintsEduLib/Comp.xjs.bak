@@ -101,7 +101,10 @@ pForm.gfn_openMultiCombo = function(obj)
     var objDs = this.oFrmParnt.all[obj.u_innerdataset];
     if(this.gfn_isNull(objDs)){		
 			this.alert("innerdataset error");
-        return;
+    }
+
+	if(this.gfn_isNull(objDs)){
+		this.alert("innerdataset error");
     }
 
     // obj : Combo Object
