@@ -170,7 +170,7 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Grid id="Grid00" taborder="1" left="8" top="120" height="96" binddataset="ds_in" right="22" cellsizingtype="col">
+                  <Grid id="Grid00" taborder="1" left="8" top="120" height="96" binddataset="ds_in" right="22" cellsizingtype="col" visible="false">
                     <Formats>
                       <Format id="default">
                         <Columns>
