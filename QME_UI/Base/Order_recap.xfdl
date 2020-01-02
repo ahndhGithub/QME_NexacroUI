@@ -86,7 +86,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Tab id="TabOrderRecap" taborder="2" tabindex="0" left="8" top="216" bottom="7" right="8">
+        <Tab id="TabOrderRecap" taborder="2" tabindex="0" left="8" top="216" bottom="106" right="8">
           <Tabpages>
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
@@ -170,107 +170,7 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Grid id="Grid00" taborder="1" left="8" top="120" height="96" binddataset="ds_in" right="22" cellsizingtype="col" visible="false">
-                    <Formats>
-                      <Format id="default">
-                        <Columns>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
-                        </Columns>
-                        <Rows>
-                          <Row band="head" size="24"/>
-                          <Row size="24"/>
-                        </Rows>
-                        <Band id="head">
-                          <Cell text="p_center_cd"/>
-                          <Cell col="1" text="p_so_key_sta"/>
-                          <Cell col="2" text="p_so_key_end"/>
-                          <Cell col="3" text="p_so_key_list"/>
-                          <Cell col="4" text="p_item_cd_sta"/>
-                          <Cell col="5" text="p_item_cd_end"/>
-                          <Cell col="6" text="p_item_cd_list"/>
-                          <Cell col="7" text="p_buyer_cd_sta"/>
-                          <Cell col="8" text="p_buyer_cd_end"/>
-                          <Cell col="9" text="p_buyer_cd_list"/>
-                          <Cell col="10" text="p_sales_team_sta"/>
-                          <Cell col="11" text="p_sales_team_end"/>
-                          <Cell col="12" text="p_sales_team_list"/>
-                          <Cell col="13" text="p_jakji_sta"/>
-                          <Cell col="14" text="p_jakji_end"/>
-                          <Cell col="15" text="p_jakji_list"/>
-                          <Cell col="16" text="p_year_sta"/>
-                          <Cell col="17" text="p_year_end"/>
-                          <Cell col="18" text="p_season_sta"/>
-                          <Cell col="19" text="p_season_end"/>
-                          <Cell col="20" text="p_season_list"/>
-                          <Cell col="21" text="p_buy_date_sta"/>
-                          <Cell col="22" text="p_buy_date_end"/>
-                          <Cell col="23" text="p_user_id"/>
-                          <Cell col="24" text="p_radio"/>
-                          <Cell col="25" text="p_shipment_yn"/>
-                          <Cell col="26" text="p_sewi_type"/>
-                          <Cell col="27" text="p_perf_date"/>
-                        </Band>
-                        <Band id="body">
-                          <Cell text="bind:p_center_cd"/>
-                          <Cell col="1" text="bind:p_so_key_sta"/>
-                          <Cell col="2" text="bind:p_so_key_end"/>
-                          <Cell col="3" text="bind:p_so_key_list"/>
-                          <Cell col="4" text="bind:p_item_cd_sta"/>
-                          <Cell col="5" text="bind:p_item_cd_end"/>
-                          <Cell col="6" text="bind:p_item_cd_list"/>
-                          <Cell col="7" text="bind:p_buyer_cd_sta"/>
-                          <Cell col="8" text="bind:p_buyer_cd_end"/>
-                          <Cell col="9" text="bind:p_buyer_cd_list"/>
-                          <Cell col="10" text="bind:p_sales_team_sta"/>
-                          <Cell col="11" text="bind:p_sales_team_end"/>
-                          <Cell col="12" text="bind:p_sales_team_list"/>
-                          <Cell col="13" text="bind:p_jakji_sta"/>
-                          <Cell col="14" text="bind:p_jakji_end"/>
-                          <Cell col="15" text="bind:p_jakji_list"/>
-                          <Cell col="16" text="bind:p_year_sta"/>
-                          <Cell col="17" text="bind:p_year_end"/>
-                          <Cell col="18" text="bind:p_season_sta"/>
-                          <Cell col="19" text="bind:p_season_end"/>
-                          <Cell col="20" text="bind:p_season_list"/>
-                          <Cell col="21" text="bind:p_buy_date_sta"/>
-                          <Cell col="22" text="bind:p_buy_date_end"/>
-                          <Cell col="23" text="bind:p_user_id"/>
-                          <Cell col="24" text="bind:p_radio"/>
-                          <Cell col="25" text="bind:p_shipment_yn"/>
-                          <Cell col="26" text="bind:p_sewi_type"/>
-                          <Cell col="27" text="bind:p_perf_date"/>
-                        </Band>
-                      </Format>
-                    </Formats>
-                  </Grid>
-                  <Grid id="Grid01" taborder="2" left="792" top="166" width="249" height="292" binddataset="ds_cmcdSalesGroup" visible="false">
+                  <Grid id="Grid01" taborder="1" left="792" top="166" width="249" height="292" binddataset="ds_cmcdSalesGroup" visible="false">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -1059,6 +959,106 @@
             </Tabpage>
           </Tabpages>
         </Tab>
+        <Grid id="Grid00" taborder="3" left="16" height="96" binddataset="ds_in" right="30" cellsizingtype="col" visible="true" bottom="4">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="p_center_cd"/>
+                <Cell col="1" text="p_so_key_sta"/>
+                <Cell col="2" text="p_so_key_end"/>
+                <Cell col="3" text="p_so_key_list"/>
+                <Cell col="4" text="p_item_cd_sta"/>
+                <Cell col="5" text="p_item_cd_end"/>
+                <Cell col="6" text="p_item_cd_list"/>
+                <Cell col="7" text="p_buyer_cd_sta"/>
+                <Cell col="8" text="p_buyer_cd_end"/>
+                <Cell col="9" text="p_buyer_cd_list"/>
+                <Cell col="10" text="p_sales_team_sta"/>
+                <Cell col="11" text="p_sales_team_end"/>
+                <Cell col="12" text="p_sales_team_list"/>
+                <Cell col="13" text="p_jakji_sta"/>
+                <Cell col="14" text="p_jakji_end"/>
+                <Cell col="15" text="p_jakji_list"/>
+                <Cell col="16" text="p_year_sta"/>
+                <Cell col="17" text="p_year_end"/>
+                <Cell col="18" text="p_season_sta"/>
+                <Cell col="19" text="p_season_end"/>
+                <Cell col="20" text="p_season_list"/>
+                <Cell col="21" text="p_buy_date_sta"/>
+                <Cell col="22" text="p_buy_date_end"/>
+                <Cell col="23" text="p_user_id"/>
+                <Cell col="24" text="p_radio"/>
+                <Cell col="25" text="p_shipment_yn"/>
+                <Cell col="26" text="p_sewi_type"/>
+                <Cell col="27" text="p_perf_date"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:p_center_cd"/>
+                <Cell col="1" text="bind:p_so_key_sta"/>
+                <Cell col="2" text="bind:p_so_key_end"/>
+                <Cell col="3" text="bind:p_so_key_list"/>
+                <Cell col="4" text="bind:p_item_cd_sta"/>
+                <Cell col="5" text="bind:p_item_cd_end"/>
+                <Cell col="6" text="bind:p_item_cd_list"/>
+                <Cell col="7" text="bind:p_buyer_cd_sta"/>
+                <Cell col="8" text="bind:p_buyer_cd_end"/>
+                <Cell col="9" text="bind:p_buyer_cd_list"/>
+                <Cell col="10" text="bind:p_sales_team_sta"/>
+                <Cell col="11" text="bind:p_sales_team_end"/>
+                <Cell col="12" text="bind:p_sales_team_list"/>
+                <Cell col="13" text="bind:p_jakji_sta"/>
+                <Cell col="14" text="bind:p_jakji_end"/>
+                <Cell col="15" text="bind:p_jakji_list"/>
+                <Cell col="16" text="bind:p_year_sta"/>
+                <Cell col="17" text="bind:p_year_end"/>
+                <Cell col="18" text="bind:p_season_sta"/>
+                <Cell col="19" text="bind:p_season_end"/>
+                <Cell col="20" text="bind:p_season_list"/>
+                <Cell col="21" text="bind:p_buy_date_sta"/>
+                <Cell col="22" text="bind:p_buy_date_end"/>
+                <Cell col="23" text="bind:p_user_id"/>
+                <Cell col="24" text="bind:p_radio"/>
+                <Cell col="25" text="bind:p_shipment_yn"/>
+                <Cell col="26" text="bind:p_sewi_type"/>
+                <Cell col="27" text="bind:p_perf_date"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Bind>
@@ -1177,7 +1177,7 @@ this.tfn_orderRecapSearch = function(){
 	var sURL 			= "AppSvr::common/commonAction.ppc";
 	var sInDatasets 	= "ds_in0=ds_in";
 	var sOutDatasets 	= sTmpOutDs+"=ds_out0";
-	var sArguments 		= "sqlId=" + nexacro.wrapQuote("OrderRecapMapper.getOrderRecapList");
+	var sArguments 		= "sqlId=" + nexacro.wrapQuote("getOrderRecapList");
 	
 	//공통 트랜잭션 사용
 	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
