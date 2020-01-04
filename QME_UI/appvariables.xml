@@ -937,6 +937,52 @@
         <Column id="JSONDATA" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gds_TrcInfo">
+      <ColumnInfo>
+        <Column id="ROW_CHK" type="STRING" size="256"/>
+        <Column id="TrcSeq" type="STRING" size="256"/>
+        <Column id="TrcName" type="STRING" size="256"/>
+        <Column id="TrcId" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row>
+          <Col id="TrcSeq">40</Col>
+          <Col id="TrcId">gtrace_191226_CommCodeSetting</Col>
+          <Col id="TrcName">초기데이터모두가져오기</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">20</Col>
+          <Col id="TrcId">gtrace_191229_Comm_ComboConditionFromTo</Col>
+          <Col id="TrcName">콤보조건공통화_From_To</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">60</Col>
+          <Col id="TrcName">팝업조건공통화_From_To</Col>
+          <Col id="TrcId">gtrace_200104_cmmSearchConditionFromTo</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">10</Col>
+          <Col id="TrcName">우클릭메뉴(컬럼 숨기기/보이기)</Col>
+          <Col id="TrcId">gtrace_191224_ColumnHide</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">30</Col>
+          <Col id="TrcId">gtrace_191225_ExcelExport</Col>
+          <Col id="TrcName">엑셀내보내기</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">50</Col>
+          <Col id="TrcId">gtrace_191230_Comm_MultiCombo</Col>
+          <Col id="TrcName">멀티콤보</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">70</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">80</Col>
+        </Row>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="QmeLogonUserId"/>

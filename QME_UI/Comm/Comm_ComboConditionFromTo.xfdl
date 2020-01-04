@@ -88,6 +88,11 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		}
 		this.ComboFrom.set_innerdataset(this.oInnerDs);
 		this.ComboTo.set_innerdataset(this.oInnerDs);
+		
+// 		var objBindItem = new BindItem();
+// 		trace("succ--->"+objBindItem.init("item02", "ComboFrom", "value", this.sParentFormGetTxt+".ds_in", "p_so_key_sta"));
+// 		this.addChild("item02", objBindItem);
+// 		objBindItem.bind();
 	}
 
 	{
@@ -110,8 +115,43 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		//	this.gfn_formOnLoad(this);
 		this.fn_init();
 	}
+	
+	{
+		// oncolumnchanged 이벤트 추가
+		this.oBindDs.addEventHandler("oncolumnchanged", this.fn_parentDsChanged, this);
+	}
 };
 
+this.fn_parentDsChanged = function(objDs, e)
+{
+	var sColId 		= e.columnid;
+	var iFromNdx 	= sColId.indexOf("_sta");	//	trace("iFromNdx --->"+iFromNdx 	);
+	var iToNdx		= sColId.indexOf("_end");	//	trace("iToNdx	--->"+iToNdx	);
+	var iListNdx	= sColId.indexOf("_list");	//	trace("iListNdx --->"+iListNdx	);
+	var sFromToList = (iFromNdx > -1 ? "From" : (iToNdx > -1 ? "To" : (iListNdx > -1 ? "List" : null)));
+	
+	if(this.gfn_isNull(sFromToList)){
+		sFromToList = this.ds_ColIdType.lookup("ColName", sColId, "FTL_Type");
+	}
+	
+	//	trace("sFromToList--->"+sFromToList);
+	
+	var setDsCol;
+	switch(sFromToList){
+		case "From" : 	setDsCol = this.oBindFromCol;	break;
+		case "To" 	: 	setDsCol = this.oBindToCol;		break;
+		case "List" : 	setDsCol = this.oBindListCol;	break;
+		default : break;
+	}
+
+	if(setDsCol == e.columnid)
+	{
+		this.ds_FromTo.setColumn(0, sFromToList, e.newvalue);
+	}
+}
+
+
+// 다른 컬럼을 바인딩시키는 방식 : CODE_CD, CODE_NM이 아니어서 <select->가 표시 안되는 원인임.
 this.fn_cmcdColAdd = function()
 {
 								var gtrcPos = "Comm_ComboConditionFromTo.xfdl.fn_cmcdColAdd";
@@ -231,6 +271,62 @@ this.fn_mComboCallback2 = function(pObjUCombo, pArrTextList, pArrValueList)
             <Col id="Type">SalesGroup</Col>
             <Col id="CODE_CD">BU_CD</Col>
             <Col id="CODE_NM">BU_NM</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_ColIdType" oncolumnchanged="ds_FromTo_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="ColName" type="STRING" size="256"/>
+          <Column id="FTL_Type" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ColName">p_osno1</Col>
+            <Col id="FTL_Type">From</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_osno2</Col>
+            <Col id="FTL_Type">To</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_osno_list</Col>
+            <Col id="FTL_Type">List</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_matnr1</Col>
+            <Col id="FTL_Type">From</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_matnr2</Col>
+            <Col id="FTL_Type">To</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_matnr_list</Col>
+            <Col id="FTL_Type">List</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_mtl_matnr1</Col>
+            <Col id="FTL_Type">From</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_mtl_matnr2</Col>
+            <Col id="FTL_Type">To</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_mtl_matnr_list</Col>
+            <Col id="FTL_Type">List</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_supply1</Col>
+            <Col id="FTL_Type">From</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_supply2</Col>
+            <Col id="FTL_Type">To</Col>
+          </Row>
+          <Row>
+            <Col id="ColName">p_supply_list</Col>
+            <Col id="FTL_Type">List</Col>
           </Row>
         </Rows>
       </Dataset>

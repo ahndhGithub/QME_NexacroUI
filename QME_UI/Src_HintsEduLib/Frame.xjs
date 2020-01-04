@@ -51,7 +51,9 @@ pForm.gfn_formOnLoad = function(objForm)
             if (arrComp[i] instanceof nexacro.Combo){
                 if(arrComp[i].u_type == "multi"){
 					arrComp[i].addEventHandler("ondropdown", this.gfn_openMultiCombo, this);
-                }
+                }else{
+					arrComp[i].set_index(0);	//	콤보이면 무조건 0번째를 선택
+				}
             }
 			
 			//다국어

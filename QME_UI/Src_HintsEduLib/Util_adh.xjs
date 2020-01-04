@@ -17,8 +17,13 @@ var pForm = nexacro.Form.prototype;
 			- 원인 : 타겟그리드의org포맷(orgformat2)--> undefined
 			- 수정 : Grid.xjs.gfn_setGridobjGrid.orgformat2 = objGrid.getFormatString()
  */
+ 
+ var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+ 
 pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
 {	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191224_ColumnHide", "ROW_CHK"),"")!="1") return;
+	
 	if(	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"		//	우클릭메뉴에서 해당메뉴 선택
 	||	strPos == "Grid.xjs._gfnGridColHideShow"
 	||	strPos == "Comm_ColumnHide.xfdl.form_onload"
@@ -43,6 +48,9 @@ pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
  */
 pForm.gtrace_191229_Comm_ComboConditionFromTo = function(strTrc,strPos)
 {	//	콤보조건공통화_From_To
+	
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191229_Comm_ComboConditionFromTo", "ROW_CHK"),"")!="1") return;
+	
 	if(	strPos == "Comm_ComboConditionFromTo.xfdl.form_onload"	//	온로드
  	||	strPos == "Comm_ComboConditionFromTo.xfdl.fn_cmcdColAdd"
 	){
@@ -52,6 +60,28 @@ pForm.gtrace_191229_Comm_ComboConditionFromTo = function(strTrc,strPos)
 		//	||	this.oFrmParnt.name=="Order_recap" && this.oDivParnt.name=="div_Season"
 		||	this.oFrmParnt.name=="Order_recap" && this.oDivParnt.name=="div_SalesGroup"
 		)
+		trace(strPos+"--------->"+strTrc);
+	}
+}
+
+
+/**
+ * @class
+ * @param 
+ * @param 
+ * @return
+ * @desc	- 날짜 : 200104.
+			- 증상 : 
+			- 원인 : 
+			- 수정 : 
+ */
+pForm.gtrace_200104_cmmSearchConditionFromTo = function(strTrc,strPos)
+{
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_200104_cmmSearchConditionFromTo", "ROW_CHK"),"")!="1") return;
+	
+	if(strPos == "Comm_SearchConditionFromTo.xfdl.form_onload"
+	)
+	{
 		trace(strPos+"--------->"+strTrc);
 	}
 }
@@ -68,6 +98,8 @@ pForm.gtrace_191229_Comm_ComboConditionFromTo = function(strTrc,strPos)
  */
 pForm.gtrace_191230_Comm_MultiCombo = function(strTrc,strPos)
 {
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191230_Comm_MultiCombo", "ROW_CHK"),"")!="1") return;
+	
 	if(strPos.indexOf("Comm_MultiComb.xfdl.")>-1)
 	{
 		trace(strPos+"--------->"+strTrc);
@@ -89,6 +121,8 @@ pForm.gtrace_191230_Comm_MultiCombo = function(strTrc,strPos)
  */
 pForm.gtrace_191225_ExcelExport = function(strTrc,strPos)
 {	//	엑셀export
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191225_ExcelExport", "ROW_CHK"),"")!="1") return;
+	
 	if(	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"		//	우클릭메뉴에서 해당메뉴 선택
 	||	strPos == "Grid.xjs._gfnGridExcelExport"
  	||	strPos == "Excel.xjs.gfn_excelExport"
@@ -110,6 +144,7 @@ pForm.gtrace_191225_ExcelExport = function(strTrc,strPos)
  */
 pForm.gtrace_191226_CommCodeSetting = function(strTrc,strPos)
 {	//	엑셀export
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191226_CommCodeSetting", "ROW_CHK"),"")!="1") return;
 	if(	strPos == "Util_adh.xjs.gfn_getAllInitData"
 	){	
 		trace(strPos+"--------->"+strTrc);
@@ -129,16 +164,16 @@ pForm.gtrace_191226_CommCodeSetting = function(strTrc,strPos)
 pForm.gtrace = function(strTrc,strPos)
 {
 	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
-	//	this.gtrace_191224_ColumnHide(strTrc,strPos);
+	this.gtrace_191224_ColumnHide(strTrc,strPos);
 		
 	//	엑셀내보내기
-	//	this.gtrace_191225_ExcelExport(strTrc,strPos);
+	this.gtrace_191225_ExcelExport(strTrc,strPos);
 
 	//	초기데이터모두가져오기
-	//	this.gtrace_191226_CommCodeSetting(strTrc,strPos);
+	this.gtrace_191226_CommCodeSetting(strTrc,strPos);
 	
 	//	콤보조건공통화_From_To
-	//	this.gtrace_191229_Comm_ComboConditionFromTo(strTrc, strPos);
+	this.gtrace_191229_Comm_ComboConditionFromTo(strTrc, strPos);
 	
 	//	멀티콤보
 	this.gtrace_191230_Comm_MultiCombo(strTrc, strPos);
@@ -211,7 +246,8 @@ pForm.gtrace = function(strTrc,strPos)
 // 		||	strPos == "Util_adh.xjs.gfn_getParentForm"
 // 		||	strPos == "PopupSaveLayout.xfdl.callbackFunc_pop"
 // 		||	strPos == "Grid.xjs._gfnGridColHideShow"
-
+//		||	strPos == "Comm_CalFromTo.xfdl.form_onload"
+//		||	strPos == "Comm_CalFromTo.xfdl.ds_FromTo_oncolumnchanged"
 )	{
 		trace(strPos+"--------->"+strTrc);
 	}

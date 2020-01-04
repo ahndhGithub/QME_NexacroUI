@@ -16,7 +16,7 @@
               <Static id="StaticYear" taborder="6" text="Year" left="0" top="83" width="151" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
               <Static id="StaticOption" taborder="7" text="Option" left="0" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
               <Combo id="div_company" taborder="8" left="148" top="8" width="171" height="21" innerdataset="ds_cmcdCompanyCode" codecolumn="CENTER_CD" datacolumn="CENTER_NM" index="0" text="" value="4"/>
-              <Div id="div_calFromTo" taborder="9" text="Div00" left="808" top="58" width="431" height="21" url="Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback"/>
+              <Div id="div_calFromToBuyDate" taborder="9" text="Div00" left="808" top="58" width="431" height="21" url="Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" SearchConditionType="BuyDate,ds_in,p_buy_date_sta,p_buy_date_end"/>
               <Radio id="Radio00" taborder="10" left="148" top="106" width="443" height="53" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="horizontal" index="0" text="Style" fittocontents="width" columncount="4" rowcount="2" value="1">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
@@ -57,7 +57,7 @@
               </Radio>
               <Static id="StaticSeason" taborder="11" text="Season" left="660" top="83" width="151" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
               <CheckBox id="CheckBoxShipment" taborder="12" text="Shipment" left="808" top="106" width="97" height="23" value="N" truevalue="Y" falsevalue="N"/>
-              <Radio id="Radio01" taborder="13" left="808" top="128" width="181" height="28" direction="vertical" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="Sewing" value="00" fittocontents="width" visible="true">
+              <Radio id="RadioSewing" taborder="13" left="808" top="128" width="181" height="28" direction="vertical" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" text="Sewing" value="SEWING" fittocontents="width" visible="true">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -91,7 +91,7 @@
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listStyle" cellsizingtype="col">
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide" binddataset="ds_listStyle" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -118,11 +118,11 @@
                           <Column size="80"/>
                         </Columns>
                         <Rows>
-                          <Row band="head" size="24"/>
+                          <Row size="24" band="head"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="CC_CUST_SHORT_NM"/>
+                          <Cell text="CC_CUST_SHORT_NM" edittype="normal"/>
                           <Cell col="1" text="OSM_ZYEAR"/>
                           <Cell col="2" text="OSM_ZSEASON"/>
                           <Cell col="3" text="CB_BU_NM"/>
@@ -1059,13 +1059,38 @@
             </Format>
           </Formats>
         </Grid>
+        <Grid id="Grid01" taborder="4" left="205" top="321" width="915" height="349" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="158"/>
+                <Column size="363"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="TrcSeq"/>
+                <Cell col="1" text="TrcName"/>
+                <Cell col="2" text="TrcId"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:TrcSeq"/>
+                <Cell col="1" text="bind:TrcName"/>
+                <Cell col="2" text="bind:TrcId"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Bind>
-      <BindItem id="item8" compid="DivCondition.form.div_calFromTo.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
-      <BindItem id="item9" compid="DivCondition.form.div_calFromTo.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
-      <BindItem id="item14" compid="div_calFromTo00.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
-      <BindItem id="item15" compid="div_calFromTo00.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
+      <BindItem id="item8" compid="DivCondition.form.div_calFromToBuyDate.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
+      <BindItem id="item9" compid="DivCondition.form.div_calFromToBuyDate.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
+      <BindItem id="item14" compid="div_calFromToBuyDate00.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
+      <BindItem id="item15" compid="div_calFromToBuyDate00.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
       <BindItem id="item4" compid="DivCondition.form.div_SalesOrderFromTo.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
       <BindItem id="item5" compid="DivCondition.form.div_SalesOrderFromTo.form.calTo" propid="value" datasetid="ds_in" columnid="dtTo"/>
       <BindItem id="item10" compid="DivCondition.form.div_StyleFromTo.form.calFrom" propid="value" datasetid="ds_in" columnid="dtFrom"/>
@@ -1073,6 +1098,7 @@
       <BindItem id="item1" compid="DivCondition.form.Radio00" propid="value" datasetid="ds_in" columnid="p_radio"/>
       <BindItem id="item2" compid="DivCondition.form.div_company" propid="value" datasetid="ds_in" columnid="p_center_cd"/>
       <BindItem id="item0" compid="DivCondition.form.CheckBoxShipment" propid="value" datasetid="ds_in" columnid="p_shipment_yn"/>
+      <BindItem id="item3" compid="DivCondition.form.RadioSewing" propid="value" datasetid="ds_in" columnid="p_sewi_type"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
 @desc	1. Include
@@ -1126,13 +1152,9 @@ this.fn_reset = function()
 		//	trace("this.DivCondition.form.CheckBoxShipment.getBindDataset()---->"+this.DivCondition.form.CheckBoxShipment.value);
 		//	trace(BindItem.item0.compid);
 		//	trace(this.DivCondition.form.CheckBoxShipment.BindItem);
-// var objBindItem = new BindItem();
-// objBindItem.init("item"+yearStr, "divContents00.form.chkBox"+yearStr, "value", "dsMaster", "chkBox"+yearStr);
-// this.addChild("item"+yearStr, objBindItem);
-// objBindItem.bind();
 
 
-// 		this.DivCondition.form.Radio01.readonly    = true;
+// 		this.DivCondition.form.RadioSewing.readonly    = true;
 // 		this.DivCondition.form.Calendar00.readonly = true;
 	}
 }
@@ -1204,10 +1226,9 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 		default:
 			break;
  		
-			case "getUserCenter"	:
-				this.DivCondition.form.div_company.set_index(0);
-				break;
-			
+		case "getUserCenter"	:
+			this.DivCondition.form.div_company.set_index(0);
+			break;
  	}
 }
 
@@ -1255,33 +1276,71 @@ this.cfn_save = function()
 /********************************************************************************************/
 /**   8. 사용자 함수                                                                        */
 /********************************************************************************************/
+this.fn_UiControl = function(iRbVal)
+{
+	switch(iRbVal)
+	{
+		default :
+				//shipment
+				this.DivCondition.form.CheckBoxShipment.set_readonly(false);
+				
+				//sewing
+				this.DivCondition.form.RadioSewing.set_readonly(true);
+				this.ds_in.setColumn(0, "p_sewi_type", "SEWING");
+				
+				//buydate
+				this.DivCondition.form.div_calFromToBuyDate.set_enable(false);		
+				this.ds_in.setColumn(0, "p_buy_date_sta", "");
+				this.ds_in.setColumn(0, "p_buy_date_end", "");
+			break;
+		
+		case "6" : 
+				//shipment
+				this.DivCondition.form.CheckBoxShipment.set_readonly(true);
+				this.ds_in.setColumn(0, "p_shipment_yn", "N");
+				
+				//sewing
+				this.DivCondition.form.RadioSewing.set_readonly(false);
+				this.ds_in.setColumn(0, "p_sewi_type", "SEWING");
+				
+				//buydate
+				this.DivCondition.form.div_calFromToBuyDate.set_enable(true);
+				
+			break;
 
+		case "7" : 
+				//shipment
+				this.DivCondition.form.CheckBoxShipment.set_readonly(true);
+				this.ds_in.setColumn(0, "p_shipment_yn", "N");
+				
+				//sewing
+				this.DivCondition.form.RadioSewing.set_readonly(true);
+				this.ds_in.setColumn(0, "p_sewi_type", "SEWING");
+				
+				//buydate
+				this.DivCondition.form.div_calFromToBuyDate.set_enable(false);
+				this.ds_in.setColumn(0, "p_buy_date_sta", "");
+				this.ds_in.setColumn(0, "p_buy_date_end", "");
+				
+			break;
+
+	}
+}
 
 /********************************************************************************************/
 /**   9. 이벤트(Event) 처리                                                                 */
 /********************************************************************************************/
+// 
+// this.DivCondition_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+// {
+// 	this.fn_UiControl();
+// };
 
-this.DivCondition_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+this.ds_in_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
-// 	if (e.postvalue == "1" || e.postvalue == "2" || e.postvalue == "3" || e.postvalue == "4") {
-// 		this.DivCondition.form.CheckBoxShipment.readonly   = false;
-// 		this.DivCondition.form.Radio01.set_index("0");
-// 		this.DivCondition.form.Radio01.readonly    = true;
-// 		this.DivCondition.form.Calendar00.set_value("");
-// 		this.DivCondition.form.Calendar00.readonly = true;		
-// 	} else if (e.postvalue == "6") {
-// 	    this.DivCondition.form.CheckBoxShipment.set_value("N");
-// 		this.DivCondition.form.CheckBoxShipment.readonly   = true;
-// 		this.DivCondition.form.Radio01.readonly    = false;
-// 		this.DivCondition.form.Calendar00.readonly = false;		
-// 	} else {
-// 	    this.DivCondition.form.CheckBoxShipment.set_value("N");
-// 		this.DivCondition.form.CheckBoxShipment.readonly   = true;
-// 		this.DivCondition.form.Radio01.set_index("0");
-// 		this.DivCondition.form.Radio01.readonly    = true;
-// 		this.DivCondition.form.Calendar00.set_value("");
-// 		this.DivCondition.form.Calendar00.readonly = true;
-// 	}	
+	if(e.columnid == "p_radio"){
+		this.fn_UiControl(e.newvalue);
+	}
 };
 ]]></Script>
     <Objects>
@@ -1712,7 +1771,7 @@ this.DivCondition_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.I
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_in">
+      <Dataset id="ds_in" oncolumnchanged="ds_in_oncolumnchanged">
         <ColumnInfo>
           <ConstColumn id="ConstColumn0" type="STRING" size="30"/>
           <Column id="p_center_cd" type="STRING" size="256"/>

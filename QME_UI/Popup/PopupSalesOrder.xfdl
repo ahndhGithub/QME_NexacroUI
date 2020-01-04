@@ -80,7 +80,7 @@ this.COMBO_SET_STR = ""
  */
 this.fn_reset = function()
 {
-												var gtrcPos = "PopupSalesOrder.xfdl.Form_onload";
+												var gtrcPos = "PopupSalesOrder.xfdl.fn_reset";
 	//	this.gfn_formOnLoad(this);
 	this.gfn_getAllInitData();
     this.paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+this.paramStr, gtrcPos);

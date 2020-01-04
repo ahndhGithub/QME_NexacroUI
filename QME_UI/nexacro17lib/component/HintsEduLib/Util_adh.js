@@ -77,6 +77,7 @@ pForm.gtrace = function(strTrc,strPos)
 // 		||	strPos == "Util_adh.xjs.gfn_setUser"
 // 		||	strPos == "Util_adh.xjs.gfn_getParentForm"
 // 		||	strPos == "PopupSaveLayout.xfdl.callbackFunc_pop"
+		||	strPos == "Comm_CalFromTo.xfdl.form_onload"
 
 )	{
 		trace(strPos+"--------->"+strTrc);
