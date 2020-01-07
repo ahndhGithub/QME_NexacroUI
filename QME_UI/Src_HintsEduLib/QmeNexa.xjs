@@ -566,7 +566,8 @@ this.gfn_ExistColumnId = function(objDs, sColId){
 					//	this.sInitCompVisEna
  **********************************************************************************/
 this.gfn_getParentForm = function()	{
-													var gtrcPos = "Util_adh.xjs.gfn_getParentForm";
+
+	var gtrcPos = "Util_adh.xjs.gfn_getParentForm";	this.gtrace("●부모폼가져오기(gfn_getParentForm)", gtrcPos);
 	
 	var sEvFrm = "this.parent.form";
 	

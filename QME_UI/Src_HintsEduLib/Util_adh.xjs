@@ -4,6 +4,7 @@
 */
 
 var pForm = nexacro.Form.prototype;
+
 //var pForm = this;		// 탭 페이지 안에 있는 그리드의 경우 this로 하면 안 먹는다.
 
 
@@ -19,6 +20,7 @@ var pForm = nexacro.Form.prototype;
  */
  
  var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+ var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
  
 pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
 {	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
@@ -32,10 +34,24 @@ pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
 	||	strPos == "Comm_ColumnHide.xfdl.btn_ok_onclick"		//	팝업메뉴에서 확인 버튼
 	||	strPos == "Grid.xjs.gfn_columnHidCallback"
 	){
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
 	}
 }
 
+pForm.fn_trace = function(strTrc, strPos){
+	var sTxt = strPos+"--------->"+strTrc;
+//	nexacro.getApplication().TrcOutputTxt += sTxt;
+	if(nexacro.getApplication().gds_TrcOutputTxt.rowcount == 0)
+	{
+		nexacro.getApplication().gds_TrcOutputTxt.addRow();
+	}
+	
+	var sTmpOuTxt = this.gfn_nvl(nexacro.getApplication().gds_TrcOutputTxt.getColumn(0, "OutputTxt"), "");
+		//	sTmpOuTxt = sTmpOuTxt+"\n"+sTxt;
+		sTmpOuTxt = sTxt+"\n"+sTmpOuTxt;
+		
+	nexacro.getApplication().gds_TrcOutputTxt.setColumn(0, "OutputTxt", nexacro.trim(sTmpOuTxt));
+}
 /**
  * @class
  * @param 
@@ -60,7 +76,7 @@ pForm.gtrace_191229_Comm_ComboConditionFromTo = function(strTrc,strPos)
 		//	||	this.oFrmParnt.name=="Order_recap" && this.oDivParnt.name=="div_Season"
 		||	this.oFrmParnt.name=="Order_recap" && this.oDivParnt.name=="div_SalesGroup"
 		)
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
 	}
 }
 
@@ -82,7 +98,7 @@ pForm.gtrace_200104_cmmSearchConditionFromTo = function(strTrc,strPos)
 	if(strPos == "Comm_SearchConditionFromTo.xfdl.form_onload"
 	)
 	{
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
 	}
 }
 
@@ -102,7 +118,7 @@ pForm.gtrace_191230_Comm_MultiCombo = function(strTrc,strPos)
 	
 	if(strPos.indexOf("Comm_MultiComb.xfdl.")>-1)
 	{
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
 	}
 }
 
@@ -128,7 +144,7 @@ pForm.gtrace_191225_ExcelExport = function(strTrc,strPos)
  	||	strPos == "Excel.xjs.gfn_excelExport"
  	||	strPos == "ExportObject.xjs.exportData"
 	){	
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
 	}
 }
 
@@ -147,13 +163,46 @@ pForm.gtrace_191226_CommCodeSetting = function(strTrc,strPos)
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191226_CommCodeSetting", "ROW_CHK"),"")!="1") return;
 	if(	strPos == "Util_adh.xjs.gfn_getAllInitData"
 	){	
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
+	}
+}
+
+pForm.gtrace_200107_cmmGridFilterButton = function(strTrc,strPos)
+{	//	퀵그리드필터버튼클릭
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_200107_cmmGridFilterButton", "ROW_CHK"),"")!="1") return;
+	
+	if(strPos.indexOf("cmmGridFilterButton.xfdl.")>-1)
+	{
+// 		if(
+// 			strPos == "cmmGridFilterButton.xfdl.form_onload"				
+// 		||	strPos == "cmmGridFilterButton.xfdl.btn_GridFilter_onclick"	
+// 		||	strPos == "cmmGridFilterButton.xfdl.fn_SaveLayoutPopup"		
+// 		||	strPos == "cmmGridFilterButton.xfdl.fn_popupCallback"			
+// 		)
+		{
+			this.fn_trace(strTrc, strPos);
+		}
 	}
 }
 
 
-
-
+pForm.gtrace_gfn_getParentForm = function(strTrc,strPos)
+{	//	부모폼가져오기
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_gfn_getParentForm", "ROW_CHK"),"")!="1") return;
+	
+	if(strPos.indexOf("Util_adh.xjs.gfn_getParentForm")>-1)
+	{
+// 		if(
+// 			strPos == "cmmGridFilterButton.xfdl.form_onload"				
+// 		||	strPos == "cmmGridFilterButton.xfdl.btn_GridFilter_onclick"	
+// 		||	strPos == "cmmGridFilterButton.xfdl.fn_SaveLayoutPopup"		
+// 		||	strPos == "cmmGridFilterButton.xfdl.fn_popupCallback"			
+// 		)
+		{
+			this.fn_trace(strTrc, strPos);
+		}
+	}
+}
 
 /**
  * @class
@@ -163,6 +212,27 @@ pForm.gtrace_191226_CommCodeSetting = function(strTrc,strPos)
  */
 pForm.gtrace = function(strTrc,strPos)
 {
+	if(strTrc.indexOf("●")==-1){
+		if(strTrc.indexOf(" - ")!=0){
+			strTrc = " - "+strTrc;
+		}
+	}
+	
+	//	부모폼가져오기
+	this.gtrace_gfn_getParentForm(strTrc,strPos);
+	
+	//	퀵그리드필터버튼클릭
+	this.gtrace_200107_cmmGridFilterButton(strTrc,strPos);
+							// 	gds_TrcInfo.filter("");
+							// 	gds_TrcInfo.filter("ROW_CHK=='1'");
+							// 	for(var i=0; i < gds_TrcInfo.rowcount ; i++){
+							// 		var tFn = gds_TrcInfo.getColumn(i, "TrcId");
+							// 		var sEvFn = "this."+tFn+"(strTrc,strPos)";
+							// 		eval(sEvFn);
+							// 	}
+	
+	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_200107_cmmGridFilterButton", "ROW_CHK"),"")!="1") return;
+	
 	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
 	this.gtrace_191224_ColumnHide(strTrc,strPos);
 		
@@ -249,7 +319,7 @@ pForm.gtrace = function(strTrc,strPos)
 //		||	strPos == "Comm_CalFromTo.xfdl.form_onload"
 //		||	strPos == "Comm_CalFromTo.xfdl.ds_FromTo_oncolumnchanged"
 )	{
-		trace(strPos+"--------->"+strTrc);
+		this.fn_trace(strTrc, strPos);
 	}
 	
 };

@@ -2811,4 +2811,23 @@ pForm._gfn_selTypeArea = function(objGrid){
 
 pForm._gfn_selTypeRow = function(objGrid){
 	objGrid.set_selecttype("row");
+}
+
+/**
+ * Grid head append filter 보이기
+ * @param {Grid} grid 대상 Grid Component
+ */
+pForm.gfn_showHeadAppendFilter = function(objGrid)
+{	
+	//	var index = Eco.XComp.getUserProperty(grid, "appendHeadRowIndex");	
+	var index = objGrid.appendHeadRowIndex;
+	if ( this.gfn_isNull(index) )
+	{
+		index = objGrid.appendContentsRow("head");
+		// 추가된 head row index를 담아두어 제거시 사용
+		//	Eco.XComp.setUserProperty(grid, "appendHeadRowIndex", index);
+		objGrid.appendHeadRowIndex = index;
+		
+		//	this.arrangeAppendFilterComps(grid);
+	}
 }]]></Script>

@@ -452,6 +452,7 @@ this.btn_filter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	if(!this.gfn_isNull(filterstr))
 	{
+		this.gfn_showHeadAppendFilter(this.fv_targetGrid);
 		dataset.set_filterstr(filterstr);
 	}
 };

@@ -946,6 +946,16 @@
       </ColumnInfo>
       <Rows>
         <Row>
+          <Col id="TrcSeq">00</Col>
+          <Col id="TrcName">그리드필터버튼클릭</Col>
+          <Col id="TrcId">gtrace_200107_cmmGridFilterButton</Col>
+        </Row>
+        <Row>
+          <Col id="TrcSeq">01</Col>
+          <Col id="TrcName">부모폼가져오기(gfn_getParentForm)</Col>
+          <Col id="TrcId">gtrace_gfn_getParentForm</Col>
+        </Row>
+        <Row>
           <Col id="TrcSeq">40</Col>
           <Col id="TrcId">gtrace_191226_CommCodeSetting</Col>
           <Col id="TrcName">초기데이터모두가져오기</Col>
@@ -983,10 +993,19 @@
         </Row>
       </Rows>
     </Dataset>
+    <Dataset id="gds_TrcOutputTxt">
+      <ColumnInfo>
+        <Column id="OutputTxt" type="STRING" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row/>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="QmeLogonUserId"/>
     <Variable id="LanguageKey"/>
     <Variable id="MultiTxtSplitChar" initval="＾"/>
+    <Variable id="TrcOutputTxt"/>
   </Variables>
 </AppVariables>

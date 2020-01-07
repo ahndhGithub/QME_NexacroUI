@@ -91,7 +91,7 @@
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide" binddataset="ds_listStyle" cellsizingtype="col">
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide,gfilter" binddataset="ds_listStyle" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -1059,7 +1059,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="4" left="205" top="321" width="915" height="349" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false">
+        <Div id="DivBtnGfilter" taborder="4" text="" top="213" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabOrderRecap.TabpageStyle.form.GridStyle" visible="true" right="8"/>
+        <TextArea id="TextArea00" taborder="5" left="0" readonly="true" right="0" bottom="100" height="170" visible="false"/>
+        <Button id="Button00" taborder="6" text="Button00" width="209" height="35" onclick="Button00_onclick" right="0" bottom="100" visible="false"/>
+        <Grid id="Grid01" taborder="7" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="193">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1099,6 +1102,7 @@
       <BindItem id="item2" compid="DivCondition.form.div_company" propid="value" datasetid="ds_in" columnid="p_center_cd"/>
       <BindItem id="item0" compid="DivCondition.form.CheckBoxShipment" propid="value" datasetid="ds_in" columnid="p_shipment_yn"/>
       <BindItem id="item3" compid="DivCondition.form.RadioSewing" propid="value" datasetid="ds_in" columnid="p_sewi_type"/>
+      <BindItem id="item6" compid="TextArea00" propid="value" datasetid="gds_TrcOutputTxt" columnid="OutputTxt"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
 @desc	1. Include
@@ -1341,6 +1345,11 @@ this.ds_in_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColC
 	if(e.columnid == "p_radio"){
 		this.fn_UiControl(e.newvalue);
 	}
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	nexacro.getApplication().gds_TrcOutputTxt.clearData();
 };
 ]]></Script>
     <Objects>

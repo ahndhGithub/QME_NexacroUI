@@ -8,7 +8,7 @@
             <Tabpage id="TabpagePOList" text="POList" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Grid id="GridPoList" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="status,checkbox,no,export,colfix,rowfix,sort,filter,initial,!cellcopypase,cellcopy,colhide,personal,subsum,seltype" bottom="4" binddataset="ds_POList" taborder="5" visible="true" autoupdatetype="itemselect" oncellclick="TabMain_TabpagePOList_GridPoList00_oncellclick" cellsizingtype="col">
+                  <Grid id="GridPoList" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="status,checkbox,no,export,colfix,rowfix,sort,filter,initial,!cellcopypase,cellcopy,colhide,personal,subsum,seltype" bottom="4" binddataset="ds_POList" taborder="5" visible="true" autoupdatetype="itemselect" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -157,6 +157,7 @@
                   <Button id="Button_tp1_InitSortGroup" taborder="4" text="INIT_SortGroup" left="267" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
                   <Div id="DivBtnAddDel_GridPoList00" taborder="6" text="" left="10" top="6" width="218" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" InitCompVisEna="0:0:0,1:1:1"/>
                   <Div id="DivBtnFormat" taborder="7" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
+                  <Div id="DivBtnGfilter" taborder="8" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -426,6 +427,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="Button00" taborder="4" text="Button00" left="806" top="121" width="254" height="30" onclick="Button00_onclick" visible="false"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
@@ -624,6 +626,12 @@ this.POList_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
 {
 	trace("clientPos-->("+e.clientx+","+e.clienty+")");
 	trace("canvasPos-->("+e.canvasx+","+e.canvasy+")");
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_in.setColumn(0, "p_osno1", 1126195724);
+	this.DivCrudButton.form.btn_search.click();
 };
 ]]></Script>
     <Objects>
