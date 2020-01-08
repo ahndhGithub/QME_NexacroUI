@@ -937,10 +937,10 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
           <Column id="GMTColorcode" type="STRING" size="256"/>
           <Column id="COLOR" type="STRING" size="256"/>
           <Column id="SIZE" type="STRING" size="256"/>
-          <Column id="OS_MENGE" type="STRING" size="256"/>
+          <Column id="OS_MENGE" type="FLOAT" size="256"/>
           <Column id="UNIT" type="STRING" size="256"/>
           <Column id="PO_MENGE" type="STRING" size="256"/>
-          <Column id="REMAIN_MENGE" type="STRING" size="256"/>
+          <Column id="REMAIN_MENGE" type="FLOAT" size="256"/>
           <Column id="MEINS" type="STRING" size="256"/>
           <Column id="PRICE" type="STRING" size="256"/>
           <Column id="PEINH" type="STRING" size="256"/>
@@ -1054,12 +1054,15 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
           <Column id="HeaderText" type="STRING" size="256"/>
           <Column id="ColWidth" type="INT" size="256"/>
           <Column id="bDisplaytype" type="STRING" size="256"/>
-          <Column id="bEdittype" type="STRING" size="0"/>
+          <Column id="bEdittype" type="STRING" size="256"/>
           <Column id="bTextAlign" type="STRING" size="256"/>
           <Column id="bPadding" type="STRING" size="256"/>
           <Column id="bCombodataset" type="STRING" size="256"/>
           <Column id="bCombocodecol" type="STRING" size="256"/>
           <Column id="bCombodatacol" type="STRING" size="256"/>
+          <Column id="bMaskedittype" type="STRING" size="256" description="number / string"/>
+          <Column id="bMaskeditlimitbymask" type="STRING" size="256" description="decimal / integer / both / none "/>
+          <Column id="bMaskeditformat" type="STRING" size="256" description="9,999.##"/>
         </ColumnInfo>
         <Rows>
           <Row>
@@ -1085,11 +1088,6 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
           <Row>
             <Col id="BindCol">TYPE</Col>
             <Col id="HeaderText">Type</Col>
-            <Col id="bDisplaytype"/>
-            <Col id="bEdittype"/>
-            <Col id="bCombodataset"/>
-            <Col id="bCombocodecol"/>
-            <Col id="bCombodatacol"/>
             <Col id="ColWidth">50</Col>
             <Col id="bTextAlign">center</Col>
           </Row>
@@ -1102,13 +1100,13 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
           <Row>
             <Col id="BindCol">ZTERM</Col>
             <Col id="HeaderText">Payment Terms</Col>
+            <Col id="ColWidth">250</Col>
             <Col id="bDisplaytype">combocontrol</Col>
             <Col id="bEdittype">combo</Col>
+            <Col id="bTextAlign">center</Col>
             <Col id="bCombodataset">ds_cmbPaymentTerms</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
-            <Col id="ColWidth">250</Col>
-            <Col id="bTextAlign">center</Col>
           </Row>
           <Row>
             <Col id="BindCol">DOC_TYPE</Col>
@@ -1116,10 +1114,10 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="ColWidth">150</Col>
             <Col id="bDisplaytype">combocontrol</Col>
             <Col id="bEdittype">combo</Col>
+            <Col id="bTextAlign">center</Col>
             <Col id="bCombodataset">ds_cmbDocumentType</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
-            <Col id="bTextAlign">center</Col>
           </Row>
           <Row>
             <Col id="BindCol">SUPPLIER_CODE1</Col>
@@ -1194,8 +1192,12 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="BindCol">OS_MENGE</Col>
             <Col id="HeaderText">BOM Q'ty(rounding up)</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">UNIT</Col>
@@ -1207,16 +1209,24 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="BindCol">PO_MENGE</Col>
             <Col id="HeaderText">PO Q'ty</Col>
             <Col id="ColWidth">60</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">REMAIN_MENGE</Col>
             <Col id="HeaderText">Order Q'ty</Col>
-            <Col id="bEdittype">normal</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bEdittype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">MEINS</Col>
@@ -1227,42 +1237,58 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
           <Row>
             <Col id="BindCol">PRICE</Col>
             <Col id="HeaderText">Price</Col>
-            <Col id="bEdittype">normal</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bEdittype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">PEINH</Col>
             <Col id="HeaderText">Per</Col>
-            <Col id="bEdittype">normal</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bEdittype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">L_NETWR</Col>
             <Col id="HeaderText">TTL Amount</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">CURRENCY</Col>
             <Col id="HeaderText">Currency</Col>
+            <Col id="ColWidth">80</Col>
             <Col id="bDisplaytype">combotext</Col>
-            <Col id="bEdittype"></Col>
+            <Col id="bTextAlign">center</Col>
             <Col id="bCombodataset">ds_cmbCurrency</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
-            <Col id="ColWidth">80</Col>
-            <Col id="bTextAlign">center</Col>
           </Row>
           <Row>
-            <Col id="HeaderText">Goods movement Q'ty</Col>
             <Col id="BindCol">PR_MENGE</Col>
+            <Col id="HeaderText">Goods movement Q'ty</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bTextAlign">center</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">PURCGRP</Col>
@@ -1280,8 +1306,12 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="BindCol">OS_PRICE</Col>
             <Col id="HeaderText">OS Price</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">OS_PEINH</Col>
@@ -1300,8 +1330,12 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="BindCol">OS_AMOUNT</Col>
             <Col id="HeaderText">OS AMOUNT</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,###</Col>
           </Row>
           <Row>
             <Col id="BindCol">DELIVERY_DATE</Col>
@@ -1342,13 +1376,13 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
           <Row>
             <Col id="BindCol">INCO1</Col>
             <Col id="HeaderText">Incoterms</Col>
+            <Col id="ColWidth">150</Col>
             <Col id="bDisplaytype">combocontrol</Col>
             <Col id="bEdittype">combo</Col>
+            <Col id="bTextAlign">center</Col>
             <Col id="bCombodataset">ds_cmbIncoterms</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
-            <Col id="ColWidth">150</Col>
-            <Col id="bTextAlign">center</Col>
           </Row>
           <Row>
             <Col id="BindCol">Remark</Col>
@@ -1421,6 +1455,12 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="ColWidth">120</Col>
             <Col id="bTextAlign">center</Col>
           </Row>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
         </Rows>
       </Dataset>
       <Dataset id="ds_paramMap">

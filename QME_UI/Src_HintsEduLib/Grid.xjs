@@ -50,24 +50,41 @@ pForm.gfn_setGrid = function(objGrid)
 	{
 		for( var j=0; j<objDs.getColCount(); j++){
 			var tmpcol = objDs.getColID(j);				//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
-			var iFndRp 			= this.ds_grdDic.findRowExpr("BindCol=='"+tmpcol+"'");										// if(tmpcol=="DOC_TYPE"){this.gtrace("iFndRp 			--->"+iFndRp 			, gtrcPos);}
-			var sHdTxt 			= this.ds_grdDic.getColumn(iFndRp, "HeaderText");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sHdTxt 			--->"+sHdTxt 			, gtrcPos);}
-			var iColWidth 		= this.ds_grdDic.getColumn(iFndRp, "ColWidth");												 if(tmpcol=="DOC_TYPE"){this.gtrace("iColWidth 		--->"+iColWidth 		, gtrcPos);}
-			var sbDisplaytype 	= this.ds_grdDic.getColumn(iFndRp, "bDisplaytype");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbDisplaytype --->"+sbDisplaytype , gtrcPos);}
-			var sbEdittype 		= this.ds_grdDic.getColumn(iFndRp, "bEdittype");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
-			var sbTextAlign 	= this.ds_grdDic.getColumn(iFndRp, "bTextAlign");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var iFndRp 			= this.ds_grdDic.findRowExpr("BindCol=='"+tmpcol+"'");									// if(tmpcol=="DOC_TYPE"){this.gtrace("iFndRp 			--->"+iFndRp 			, gtrcPos);}
+			var sHdTxt 			= this.ds_grdDic.getColumn(iFndRp, "HeaderText");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sHdTxt 			--->"+sHdTxt 			, gtrcPos);}
+			var iColWidth 		= this.ds_grdDic.getColumn(iFndRp, "ColWidth");											 if(tmpcol=="DOC_TYPE"){this.gtrace("iColWidth 		--->"+iColWidth 		, gtrcPos);}
+			var sbDisplaytype 	= this.ds_grdDic.getColumn(iFndRp, "bDisplaytype");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbDisplaytype --->"+sbDisplaytype , gtrcPos);}
+			var sbEdittype 		= this.ds_grdDic.getColumn(iFndRp, "bEdittype");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbTextAlign 	= this.ds_grdDic.getColumn(iFndRp, "bTextAlign");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
 			var sbPadding 		= this.ds_grdDic.getColumn(iFndRp, "bPadding");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
-			var sbCombodataset 	= this.ds_grdDic.getColumn(iFndRp, "bCombodataset");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodataset--->"+sbCombodataset, gtrcPos);}
-			var sbCombocodecol 	= this.ds_grdDic.getColumn(iFndRp, "bCombocodecol");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombocodecol--->"+sbCombocodecol, gtrcPos);}
-			var sbCombodatacol 	= this.ds_grdDic.getColumn(iFndRp, "bCombodatacol");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodatacol--->"+sbCombodatacol, gtrcPos);}
-	
+			var sbCombodataset 	= this.ds_grdDic.getColumn(iFndRp, "bCombodataset");									// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodataset--->"+sbCombodataset, gtrcPos);}
+			var sbCombocodecol 	= this.ds_grdDic.getColumn(iFndRp, "bCombocodecol");									// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombocodecol--->"+sbCombocodecol, gtrcPos);}
+			var sbCombodatacol 	= this.ds_grdDic.getColumn(iFndRp, "bCombodatacol");									// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodatacol--->"+sbCombodatacol, gtrcPos);}
+			var sbMaskedittype 			= this.ds_grdDic.getColumn(iFndRp, "bMaskedittype");										
+			var sbMaskeditlimitbymask 	= this.ds_grdDic.getColumn(iFndRp, "bMaskeditlimitbymask");									
+			var sbMaskeditformat		= this.ds_grdDic.getColumn(iFndRp, "bMaskeditformat");									
+
 			if(!this.gfn_isNull(sHdTxt)) 			objGrid.setCellProperty( "head", j, "text", sHdTxt );
 			if(!this.gfn_isNull(iColWidth		)) 	objGrid.setRealColSize( "body", j, iColWidth, true );
-			if(!this.gfn_isNull(sbDisplaytype	)) 	objGrid.setCellProperty( "body", j, "displaytype"	, sbDisplaytype 	);	//	if(tmpcol=="DOC_TYPE"){this.gtrace("bRslt--->"+bRslt, gtrcPos);}
+			if(!this.gfn_isNull(sbDisplaytype	)) 	{
+				objGrid.setCellProperty( "body", j, "displaytype"	, sbDisplaytype 	);	//	if(tmpcol=="DOC_TYPE"){this.gtrace("bRslt--->"+bRslt, gtrcPos);}
+				switch(sbDisplaytype){
+					case "mask" 	: 
+									  objGrid.setCellProperty( "body", j, "maskeditformat"		, sbMaskeditformat		);
+						break;
+					default : 
+						break;
+				}
+			}
 			if(!this.gfn_isNull(sbEdittype		)) 	{
 				objGrid.setCellProperty( "body", j, "edittype"		, sbEdittype		);
 				switch(sbEdittype){
-					case "normal" : objGrid.setCellProperty( "body", j, "editautoselect"	, true 	);
+					case "normal" 	: objGrid.setCellProperty( "body", j, "editautoselect"	, true 	);
+						break;
+					case "mask" 	: objGrid.setCellProperty( "body", j, "maskeditautoselect"	, true 	);
+									  objGrid.setCellProperty( "body", j, "maskedittype"		, sbMaskedittype 		);
+									  objGrid.setCellProperty( "body", j, "maskeditlimitbymask"	, sbMaskeditlimitbymask );
+									  objGrid.setCellProperty( "body", j, "maskeditformat"		, sbMaskeditformat		);
 						break;
 					default : 
 						break;
