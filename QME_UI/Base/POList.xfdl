@@ -3,15 +3,29 @@
   <Form id="POList" width="1280" height="720" titletext="New Form" onload="formOnload" onclick="POList_onclick">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Tab id="TabMain" taborder="1" tabindex="0" left="8" top="146" bottom="8" right="8" border="1px solid gray,1px solid gray,1px solid gray,1px solid gray">
+        <Tab id="TabMain" taborder="1" tabindex="0" left="8" top="146" bottom="107" right="8" border="1px solid gray,1px solid gray,1px solid gray,1px solid gray">
           <Tabpages>
             <Tabpage id="TabpagePOList" text="POList" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Grid id="GridPoList" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="status,checkbox,no,export,colfix,rowfix,sort,filter,initial,!cellcopypase,cellcopy,colhide,personal,subsum,seltype" bottom="4" binddataset="ds_POList" taborder="5" visible="true" autoupdatetype="itemselect" cellsizingtype="col">
+                  <Grid id="GridPoList" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="status,checkbox,no,export,colfix,rowfix,sort,filter,initial,!cellcopypase,cellcopy,colhide,personal,subsum,seltype" bottom="7" binddataset="ds_POList" taborder="0" visible="true" autoupdatetype="itemselect" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="140"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
@@ -60,104 +74,128 @@
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="PR_MENGE"/>
-                          <Cell col="1" text="VBELN"/>
-                          <Cell col="2" text="CENTER_CD"/>
-                          <Cell col="3" text="OS_PRICE"/>
-                          <Cell col="4" text="SORT_NUM"/>
-                          <Cell col="5" text="L_NETWR"/>
-                          <Cell col="6" text="CRT"/>
-                          <Cell col="7" text="GMT_COL"/>
-                          <Cell col="8" text="J_3ASIZE"/>
-                          <Cell col="9" text="PO_DESC"/>
-                          <Cell col="10" text="MSGBN"/>
-                          <Cell col="11" text="DOC_TYPE"/>
-                          <Cell col="12" text="OS_PEINH"/>
-                          <Cell col="13" text="USAGE"/>
-                          <Cell col="14" text="REMAIN_MENGE"/>
-                          <Cell col="15" text="MTL_SIZE_KEY"/>
-                          <Cell col="16" text="SUPPLIER_NAME"/>
-                          <Cell col="17" text="TYPE"/>
-                          <Cell col="18" text="MTL_ITEM"/>
-                          <Cell col="19" text="MTL_COLOR_KEY"/>
-                          <Cell col="20" text="MATNR"/>
-                          <Cell col="21" text="L_WAERK"/>
-                          <Cell col="22" text="CURRENCY"/>
-                          <Cell col="23" text="GOODS_MOV"/>
-                          <Cell col="24" text="MTL_ITEM_CD"/>
-                          <Cell col="25" text="GMT_ITEM"/>
-                          <Cell col="26" text="UNIT"/>
-                          <Cell col="27" text="ITEM_CD"/>
-                          <Cell col="28" text="CENTER_NM"/>
-                          <Cell col="29" text="PRICE"/>
-                          <Cell col="30" text="OS_MENGE"/>
-                          <Cell col="31" text="SUPPLIER_CODE1"/>
-                          <Cell col="32" text="PEINH"/>
-                          <Cell col="33" text="INCO1"/>
-                          <Cell col="34" text="MEINS"/>
-                          <Cell col="35" text="OSSTS"/>
-                          <Cell col="36" text="PURCGRP"/>
-                          <Cell col="37" text="PO_MENGE"/>
-                          <Cell col="38" text="GMTMATNR"/>
-                          <Cell col="39" text="POSNR"/>
-                          <Cell col="40" text="DELIVERY_DATE"/>
-                          <Cell col="41" text="LOT_NO"/>
+                          <Cell text="Status"/>
+                          <Cell col="1" text="Message"/>
+                          <Cell col="2" text="VBELN"/>
+                          <Cell col="3" text="CENTER_NM"/>
+                          <Cell col="4" text="TYPE"/>
+                          <Cell col="5" text="GMT_ITEM"/>
+                          <Cell col="6" text="ZTERM"/>
+                          <Cell col="7" text="DOC_TYPE"/>
+                          <Cell col="8" text="SUPPLIER_CODE1"/>
+                          <Cell col="9" text="SUPPLIER_NAME"/>
+                          <Cell col="10" text="PO_DESC"/>
+                          <Cell col="11" text="MATNR"/>
+                          <Cell col="12" text="USAGE"/>
+                          <Cell col="13" text="BUYER_ITEM_CD"/>
+                          <Cell col="14" text="MTL_ITEM"/>
+                          <Cell col="15" text="GMT_COL"/>
+                          <Cell col="16" text="GMTColorcode"/>
+                          <Cell col="17" text="COLOR"/>
+                          <Cell col="18" text="SIZE"/>
+                          <Cell col="19" text="OS_MENGE"/>
+                          <Cell col="20" text="UNIT"/>
+                          <Cell col="21" text="PO_MENGE"/>
+                          <Cell col="22" text="REMAIN_MENGE"/>
+                          <Cell col="23" text="MEINS"/>
+                          <Cell col="24" text="PRICE"/>
+                          <Cell col="25" text="PEINH"/>
+                          <Cell col="26" text="L_NETWR"/>
+                          <Cell col="27" text="CURRENCY"/>
+                          <Cell col="28" text="PR_MENGE"/>
+                          <Cell col="29" text="PURCGRP"/>
+                          <Cell col="30" text="WEBRE"/>
+                          <Cell col="31" text="OS_PRICE"/>
+                          <Cell col="32" text="OS_PEINH"/>
+                          <Cell col="33" text="L_WAERK"/>
+                          <Cell col="34" text="OS_AMOUNT"/>
+                          <Cell col="35" text="DELIVERY_DATE"/>
+                          <Cell col="36" text="UEBTO"/>
+                          <Cell col="37" text="UNTTO"/>
+                          <Cell col="38" text="DeliveryLocation"/>
+                          <Cell col="39" text="Forwarder"/>
+                          <Cell col="40" text="BuyerCode"/>
+                          <Cell col="41" text="INCO1"/>
+                          <Cell col="42" text="Remark"/>
+                          <Cell col="43" text="CENTER_CD"/>
+                          <Cell col="44" text="SORT_NUM"/>
+                          <Cell col="45" text="CRT"/>
+                          <Cell col="46" text="MSGBN"/>
+                          <Cell col="47" text="MTL_SIZE_KEY"/>
+                          <Cell col="48" text="MTL_COLOR_KEY"/>
+                          <Cell col="49" text="GOODS_MOV"/>
+                          <Cell col="50" text="MTL_ITEM_CD"/>
+                          <Cell col="51" text="ITEM_CD"/>
+                          <Cell col="52" text="OSSTS"/>
+                          <Cell col="53" text="GMTMATNR"/>
+                          <Cell col="54" text="POSNR"/>
+                          <Cell col="55" text="LOT_NO"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:PR_MENGE"/>
-                          <Cell col="1" text="bind:VBELN"/>
-                          <Cell col="2" text="bind:CENTER_CD"/>
-                          <Cell col="3" text="bind:OS_PRICE"/>
-                          <Cell col="4" text="bind:SORT_NUM"/>
-                          <Cell col="5" text="bind:L_NETWR"/>
-                          <Cell col="6" text="bind:CRT"/>
-                          <Cell col="7" text="bind:GMT_COL"/>
-                          <Cell col="8" text="bind:J_3ASIZE"/>
-                          <Cell col="9" text="bind:PO_DESC"/>
-                          <Cell col="10" text="bind:MSGBN"/>
-                          <Cell col="11" text="bind:DOC_TYPE" combodataset="ds_cmbDocumentType" combocodecol="CODE_CD" combodatacol="CODE_NM" displaytype="combocontrol" edittype="combo"/>
-                          <Cell col="12" text="bind:OS_PEINH"/>
-                          <Cell col="13" text="bind:USAGE"/>
-                          <Cell col="14" text="bind:REMAIN_MENGE"/>
-                          <Cell col="15" text="bind:MTL_SIZE_KEY"/>
-                          <Cell col="16" text="bind:SUPPLIER_NAME"/>
-                          <Cell col="17" text="bind:TYPE"/>
-                          <Cell col="18" text="bind:MTL_ITEM"/>
-                          <Cell col="19" text="bind:MTL_COLOR_KEY"/>
-                          <Cell col="20" text="bind:MATNR"/>
-                          <Cell col="21" text="bind:L_WAERK"/>
-                          <Cell col="22" text="bind:CURRENCY"/>
-                          <Cell col="23" text="bind:GOODS_MOV"/>
-                          <Cell col="24" text="bind:MTL_ITEM_CD"/>
-                          <Cell col="25" text="bind:GMT_ITEM"/>
-                          <Cell col="26" text="bind:UNIT"/>
-                          <Cell col="27" text="bind:ITEM_CD"/>
-                          <Cell col="28" text="bind:CENTER_NM"/>
-                          <Cell col="29" text="bind:PRICE"/>
-                          <Cell col="30" text="bind:OS_MENGE"/>
-                          <Cell col="31" text="bind:SUPPLIER_CODE1"/>
-                          <Cell col="32" text="bind:PEINH"/>
-                          <Cell col="33" text="bind:INCO1"/>
-                          <Cell col="34" text="bind:MEINS"/>
-                          <Cell col="35" text="bind:OSSTS"/>
-                          <Cell col="36" text="bind:PURCGRP"/>
-                          <Cell col="37" text="bind:PO_MENGE"/>
-                          <Cell col="38" text="bind:GMTMATNR"/>
-                          <Cell col="39" text="bind:POSNR"/>
-                          <Cell col="40" text="bind:DELIVERY_DATE"/>
-                          <Cell col="41" text="bind:LOT_NO"/>
+                          <Cell text="bind:Status"/>
+                          <Cell col="1" text="bind:Message"/>
+                          <Cell col="2" text="bind:VBELN"/>
+                          <Cell col="3" text="bind:CENTER_NM"/>
+                          <Cell col="4" text="bind:TYPE"/>
+                          <Cell col="5" text="bind:GMT_ITEM"/>
+                          <Cell col="6" text="bind:ZTERM"/>
+                          <Cell col="7" text="bind:DOC_TYPE"/>
+                          <Cell col="8" text="bind:SUPPLIER_CODE1"/>
+                          <Cell col="9" text="bind:SUPPLIER_NAME"/>
+                          <Cell col="10" text="bind:PO_DESC"/>
+                          <Cell col="11" text="bind:MATNR"/>
+                          <Cell col="12" text="bind:USAGE"/>
+                          <Cell col="13" text="bind:BUYER_ITEM_CD"/>
+                          <Cell col="14" text="bind:MTL_ITEM"/>
+                          <Cell col="15" text="bind:GMT_COL"/>
+                          <Cell col="16" text="bind:GMTColorcode"/>
+                          <Cell col="17" text="bind:COLOR"/>
+                          <Cell col="18" text="bind:SIZE"/>
+                          <Cell col="19" text="bind:OS_MENGE"/>
+                          <Cell col="20" text="bind:UNIT"/>
+                          <Cell col="21" text="bind:PO_MENGE"/>
+                          <Cell col="22" text="bind:REMAIN_MENGE"/>
+                          <Cell col="23" text="bind:MEINS"/>
+                          <Cell col="24" text="bind:PRICE"/>
+                          <Cell col="25" text="bind:PEINH"/>
+                          <Cell col="26" text="bind:L_NETWR"/>
+                          <Cell col="27" text="bind:CURRENCY"/>
+                          <Cell col="28" text="bind:PR_MENGE"/>
+                          <Cell col="29" text="bind:PURCGRP"/>
+                          <Cell col="30" text="bind:WEBRE"/>
+                          <Cell col="31" text="bind:OS_PRICE"/>
+                          <Cell col="32" text="bind:OS_PEINH"/>
+                          <Cell col="33" text="bind:L_WAERK"/>
+                          <Cell col="34" text="bind:OS_AMOUNT"/>
+                          <Cell col="35" text="bind:DELIVERY_DATE"/>
+                          <Cell col="36" text="bind:UEBTO"/>
+                          <Cell col="37" text="bind:UNTTO"/>
+                          <Cell col="38" text="bind:DeliveryLocation"/>
+                          <Cell col="39" text="bind:Forwarder"/>
+                          <Cell col="40" text="bind:BuyerCode"/>
+                          <Cell col="41" text="bind:INCO1"/>
+                          <Cell col="42" text="bind:Remark"/>
+                          <Cell col="43" text="bind:CENTER_CD"/>
+                          <Cell col="44" text="bind:SORT_NUM"/>
+                          <Cell col="45" text="bind:CRT"/>
+                          <Cell col="46" text="bind:MSGBN"/>
+                          <Cell col="47" text="bind:MTL_SIZE_KEY"/>
+                          <Cell col="48" text="bind:MTL_COLOR_KEY"/>
+                          <Cell col="49" text="bind:GOODS_MOV"/>
+                          <Cell col="50" text="bind:MTL_ITEM_CD"/>
+                          <Cell col="51" text="bind:ITEM_CD"/>
+                          <Cell col="52" text="bind:OSSTS"/>
+                          <Cell col="53" text="bind:GMTMATNR"/>
+                          <Cell col="54" text="bind:POSNR"/>
+                          <Cell col="55" text="bind:LOT_NO"/>
                         </Band>
                       </Format>
                     </Formats>
                   </Grid>
-                  <Button id="Button_tp1_SortComma" taborder="0" text="S:SO,FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Button id="Button_tp1_GroupComma" taborder="1" text="G:SO,FAC" left="139" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Button id="Button_tp1_SortPlus" taborder="2" text="S:SO+FAC" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
-                  <Button id="Button_tp1_GroupPlus" taborder="3" text="G:SO+FAC" left="140" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7" visible="false"/>
-                  <Button id="Button_tp1_InitSortGroup" taborder="4" text="INIT_SortGroup" left="267" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42" visible="false"/>
-                  <Div id="DivBtnAddDel_GridPoList00" taborder="6" text="" left="10" top="6" width="218" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" InitCompVisEna="0:0:0,1:1:1"/>
-                  <Div id="DivBtnFormat" taborder="7" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
-                  <Div id="DivBtnGfilter" taborder="8" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
+                  <Div id="DivBtnAddDel_GridPoList00" taborder="1" text="" left="10" top="6" width="218" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" InitCompVisEna="0:0:0,1:1:1"/>
+                  <Div id="DivBtnFormat" taborder="2" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
+                  <Div id="DivBtnGfilter" taborder="3" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
+                  <Button id="Button00" taborder="4" text="Button00" left="111" top="167" width="240" height="36" onclick="TabMain_TabpagePOList_Button00_onclick" visible="false"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -402,32 +440,135 @@
           </Layouts>
         </Div>
         <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" InitCompVisEna="1:1:1:1,1:0:1:1"/>
-        <Grid id="Grid00" taborder="3" left="60" top="397" width="930" height="243" binddataset="ds_result_savePO" visible="false">
+        <Button id="Button00" taborder="4" text="Button00" left="806" top="121" width="254" height="30" onclick="Button00_onclick" visible="false"/>
+        <Grid id="Grid01" taborder="7" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" bottom="63" width="690" right="19" top="360" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="664"/>
                 <Column size="80"/>
-                <Column size="80"/>
+                <Column size="158"/>
+                <Column size="363"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="O_MSG"/>
-                <Cell col="1" text="O_LIFNR"/>
-                <Cell col="2" text="O_VBELN"/>
+                <Cell text="TrcSeq"/>
+                <Cell col="1" text="TrcName"/>
+                <Cell col="2" text="TrcId"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:O_MSG"/>
-                <Cell col="1" text="bind:O_LIFNR"/>
-                <Cell col="2" text="bind:O_VBELN"/>
+                <Cell text="bind:TrcSeq"/>
+                <Cell col="1" text="bind:TrcName"/>
+                <Cell col="2" text="bind:TrcId"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button00" taborder="4" text="Button00" left="806" top="121" width="254" height="30" onclick="Button00_onclick" visible="false"/>
+        <Grid id="Grid02" taborder="6" left="0" height="100" binddataset="ds_PoSave_in" bottom="0" right="0">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="P_VBELN"/>
+                <Cell col="1" text="P_ZTERM"/>
+                <Cell col="2" text="P_BSART"/>
+                <Cell col="3" text="P_LIFNR"/>
+                <Cell col="4" text="P_MATNR"/>
+                <Cell col="5" text="P_USAGE"/>
+                <Cell col="6" text="P_BUYER_ITEM_CD"/>
+                <Cell col="7" text="P_TXZ01"/>
+                <Cell col="8" text="P_J_3ASIZE"/>
+                <Cell col="9" text="P_MENGE"/>
+                <Cell col="10" text="P_NETPR"/>
+                <Cell col="11" text="P_PEINH"/>
+                <Cell col="12" text="P_NETWR"/>
+                <Cell col="13" text="P_WAERS"/>
+                <Cell col="14" text="P_EKGRP"/>
+                <Cell col="15" text="P_WEBRE"/>
+                <Cell col="16" text="P_UEBTO"/>
+                <Cell col="17" text="P_UNTTO"/>
+                <Cell col="18" text="P_INCO1"/>
+                <Cell col="19" text="P_BUKRS"/>
+                <Cell col="20" text="P_MTL_SIZE_KEY"/>
+                <Cell col="21" text="P_MTL_COLOR_KEY"/>
+                <Cell col="22" text="P_MTL_ITEM_CD"/>
+                <Cell col="23" text="P_VBELP"/>
+                <Cell col="24" text="P_WERKS"/>
+                <Cell col="25" text="P_EKORG"/>
+                <Cell col="26" text="P_CRUD"/>
+                <Cell col="27" text="P_LOEKZ"/>
+                <Cell col="28" text="P_USER_ID"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:P_VBELN"/>
+                <Cell col="1" text="bind:P_ZTERM"/>
+                <Cell col="2" text="bind:P_BSART"/>
+                <Cell col="3" text="bind:P_LIFNR"/>
+                <Cell col="4" text="bind:P_MATNR"/>
+                <Cell col="5" text="bind:P_USAGE"/>
+                <Cell col="6" text="bind:P_BUYER_ITEM_CD"/>
+                <Cell col="7" text="bind:P_TXZ01"/>
+                <Cell col="8" text="bind:P_J_3ASIZE"/>
+                <Cell col="9" text="bind:P_MENGE"/>
+                <Cell col="10" text="bind:P_NETPR"/>
+                <Cell col="11" text="bind:P_PEINH"/>
+                <Cell col="12" text="bind:P_NETWR"/>
+                <Cell col="13" text="bind:P_WAERS"/>
+                <Cell col="14" text="bind:P_EKGRP"/>
+                <Cell col="15" text="bind:P_WEBRE"/>
+                <Cell col="16" text="bind:P_UEBTO"/>
+                <Cell col="17" text="bind:P_UNTTO"/>
+                <Cell col="18" text="bind:P_INCO1"/>
+                <Cell col="19" text="bind:P_BUKRS"/>
+                <Cell col="20" text="bind:P_MTL_SIZE_KEY"/>
+                <Cell col="21" text="bind:P_MTL_COLOR_KEY"/>
+                <Cell col="22" text="bind:P_MTL_ITEM_CD"/>
+                <Cell col="23" text="bind:P_VBELP"/>
+                <Cell col="24" text="bind:P_WERKS"/>
+                <Cell col="25" text="bind:P_EKORG"/>
+                <Cell col="26" text="bind:P_CRUD"/>
+                <Cell col="27" text="bind:P_LOEKZ"/>
+                <Cell col="28" text="bind:P_USER_ID"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
@@ -503,12 +644,39 @@ this.tfn_getPoListHistoryLoad = function(){
 */
 this.tfn_savePO = function(){
 
+	var gtrcPos = "POList.xfdl.tfn_savePO";		this.gtrace("● PO저장트랜잭션", gtrcPos);
+						
 	//	this.ds_POList.set_enableevent(false);
-	this.ds_POList.filter("ROW_CHK=='1'");
+	if(this.ds_POList.findRow("ROW_CHK","1") < 0 ){
+		this.gfn_alert("no checked data");
+		return;
+	}
+		
+	{	//	beforeTrans
+		this.ds_POList.filter("ROW_CHK=='1'");
+		this.ds_PoSave_in.clearData();
+																		var sGtLdCol = "VBELN";	// Ouput 보고싶은 로드컬럼
+ 		for(var i=0; i < this.ds_POList.rowcount ;i++){
+ 			var iAdRp = this.ds_PoSave_in.addRow();
+								 											//	this.gtrace("내부param(i)--->"+i, gtrcPos);
+			for(var j=0; j < this.ds_paramMap.rowcount; j++){
+				
+				var sLdCol = this.ds_paramMap.getColumn(j, "LoadCol");		//	if(i==0)	this.gtrace("내부param(sLdCol)--->"+sLdCol, gtrcPos);
+				var sSvCol = this.ds_paramMap.getColumn(j, "SaveCol");		//	if(i==0)	this.gtrace("내부param(sSvCol)--->"+sSvCol, gtrcPos);
 
+				if(this.gfn_nvl(sLdCol,"")!="" && this.gfn_nvl(sSvCol,"")!=""){
+																				if(sGtLdCol==sLdCol)	this.gtrace("변수맵핑(조회->저장)(ds_paramMap기준)--->"+sLdCol+"-->"+sSvCol, gtrcPos);
+					this.ds_PoSave_in.copyRow(iAdRp, this.ds_POList, i, sSvCol+"="+sLdCol)	//	"ToColumnID=FromColumnID"
+				}
+			}
+ 		}
+		
+		this.ds_POList.filter("");
+	}
+																			this.gtrace("트랜잭션데이터셋(ds_PoSave_in.saveXML)--->"+this.ds_PoSave_in.saveXML(), gtrcPos);
 	var sSvcID 			= "savePO";
 	var sURL 			= "AppSvr::po/savePO.ppc";
-	var sInDatasets 	= "ds_in0=ds_POList:U";
+	var sInDatasets 	= "ds_in0=ds_PoSave_in";
 	var sOutDatasets 	= "ds_result_savePO=ds_out0";
 	var sArguments 		= "sqlId=" + nexacro.wrapQuote("");
 
@@ -541,7 +709,23 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			case "getPoListHistoryLoad"	:
 				//	this.ds_POList.addColumn("gridcmmcheck", "STRING", 1);
 													//	this.gtrace(this.ds_POList.saveXML(), gtrcPos);
-
+					
+					
+				break;
+			case "savePO":
+					//	trace(this.ds_result_savePO.saveXML());
+					var sMSG		=	this.ds_result_savePO.getColumn(0, "O_MSG");	//	trace("sMSG--->"+sMSG);
+					var sLIFNR		=	this.ds_result_savePO.getColumn(0, "O_LIFNR");	//	trace("sLIFNR--->"+sLIFNR);
+					var sVBELN		=	this.ds_result_savePO.getColumn(0, "O_VBELN");	//	trace("sVBELN--->"+sVBELN);
+					
+					//	this.gfn_alert("msg.err.validator", [msg], null, "gfn_validationCallback", "A");
+					
+					var sCbMsg = "O_MSG:"+sMSG		+"\n"
+								+"O_LIFNR:"+sLIFNR	+"\n"
+								+"O_VBELN:"+sVBELN;
+					
+					//	this.gfn_alert(sCbMsg, null, null, null, "A");
+					alert(sCbMsg);
 				break;
  	}
 }
@@ -595,7 +779,7 @@ this.cfn_add = function()
  */
 this.cfn_del = function()
 {
-	trace("---------------------cfn_del----------------------------------------");
+
 };
 
 /*
@@ -632,6 +816,38 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.ds_in.setColumn(0, "p_osno1", 1126195724);
 	this.DivCrudButton.form.btn_search.click();
+};
+
+this.ds_POList_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
+{
+	if(	e.columnid == "REMAIN_MENGE"
+	||	e.columnid == "PRICE"
+	||	e.columnid == "PEINH"
+	){
+		obj.set_enableevent(false);
+		this.fn_TotalAmountCalc(e.row);
+		obj.set_enableevent(true);
+	}
+};
+
+this.fn_TotalAmountCalc = function(iCalcRp){
+	var sREMAIN_MENGE 	= nexacro.toNumber(this.ds_POList.getColumn(iCalcRp, "REMAIN_MENGE"));
+	var sPRICE 			= nexacro.toNumber(this.ds_POList.getColumn(iCalcRp, "PRICE"));
+	var sPEINH 			= nexacro.toNumber(this.ds_POList.getColumn(iCalcRp, "PEINH"));
+	var	nL_NETWR		= Eco.number.multiply(sREMAIN_MENGE, sPRICE, sPEINH);
+	
+	this.ds_POList.setColumn(iCalcRp, "L_NETWR", nL_NETWR);
+	//	trace("곱하기--->"+Eco.number.multiply(sREMAIN_MENGE, sPRICE, sPEINH));
+}
+
+this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//	trace("gfn_decode---->"+this.gfn_decode());
+// 	trace("Eco.number._getMaxPrecision---->"+Eco.number._getMaxPrecision(1660));	//	1
+// 	trace("Eco.number._getMaxPrecision---->"+Eco.number._getMaxPrecision(-1559.9));		//	1.0000000000005
+// 	trace("Eco.number._getMaxPrecision---->"+Eco.number._getMaxPrecision(0.33));		//	1.000000000005						
+	trace("곱하기--->"+Eco.number.multiply(1, 4, 2));
+	trace("곱하기--->"+Eco.number.multiply("1", "4", "2"));
 };
 ]]></Script>
     <Objects>
@@ -700,52 +916,97 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="Remark" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_POList" useclientlayout="true">
+      <Dataset id="ds_POList" useclientlayout="true" oncolumnchanged="ds_POList_oncolumnchanged">
         <ColumnInfo>
-          <Column id="ROW_CHK" type="STRING" size="256"/>
-          <Column id="ROW_STS" type="STRING" size="256"/>
-          <Column id="PR_MENGE" type="INT" size="256"/>
-          <Column id="VBELN" type="STRING" size="256"/>
-          <Column id="CENTER_CD" type="STRING" size="256"/>
-          <Column id="OS_PRICE" type="STRING" size="256"/>
-          <Column id="SORT_NUM" type="STRING" size="256"/>
-          <Column id="L_NETWR" type="STRING" size="256"/>
-          <Column id="CRT" type="STRING" size="256"/>
-          <Column id="GMT_COL" type="STRING" size="256"/>
-          <Column id="J_3ASIZE" type="STRING" size="256"/>
-          <Column id="PO_DESC" type="STRING" size="256"/>
-          <Column id="MSGBN" type="STRING" size="256"/>
-          <Column id="DOC_TYPE" type="STRING" size="256"/>
-          <Column id="OS_PEINH" type="STRING" size="256"/>
-          <Column id="USAGE" type="STRING" size="256"/>
-          <Column id="REMAIN_MENGE" type="INT" size="256"/>
-          <Column id="MTL_SIZE_KEY" type="STRING" size="256"/>
-          <Column id="SUPPLIER_NAME" type="STRING" size="256"/>
+          <Column id="Status" type="STRING" size="256"/>
+          <Column id="Message" type="STRING" size="256"/>
+          <Column id="VBELN" type="STRING" size="256" sumtext="" description=""/>
+          <Column id="CENTER_NM" type="STRING" size="256"/>
           <Column id="TYPE" type="STRING" size="256"/>
-          <Column id="MTL_ITEM" type="STRING" size="256"/>
-          <Column id="MTL_COLOR_KEY" type="STRING" size="256"/>
+          <Column id="GMT_ITEM" type="STRING" size="256"/>
+          <Column id="ZTERM" type="STRING" size="256" sumtext="" description=""/>
+          <Column id="DOC_TYPE" type="STRING" size="256" sumtext="" description=""/>
+          <Column id="SUPPLIER_CODE1" type="STRING" size="256" sumtext="" description=""/>
+          <Column id="SUPPLIER_NAME" type="STRING" size="256"/>
+          <Column id="PO_DESC" type="STRING" size="256"/>
           <Column id="MATNR" type="STRING" size="256"/>
-          <Column id="L_WAERK" type="STRING" size="256"/>
+          <Column id="USAGE" type="STRING" size="256"/>
+          <Column id="BUYER_ITEM_CD" type="STRING" size="256"/>
+          <Column id="MTL_ITEM" type="STRING" size="256"/>
+          <Column id="GMT_COL" type="STRING" size="256"/>
+          <Column id="GMTColorcode" type="STRING" size="256"/>
+          <Column id="COLOR" type="STRING" size="256"/>
+          <Column id="SIZE" type="STRING" size="256"/>
+          <Column id="OS_MENGE" type="STRING" size="256"/>
+          <Column id="UNIT" type="STRING" size="256"/>
+          <Column id="PO_MENGE" type="STRING" size="256"/>
+          <Column id="REMAIN_MENGE" type="STRING" size="256"/>
+          <Column id="MEINS" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="PEINH" type="STRING" size="256"/>
+          <Column id="L_NETWR" type="STRING" size="256"/>
           <Column id="CURRENCY" type="STRING" size="256"/>
+          <Column id="PR_MENGE" type="STRING" size="256"/>
+          <Column id="PURCGRP" type="STRING" size="256"/>
+          <Column id="WEBRE" type="STRING" size="256"/>
+          <Column id="OS_PRICE" type="STRING" size="256"/>
+          <Column id="OS_PEINH" type="STRING" size="256"/>
+          <Column id="L_WAERK" type="STRING" size="256"/>
+          <Column id="OS_AMOUNT" type="STRING" size="256"/>
+          <Column id="DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="UEBTO" type="STRING" size="256"/>
+          <Column id="UNTTO" type="STRING" size="256"/>
+          <Column id="DeliveryLocation" type="STRING" size="256"/>
+          <Column id="Forwarder" type="STRING" size="256"/>
+          <Column id="BuyerCode" type="STRING" size="256"/>
+          <Column id="INCO1" type="STRING" size="256"/>
+          <Column id="Remark" type="STRING" size="256"/>
+          <Column id="CENTER_CD" type="STRING" size="256"/>
+          <Column id="SORT_NUM" type="STRING" size="256"/>
+          <Column id="CRT" type="STRING" size="256"/>
+          <Column id="MSGBN" type="STRING" size="256"/>
+          <Column id="MTL_SIZE_KEY" type="STRING" size="256"/>
+          <Column id="MTL_COLOR_KEY" type="STRING" size="256"/>
           <Column id="GOODS_MOV" type="STRING" size="256"/>
           <Column id="MTL_ITEM_CD" type="STRING" size="256"/>
-          <Column id="GMT_ITEM" type="STRING" size="256"/>
-          <Column id="UNIT" type="STRING" size="256"/>
           <Column id="ITEM_CD" type="STRING" size="256"/>
-          <Column id="CENTER_NM" type="STRING" size="256"/>
-          <Column id="PRICE" type="STRING" size="256"/>
-          <Column id="OS_MENGE" type="STRING" size="256"/>
-          <Column id="SUPPLIER_CODE1" type="STRING" size="256"/>
-          <Column id="PEINH" type="STRING" size="256"/>
-          <Column id="INCO1" type="STRING" size="256"/>
-          <Column id="MEINS" type="STRING" size="256"/>
           <Column id="OSSTS" type="STRING" size="256"/>
-          <Column id="PURCGRP" type="STRING" size="256"/>
-          <Column id="PO_MENGE" type="STRING" size="256"/>
           <Column id="GMTMATNR" type="STRING" size="256"/>
           <Column id="POSNR" type="STRING" size="256"/>
-          <Column id="DELIVERY_DATE" type="STRING" size="256"/>
           <Column id="LOT_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_PoSave_in" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="P_VBELN" type="STRING" size="256"/>
+          <Column id="P_ZTERM" type="STRING" size="256"/>
+          <Column id="P_BSART" type="STRING" size="256"/>
+          <Column id="P_LIFNR" type="STRING" size="256"/>
+          <Column id="P_MATNR" type="STRING" size="256"/>
+          <Column id="P_USAGE" type="STRING" size="256"/>
+          <Column id="P_BUYER_ITEM_CD" type="STRING" size="256"/>
+          <Column id="P_TXZ01" type="STRING" size="256"/>
+          <Column id="P_J_3ASIZE" type="STRING" size="256"/>
+          <Column id="P_MENGE" type="STRING" size="256"/>
+          <Column id="P_NETPR" type="STRING" size="256"/>
+          <Column id="P_PEINH" type="STRING" size="256"/>
+          <Column id="P_NETWR" type="STRING" size="256"/>
+          <Column id="P_WAERS" type="STRING" size="256"/>
+          <Column id="P_EKGRP" type="STRING" size="256"/>
+          <Column id="P_WEBRE" type="STRING" size="256"/>
+          <Column id="P_UEBTO" type="STRING" size="256"/>
+          <Column id="P_UNTTO" type="STRING" size="256"/>
+          <Column id="P_INCO1" type="STRING" size="256"/>
+          <Column id="P_BUKRS" type="STRING" size="256"/>
+          <Column id="P_MTL_SIZE_KEY" type="STRING" size="256"/>
+          <Column id="P_MTL_COLOR_KEY" type="STRING" size="256"/>
+          <Column id="P_MTL_ITEM_CD" type="STRING" size="256"/>
+          <Column id="P_VBELP" type="STRING" size="256"/>
+          <Column id="P_WERKS" type="STRING" size="256"/>
+          <Column id="P_EKORG" type="STRING" size="256"/>
+          <Column id="P_CRUD" type="STRING" size="256"/>
+          <Column id="P_LOEKZ" type="STRING" size="256"/>
+          <Column id="P_USER_ID" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_cmbPaymentTerms">
@@ -786,6 +1047,628 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="O_LIFNR" type="STRING" size="256"/>
           <Column id="O_VBELN" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grdDic">
+        <ColumnInfo>
+          <Column id="BindCol" type="STRING" size="256"/>
+          <Column id="HeaderText" type="STRING" size="256"/>
+          <Column id="ColWidth" type="INT" size="256"/>
+          <Column id="bDisplaytype" type="STRING" size="256"/>
+          <Column id="bEdittype" type="STRING" size="0"/>
+          <Column id="bTextAlign" type="STRING" size="256"/>
+          <Column id="bPadding" type="STRING" size="256"/>
+          <Column id="bCombodataset" type="STRING" size="256"/>
+          <Column id="bCombocodecol" type="STRING" size="256"/>
+          <Column id="bCombodatacol" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="BindCol">Status</Col>
+            <Col id="HeaderText">Status</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">Message</Col>
+            <Col id="HeaderText">Message</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">VBELN</Col>
+            <Col id="HeaderText">Sales Order</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CENTER_NM</Col>
+            <Col id="HeaderText">Factory</Col>
+            <Col id="ColWidth">50</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">TYPE</Col>
+            <Col id="HeaderText">Type</Col>
+            <Col id="bDisplaytype"/>
+            <Col id="bEdittype"/>
+            <Col id="bCombodataset"/>
+            <Col id="bCombocodecol"/>
+            <Col id="bCombodatacol"/>
+            <Col id="ColWidth">50</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GMT_ITEM</Col>
+            <Col id="HeaderText">Style#</Col>
+            <Col id="ColWidth">100</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">ZTERM</Col>
+            <Col id="HeaderText">Payment Terms</Col>
+            <Col id="bDisplaytype">combocontrol</Col>
+            <Col id="bEdittype">combo</Col>
+            <Col id="bCombodataset">ds_cmbPaymentTerms</Col>
+            <Col id="bCombocodecol">CODE_CD</Col>
+            <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="ColWidth">250</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">DOC_TYPE</Col>
+            <Col id="HeaderText">Document Type</Col>
+            <Col id="ColWidth">150</Col>
+            <Col id="bDisplaytype">combocontrol</Col>
+            <Col id="bEdittype">combo</Col>
+            <Col id="bCombodataset">ds_cmbDocumentType</Col>
+            <Col id="bCombocodecol">CODE_CD</Col>
+            <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SUPPLIER_CODE1</Col>
+            <Col id="HeaderText">Vendor</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SUPPLIER_NAME</Col>
+            <Col id="HeaderText">Vendor Name</Col>
+            <Col id="ColWidth">150</Col>
+            <Col id="bTextAlign">left</Col>
+            <Col id="bPadding">0px 0px 0px 5px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_DESC</Col>
+            <Col id="HeaderText">PO Desc</Col>
+            <Col id="ColWidth">60</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MATNR</Col>
+            <Col id="HeaderText">Material</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">USAGE</Col>
+            <Col id="HeaderText">Item</Col>
+            <Col id="ColWidth">100</Col>
+            <Col id="bTextAlign">left</Col>
+            <Col id="bPadding">0px 0px 0px 5px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">BUYER_ITEM_CD</Col>
+            <Col id="HeaderText">MTL Code</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MTL_ITEM</Col>
+            <Col id="HeaderText">Text</Col>
+            <Col id="ColWidth">140</Col>
+            <Col id="bTextAlign">left</Col>
+            <Col id="bPadding">0px 0px 0px 5px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GMT_COL</Col>
+            <Col id="HeaderText">GMT Color</Col>
+            <Col id="ColWidth">70</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GMTColorcode</Col>
+            <Col id="HeaderText">GMT Color code</Col>
+            <Col id="ColWidth">110</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">COLOR</Col>
+            <Col id="HeaderText">COLOR</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SIZE</Col>
+            <Col id="HeaderText">SIZE</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OS_MENGE</Col>
+            <Col id="HeaderText">BOM Q'ty(rounding up)</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">UNIT</Col>
+            <Col id="HeaderText">Unit</Col>
+            <Col id="ColWidth">40</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PO_MENGE</Col>
+            <Col id="HeaderText">PO Q'ty</Col>
+            <Col id="ColWidth">60</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">REMAIN_MENGE</Col>
+            <Col id="HeaderText">Order Q'ty</Col>
+            <Col id="bEdittype">normal</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MEINS</Col>
+            <Col id="HeaderText">Order Unit</Col>
+            <Col id="ColWidth">40</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PRICE</Col>
+            <Col id="HeaderText">Price</Col>
+            <Col id="bEdittype">normal</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PEINH</Col>
+            <Col id="HeaderText">Per</Col>
+            <Col id="bEdittype">normal</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">L_NETWR</Col>
+            <Col id="HeaderText">TTL Amount</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CURRENCY</Col>
+            <Col id="HeaderText">Currency</Col>
+            <Col id="bDisplaytype">combotext</Col>
+            <Col id="bEdittype"></Col>
+            <Col id="bCombodataset">ds_cmbCurrency</Col>
+            <Col id="bCombocodecol">CODE_CD</Col>
+            <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="HeaderText">Goods movement Q'ty</Col>
+            <Col id="BindCol">PR_MENGE</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">PURCGRP</Col>
+            <Col id="HeaderText">Purch.Group</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">WEBRE</Col>
+            <Col id="HeaderText">GR Based Inv. Verif</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OS_PRICE</Col>
+            <Col id="HeaderText">OS Price</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OS_PEINH</Col>
+            <Col id="HeaderText">OS Price Unit</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">L_WAERK</Col>
+            <Col id="HeaderText">OS Currency</Col>
+            <Col id="ColWidth">60</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OS_AMOUNT</Col>
+            <Col id="HeaderText">OS AMOUNT</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">DELIVERY_DATE</Col>
+            <Col id="HeaderText">Delivery Date</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">UEBTO</Col>
+            <Col id="HeaderText">More</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">UNTTO</Col>
+            <Col id="HeaderText">Less</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">DeliveryLocation</Col>
+            <Col id="HeaderText">Delivery Location</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">Forwarder</Col>
+            <Col id="HeaderText">Forwarder</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">BuyerCode</Col>
+            <Col id="HeaderText">Buyer Code</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">INCO1</Col>
+            <Col id="HeaderText">Incoterms</Col>
+            <Col id="bDisplaytype">combocontrol</Col>
+            <Col id="bEdittype">combo</Col>
+            <Col id="bCombodataset">ds_cmbIncoterms</Col>
+            <Col id="bCombocodecol">CODE_CD</Col>
+            <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="ColWidth">150</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">Remark</Col>
+            <Col id="HeaderText">Remark</Col>
+            <Col id="ColWidth">80</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CENTER_CD</Col>
+            <Col id="ColWidth">50</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">SORT_NUM</Col>
+            <Col id="ColWidth">40</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">CRT</Col>
+            <Col id="ColWidth">40</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MSGBN</Col>
+            <Col id="ColWidth">40</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MTL_SIZE_KEY</Col>
+            <Col id="ColWidth">120</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MTL_COLOR_KEY</Col>
+            <Col id="ColWidth">120</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GOODS_MOV</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">MTL_ITEM_CD</Col>
+            <Col id="ColWidth">120</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">ITEM_CD</Col>
+            <Col id="ColWidth">120</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">OSSTS</Col>
+            <Col id="ColWidth">50</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">GMTMATNR</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">POSNR</Col>
+            <Col id="ColWidth">60</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">LOT_NO</Col>
+            <Col id="ColWidth">120</Col>
+            <Col id="bTextAlign">center</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_paramMap">
+        <ColumnInfo>
+          <Column id="LoadCol" type="STRING" size="256"/>
+          <Column id="SaveCol" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="LoadCol">Status</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">Message</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">VBELN</Col>
+            <Col id="SaveCol">P_VBELN</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">CENTER_NM</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">TYPE</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">GMT_ITEM</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">ZTERM</Col>
+            <Col id="SaveCol">P_ZTERM</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">DOC_TYPE</Col>
+            <Col id="SaveCol">P_BSART</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">SUPPLIER_CODE1</Col>
+            <Col id="SaveCol">P_LIFNR</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">SUPPLIER_NAME</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">PO_DESC</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MATNR</Col>
+            <Col id="SaveCol">P_MATNR</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">USAGE</Col>
+            <Col id="SaveCol">P_USAGE</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">BUYER_ITEM_CD</Col>
+            <Col id="SaveCol">P_BUYER_ITEM_CD</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MTL_ITEM</Col>
+            <Col id="SaveCol">P_TXZ01</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">GMT_COL</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">GMTColorcode</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">COLOR</Col>
+            <Col id="SaveCol">P_J_3ASIZE</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">SIZE</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">OS_MENGE</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">UNIT</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">PO_MENGE</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">REMAIN_MENGE</Col>
+            <Col id="SaveCol">P_MENGE</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MEINS</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">PRICE</Col>
+            <Col id="SaveCol">P_NETPR</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">PEINH</Col>
+            <Col id="SaveCol">P_PEINH</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">L_NETWR</Col>
+            <Col id="SaveCol">P_NETWR</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">CURRENCY</Col>
+            <Col id="SaveCol">P_WAERS</Col>
+          </Row>
+          <Row>
+            <Col id="SaveCol"/>
+            <Col id="LoadCol">PR_MENGE</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">PURCGRP</Col>
+            <Col id="SaveCol">P_EKGRP</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">WEBRE</Col>
+            <Col id="SaveCol">P_WEBRE</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">OS_PRICE</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">OS_PEINH</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">L_WAERK</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">OS_AMOUNT</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">DELIVERY_DATE</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">UEBTO</Col>
+            <Col id="SaveCol">P_UEBTO</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">UNTTO</Col>
+            <Col id="SaveCol">P_UNTTO</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">DeliveryLocation</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">Forwarder</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">BuyerCode</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">INCO1</Col>
+            <Col id="SaveCol">P_INCO1</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">Remark</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">CENTER_CD</Col>
+            <Col id="SaveCol">P_BUKRS</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">SORT_NUM</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">CRT</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MSGBN</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MTL_SIZE_KEY</Col>
+            <Col id="SaveCol">P_MTL_SIZE_KEY</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MTL_COLOR_KEY</Col>
+            <Col id="SaveCol">P_MTL_COLOR_KEY</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">GOODS_MOV</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">MTL_ITEM_CD</Col>
+            <Col id="SaveCol">P_MTL_ITEM_CD</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">ITEM_CD</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">OSSTS</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">GMTMATNR</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="LoadCol">POSNR</Col>
+            <Col id="SaveCol">P_VBELP</Col>
+          </Row>
+          <Row>
+            <Col id="LoadCol">LOT_NO</Col>
+            <Col id="SaveCol"/>
+          </Row>
+          <Row>
+            <Col id="SaveCol">P_WERKS</Col>
+          </Row>
+          <Row>
+            <Col id="SaveCol">P_EKORG</Col>
+          </Row>
+          <Row>
+            <Col id="SaveCol">P_CRUD</Col>
+          </Row>
+          <Row>
+            <Col id="SaveCol">P_LOEKZ</Col>
+          </Row>
+          <Row>
+            <Col id="SaveCol">P_USER_ID</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Bind>

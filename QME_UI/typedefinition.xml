@@ -63,6 +63,7 @@
     <Service prefixid="ComComp" type="js" cachelevel="session" url="./nexacro17lib/component/ComComp/" version="0" communicationversion="0"/>
     <Service prefixid="GridFilter" type="form" cachelevel="none" url="./GridFilter/" version="0" communicationversion="0"/>
     <Service prefixid="Images" type="file" cachelevel="session" url="./Images/" version="0" communicationversion="0"/>
+    <Service prefixid="EcoLib" type="js" cachelevel="session" url="./nexacro17lib/component/EcoLibrary/" version="0" communicationversion="0"/>
   </Services>
   <Protocols/>
   <Update/>

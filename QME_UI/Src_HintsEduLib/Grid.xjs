@@ -27,7 +27,10 @@ pForm.tragetGrid = "";
 pForm.gfn_setGrid = function(objGrid)
 {
 	
-										var gtrcPos = "Grid.xjs.gfn_setGrid";
+	var gtrcPos = "Grid.xjs.gfn_setGrid";
+		this.gtrace("●그리드세팅", gtrcPos);
+		this.gtrace("그리드명--->"+objGrid.name, gtrcPos);
+		
 	//Grid의 binddataset설정
 	var objDs = objGrid.getBindDataset();
 
@@ -41,17 +44,51 @@ pForm.gfn_setGrid = function(objGrid)
 	}
 
 	// 바인드명을헤드텍스트로 (ds_grdDic)
+		this.gtrace("바인드명을헤드텍스트로 (ds_grdDic)"+objGrid.name, gtrcPos);
+		this.gtrace("objDs.getColCount()--->"+objDs.getColCount(), gtrcPos);
 	if(!this.gfn_isNull(this.ds_grdDic))
 	{
 		for( var j=0; j<objDs.getColCount(); j++){
-			var tmpcol = objDs.getColID(j);			this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
-			var sHdTxt = this.ds_grdDic.getColumn(this.ds_grdDic.findRowExpr("BindCol=='"+tmpcol+"'"), "HeaderText");
-			if(!this.gfn_isNull(sHdTxt)) objGrid.setCellProperty( "head", j, "text", sHdTxt );
+			var tmpcol = objDs.getColID(j);				//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
+			var iFndRp 			= this.ds_grdDic.findRowExpr("BindCol=='"+tmpcol+"'");										// if(tmpcol=="DOC_TYPE"){this.gtrace("iFndRp 			--->"+iFndRp 			, gtrcPos);}
+			var sHdTxt 			= this.ds_grdDic.getColumn(iFndRp, "HeaderText");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sHdTxt 			--->"+sHdTxt 			, gtrcPos);}
+			var iColWidth 		= this.ds_grdDic.getColumn(iFndRp, "ColWidth");												 if(tmpcol=="DOC_TYPE"){this.gtrace("iColWidth 		--->"+iColWidth 		, gtrcPos);}
+			var sbDisplaytype 	= this.ds_grdDic.getColumn(iFndRp, "bDisplaytype");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbDisplaytype --->"+sbDisplaytype , gtrcPos);}
+			var sbEdittype 		= this.ds_grdDic.getColumn(iFndRp, "bEdittype");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbTextAlign 	= this.ds_grdDic.getColumn(iFndRp, "bTextAlign");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbPadding 		= this.ds_grdDic.getColumn(iFndRp, "bPadding");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbCombodataset 	= this.ds_grdDic.getColumn(iFndRp, "bCombodataset");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodataset--->"+sbCombodataset, gtrcPos);}
+			var sbCombocodecol 	= this.ds_grdDic.getColumn(iFndRp, "bCombocodecol");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombocodecol--->"+sbCombocodecol, gtrcPos);}
+			var sbCombodatacol 	= this.ds_grdDic.getColumn(iFndRp, "bCombodatacol");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodatacol--->"+sbCombodatacol, gtrcPos);}
+	
+			if(!this.gfn_isNull(sHdTxt)) 			objGrid.setCellProperty( "head", j, "text", sHdTxt );
+			if(!this.gfn_isNull(iColWidth		)) 	objGrid.setRealColSize( "body", j, iColWidth, true );
+			if(!this.gfn_isNull(sbDisplaytype	)) 	objGrid.setCellProperty( "body", j, "displaytype"	, sbDisplaytype 	);	//	if(tmpcol=="DOC_TYPE"){this.gtrace("bRslt--->"+bRslt, gtrcPos);}
+			if(!this.gfn_isNull(sbEdittype		)) 	{
+				objGrid.setCellProperty( "body", j, "edittype"		, sbEdittype		);
+				switch(sbEdittype){
+					case "normal" : objGrid.setCellProperty( "body", j, "editautoselect"	, true 	);
+						break;
+					default : 
+						break;
+				}
+				
+				if(sbEdittype!="none"){
+					this.gtrace("헤더색상변경 : edittype이 none이 아닌경우--->"+sHdTxt, gtrcPos);
+					objGrid.setCellProperty( "head", j, "background", "ibory" );
+				}
+			}
+			
+			if(!this.gfn_isNull(sbTextAlign		)) 	objGrid.setCellProperty( "body", j, "textAlign"		, sbTextAlign 		);
+			if(!this.gfn_isNull(sbPadding		)) 	objGrid.setCellProperty( "body", j, "padding"		, sbPadding 		);
+			if(!this.gfn_isNull(sbCombodataset	)) 	objGrid.setCellProperty( "body", j, "combodataset"	, sbCombodataset 	);
+			if(!this.gfn_isNull(sbCombocodecol	)) 	objGrid.setCellProperty( "body", j, "combocodecol"	, sbCombocodecol 	);
+			if(!this.gfn_isNull(sbCombodatacol	)) 	objGrid.setCellProperty( "body", j, "combodatacol"	, sbCombodatacol 	);
 		}
 	}
 
 	//Grid의 UserProperty설정
-	var arrProp = this._getGridUserProperty(objGrid);			this.gtrace("_getGridUserProperty를 통해 가져온 배열(중복현상 있음) arrProp--->"+arrProp, gtrcPos);
+	var arrProp = this._getGridUserProperty(objGrid);			//	this.gtrace("_getGridUserProperty를 통해 가져온 배열(중복현상 있음) arrProp--->"+arrProp, gtrcPos);
 	if(this.gfn_isNull(arrProp)) return; 		//설정할 속성이 엄쪄용
 	
 	objGrid.set_enableevent(false);
@@ -61,39 +98,39 @@ pForm.gfn_setGrid = function(objGrid)
 	var objApp = pForm.gfn_getApplication();
 	var objGds = objApp.gds_gridPersonal;
 	
-	var sFormatId = this._getUniqueId(objGrid);					this.gtrace("_getUniqueId를 통해 sFormatId를 가져온다--->"+sFormatId, gtrcPos);
+	var sFormatId = this._getUniqueId(objGrid);					//	this.gtrace("_getUniqueId를 통해 sFormatId를 가져온다--->"+sFormatId, gtrcPos);
 	var sFormat;
-																this.gtrace(objGds.saveXML(), gtrcPos);
-	var nFindRow = objGds.findRow("sFormatId", sFormatId);		this.gtrace("gds_gridPersonal에 sFormatId "+sFormatId+"가 있는지 확인 nFindRow--->"+nFindRow, gtrcPos);
+																//	this.gtrace(objGds.saveXML(), gtrcPos);
+	var nFindRow = objGds.findRow("sFormatId", sFormatId);		//	this.gtrace("gds_gridPersonal에 sFormatId "+sFormatId+"가 있는지 확인 nFindRow--->"+nFindRow, gtrcPos);
 	if( nFindRow > -1){
 		//	objGrid.orgformat2 = objGds.getColumn(nFindRow, "sOrgFormat");
 		objGrid.orgformat2 = objGrid.getFormatString();			//	191225.mod.
-																this.gtrace("gds_gridPersonal에 있을경우 sOrgFormat컬럼값을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
+																//	this.gtrace("gds_gridPersonal에 있을경우 sOrgFormat컬럼값을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
 		sFormat = "<Formats>" + objGds.getColumn(nFindRow, "sFormat") + "</Formats>";
-																this.gtrace("gds_gridPersonal의 sFormat컬럼값을 sFormat 스트링에 담아서"+objGrid.name+"그리드의 포맺으로 지정", gtrcPos);
+																//	this.gtrace("gds_gridPersonal의 sFormat컬럼값을 sFormat 스트링에 담아서"+objGrid.name+"그리드의 포맺으로 지정", gtrcPos);
 		objGrid.set_formats(sFormat);
 	}
 	else{
 		objGrid.orgformat2 = objGrid.getFormatString();
-																this.gtrace("gds_gridPersonal에 없으므로 "+objGrid.name+" 그리드의 포맺스트링을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
+																//	this.gtrace("gds_gridPersonal에 없으므로 "+objGrid.name+" 그리드의 포맺스트링을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
 	}
 		
 	objGrid.arrprop = arrProp;
-																this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnGridAddProp 를 실행", gtrcPos);
+																//	this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnGridAddProp 를 실행", gtrcPos);
 	
 	this._gfnGridSetCssclass(objGrid);	
 		
 	this._gfnGridAddProp(objGrid);
-															this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnMakeGridPopupMenu 를 실행", gtrcPos);
+															//	this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnMakeGridPopupMenu 를 실행", gtrcPos);
 	this._gfnMakeGridPopupMenu(objGrid,arrProp);	//popupmenu 생성	
 	/*********************************************** 이벤트추가 START ***********************************************/
 	
-	objGrid.addEventHandler("onheadclick", this.gfn_grid_onheadclick, this); 	this.gtrace("헤드클릭이벤트추가 gfn_grid_onheadclick", gtrcPos);
+	objGrid.addEventHandler("onheadclick", this.gfn_grid_onheadclick, this); 	//	this.gtrace("헤드클릭이벤트추가 gfn_grid_onheadclick", gtrcPos);
 	objGrid.addEventHandler("oncellclick", this._gfn_oneTouchComboDropdown, this);	// 클릭한번으로 콤보활성
-																				this.gtrace("userproperties중 하나라도 popupmenulist에 하나라도 있다면 우클릭 이벤트 추가", gtrcPos);
-																				this.gtrace("		userproperties(arrProp)---->"+arrProp, gtrcPos);
-																				this.gtrace("		popupmenulist---->"+this.popupmenulist, gtrcPos);
-																				this.gtrace("		우클릭이벤트 : gfn_grid_onrbuttondown", gtrcPos);
+																				//	this.gtrace("userproperties중 하나라도 popupmenulist에 하나라도 있다면 우클릭 이벤트 추가", gtrcPos);
+																				//	this.gtrace("		userproperties(arrProp)---->"+arrProp, gtrcPos);
+																				//	this.gtrace("		popupmenulist---->"+this.popupmenulist, gtrcPos);
+																				//	this.gtrace("		우클릭이벤트 : gfn_grid_onrbuttondown", gtrcPos);
 	for(var k=0; k< arrProp.length; k++)
     {
 		var arr = this.popupmenulist.split(",");
@@ -107,24 +144,23 @@ pForm.gfn_setGrid = function(objGrid)
 			}
 		}
 		if( arrProp[k] == "cellcopypaste"){
-																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onkeydown", gtrcPos);
+																				//	this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onkeydown", gtrcPos);
 			objGrid.addEventHandler("onkeydown", this.gfn_grid_onkeydown, this);
 		}
 
 		if( arrProp[k] == "cellcopy"){
-																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onkeydowncopy", gtrcPos);
+																				//	this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onkeydowncopy", gtrcPos);
 			objGrid.addEventHandler("onkeydown", this.gfn_grid_onkeydowncopy, this);
 		}
 
 		if( arrProp[k] == "seltype"){
-																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : _gfn_selTypeArea,Row", gtrcPos);
+																				//	this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : _gfn_selTypeArea,Row", gtrcPos);
 			//objGrid.addEventHandler("onlbuttondown", this._gfn_selTypeArea, this);
 			objGrid.addEventHandler("ondrag", this._gfn_selTypeArea, this);
 			objGrid.addEventHandler("oncellclick", this._gfn_selTypeRow, this);
 		}
 	}
-	
-	
+
 	/*********************************************** 이벤트추가 END *************************************************/
 	objGrid.set_enableevent(true);
 	objGrid.set_enableredraw(true);	
@@ -141,7 +177,9 @@ pForm.gfn_setGrid = function(objGrid)
  * this._gfnGridAddProp(this.grdMain);	
 */
 pForm._gfnGridAddProp = function (objGrid)
-{																var gtrcPos = "Grid.xjs._gfnGridAddProp";
+{																
+	var gtrcPos = "Grid.xjs._gfnGridAddProp";
+		this.gtrace("● Grid에 기능 추가(_gfnGridAddProp)", gtrcPos);
 																this.gtrace("여기서는 checkbox, no, status, sort 값에 대한 기능을 처리한다", gtrcPos);
 	var arrProp = objGrid.arrprop;								this.gtrace("전달받은 userproperties : arrProp--->"+arrProp, gtrcPos);
 	var objDs = objGrid.getBindDataset();						this.gtrace("바인딩된 데이터셋 : objDs--->"+objDs.name, gtrcPos);
@@ -168,7 +206,6 @@ pForm._gfnGridAddProp = function (objGrid)
 			default: break;
 		}
 	}
-																this.gtrace("-----------------------------END---_gfnGridAddProp------------------------------", gtrcPos);
 };
 
 /**
@@ -183,6 +220,7 @@ pForm._gfnGridAddProp = function (objGrid)
 pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 {
 										var gtrcPos = "Grid.xjs._gfnGridCheckboxNoStatusAdd";
+										this.gtrace("● 체크박스,No,상태추가(그리드, _gfnGridCheckboxNoStatusAdd)", gtrcPos);
 	var sFormatColProp = objGrid.getFormatColProperty( 0, "band" );	this.gtrace("sFormatColProp-->"+sFormatColProp, gtrcPos);
 	var bGridPersonal = false;
 	if(this.gfn_getApplication().gds_gridPersonal.findRow("sFormatId", this._getUniqueId(objGrid)) > -1 )

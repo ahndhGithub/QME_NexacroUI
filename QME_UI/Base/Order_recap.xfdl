@@ -1061,7 +1061,7 @@
         </Grid>
         <Div id="DivBtnGfilter" taborder="4" text="" top="213" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabOrderRecap.TabpageStyle.form.GridStyle" visible="true" right="8"/>
         <TextArea id="TextArea00" taborder="5" left="0" readonly="true" right="0" bottom="100" height="170" visible="false"/>
-        <Button id="Button00" taborder="6" text="Button00" width="209" height="35" onclick="Button00_onclick" right="0" bottom="100" visible="false"/>
+        <Button id="Button00" taborder="6" text="Button00" width="209" height="35" onclick="Button00_onclick" right="180" bottom="-80" visible="true"/>
         <Grid id="Grid01" taborder="7" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="193">
           <Formats>
             <Format id="default">
@@ -1087,6 +1087,7 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="Button00_00" taborder="8" text="Button00" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="true"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -1298,7 +1299,7 @@ this.fn_UiControl = function(iRbVal)
 				this.ds_in.setColumn(0, "p_buy_date_end", "");
 			break;
 		
-		case "6" : 
+		case "6" : 	// 생산
 				//shipment
 				this.DivCondition.form.CheckBoxShipment.set_readonly(true);
 				this.ds_in.setColumn(0, "p_shipment_yn", "N");
@@ -1310,6 +1311,8 @@ this.fn_UiControl = function(iRbVal)
 				//buydate
 				this.DivCondition.form.div_calFromToBuyDate.set_enable(true);
 				
+				//	PERF_DATE 캘린더 enable 추가
+
 			break;
 
 		case "7" : 
