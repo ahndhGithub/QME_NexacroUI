@@ -1050,12 +1050,14 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
       </Dataset>
       <Dataset id="ds_grdDic">
         <ColumnInfo>
+          <Column id="GridId" type="STRING" size="256"/>
           <Column id="BindCol" type="STRING" size="256"/>
           <Column id="HeaderText" type="STRING" size="256"/>
           <Column id="ColWidth" type="INT" size="256"/>
           <Column id="bDisplaytype" type="STRING" size="256"/>
           <Column id="bEdittype" type="STRING" size="256"/>
           <Column id="bTextAlign" type="STRING" size="256"/>
+          <Column id="bSuppress" type="STRING" size="256"/>
           <Column id="bPadding" type="STRING" size="256"/>
           <Column id="bCombodataset" type="STRING" size="256"/>
           <Column id="bCombocodecol" type="STRING" size="256"/>

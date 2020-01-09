@@ -14,10 +14,10 @@
               <Static id="StaticBuyDate" taborder="4" text="Buy Date" left="660" top="58" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor00_onclick"/>
               <Static id="StaticStyle" taborder="5" text="Style" left="0" top="58" width="131" cssclass="sta_WF_searchLabel" height="21"/>
               <Static id="StaticYear" taborder="6" text="Year" left="0" top="83" width="151" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
-              <Static id="StaticOption" taborder="7" text="Option" left="0" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Static id="StaticOption" taborder="7" text="Option" left="0" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick" visible="false"/>
               <Combo id="div_company" taborder="8" left="148" top="8" width="171" height="21" innerdataset="ds_cmcdCompanyCode" codecolumn="CENTER_CD" datacolumn="CENTER_NM" index="0" text="" value="4"/>
               <Div id="div_calFromToBuyDate" taborder="9" text="Div00" left="808" top="58" width="431" height="21" url="Comm::Comm_CalFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" SearchConditionType="BuyDate,ds_in,p_buy_date_sta,p_buy_date_end"/>
-              <Radio id="Radio00" taborder="10" left="148" top="106" width="443" height="53" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="horizontal" index="0" text="Style" fittocontents="width" columncount="4" rowcount="2" value="1">
+              <Radio id="Radio00" taborder="10" left="148" top="106" width="443" height="53" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" direction="horizontal" index="0" text="Style" fittocontents="width" columncount="4" rowcount="2" value="1" visible="false">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -86,12 +86,12 @@
             </Layout>
           </Layouts>
         </Div>
-        <Tab id="TabOrderRecap" taborder="2" tabindex="0" left="8" top="216" bottom="106" right="8">
+        <Tab id="TabOrderRecap" taborder="2" tabindex="0" left="8" top="216" bottom="106" right="8" onchanged="TabOrderRecap_onchanged">
           <Tabpages>
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide,gfilter" binddataset="ds_listStyle" cellsizingtype="col">
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide,gfilter,export,cellcopypaste,seltype" binddataset="ds_listStyle" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -102,11 +102,11 @@
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
+                          <Column size="186"/>
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
-                          <Column size="80"/>
-                          <Column size="80"/>
+                          <Column size="100"/>
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
@@ -119,7 +119,7 @@
                         </Columns>
                         <Rows>
                           <Row size="24" band="head"/>
-                          <Row size="24"/>
+                          <Row size="100"/>
                         </Rows>
                         <Band id="head">
                           <Cell text="CC_CUST_SHORT_NM" edittype="normal"/>
@@ -156,7 +156,7 @@
                           <Cell col="8" text="bind:CI_ITEM_NM"/>
                           <Cell col="9" text="bind:OSM_VBELN"/>
                           <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
-                          <Cell col="11" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="11" displaytype="imagecontrol" imagestretch="fit" text="bind:CI_ITEM_IMAGE_THUMB"/>
                           <Cell col="12" text="bind:OPD_ORDER_QTY"/>
                           <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
                           <Cell col="14" text="bind:SALES_PRICE"/>
@@ -201,7 +201,7 @@
             <Tabpage id="TabpagePoInfo_1" text="PO INFO 1">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo1" cellsizingtype="col">
+                  <Grid id="GridPoInfo1" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo1" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -304,7 +304,7 @@
             <Tabpage id="TabpagePoInfo_2" text="PO INFO 2 - color">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo2" cellsizingtype="col">
+                  <Grid id="GridPoInfo2" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo2" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -413,7 +413,7 @@
             <Tabpage id="TabpagePoInfo_3" text="PO INFO 3 - color size">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo3" cellsizingtype="col">
+                  <Grid id="GridPoInfo3" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo3" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -522,7 +522,7 @@
             <Tabpage id="TabpageOs" text="OS">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listOs" cellsizingtype="col">
+                  <Grid id="GridOs" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listOs" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -718,7 +718,7 @@
             <Tabpage id="TabpageProduction" text="생산">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listProduction" cellsizingtype="col">
+                  <Grid id="GridProd" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listProduction" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -845,7 +845,7 @@
             <Tabpage id="TabpageSample" text="샘플">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listSample" cellsizingtype="col">
+                  <Grid id="GridSample" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listSample" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -1061,8 +1061,7 @@
         </Grid>
         <Div id="DivBtnGfilter" taborder="4" text="" top="213" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabOrderRecap.TabpageStyle.form.GridStyle" visible="true" right="8"/>
         <TextArea id="TextArea00" taborder="5" left="0" readonly="true" right="0" bottom="100" height="170" visible="false"/>
-        <Button id="Button00" taborder="6" text="Button00" width="209" height="35" onclick="Button00_onclick" right="180" bottom="-80" visible="true"/>
-        <Grid id="Grid01" taborder="7" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="193">
+        <Grid id="Grid01" taborder="6" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="193">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1087,7 +1086,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button00_00" taborder="8" text="Button00" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="true"/>
+        <Button id="Button00_00" taborder="7" text="Output Clear" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="false"/>
+        <Button id="Button01" taborder="8" text="Button01" left="387" top="175" width="223" height="25" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="9" text="Button02" left="320" top="370" width="275" height="61" onclick="Button02_onclick" visible="false"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -1120,7 +1121,7 @@ this.COMBO_SET_STR = "ds_cmcdOSFactory"		+"#"+"JAKJI"						+" "
 					+"ds_cmcdCompanyCode"	+"#"+"UserMapper.getUserCenter"		+" "
 					+"ds_cmcdSalesGroup"	+"#"+"CommonMapper.getSalesGroup"   +" "
 					;
-			
+var GridStyle = this.TabOrderRecap.TabpageStyle.form.GridStyle;			
 /********************************************************************************************
 @desc	3. OnLoad
 ********************************************************************************************/
@@ -1183,24 +1184,24 @@ this.tfn_orderRecapSearch = function(){
 	var sTmpOutDs;
 	switch(iSearchOption)
 	{
-		case	"1"	:	sTmpOutDs	=	"ds_listStyle";
-			break;
-		case	"2"	:	sTmpOutDs	=	"ds_listPoInfo1";
-			break;
-		case	"3"	:	sTmpOutDs	=	"ds_listPoInfo2";
-			break;
-		case	"4"	:	sTmpOutDs	=	"ds_listPoInfo3";
-			break;
-		case	"5"	:	sTmpOutDs	=	"ds_listOs";
-			break;
-		case	"6"	:	sTmpOutDs	=	"ds_listProduction";
-			break;
-		case	"7"	:	sTmpOutDs	=	"ds_listSample";
+		case	"1"	:	sTmpOutDs	=	"ds_listStyle";			this.ds_listStyle.clearData();
+			break;	
+		case	"2"	:	sTmpOutDs	=	"ds_listPoInfo1";		this.ds_listPoInfo1.clearData();
+			break;	
+		case	"3"	:	sTmpOutDs	=	"ds_listPoInfo2";		this.ds_listPoInfo2.clearData();
+			break;	
+		case	"4"	:	sTmpOutDs	=	"ds_listPoInfo3";		this.ds_listPoInfo3.clearData();
+			break;	
+		case	"5"	:	sTmpOutDs	=	"ds_listOs";			this.ds_listOs.clearData();
+			break;	
+		case	"6"	:	sTmpOutDs	=	"ds_listProduction";	this.ds_listProduction.clearData();
+			break;	
+		case	"7"	:	sTmpOutDs	=	"ds_listSample";		this.ds_listSample.clearData();
 			break;
 		default		:	break;
 	}
 	
-	var sSvcID 			= "getPoListHistoryLoad";
+	var sSvcID 			= "getOrderRecapList";
 	var sURL 			= "AppSvr::common/commonAction.ppc";
 	var sInDatasets 	= "ds_in0=ds_in";
 	var sOutDatasets 	= sTmpOutDs+"=ds_out0";
@@ -1229,6 +1230,26 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 	switch (strSvcID) 
 	{
 		default:
+			break;
+		case "getOrderRecapList"	:
+			
+			trace("this.ds_listStyle.rowcount---->"+this.ds_listStyle.rowcount);
+			
+			if(this.ds_in.getColumn(0, "p_radio")=="1"){
+				for (var i =0; i < this.ds_listStyle.rowcount ; i++){
+					var sTmpImg = this.ds_listStyle.getColumn(i, "CI_ITEM_IMAGE_THUMB");
+					if(!this.gfn_isNull(sTmpImg))
+					{
+						sTmpImg = "http://192.168.11.193:8081/ImageViewer.do?realFileNm="+sTmpImg;
+						this.ds_listStyle.setColumn(i, "CI_ITEM_IMAGE_THUMB", sTmpImg);
+						//	this.ds_listStyle.set_enableevent(true);
+						//	GridStyle.redraw();
+					}else{
+						continue;
+					}
+				}
+			}
+			
 			break;
  		
 		case "getUserCenter"	:
@@ -1348,11 +1369,44 @@ this.ds_in_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColC
 	if(e.columnid == "p_radio"){
 		this.fn_UiControl(e.newvalue);
 	}
-};
+}; 
 
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	nexacro.getApplication().gds_TrcOutputTxt.clearData();
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_in.setColumn(0, "p_center_cd"		, "1000");
+	this.ds_in.setColumn(0, "p_sales_team_sta"	, "111");
+	this.ds_in.setColumn(0, "p_jakji_sta"		, "2200");
+	this.ds_in.setColumn(0, "p_year_sta"		, "2019");
+	this.ds_in.setColumn(0, "p_season_sta"		, "S/S");
+	this.ds_in.setColumn(0, "p_user_id"			, "PMS");
+	this.ds_in.setColumn(0, "p_radio"			, "1");
+	this.ds_in.setColumn(0, "p_shipment_yn"		, "N");
+//	this.ds_in.setColumn(0, "p_so_key_list"		, "1111193639^1111193602^1111194202^1111194055");
+
+// 	this.ds_in.setColumn(0, "p_center_cd"		, "1000");
+// 	this.ds_in.setColumn(0, "p_so_key_sta"	, "1106192427");
+// 	this.ds_in.setColumn(0, "p_sales_team_sta"	, "106");
+	
+	this.tfn_orderRecapSearch();
+};
+
+this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sbSuppress =  {GrId : ["GridStyle","GridPoInfo1"], sPrsVal : 1};
+		trace("sbSuppress--->"+sbSuppress);
+		trace("sbSuppress.GrId--->"+sbSuppress.GrId);
+		trace("sbSuppress.GrId[0]--->"+sbSuppress.GrId[0]);
+};
+
+this.TabOrderRecap_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	//	trace("obj.tabindex--->"+obj.tabindex);
+	this.ds_in.setColumn(0, "p_radio", (obj.tabindex+1));
 };
 ]]></Script>
     <Objects>
@@ -1398,90 +1452,122 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       </Dataset>
       <Dataset id="ds_grdDic">
         <ColumnInfo>
+          <Column id="GridId" type="STRING" size="256"/>
           <Column id="BindCol" type="STRING" size="256"/>
           <Column id="HeaderText" type="STRING" size="256"/>
           <Column id="ColWidth" type="INT" size="256"/>
+          <Column id="bDisplaytype" type="STRING" size="256"/>
+          <Column id="bEdittype" type="STRING" size="256"/>
+          <Column id="bTextAlign" type="STRING" size="256"/>
+          <Column id="bSuppress" type="STRING" size="256"/>
+          <Column id="bPadding" type="STRING" size="256"/>
+          <Column id="bCombodataset" type="STRING" size="256"/>
+          <Column id="bCombocodecol" type="STRING" size="256"/>
+          <Column id="bCombodatacol" type="STRING" size="256"/>
+          <Column id="bMaskedittype" type="STRING" size="256"/>
+          <Column id="bMaskeditlimitbymask" type="STRING" size="256"/>
+          <Column id="bMaskeditformat" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row>
             <Col id="BindCol">CC_CUST_SHORT_NM</Col>
             <Col id="HeaderText">Buyer</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 1}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSM_ZYEAR</Col>
             <Col id="HeaderText">Year</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 2}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSM_ZSEASON</Col>
             <Col id="HeaderText">Season</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 3}</Col>
           </Row>
           <Row>
             <Col id="BindCol">CB_BU_NM</Col>
             <Col id="HeaderText">Sales Team</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 4}</Col>
           </Row>
           <Row>
             <Col id="BindCol">CI_MANAGER</Col>
             <Col id="HeaderText">Sales Person</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 5}</Col>
           </Row>
           <Row>
             <Col id="BindCol">V1_JAKJI_NM</Col>
             <Col id="HeaderText">Factory</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 6}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSM_WSHOP</Col>
             <Col id="HeaderText">Workshop</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 7}</Col>
           </Row>
           <Row>
             <Col id="BindCol">REF_ITEM_NM</Col>
             <Col id="HeaderText">Parent S/#</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 8}</Col>
           </Row>
           <Row>
             <Col id="BindCol">CI_ITEM_NM</Col>
             <Col id="HeaderText">S/#</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 9}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSM_VBELN</Col>
             <Col id="HeaderText">SO#</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 10}</Col>
           </Row>
           <Row>
             <Col id="BindCol">CI_ITEM_DESCRIPTION</Col>
             <Col id="HeaderText">Style Descrption</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 11}</Col>
           </Row>
           <Row>
             <Col id="BindCol">CI_ITEM_IMAGE_THUMB</Col>
             <Col id="HeaderText">Sketch</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 12}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OPD_ORDER_QTY</Col>
             <Col id="HeaderText">Order Q'TY</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 13}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OPM_DELIVERY_DATE</Col>
             <Col id="HeaderText">S/D</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 14}</Col>
           </Row>
           <Row>
             <Col id="BindCol">SALES_PRICE</Col>
             <Col id="HeaderText">FOB</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 15}</Col>
           </Row>
           <Row>
             <Col id="BindCol">SALES_AMOUNT</Col>
             <Col id="HeaderText">AMOUNT</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 16}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSC_U_CPRICE</Col>
             <Col id="HeaderText">OS CM</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 17}</Col>
           </Row>
           <Row>
             <Col id="BindCol">V4_SET_TYPE_NM</Col>
             <Col id="HeaderText">Set type</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 18}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSD_START_PD_DATE</Col>
             <Col id="HeaderText">Plan Cutting Date</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 19}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSD_MTL_TAR_ETA</Col>
             <Col id="HeaderText">Material Target ETA</Col>
+            <Col id="bSuppress">{GrId : ["GridPoInfo1","GridPoInfo2","GridPoInfo3"], sPrsVal : 20}</Col>
           </Row>
           <Row>
             <Col id="BindCol">OSH_MARK_UP_RATE</Col>

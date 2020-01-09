@@ -48,18 +48,50 @@ pForm.gfn_setGrid = function(objGrid)
 		this.gtrace("objDs.getColCount()--->"+objDs.getColCount(), gtrcPos);
 	if(!this.gfn_isNull(this.ds_grdDic))
 	{
+			var sTrcTmpCol = "CC_CUST_SHORT_NM";
+			var sTrcGridNm = "GridStyle";
+			this.gtrace("그리드명--->"+objGrid.name, gtrcPos);
 		for( var j=0; j<objDs.getColCount(); j++){
 			var tmpcol = objDs.getColID(j);				//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
-			var iFndRp 			= this.ds_grdDic.findRowExpr("BindCol=='"+tmpcol+"'");									// if(tmpcol=="DOC_TYPE"){this.gtrace("iFndRp 			--->"+iFndRp 			, gtrcPos);}
-			var sHdTxt 			= this.ds_grdDic.getColumn(iFndRp, "HeaderText");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sHdTxt 			--->"+sHdTxt 			, gtrcPos);}
-			var iColWidth 		= this.ds_grdDic.getColumn(iFndRp, "ColWidth");											 if(tmpcol=="DOC_TYPE"){this.gtrace("iColWidth 		--->"+iColWidth 		, gtrcPos);}
-			var sbDisplaytype 	= this.ds_grdDic.getColumn(iFndRp, "bDisplaytype");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbDisplaytype --->"+sbDisplaytype , gtrcPos);}
-			var sbEdittype 		= this.ds_grdDic.getColumn(iFndRp, "bEdittype");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
-			var sbTextAlign 	= this.ds_grdDic.getColumn(iFndRp, "bTextAlign");										// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
-			var sbPadding 		= this.ds_grdDic.getColumn(iFndRp, "bPadding");											// if(tmpcol=="DOC_TYPE"){this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
-			var sbCombodataset 	= this.ds_grdDic.getColumn(iFndRp, "bCombodataset");									// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodataset--->"+sbCombodataset, gtrcPos);}
-			var sbCombocodecol 	= this.ds_grdDic.getColumn(iFndRp, "bCombocodecol");									// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombocodecol--->"+sbCombocodecol, gtrcPos);}
-			var sbCombodatacol 	= this.ds_grdDic.getColumn(iFndRp, "bCombodatacol");									// if(tmpcol=="DOC_TYPE"){this.gtrace("sbCombodatacol--->"+sbCombodatacol, gtrcPos);}
+			
+			// GridId에 있는 걸 먼저 적용 , 없을 경우 다시 찾는다.
+			var sObjGridNm		= objGrid.name;			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol){this.gtrace("sObjGridNm --->"+objGrid.name , gtrcPos);}
+			var iFndRp 			= this.ds_grdDic.findRowExpr("GridId=='"+sObjGridNm+"' && BindCol=='"+tmpcol+"'");	if(sObjGridNm == sTrcGridNm){this.gtrace("iFndRp 			--->"+iFndRp 			, gtrcPos);}
+				if(iFndRp == -1)
+					iFndRp 		= this.ds_grdDic.findRowExpr("BindCol=='"+tmpcol+"'");
+
+			var sHdTxt 			= this.ds_grdDic.getColumn(iFndRp, "HeaderText");										if(sObjGridNm == sTrcGridNm /*&& tmpcol==sTrcTmpCol*/){this.gtrace("sHdTxt 			--->"+sHdTxt 			, gtrcPos);}
+			var iColWidth 		= this.ds_grdDic.getColumn(iFndRp, "ColWidth");											if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("iColWidth 		--->"+iColWidth 		, gtrcPos);}
+			var sbDisplaytype 	= this.ds_grdDic.getColumn(iFndRp, "bDisplaytype");										if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbDisplaytype --->"+sbDisplaytype , gtrcPos);}
+			var sbEdittype 		= this.ds_grdDic.getColumn(iFndRp, "bEdittype");										if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbTextAlign 	= this.ds_grdDic.getColumn(iFndRp, "bTextAlign");										if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbSuppress 		= this.ds_grdDic.getColumn(iFndRp, "bSuppress");										if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbSuppress 		--->"+sbSuppress 		, gtrcPos);}
+				if(!this.gfn_isNull(sbSuppress)){
+					var sSval;
+						//trace("sbSuppress instanceof Object---->"+sbSuppress instanceof Object);
+					if(sbSuppress.indexOf("{")==0)
+					{
+						var obSuppress = eval("obSuppress = " + sbSuppress);						//	trace("obSuppress--->"+obSuppress);
+						var arrSupGrId 	= obSuppress.GrId;                                          //	trace("obSuppress.GrId--->"+obSuppress.GrId);
+						var	sSupGrVal 	= obSuppress.sPrsVal;                                       //	trace("obSuppress.GrId[0]--->"+obSuppress.GrId[0]);
+						if(arrSupGrId.includes(sObjGridNm))
+						{                                        									//	trace("obSuppress.GrId[0].includes('GridStyle')--->"+obSuppress.GrId[0].includes(sObjGridNm));
+							sSval = sSupGrVal;	
+						}
+					}else
+					{
+						sSval = sbSuppress;
+					}
+					
+					//	Suppress 최종적용
+						if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sSval--->"+sSval, gtrcPos);}
+							objGrid.setCellProperty( "body", j, "suppress", this.gfn_nvl(sSval,"") );
+				}
+				
+			var sbPadding 				= this.ds_grdDic.getColumn(iFndRp, "bPadding");					if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbEdittype 		--->"+sbEdittype 		, gtrcPos);}
+			var sbCombodataset 			= this.ds_grdDic.getColumn(iFndRp, "bCombodataset");			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombodataset--->"+sbCombodataset, gtrcPos);}
+			var sbCombocodecol 			= this.ds_grdDic.getColumn(iFndRp, "bCombocodecol");			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombocodecol--->"+sbCombocodecol, gtrcPos);}
+			var sbCombodatacol 			= this.ds_grdDic.getColumn(iFndRp, "bCombodatacol");			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombodatacol--->"+sbCombodatacol, gtrcPos);}
 			var sbMaskedittype 			= this.ds_grdDic.getColumn(iFndRp, "bMaskedittype");										
 			var sbMaskeditlimitbymask 	= this.ds_grdDic.getColumn(iFndRp, "bMaskeditlimitbymask");									
 			var sbMaskeditformat		= this.ds_grdDic.getColumn(iFndRp, "bMaskeditformat");									
@@ -67,7 +99,7 @@ pForm.gfn_setGrid = function(objGrid)
 			if(!this.gfn_isNull(sHdTxt)) 			objGrid.setCellProperty( "head", j, "text", sHdTxt );
 			if(!this.gfn_isNull(iColWidth		)) 	objGrid.setRealColSize( "body", j, iColWidth, true );
 			if(!this.gfn_isNull(sbDisplaytype	)) 	{
-				objGrid.setCellProperty( "body", j, "displaytype"	, sbDisplaytype 	);	//	if(tmpcol=="DOC_TYPE"){this.gtrace("bRslt--->"+bRslt, gtrcPos);}
+				objGrid.setCellProperty( "body", j, "displaytype"	, sbDisplaytype 	);	//	if(tmpcol==sTrcTmpCol){this.gtrace("bRslt--->"+bRslt, gtrcPos);}
 				switch(sbDisplaytype){
 					case "mask" 	: 
 									  objGrid.setCellProperty( "body", j, "maskeditformat"		, sbMaskeditformat		);
