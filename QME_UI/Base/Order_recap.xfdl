@@ -1061,7 +1061,7 @@
         </Grid>
         <Div id="DivBtnGfilter" taborder="4" text="" top="213" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabOrderRecap.TabpageStyle.form.GridStyle" visible="true" right="8"/>
         <TextArea id="TextArea00" taborder="5" left="0" readonly="true" right="0" bottom="100" height="170" visible="false"/>
-        <Grid id="Grid01" taborder="6" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="193">
+        <Grid id="Grid01" taborder="6" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="true" right="0" bottom="193">
           <Formats>
             <Format id="default">
               <Columns>

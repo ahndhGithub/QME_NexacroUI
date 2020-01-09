@@ -441,7 +441,7 @@
         </Div>
         <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" InitCompVisEna="1:1:1:1,1:0:1:1"/>
         <Button id="Button00" taborder="4" text="Button00" left="806" top="121" width="254" height="30" onclick="Button00_onclick" visible="false"/>
-        <Grid id="Grid01" taborder="7" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" bottom="63" width="690" right="19" top="360" visible="false">
+        <Grid id="Grid01" taborder="7" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" bottom="63" width="690" right="19" top="360" visible="true">
           <Formats>
             <Format id="default">
               <Columns>
@@ -668,8 +668,22 @@ this.tfn_savePO = function(){
 																				if(sGtLdCol==sLdCol)	this.gtrace("변수맵핑(조회->저장)(ds_paramMap기준)--->"+sLdCol+"-->"+sSvCol, gtrcPos);
 					this.ds_PoSave_in.copyRow(iAdRp, this.ds_POList, i, sSvCol+"="+sLdCol)	//	"ToColumnID=FromColumnID"
 				}
+				
+				{
+					//	P_BUKRS 값을 동일하게 세팅 ( 비맵핑컬럼 )
+					var sBukrs = this.ds_PoSave_in.getColumn(iAdRp, "P_BUKRS") ;
+							this.ds_PoSave_in.setColumn(iAdRp, "P_EKORG", sBukrs) ;
+							this.ds_PoSave_in.setColumn(iAdRp, "P_WERKS", sBukrs) ;
+					
+					this.gfn_setUser(this.ds_PoSave_in, "P_USER_ID");
+				}
 			}
  		}
+		
+		
+
+
+
 		
 		this.ds_POList.filter("");
 	}
@@ -1349,13 +1363,23 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
             <Col id="BindCol">UEBTO</Col>
             <Col id="HeaderText">More</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bTextAlign">center</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,##0</Col>
           </Row>
           <Row>
             <Col id="BindCol">UNTTO</Col>
             <Col id="HeaderText">Less</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bTextAlign">center</Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype">number</Col>
+            <Col id="bMaskeditlimitbymask">integer</Col>
+            <Col id="bMaskeditformat">###,###,##0</Col>
           </Row>
           <Row>
             <Col id="BindCol">DeliveryLocation</Col>
