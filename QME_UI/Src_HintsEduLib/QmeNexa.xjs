@@ -4,6 +4,7 @@
 */
 
 var pForm = nexacro.Form.prototype;
+var sSplitChar = this.gfn_getApplication().MultiTxtSplitChar;
 
 pForm._getUserProperty = function (obj,userPropertyName)
 {
@@ -198,16 +199,43 @@ pForm.gfn_getAllInitData = function()
 // 		if (nexacro.getApplication().gds_User.rowcount 		== 0)	{sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 		iSeq++;}
 //   	if (nexacro.getApplication().gds_word.rowcount 		== 0)	{sArguments+="SqlId_00004 "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo ";	sOutDatasets+="gds_word=ds_out"+iSeq+" "; 		iSeq++;}
 		
-																		this.gtrace(" ---- 유저DS(gds_User) : gds_User.rowcount--->"+this.gfn_getApplication().gds_User.rowcount, gtrcPos);
+					this.gtrace(" ---- 유저DS(gds_User) : gds_User.rowcount--->"+this.gfn_getApplication().gds_User.rowcount, gtrcPos);
 		if(this.gfn_getApplication().gds_User.rowcount == 0 )
 		{	// 사용자로그인정보 가져오기 : 있다면 스킵 ( ex. 팝업 )
-			sArguments+="UserMapper.getLoginInfo "; 	sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo_in"+" "; 	sOutDatasets+="gds_User=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace(" - iSeq-->"+iSeq, gtrcPos);		
+			sArguments+="UserMapper.getLoginInfo ";
+			sInDatasets+="ds_in"+iSeq+"=gds_QmeLogonInfo_in"+" ";
+			sOutDatasets+="gds_User=ds_out"+iSeq+" ";
+			iSeq++;	//	this.gtrace(" - iSeq-->"+iSeq, gtrcPos);		
 		}
 		
 																		this.gtrace(" ---- 언어DS(gds_Language) : gds_Language.rowcount--->"+this.gfn_getApplication().gds_Language.rowcount, gtrcPos);
 		if(this.gfn_getApplication().gds_Language.rowcount == 0 )
 		{	// 언어 가져오기
-			sArguments+="CommonMapper.getMultiLang "; 	sInDatasets+="ds_in"+iSeq+"=gds_Language_in"+" ";	sOutDatasets+="gds_Language=ds_out"+iSeq+" "; 			iSeq++;	//	this.gtrace(" - sArguments-->"+sArguments, gtrcPos);
+			sArguments+="CommonMapper.getMultiLang ";
+			sInDatasets+="ds_in"+iSeq+"=gds_Language_in"+" ";
+			sOutDatasets+="gds_Language=ds_out"+iSeq+" ";
+			iSeq++;	
+			this.gtrace(" - sArguments-->"+sArguments, gtrcPos);
+		}
+		
+		{	//	그리드포맺 가져오기
+			var tFormatInDs = new Dataset;
+				var tFormatInDsName = "tFormatInDs";
+				this.addChild(tFormatInDsName, tFormatInDs);
+				tFormatInDs.copyData(this.gfn_getApplication().gds_FormatInOutDs);
+				tFormatInDs.addRow();
+				//	this.gfn_setUser(tFormatInDs, "USERID");
+				//	tFormatInDs.setColumn(0, "PROGRAMID", this.name);
+				this.gfn_setUser(tFormatInDs, "p_user_id");
+				this.tFormatInDs.setColumn(0, "p_program_id", this.name);
+				this.tFormatInDs.setColumn(0, "p_default_yn", "Y");
+				
+				this.gtrace(this.tFormatInDs.saveXML(),gtrcPos);
+				
+			sArguments+="getUserGridData ";
+			sInDatasets+="ds_in"+iSeq+"=tFormatInDs"+" ";
+			sOutDatasets+="tFormatInDs=ds_out"+iSeq+" ";
+			iSeq++;		this.gtrace("그리드포맺 가져오기 : - sArguments-->"+sArguments, gtrcPos);
 		}
 		
 		
@@ -257,7 +285,7 @@ pForm.gfn_getAllInitData = function()
 							sOutDatasets+=	sTmpDsName+"=ds_out"+iSeq			+" ";
 							iSeq++;
 						break;
-					
+
 					//공통코드
 					default : 
 						var tCommInDs = new Dataset;
@@ -343,6 +371,36 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			break;
 
 		case "getAllInitData":		// 기본 데이터 가져오기 - 콤보Ds세팅
+			
+			{	// 포맺그리드 처리
+
+				var oTmpFrmDs = this.tFormatInDs;
+
+				//테스트데이터는 삭제
+				var iTstRp = oTmpFrmDs.findRowExpr("GRID_ID=='MASTER' && LAYOUT_NM=='TEST_LAYOUT'");
+					oTmpFrmDs.deleteRow(iTstRp);
+					this.gtrace("oTmpFrmDs.saveXML---->"+oTmpFrmDs.saveXML(),gtrcPos);
+				
+				//포맺데이터가 있을 경우만 실행
+				if(oTmpFrmDs.getRowCount() > 0)
+				{
+					var oGrdPrsnDs = this.gfn_getApplication().gds_gridPersonal;
+						oGrdPrsnDs.clearData();	
+
+//					this.gfn_getApplication().gds_FormatInOutDs.addendData(oTmpFrmDs, true);	//	동일한 column에 데이터 추가
+
+					for(var i = 0 ; i < oTmpFrmDs.rowcount ; i++)
+					{
+						var iAddRp = oGrdPrsnDs.addRow();
+						var sTmpFrmId 	= oTmpFrmDs.getColumn(i, "PROGRAM_ID")+sSplitChar+oTmpFrmDs.getColumn(i, "GRIDID");
+						var sData1 		= oTmpFrmDs.getColumn(i, "DATA_1");
+						oGrdPrsnDs.setColumn(iAddRp, "sFormatId"	, sTmpFrmId);
+						oGrdPrsnDs.setColumn(iAddRp, "sFormat"		, sData1);
+					}
+
+				}
+			}
+			
 			//	trace(this.ds_outCompanyCode.saveXML());
 			/*
 			 * 공통코드 
@@ -365,18 +423,27 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			 */
 			 
 			 var arrCmmCode = this.gfn_getArrComboSetStr();
-			 
-			 for(var j=0 ; j < arrCmmCode.length ; j++)
-			 {
-				var sTdsNm = arrCmmCode[j].dsName;
+			 if(!this.gfn_isNull(arrCmmCode)){
+				 for(var j=0 ; j < arrCmmCode.length ; j++)
+				 {
+					var sTdsNm = arrCmmCode[j].dsName;
 
-				if(this.gfn_nvl(sTdsNm,"") !="")
-				{
-					var tDs = eval("this."+sTdsNm);
-					this.gfn_SetFirstRow(tDs, "CODE_CD", "CODE_NM", "S ");
-				}
+					if(this.gfn_nvl(sTdsNm,"") !="")
+					{
+						var tDs = eval("this."+sTdsNm);
+						this.gfn_SetFirstRow(tDs, "CODE_CD", "CODE_NM", "S ");
+						
+						//	코드+명칭으로 표시
+						for(var k=0 ; k < tDs.getRowCount() ; k++)
+						{
+							var tCd = tDs.getColumn(k, "CODE_CD");
+							var tNm = tDs.getColumn(k, "CODE_NM");
+							tDs.setColumn(k , "CODE_NM", tCd==""?tNm:tCd+"-"+tNm);
+						}
+					}
+				 }
 			 }
-			 
+
 																	//	this.gtrace(" - this.COMBO_SET_STR--->"+this.COMBO_SET_STR, gtrcPos);
 																	//	trace("gds_User.saveXML()--->"+nexacro.getApplication().gds_User.saveXML());
 																	//	nexacro.getApplication().gds_User.setColumn(0, "VENDOR_CD", "XXXXX");
@@ -414,9 +481,11 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 // 				}
 // 			}
 			
+			
 			//	트랜잭션을 하던 안하던 실행되는 함수
 				this.gfn_onloadSequence();
 
+		
 			//	위와 아래는 맛보기임.
 		{	// 	
 // 			var tFormatInDs = new Dataset;

@@ -83,6 +83,7 @@
               <Div id="div_OsFactory" taborder="19" text="Div00" left="808" top="33" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="OsFactory,ds_in,ds_cmcdOSFactory,p_jakji_sta,p_jakji_end,p_jakji_list"/>
               <Div id="div_SalesGroup" taborder="20" left="808" top="8" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesGroup,ds_in,ds_cmcdSalesGroup,p_sales_team_sta,p_sales_team_end,p_sales_team_list"/>
               <Div id="div_Season" taborder="21" text="Div00" left="808" top="83" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="Season,ds_in,ds_cmcdSeason,p_season_sta,p_season_end,p_season_list"/>
+              <Calendar id="calPerf" taborder="22" left="1030" top="133" width="171" height="21" ondropdown="cal_from_ondropdown" dateformat="yyyy-MM-dd" autoselect="true"/>
             </Layout>
           </Layouts>
         </Div>
@@ -91,7 +92,7 @@
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide,gfilter,export,cellcopypaste,seltype" binddataset="ds_listStyle" cellsizingtype="col">
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide,gfilter,export,cellcopypaste,seltype" binddataset="ds_listStyle" cellsizingtype="col" onvscroll="TabOrderRecap_TabpageStyle_GridStyle_onvscroll" wheelscrollrow="5">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -156,7 +157,7 @@
                           <Cell col="8" text="bind:CI_ITEM_NM"/>
                           <Cell col="9" text="bind:OSM_VBELN"/>
                           <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
-                          <Cell col="11" displaytype="imagecontrol" imagestretch="fit" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="11" displaytype="text" imagestretch="fit" text="bind:CI_ITEM_IMAGE_THUMB"/>
                           <Cell col="12" text="bind:OPD_ORDER_QTY"/>
                           <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
                           <Cell col="14" text="bind:SALES_PRICE"/>
@@ -1061,7 +1062,7 @@
         </Grid>
         <Div id="DivBtnGfilter" taborder="4" text="" top="213" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabOrderRecap.TabpageStyle.form.GridStyle" visible="true" right="8"/>
         <TextArea id="TextArea00" taborder="5" left="0" readonly="true" right="0" bottom="100" height="170" visible="false"/>
-        <Grid id="Grid01" taborder="6" width="690" height="177" binddataset="gds_TrcInfo" griduserproperty="checkbox" autofittype="col" cellsizingtype="col" visible="true" right="0" bottom="193">
+        <Grid id="Grid01" taborder="6" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="354">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1087,8 +1088,8 @@
           </Formats>
         </Grid>
         <Button id="Button00_00" taborder="7" text="Output Clear" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="false"/>
-        <Button id="Button01" taborder="8" text="Button01" left="387" top="175" width="223" height="25" onclick="Button01_onclick"/>
-        <Button id="Button02" taborder="9" text="Button02" left="320" top="370" width="275" height="61" onclick="Button02_onclick" visible="false"/>
+        <Button id="Button01" taborder="8" text="테스트트랜" left="387" top="175" width="103" height="25" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="9" text="일반테스트" left="500" top="175" width="103" height="25" onclick="Button02_onclick" visible="true"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -1105,6 +1106,7 @@
       <BindItem id="item0" compid="DivCondition.form.CheckBoxShipment" propid="value" datasetid="ds_in" columnid="p_shipment_yn"/>
       <BindItem id="item3" compid="DivCondition.form.RadioSewing" propid="value" datasetid="ds_in" columnid="p_sewi_type"/>
       <BindItem id="item6" compid="TextArea00" propid="value" datasetid="gds_TrcOutputTxt" columnid="OutputTxt"/>
+      <BindItem id="item7" compid="DivCondition.form.calPerf" propid="value" datasetid="ds_in" columnid="p_perf_date"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
 @desc	1. Include
@@ -1232,7 +1234,8 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 		default:
 			break;
 		case "getOrderRecapList"	:
-			
+			this.setWaitCursor( true );
+
 			trace("this.ds_listStyle.rowcount---->"+this.ds_listStyle.rowcount);
 			
 			if(this.ds_in.getColumn(0, "p_radio")=="1"){
@@ -1249,6 +1252,8 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 					}
 				}
 			}
+			
+			this.setWaitCursor( false );
 			
 			break;
  		
@@ -1397,16 +1402,134 @@ this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var sbSuppress =  {GrId : ["GridStyle","GridPoInfo1"], sPrsVal : 1};
-		trace("sbSuppress--->"+sbSuppress);
-		trace("sbSuppress.GrId--->"+sbSuppress.GrId);
-		trace("sbSuppress.GrId[0]--->"+sbSuppress.GrId[0]);
+	{
+		if(this.ds_in.getColumn(0, "p_radio")=="1"){
+
+			var iDataCount = this.ds_Count.getColumn(this.ds_Count.rowposition, "No");
+			
+			Eco.Logger.startElapsed();
+			var oVscStyle = GridStyle.vscrollbar;
+ 
+// 			var i = 0;
+// 			while ( i < iDataCount)
+// 			{
+// 				var sTmpImg = this.ds_listStyle.getColumn(i, "CI_ITEM_IMAGE_THUMB");
+// 				if(!this.gfn_isNull(sTmpImg))
+// 				{
+//  					sTmpImg = "http://192.168.11.193:8081/ImageViewer.do?realFileNm="+sTmpImg;
+//  					//	this.ds_listStyle.setColumn(i, "CI_ITEM_IMAGE_THUMB", sTmpImg);
+// 					this.ds_listStyle.setColumn(i, "CI_ITEM_IMAGE_THUMB", "");
+// // 					//	this.ds_listStyle.set_enableevent(true);
+// // 					//	GridStyle.redraw();
+//  				}
+// 			
+// 				i++;
+// 			}
+
+			for (var i =0; i < iDataCount ; i++){
+				var sTmpImg = this.ds_listStyle.getColumn(i, "CI_ITEM_IMAGE_THUMB");
+				if(!this.gfn_isNull(sTmpImg))
+				{
+					//	sTmpImg = "http://192.168.11.193:8081/ImageViewer.do?realFileNm="+sTmpImg;
+					sTmpImg = "https://lushdollar.com/wp-content/uploads/2019/09/get-paid-to-advertise-clothing-740x493.jpg";
+					this.ds_listStyle.setColumn(i, "CI_ITEM_IMAGE_THUMB", sTmpImg);
+						this.ds_listStyle.set_enableevent(true);
+						GridStyle.redraw();
+				}else{
+					continue;
+				}
+			}
+			Eco.Logger.debug({message:iDataCount+" 건", elapsed: true});
+
+		}
+	}
+	{	//오브젝트-배열 테스트
+// 		var sbSuppress =  {GrId : ["GridStyle","GridPoInfo1"], sPrsVal : 1};
+// 			trace("sbSuppress--->"+sbSuppress);
+// 			trace("sbSuppress.GrId--->"+sbSuppress.GrId);
+// 			trace("sbSuppress.GrId[0]--->"+sbSuppress.GrId[0]);
+	}
 };
 
 this.TabOrderRecap_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
 {
 	//	trace("obj.tabindex--->"+obj.tabindex);
 	this.ds_in.setColumn(0, "p_radio", (obj.tabindex+1));
+};
+
+this.TabOrderRecap_TabpageStyle_GridStyle_onvscroll = function(obj:nexacro.Grid,e:nexacro.ScrollEventInfo)
+{
+//	var oVscStyle = obj.vscrollbar;
+// 	trace("oVscStyle.pos--->"+oVscStyle.pos);
+	// 그리드에서 현재 표시되고 있는 맨 위의 데이터셋 RowPosition
+	// 그리드에서 현재 표시되고 있는 맨 아래의 데이터셋 RowPosition
+	
+	
+
+// 	trace("oVscStyle.name--->"+oVscStyle.name);
+// 	trace("oVscStyle.id--->"+oVscStyle.id);
+// 	trace("oVscStyle.parent--->"+oVscStyle.parent);
+// 	trace("oVscStyle._refform--->"+oVscStyle._refform);
+// 	trace("oVscStyle.left--->"+oVscStyle.left);
+// 	trace("oVscStyle.top--->"+oVscStyle.top);
+// 	trace("oVscStyle.width--->"+oVscStyle.width);
+// 	trace("oVscStyle.height--->"+oVscStyle.height);
+// 	trace("oVscStyle.right--->"+oVscStyle.right);
+// 	trace("oVscStyle.bottom--->"+oVscStyle.bottom);
+// 	trace("oVscStyle._arrange_info--->"+oVscStyle._arrange_info);
+// 	trace("oVscStyle._left--->"+oVscStyle._left);
+// 	trace("oVscStyle._top--->"+oVscStyle._top);
+// 	trace("oVscStyle._right--->"+oVscStyle._right);
+// 	trace("oVscStyle._bottom--->"+oVscStyle._bottom);
+// 	trace("oVscStyle._width--->"+oVscStyle._width);
+// 	trace("oVscStyle._height--->"+oVscStyle._height);
+// 	trace("oVscStyle._statusmap--->"+oVscStyle._statusmap);
+// 	trace("oVscStyle._userstatusmap--->"+oVscStyle._userstatusmap);
+// 	trace("oVscStyle._rectshaft--->"+oVscStyle._rectshaft);
+// 	trace("oVscStyle.onscroll--->"+oVscStyle.onscroll);
+// 	trace("oVscStyle._created_event_list--->"+oVscStyle._created_event_list);
+// 	trace("oVscStyle._unique_id--->"+oVscStyle._unique_id);
+// 	trace("oVscStyle._conrol_element--->"+oVscStyle._conrol_element);
+// 	trace("oVscStyle._rtl--->"+oVscStyle._rtl);
+// 	trace("oVscStyle._cssselector--->"+oVscStyle._cssselector);
+// 	trace("oVscStyle._is_initcssselector--->"+oVscStyle._is_initcssselector);
+// 	trace("oVscStyle._adjust_left--->"+oVscStyle._adjust_left);
+// 	trace("oVscStyle._adjust_width--->"+oVscStyle._adjust_width);
+// 	trace("oVscStyle._adjust_height--->"+oVscStyle._adjust_height);
+// 	trace("oVscStyle.decbutton--->"+oVscStyle.decbutton);
+// 	trace("oVscStyle.incbutton--->"+oVscStyle.incbutton);
+// 	trace("oVscStyle.trackbar--->"+oVscStyle.trackbar);
+// 	trace("oVscStyle._is_created_contents--->"+oVscStyle._is_created_contents);
+// 	trace("oVscStyle._is_loading--->"+oVscStyle._is_loading);
+// 	trace("oVscStyle.min--->"+oVscStyle.min);
+// 	trace("oVscStyle._min--->"+oVscStyle._min);
+// 	trace("oVscStyle.max--->"+oVscStyle.max);
+// 	trace("oVscStyle._max--->"+oVscStyle._max);
+// 	trace("oVscStyle._orgmax--->"+oVscStyle._orgmax);
+// 	trace("oVscStyle.line--->"+oVscStyle.line);
+// 	trace("oVscStyle.page--->"+oVscStyle.page);
+// 	trace("oVscStyle.view--->"+oVscStyle.view);
+// 	trace("oVscStyle._pos--->"+oVscStyle._pos);
+// 	trace("oVscStyle._real_enable--->"+oVscStyle._real_enable);
+// 	trace("oVscStyle._is_enable_changing--->"+oVscStyle._is_enable_changing);
+// 	trace("oVscStyle._oldstatus--->"+oVscStyle._oldstatus);
+// 	trace("oVscStyle._status--->"+oVscStyle._status);
+// 	trace("oVscStyle._is_created--->"+oVscStyle._is_created);
+// 	trace("oVscStyle._trackbarsize--->"+oVscStyle._trackbarsize);
+// 	trace("oVscStyle._set_real--->"+oVscStyle._set_real);
+// 	trace("oVscStyle._reset_trackbar_fix--->"+oVscStyle._reset_trackbar_fix);
+//	trace("---------------------------------------------------------------------");
+};
+
+this.ds_listStyle_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{
+// 	trace("Eco.GridStyle..getTopLevelFormBox--->"+ Eco.XComp.PositionSize.getTopLevelFormBox(GridStyle));
+// 	trace("Eco.convertXY---->"+Eco.XComp.PositionSize.convertXY(this,[0,0], GridStyle));
+// 	trace("Eco.getScrollTop--->"+Eco.XComp.PositionSize.getScrollTop(GridStyle));
+// 	trace("Eco.getClientWidth--->"+Eco.XComp.PositionSize.getClientWidth(GridStyle));
+// 	trace("Eco.getClientHeight--->"+Eco.XComp.PositionSize.getClientHeight(GridStyle));
+// 	
+// 	trace("this.ds_listStyle.rowposition--->"+this.ds_listStyle.rowposition);
 };
 ]]></Script>
     <Objects>
@@ -1902,7 +2025,7 @@ this.TabOrderRecap_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChange
           <Column id="p_perf_date" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_listStyle">
+      <Dataset id="ds_listStyle" onrowposchanged="ds_listStyle_onrowposchanged">
         <ColumnInfo>
           <Column id="CC_CUST_SHORT_NM" type="STRING" size="256"/>
           <Column id="OSM_ZYEAR" type="STRING" size="256"/>
@@ -2159,6 +2282,49 @@ this.TabOrderRecap_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChange
           <Column id="FIRST_SHIP_DATE" type="STRING" size="256"/>
           <Column id="REMARK1" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_Count" oncolumnchanged="ds_in_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="No" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="No">100</Col>
+          </Row>
+          <Row>
+            <Col id="No">200</Col>
+          </Row>
+          <Row>
+            <Col id="No">300</Col>
+          </Row>
+          <Row>
+            <Col id="No">400</Col>
+          </Row>
+          <Row>
+            <Col id="No">500</Col>
+          </Row>
+          <Row>
+            <Col id="No">600</Col>
+          </Row>
+          <Row>
+            <Col id="No">700</Col>
+          </Row>
+          <Row>
+            <Col id="No">800</Col>
+          </Row>
+          <Row>
+            <Col id="No">900</Col>
+          </Row>
+          <Row>
+            <Col id="No">1000</Col>
+          </Row>
+          <Row>
+            <Col id="No">2000</Col>
+          </Row>
+          <Row>
+            <Col id="No">3000</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
   </Form>

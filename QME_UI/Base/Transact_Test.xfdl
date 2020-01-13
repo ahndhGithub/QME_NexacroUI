@@ -212,6 +212,10 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 	{
 		default:
 			break;
+			case "TestTransaction_ToQmeWasServer"	:
+				trace(this.ds_out00.saveXML());
+
+				break;
  		
 			case "AppSvrLocalMsSqlTest"	:
 				trace(this.ds_out.saveXML());
@@ -225,15 +229,15 @@ this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 		this.ds_in00.clearData();
 		this.ds_in00.addRow();
 		this.ds_in00.setColumn(0, "p_user_id","160307");
-		
-		var sSvcID = "getAllInitData";
+
+		var sSvcID = "TestTransaction_ToQmeWasServer";
 		var sURL = "AppSvr::common/commonAction.ppc";
-		var sInDatasets 	= "ds_in0=ds_in00";
+		var sInDatasets 	= "ds_in0=ds_in00"; 
 		var sOutDatasets 	= "ds_out00=ds_out0";
-		var sArguments 		= "UserMapper.getLoginInfo";
+		//	var sArguments 		= "UserMapper.getLoginInfo";
+		var sArguments 		= "getUserGridData";		trace("sArguments---->"+sArguments);
 
 		this.transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "gfn_callbackFunction");
-
 };
 ]]></Script>
   </Form>

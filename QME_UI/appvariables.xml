@@ -927,14 +927,20 @@
     </Dataset>
     <Dataset id="gds_FormatInOutDs" useclientlayout="true">
       <ColumnInfo>
-        <Column id="SEQ" type="STRING" size="256"/>
-        <Column id="PROGRAMID" type="STRING" size="256"/>
-        <Column id="USERID" type="STRING" size="256"/>
-        <Column id="GRIDID" type="STRING" size="256"/>
-        <Column id="FORMAT_ID" type="STRING" size="256"/>
+        <Column id="p_program_id" type="STRING" size="256"/>
+        <Column id="p_grid_id" type="STRING" size="256"/>
+        <Column id="p_user_id" type="STRING" size="256"/>
+        <Column id="p_default_yn" type="STRING" size="256"/>
+        <Column id="DEL_YN" type="STRING" size="256"/>
+        <Column id="GRID_ID" type="STRING" size="256"/>
         <Column id="LAYOUT_NM" type="STRING" size="256"/>
-        <Column id="DEFAULT_LAYOUT" type="STRING" size="256"/>
-        <Column id="JSONDATA" type="STRING" size="256"/>
+        <Column id="DATA_1" type="STRING" size="256"/>
+        <Column id="USER_ID" type="STRING" size="256"/>
+        <Column id="RN" type="STRING" size="256"/>
+        <Column id="PROGRAM_ID" type="STRING" size="256"/>
+        <Column id="SEQ" type="STRING" size="256"/>
+        <Column id="DEFAULT_YN" type="STRING" size="256"/>
+        <Column id="SaveUser" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
     <Dataset id="gds_TrcInfo">
@@ -945,6 +951,11 @@
         <Column id="TrcId" type="STRING" size="256"/>
       </ColumnInfo>
       <Rows>
+        <Row>
+          <Col id="TrcName">포맺저장트랜잭션</Col>
+          <Col id="TrcId">PopupSaveLayout.xfdl.tfn_FormatSave</Col>
+          <Col id="TrcSeq">98</Col>
+        </Row>
         <Row>
           <Col id="TrcSeq">99</Col>
           <Col id="TrcId">POList.xfdl.tfn_savePO</Col>
