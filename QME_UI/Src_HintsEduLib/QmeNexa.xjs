@@ -2,7 +2,7 @@
 <Script version="1.0" type="xscript5.1"><![CDATA[/**
 *  @FileName 	QmeNexa.xjs 
 */
-
+ 
 var pForm = nexacro.Form.prototype;
 var sSplitChar = this.gfn_getApplication().MultiTxtSplitChar;
 
@@ -387,15 +387,16 @@ this.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 					var oGrdPrsnDs = this.gfn_getApplication().gds_gridPersonal;
 						oGrdPrsnDs.clearData();	
 
-//					this.gfn_getApplication().gds_FormatInOutDs.addendData(oTmpFrmDs, true);	//	동일한 column에 데이터 추가
-
 					for(var i = 0 ; i < oTmpFrmDs.rowcount ; i++)
 					{
+						var sData = "";
+						for(var k = 0 ; k < 10 ; k++){
+							sData += this.gfn_nvl(oTmpFrmDs.getColumn(iAddRp, "DATA_"+(k+1)), "");
+						}
+						
 						var iAddRp = oGrdPrsnDs.addRow();
-						var sTmpFrmId 	= oTmpFrmDs.getColumn(i, "PROGRAM_ID")+sSplitChar+oTmpFrmDs.getColumn(i, "GRIDID");
-						var sData1 		= oTmpFrmDs.getColumn(i, "DATA_1");
-						oGrdPrsnDs.setColumn(iAddRp, "sFormatId"	, sTmpFrmId);
-						oGrdPrsnDs.setColumn(iAddRp, "sFormat"		, sData1);
+						oGrdPrsnDs.setColumn(iAddRp, "sFormatId"	, this.tFormatInDs.getColumn(i, "GRIDID"));
+						oGrdPrsnDs.setColumn(iAddRp, "sFormat"		, sData);
 					}
 
 				}
