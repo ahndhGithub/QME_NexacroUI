@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.0">
-  <Form id="cmmCrudButton" width="300" height="28" onload="form_onload" scrolltype="none">
+  <Form id="Comm_CrudButton" width="300" height="28" onload="form_onload" scrolltype="none">
     <Layouts>
       <Layout height="28" width="300">
         <Button id="btn_search" taborder="0" text="Search" top="0" width="72" height="28" visible="false" cssclass="btn_WF_main1" onclick="btn_Crud_onclick" left="0"/>
@@ -72,7 +72,6 @@ this.btn_Crud_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	default:
 	}
 };
-
 
 ]]></Script>
     <Objects/>

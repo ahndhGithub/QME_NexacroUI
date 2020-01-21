@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Script version="1.0" type="xscript5.1"><![CDATA[/**
+﻿/**
 *  @FileName 	GridFilter.xjs 
 */
 
@@ -43,7 +42,7 @@ Grid Filter
  * Grid head에 filer 기능 추가하기 초기화
  * @param {Grid} grid 대상 Grid Component
  */
-pForm.initGridHeadAppendFilter = function(grid)
+this.initGridHeadAppendFilter = function(grid)
 {
     // 필터영역(Div) 를 담아둘 속성 추가
     if (this.fnIsUndefined(grid.makeCompList))
@@ -80,7 +79,7 @@ pForm.initGridHeadAppendFilter = function(grid)
 * Grid head append filter 보이기
 * @param {Grid} grid 대상 Grid Component
 */
-pForm.showHeadAppendFilter = function(grid)
+this.showHeadAppendFilter = function(grid)
 {
     var rowIdx = grid.appendContentsRow("head");
 	grid.setFormatRowProperty( rowIdx, "size", 34 );//추가된 head 높이조절 2019-11-21 bok
@@ -95,7 +94,7 @@ pForm.showHeadAppendFilter = function(grid)
 * Grid head append filter 숨기기 (필터제거 포함)
 * @param {Grid} grid 대상 Grid Component
 */
-pForm.hideHeadAppendFilter = function(grid)
+this.hideHeadAppendFilter = function(grid)
 {
     var index = grid.appendHeadRowIndex;
     if (!this.fnIsUndefined(index))
@@ -131,12 +130,12 @@ pForm.hideHeadAppendFilter = function(grid)
 ******************************************************************************/
 
 // 필터 가능 표시 이미지
-pForm.FILTER_ENABLE_IMAGE_URL = "Images::grd_filter_combo.png";
-pForm.FILTER_ENABLE_IMAGE_SIZE = [17, 15];
+this.FILTER_ENABLE_IMAGE_URL = "Images::grd_filter_combo.png";
+this.FILTER_ENABLE_IMAGE_SIZE = [17, 15];
 
 // 필터 적용 표시 이미지
-pForm.FILTER_APPLY_IMAGE_URL = "Images::grd_filter_check.png";
-pForm.FILTER_APPLY_IMAGE_SIZE = [17, 15];
+this.FILTER_APPLY_IMAGE_URL = "Images::grd_filter_check.png";
+this.FILTER_APPLY_IMAGE_SIZE = [17, 15];
 
 /**
 * 필터 실행
@@ -145,7 +144,7 @@ pForm.FILTER_APPLY_IMAGE_SIZE = [17, 15];
 * @param {string} filterString 적용할 조건식
 * @param {*=} filterData filter 조건 데이터
 */
-pForm.executeFilter = function(grid, headCellIndex, filterString, filterData)
+this.executeFilter = function(grid, headCellIndex, filterString, filterData)
 {
     var bodyCellIndex = this.getBodyCellIndex(grid, headCellIndex);
     var column = this.getBindColumnNameByIndex(grid, bodyCellIndex);
@@ -201,7 +200,7 @@ pForm.executeFilter = function(grid, headCellIndex, filterString, filterData)
  * @param {number} index 얻고자 하는 cell 의 index
  * @return {object} cell object
  */
-pForm.getGridCellObject = function(grid, band, index)
+this.getGridCellObject = function(grid, band, index)
 {
 	// 내부속성을 통해 얻어온다.
 	var refCell;
@@ -230,7 +229,7 @@ pForm.getGridCellObject = function(grid, band, index)
  * @param {object} cell 대상 cell object
  * @return {number} cell index
  */
-pForm.getCellObjectIndex = function(cell)
+this.getCellObjectIndex = function(cell)
 {
 	return cell._cellidx;
 }
@@ -240,7 +239,7 @@ pForm.getCellObjectIndex = function(cell)
  * @param {Grid} grid 대상 Grid Component
  * @param {number} index body cell index
  */
-pForm.getBindColumnNameByIndex = function(grid, index) 
+this.getBindColumnNameByIndex = function(grid, index) 
 {
 	var text = "";
 	var columnid = "";
@@ -276,7 +275,7 @@ pForm.getBindColumnNameByIndex = function(grid, index)
  * @param {number} headCellIndex head cell index
  * @param {boolean=} useColspan head cell 이 colspan 일 경우에도 반환값을 받을지 여부
  */
-pForm.getBodyCellIndex = function(grid, headCellIndex, useColspan) 
+this.getBodyCellIndex = function(grid, headCellIndex, useColspan) 
 {	
 	// Max Head Row Index
 	var maxHeadRow = 0;
@@ -356,7 +355,7 @@ pForm.getBodyCellIndex = function(grid, headCellIndex, useColspan)
  * @param {Grid} grid 대상 Grid Component
  * @return {boolean} resizing 여부 반환
  */
-pForm.isGridColResizing = function(grid)
+this.isGridColResizing = function(grid)
 {
 	// 내부 속성을 확인한다.
 	var resizer = grid._resizer_elem;
@@ -373,7 +372,7 @@ pForm.isGridColResizing = function(grid)
 * @param {Grid} obj Event가 발생한 Grid Component
 * @param {GridDragEventInfo} e GridDragEventInfo
 */
-pForm.filterGridOnDragMoveHandler = function(obj, e)
+this.filterGridOnDragMoveHandler = function(obj, e)
 {
     // cell moving 을 체크하기 위해 내부 속성 확인...
     if (obj._movingcell)
@@ -434,7 +433,7 @@ pForm.filterGridOnDragMoveHandler = function(obj, e)
 * @param {Grid} obj Event가 발생한 Grid Component
 * @param {GridDragEventInfo} e GridDragEventInfo
 */
-pForm.headAppendFilterOnDropHandler = function(obj, e)
+this.headAppendFilterOnDropHandler = function(obj, e)
 {
     // onformatchanged 기능이 현재 없어서 movecell 이 발생될 때를 알 수 없다. 
     // 따라서 ondrop 에서 내부 속성값을 체크하여 기능처리
@@ -458,7 +457,7 @@ pForm.headAppendFilterOnDropHandler = function(obj, e)
 * @param {Grid} obj Event가 발생한 Grid Component
 * @param {GridMouseEventInfo} e GridMouseEventInfo
 */
-pForm.headAppendFilterOnLButtonUpHandler = function(obj, e)
+this.headAppendFilterOnLButtonUpHandler = function(obj, e)
 {
     // oncolresized 가 현재 지원되지 않아서 기능을 사용하기 위해 추가
     var resizer = obj._resizer_elem;
@@ -474,7 +473,7 @@ pForm.headAppendFilterOnLButtonUpHandler = function(obj, e)
 * @param {Grid} obj Event가 발생한 Grid Component
 * @param {GridMouseEventInfo} e GridMouseEventInfo
 */
-pForm.headAppendFilterOnMouseMoveHandler = function(obj, e)
+this.headAppendFilterOnMouseMoveHandler = function(obj, e)
 {
     // oncolresized 가 현재 지원되지 않아서 기능을 사용하기 위해 추가
     var resizer = obj._resizer_elem;
@@ -495,7 +494,7 @@ pForm.headAppendFilterOnMouseMoveHandler = function(obj, e)
 * Grid head append filter 기능에 필요한 컴포넌트 생성 및 위치 조정
 * @param {Grid} grid 대상 Grid Component
 */
-pForm.arrangeFilterComps = function(grid)
+this.arrangeFilterComps = function(grid)
 {
     var form = grid.parent;
     var index = grid.appendHeadRowIndex;
@@ -615,7 +614,7 @@ pForm.arrangeFilterComps = function(grid)
  * Arguments    : @param {*} value 확인할 value.		
  * Return       : @return {boolean} undefined 여부.
 *************************************************************************************************/
-pForm.fnIsUndefined = function(value)
+this.fnIsUndefined = function(value)
 {
 	return value === undefined;
 };
@@ -628,7 +627,7 @@ pForm.fnIsUndefined = function(value)
 		 		  
  * Return       : @return {array.<number>} [ leftWdith, topWdith, rightWdith, bottomWdith ]
 *************************************************************************************************/
-pForm.fnGetBorderWidth = function(xComp)
+this.fnGetBorderWidth = function(xComp)
 {
 	var border = xComp._getCurrentStyleBorder();
 	var leftWidth = 0,topWidth = 0,rightWidth = 0,bottomWidth = 0;
@@ -660,7 +659,7 @@ pForm.fnGetBorderWidth = function(xComp)
 				  @param {boolean=} strict true: 형변환 없이 비교('==='), false: 형변환 후 비교('==') (default: false).
  * Return       : @return {number} 검색된 배열 위치. 없다면 -1 리턴.
 *************************************************************************************************/
-pForm.fnIndexOf = function(array, item, from, strict)
+this.fnIndexOf = function(array, item, from, strict)
 {
 	var len = array.length;
 	
@@ -699,4 +698,3 @@ pForm.fnIndexOf = function(array, item, from, strict)
 	
 	return -1;
 };
-]]></Script>

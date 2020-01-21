@@ -143,6 +143,7 @@ pForm.gfn_setGrid = function(objGrid)
 	objGrid.set_enableevent(false);
 	objGrid.set_enableredraw(false);	
 	objDs.set_enableevent(false); 
+	objDs.set_useclientlayout(true);	//	그리드에 바인딩된 데이터셋은 고정한다.
 	
 	var objApp = pForm.gfn_getApplication();
 	var objGds = objApp.gds_gridPersonal;
@@ -171,7 +172,11 @@ pForm.gfn_setGrid = function(objGrid)
 		
 	this._gfnGridAddProp(objGrid);
 															//	this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnMakeGridPopupMenu 를 실행", gtrcPos);
-	this._gfnMakeGridPopupMenu(objGrid,arrProp);	//popupmenu 생성	
+	this._gfnMakeGridPopupMenu(objGrid,arrProp);	//popupmenu 생성
+	
+	// Grid head에 filer 기능 추가하기 초기화(nexacro demo)
+	this.initGridHeadAppendFilter(objGrid);
+	
 	/*********************************************** 이벤트추가 START ***********************************************/
 	
 	objGrid.addEventHandler("onheadclick", this.gfn_grid_onheadclick, this); 	//	this.gtrace("헤드클릭이벤트추가 gfn_grid_onheadclick", gtrcPos);
@@ -298,7 +303,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 	}
 												//0 : this.gtrace("nHeadCount-->"+nHeadCount, gtrcPos);
 	                                            //0 : this.gtrace("nBodyCount-->"+nBodyCount, gtrcPos);
-	var sNo 	= this.gfn_getWord("순번");		
+	var sNo 	= this.gfn_getWord("Seq.");		
 	var sStatus = this.gfn_getWord("상태값");
 												//undefined : this.gtrace("sNo-->"+sNo, gtrcPos);
 												//undefined : this.gtrace("sStatus-->"+sStatus, gtrcPos);
@@ -354,7 +359,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 	{
 		for( var i=0; i<objGrid.getCellCount("head"); i++){
 			var tmp = objGrid.getCellProperty("head" , i, "text");
-			if( tmp == "NO" || tmp == "순번"){
+			if( tmp == "NO" || tmp == "Seq."){
 				//return;
 				objGrid.deleteContentsCol("body", i);
 			}
@@ -451,7 +456,8 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 // return		: 
 // example		: 
 /////////////////////////////////////////////////////////////////
-pForm._gfn_getRowType = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInf)
+//	pForm._gfn_getRowType = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInf)
+pForm._gfn_getRowType = function(obj, e)
 {
 														var gtrcPos = "Grid.xjs._gfn_getRowType";
 	var iRowType = obj.getRowType(e.newrow);
@@ -468,7 +474,9 @@ pForm._gfn_getRowType = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosCha
 	}
 	
 	this.gtrace(e.newrow+" 행---sRowTypeName-------->"+sRowTypeName, gtrcPos);
-}
+};
+
+
 /////////////////////////////////////////////////////////////////
 // method name	: gfn_multiDatasetChanged
 // description	: 역할1 : ROW_STS, ROW_CHK 변경값은 Skip, 2 : ROW_STS에 세팅
@@ -476,7 +484,8 @@ pForm._gfn_getRowType = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosCha
 // return		: 
 // example		: 
 /////////////////////////////////////////////////////////////////
-pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo) 
+//	pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo) 
+pForm.gfn_multiDatasetChanged = function(obj, e) 
 {
 											var gtrcPos = "Grid.xjs.gfn_multiDatasetChanged";
 													this.gtrace("e.columnid--->"+e.columnid, gtrcPos);
@@ -507,7 +516,9 @@ pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSC
 	}
 
 	return iRow;
-}
+};
+
+
 /////////////////////////////////////////////////////////////////
 // method name	: gfn_multiDatasetAdded
 // description	: 역할1 : ROW_STS, ROW_CHK 변경값은 Skip, 2 : ROW_STS에 세팅
@@ -515,7 +526,8 @@ pForm.gfn_multiDatasetChanged = function(obj:nexacro.NormalDataset,e:nexacro.DSC
 // return		: 
 // example		: 
 /////////////////////////////////////////////////////////////////
-pForm.gfn_multiDatasetAdded = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo) 
+//	pForm.gfn_multiDatasetAdded = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo) 
+pForm.gfn_multiDatasetAdded = function(obj, e) 
 {
 											var gtrcPos = "Grid.xjs.gfn_multiDatasetAdded";
 													this.gtrace("e.columnid--->"+e.columnid, gtrcPos);
@@ -534,7 +546,9 @@ pForm.gfn_multiDatasetAdded = function(obj:nexacro.NormalDataset,e:nexacro.DSRow
 	} 
 
 	return iRow;
-}
+};
+
+
 /**
  * @class  멀티그리드 상태 그림
  * @param 
@@ -552,7 +566,7 @@ pForm.gfn_multiDatasetAdded = function(obj:nexacro.NormalDataset,e:nexacro.DSRow
 	else if (sStatus == "") 	sStatus = "";
 	
 	return sStatus;
-}
+};
 
 /**
  * @class  그리드헤드클릭 이벤트 [Sort, Checkbox]
@@ -2884,7 +2898,8 @@ pForm._createTextarea = function(innerText)
 	return ta;
 };
 
-pForm._gfn_oneTouchComboDropdown = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+//	pForm._gfn_oneTouchComboDropdown = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+pForm._gfn_oneTouchComboDropdown = function(obj, e)
 {
 	//	http://support.tobesoft.co.kr/Support/index.html
 	//	433852 문의 그리드에서 콤보사용시 클릭한번으로 콤보활성
@@ -2894,8 +2909,8 @@ pForm._gfn_oneTouchComboDropdown = function(obj:nexacro.Grid,e:nexacro.GridClick
 
 pForm._gfn_selTypeArea = function(objGrid){
 	objGrid.set_selecttype("area");
-}
+};
 
 pForm._gfn_selTypeRow = function(objGrid){
 	objGrid.set_selecttype("row");
-}]]></Script>
+};]]></Script>

@@ -30,14 +30,14 @@
                     </Row>
                     <Row>
                       <Col id="codecolumn">2</Col>
-                      <Col id="datacolumn">PO INFO 1</Col>
+                      <Col id="datacolumn">PO Info. 1</Col>
                     </Row>
                     <Row>
                       <Col id="codecolumn">3</Col>
-                      <Col id="datacolumn">PO INFO 2 - color</Col>
+                      <Col id="datacolumn">PO Info. 2 - Color</Col>
                     </Row>
                     <Row>
-                      <Col id="datacolumn">PO INFO 3 - color &amp; size</Col>
+                      <Col id="datacolumn">PO Info. 3 - Color Size</Col>
                       <Col id="codecolumn">4</Col>
                     </Row>
                     <Row>
@@ -46,11 +46,11 @@
                     </Row>
                     <Row>
                       <Col id="codecolumn">6</Col>
-                      <Col id="datacolumn">생산</Col>
+                      <Col id="datacolumn">Production</Col>
                     </Row>
                     <Row>
                       <Col id="codecolumn">7</Col>
-                      <Col id="datacolumn">샘플</Col>
+                      <Col id="datacolumn">Sample</Col>
                     </Row>
                   </Rows>
                 </Dataset>
@@ -78,7 +78,7 @@
               <Div id="div_SalesOrderFromTo" taborder="14" text="Div00" left="148" top="33" width="431" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesOrderNo,ds_in,p_so_key_sta,p_so_key_end,p_so_key_list"/>
               <Div id="div_StyleFromTo" taborder="15" text="Div00" left="148" top="58" width="431" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="StyleNo,ds_in,p_item_cd_sta,p_item_cd_end,p_item_cd_list"/>
               <Static id="StaticSubOption" taborder="16" text="Sub Option" left="660" top="108" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
-              <Static id="StaticProductionOption" taborder="17" text="생산 Option" left="660" top="133" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
+              <Static id="StaticProductionOption" taborder="17" text="Production Option" left="660" top="133" width="131" cssclass="sta_WF_searchLabel" height="21" onclick="DivCondition_StaticVendor01_onclick"/>
               <Div id="div_YearFromTo" taborder="18" text="Div00" left="148" top="83" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="Year,ds_in,ds_cmcdYear,p_year_sta,p_year_end"/>
               <Div id="div_OsFactory" taborder="19" text="Div00" left="808" top="33" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="OsFactory,ds_in,ds_cmcdOSFactory,p_jakji_sta,p_jakji_end,p_jakji_list"/>
               <Div id="div_SalesGroup" taborder="20" left="808" top="8" width="431" height="21" url="Comm::Comm_ComboConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" SearchConditionType="SalesGroup,ds_in,ds_cmcdSalesGroup,p_sales_team_sta,p_sales_team_end,p_sales_team_list"/>
@@ -92,7 +92,7 @@
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,colhide,gfilter,export,cellcopypaste,seltype" binddataset="ds_listStyle" cellsizingtype="col" onvscroll="TabOrderRecap_TabpageStyle_GridStyle_onvscroll" wheelscrollrow="5">
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" binddataset="ds_listStyle" cellsizingtype="col" onvscroll="TabOrderRecap_TabpageStyle_GridStyle_onvscroll" wheelscrollrow="5">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -157,7 +157,7 @@
                           <Cell col="8" text="bind:CI_ITEM_NM"/>
                           <Cell col="9" text="bind:OSM_VBELN"/>
                           <Cell col="10" text="bind:CI_ITEM_DESCRIPTION"/>
-                          <Cell col="11" displaytype="text" imagestretch="fit" text="bind:CI_ITEM_IMAGE_THUMB"/>
+                          <Cell col="11" displaytype="imagecontrol" imagestretch="fit" text="bind:CI_ITEM_IMAGE_THUMB"/>
                           <Cell col="12" text="bind:OPD_ORDER_QTY"/>
                           <Cell col="13" text="bind:OPM_DELIVERY_DATE"/>
                           <Cell col="14" text="bind:SALES_PRICE"/>
@@ -199,7 +199,7 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpagePoInfo_1" text="PO INFO 1">
+            <Tabpage id="TabpagePoInfo_1" text="PO Info. 1" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal">
               <Layouts>
                 <Layout>
                   <Grid id="GridPoInfo1" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo1" cellsizingtype="col">
@@ -302,10 +302,10 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpagePoInfo_2" text="PO INFO 2 - color">
+            <Tabpage id="TabpagePoInfo_2" text="PO Info. 2 - Color">
               <Layouts>
                 <Layout>
-                  <Grid id="GridPoInfo2" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo2" cellsizingtype="col">
+                  <Grid id="GridPoInfo2" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" binddataset="ds_listPoInfo2" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -411,7 +411,7 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpagePoInfo_3" text="PO INFO 3 - color size">
+            <Tabpage id="TabpagePoInfo_3" text="PO Info. 3 - Color Size" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal">
               <Layouts>
                 <Layout>
                   <Grid id="GridPoInfo3" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listPoInfo3" cellsizingtype="col">
@@ -520,7 +520,7 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpageOs" text="OS">
+            <Tabpage id="TabpageOs" text="OS" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal">
               <Layouts>
                 <Layout>
                   <Grid id="GridOs" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listOs" cellsizingtype="col">
@@ -716,10 +716,10 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpageProduction" text="생산">
+            <Tabpage id="TabpageProduction" text="Production">
               <Layouts>
                 <Layout>
-                  <Grid id="GridProd" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listProduction" cellsizingtype="col">
+                  <Grid id="GridProd" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" binddataset="ds_listProduction" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -843,10 +843,10 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpageSample" text="샘플">
+            <Tabpage id="TabpageSample" text="Sample">
               <Layouts>
                 <Layout>
-                  <Grid id="GridSample" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no" binddataset="ds_listSample" cellsizingtype="col">
+                  <Grid id="GridSample" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" binddataset="ds_listSample" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -1062,7 +1062,10 @@
         </Grid>
         <Div id="DivBtnGfilter" taborder="4" text="" top="213" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabOrderRecap.TabpageStyle.form.GridStyle" visible="true" right="8"/>
         <TextArea id="TextArea00" taborder="5" left="0" readonly="true" right="0" bottom="100" height="170" visible="false"/>
-        <Grid id="Grid01" taborder="6" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="354">
+        <Button id="Button00_00" taborder="7" text="Output Clear" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="false"/>
+        <Button id="Button01" taborder="8" text="테스트트랜" left="387" top="175" width="103" height="25" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="9" text="일반테스트" left="500" top="175" width="103" height="25" onclick="Button02_onclick" visible="true"/>
+        <Grid id="GridTrace" taborder="6" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="340" tempuserproperty="" oncellclick="Grid01_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1087,9 +1090,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button00_00" taborder="7" text="Output Clear" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="false"/>
-        <Button id="Button01" taborder="8" text="테스트트랜" left="387" top="175" width="103" height="25" onclick="Button01_onclick"/>
-        <Button id="Button02" taborder="9" text="일반테스트" left="500" top="175" width="103" height="25" onclick="Button02_onclick" visible="true"/>
+        <Button id="ButtonTrace" taborder="10" text="Trc." height="25" onclick="ButtonTrace_onclick" right="260" width="40" top="215"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -1132,7 +1133,10 @@ var GridStyle = this.TabOrderRecap.TabpageStyle.form.GridStyle;
  */
 this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.fn_reset();
+	// 기본 데이터 가져오기(공통코드등)+ word
+	{	 
+		this.gfn_getAllInitData();	// 콜백에서 fn_reset을 무조건 호출하도록 되어 있다.
+	}
 };
 
 /* 
@@ -1140,27 +1144,21 @@ this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
  */
 this.fn_reset = function()
 {
-	var gtrcPos = "fn_reset";	gtrcPos = this.name+".xfdl."+gtrcPos;
-	//	var gtrcPos = this.name+"."+arguments.callee.toString().match(/function ([^\(]+)/)[1];
-	
-	// 기본 데이터 가져오기(공통코드등)+ word
-	{	 
-		this.gfn_getAllInitData();
-	}
+	var gtrcPos = "fn_reset";	gtrcPos = "Order_recap.xfdl.fn_reset";
 	
 	// 멀티 콤보 데이타 설정 함수 호출 - innerdataset은 user prop. 지정한 값
  	//this.DivCondition.form.div_MultiComboSalesGroup.form.fn_setDataset();  
-
 	{
 		this.ds_in.addRow();
 		this.ds_in.setColumn(0, "p_radio", "1");
 		
+		
+		//Company, Sales Group 기본세팅
+		var oUser = this.gfn_getUser();	this.gtrace("oUser.CENTER_CD-->"+oUser.CENTER_CD, gtrcPos);
+		this.ds_in.setColumn(0, "p_center_cd", oUser.CENTER_CD);
+		this.ds_in.setColumn(0, "p_sales_team_sta", oUser.BU_CD);
+		this.ds_in.setColumn(0, "p_perf_date", this.gfn_getDate());
 		//	this.ds_in.setColumn(0, "p_radio", this.DivCondition.form.CheckBoxShipment.falsevalue);
-		//	trace("this.DivCondition.form.CheckBoxShipment.truevalue---->"+this.DivCondition.form.CheckBoxShipment.truevalue);
-		//	trace("this.DivCondition.form.CheckBoxShipment.getBindDataset()---->"+this.DivCondition.form.CheckBoxShipment.value);
-		//	trace(BindItem.item0.compid);
-		//	trace(this.DivCondition.form.CheckBoxShipment.BindItem);
-
 
 // 		this.DivCondition.form.RadioSewing.readonly    = true;
 // 		this.DivCondition.form.Calendar00.readonly = true;
@@ -1530,6 +1528,23 @@ this.ds_listStyle_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro
 // 	trace("Eco.getClientHeight--->"+Eco.XComp.PositionSize.getClientHeight(GridStyle));
 // 	
 // 	trace("this.ds_listStyle.rowposition--->"+this.ds_listStyle.rowposition);
+};
+
+this.Grid01_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	trace("obj.tempuserproperty--->"+obj.tempuserproperty);
+	if(obj.tempuserproperty=="FRONT"){
+		obj.sendToBack();
+		obj.tempuserproperty="BACK"
+	}else{
+		obj.bringToFront();
+		obj.tempuserproperty="FRONT"
+	}
+};
+
+this.ButtonTrace_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.GridTrace.set_visible(!this.GridTrace.visible);
 };
 ]]></Script>
     <Objects>

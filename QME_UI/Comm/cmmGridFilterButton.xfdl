@@ -31,15 +31,21 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.btn_GridFilter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var gtrcPos = "cmmGridFilterButton.xfdl.btn_GridFilter_onclick";	this.gtrace("●필터버튼클릭", gtrcPos);
-	
-	var objApp = pForm.gfn_getApplication();
-	
-	// 위치
-	var x = nexacro.toNumber(nexacro.System.getCursorX()) - nexacro.toNumber(system.clientToScreenX(objApp.mainframe, 0));
-	var y = nexacro.toNumber(nexacro.System.getCursorY()) - nexacro.toNumber(system.clientToScreenY(objApp.mainframe, 0));
-																		this.gtrace("x,y--->("+x+","+y+")", gtrcPos);
 
-	this.PopupMenuGrdFormat.trackPopup(x, y);
+
+	this.fn_SaveLayoutPopup(e.id);
+
+// 팝업 DIV 띄우는 버젼
+// 	var objApp = pForm.gfn_getApplication();
+// 	
+// 	// 위치
+// 	var x = nexacro.toNumber(nexacro.System.getCursorX()) - nexacro.toNumber(system.clientToScreenX(objApp.mainframe, 0));
+// 	var y = nexacro.toNumber(nexacro.System.getCursorY()) - nexacro.toNumber(system.clientToScreenY(objApp.mainframe, 0));
+// 																		this.gtrace("x,y--->("+x+","+y+")", gtrcPos);
+// 
+// 	this.PopupMenuGrdFormat.trackPopup(x, y);
+	
+	
 	
 };
 
@@ -64,18 +70,39 @@ this.fn_SaveLayoutPopup = function(sMenuId)
 	
 					
 											this.gtrace("sMenuId--->"+sMenuId, gtrcPos);
-	{
-		switch(sMenuId)
+
+	
+	{	//	필터 스위치
+		var obj = sTmpObj;
+		var grid = sTmpObj;
+			
+		if (obj.showFilter != true)
 		{
-			case "Filter"	: this.gfn_gridFilter(this.oTargetGrid);
-				break;
-				
-			case "UnFilter" : this.gfn_gridUnFilter(this.oTargetGrid);
-				break;
-			default :
-				break;
+			grid.set_cellmovingtype("none");
+			grid.set_cellsizingtype("none");
+			obj.showFilter = true;
+			this.showHeadAppendFilter(grid);
+		}
+		else
+		{
+			grid.set_cellmovingtype("col");
+			grid.set_cellsizingtype("col");
+			obj.showFilter = false;
+			this.hideHeadAppendFilter(grid);
 		}
 	}
+// 	{	//	이전
+// 		switch(sMenuId)
+// 		{
+// 			case "Filter"	: this.gfn_gridFilter(this.oTargetGrid);
+// 				break;
+// 				
+// 			case "UnFilter" : this.gfn_gridUnFilter(this.oTargetGrid);
+// 				break;
+// 			default :
+// 				break;
+// 		}
+// 	}
 	
 // 	{ //	1. 팝업 띄우기
 // 		sPopupId 	= sMenuId;

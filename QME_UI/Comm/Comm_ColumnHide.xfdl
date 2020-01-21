@@ -138,7 +138,7 @@ this.fn_getHeadText = function ()
 		var columnIndex = i;
 		if( this.fv_targetGrid.getRealColSize(columnIndex) == 0 ) nchk = 0;
 		
-		if( columnText == "[순번]" || columnText == "[상태]" || columnText == "[상태값]")
+		if( columnText == "[Seq.]" || columnText == "[상태]" || columnText == "[상태값]")
 			continue;
 		
 		if( ( columnText == "[0]" || columnText == "[1]" )
@@ -152,7 +152,7 @@ this.fn_getHeadText = function ()
 		this.ds_filter.setColumn(nRow, "columnIndex", columnIndex);
 	}
 													//	this.gtrace("ds_filter.saveXML()-->"+this.ds_filter.saveXML(), gtrcPos);
-													this.gtrace(" - 예외텍스트 : [순번][상태][상태값][0][1]----(필터DS추가에 대한 예외)", gtrcPos);
+													this.gtrace(" - 예외텍스트 : [Seq.][상태][상태값][0][1]----(필터DS추가에 대한 예외)", gtrcPos);
 													this.gtrace(" - 필터DS의 행 수 : ds_filter.rowcount-->"+this.ds_filter.rowcount, gtrcPos);
 	this.grd_list.set_enableredraw(true);
 };

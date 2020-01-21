@@ -1,394 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<FDL version="2.0">
-  <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="GridFilter" classname="GridFilter" left="0" top="0" width="1024" height="768" titletext="New Form" onload="GridFilter_onload">
-    <Layouts>
-      <Layout>
-        <Grid id="grd_sample" taborder="0" binddataset="ds_sample" useinputpanel="false" cellsizingtype="col" left="10" top="50" width="582" height="294" cellmovingtype="col">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell colspan="4" text="Merge1"/>
-                <Cell col="4" rowspan="2" text="col5"/>
-                <Cell col="5" colspan="2" text="Merge2"/>
-                <Cell row="1" text="col1"/>
-                <Cell row="1" col="1" text="col2"/>
-                <Cell row="1" col="2" text="col3"/>
-                <Cell row="1" col="3" text="col4"/>
-                <Cell row="1" col="5" text="col6"/>
-                <Cell row="1" col="6" text="col7"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:col1"/>
-                <Cell col="1" displaytype="combo" text="bind:col2" combodataset="ds_type" combocodecol="code" combodatacol="value"/>
-                <Cell col="2" text="bind:col3"/>
-                <Cell col="3" text="bind:col4"/>
-                <Cell col="4" displaytype="date" text="bind:col5"/>
-                <Cell col="5" displaytype="number" style="align:right;" text="bind:col6"/>
-                <Cell col="6" displaytype="normal" style="align:right;" text="bind:col7"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Grid id="grd_sample2" taborder="1" binddataset="ds_sample2" useinputpanel="false" cellsizingtype="col" left="10" top="386" width="582" height="294" cellmovingtype="col">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell colspan="4" text="Merge1"/>
-                <Cell col="4" rowspan="2" text="col5"/>
-                <Cell col="5" colspan="2" text="Merge2"/>
-                <Cell row="1" text="col1"/>
-                <Cell row="1" col="1" text="col2"/>
-                <Cell row="1" col="2" text="col3"/>
-                <Cell row="1" col="3" text="col4"/>
-                <Cell row="1" col="5" text="col6"/>
-                <Cell row="1" col="6" text="col7"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:col1"/>
-                <Cell col="1" displaytype="combo" text="bind:col2" combodataset="ds_type" combocodecol="code" combodatacol="value"/>
-                <Cell col="2" text="bind:col3"/>
-                <Cell col="3" text="bind:col4"/>
-                <Cell col="4" displaytype="date" text="bind:col5"/>
-                <Cell col="5" displaytype="number" style="align:right;" text="bind:col6"/>
-                <Cell col="6" displaytype="normal" style="align:right;" text="bind:col7"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Button id="btn_filter" taborder="2" text="필터사용" onclick="btn_filter_onclick" left="518" top="362" width="72" height="20"/>
-        <Static id="Static00" taborder="3" text="Grid Head Cell 에 마우스를 올리면 필터버튼이 생성됨 (merge cell 제외)" left="13" top="31" width="561" height="12" style="font:Dotum,9, bold;"/>
-        <Button id="Button00" taborder="4" text="NEXACRO 17" left="657" top="95" width="339" height="175" onclick="Button00_onclick"/>
-        <Div id="Div00" taborder="5" text="Div00" left="621" top="330" width="256" height="285" url="GridFilter::GridFilterPop.xfdl"/>
-        <PopupDiv id="PopupDiv00" text="PopupDiv00" visible="true" left="640" top="515" width="332" height="190" url="GridFilter::GridFilterPop.xfdl"/>
-      </Layout>
-    </Layouts>
-    <Objects>
-      <Dataset enableevent="true" firefirstcount="0" firenextcount="0" id="ds_sample2" preload="true" updatecontrol="true" useclientlayout="false">
-        <ColumnInfo>
-          <Column id="col1" size="256" type="STRING"/>
-          <Column id="col2" size="256" type="STRING"/>
-          <Column id="col3" size="256" type="STRING"/>
-          <Column id="col4" size="256" type="STRING"/>
-          <Column id="col5" size="256" type="STRING"/>
-          <Column id="col6" size="256" type="STRING"/>
-          <Column id="col7" size="256" type="INT"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">SCH-W420</Col>
-            <Col id="col5">20081223</Col>
-            <Col id="col6">235000</Col>
-            <Col id="col7">320000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-M490</Col>
-            <Col id="col5">20090111</Col>
-            <Col id="col6">353000</Col>
-            <Col id="col7">420000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-W270</Col>
-            <Col id="col5">20090209</Col>
-            <Col id="col6">498000</Col>
-            <Col id="col7">680000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">SCH-W570</Col>
-            <Col id="col5">20081201</Col>
-            <Col id="col6">351000</Col>
-            <Col id="col7">510000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-W550</Col>
-            <Col id="col5">20090125</Col>
-            <Col id="col6">150000</Col>
-            <Col id="col7">610000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-W750</Col>
-            <Col id="col5">20090225</Col>
-            <Col id="col6">589000</Col>
-            <Col id="col7">860000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">LG-KH2100</Col>
-            <Col id="col5"/>
-            <Col id="col6">256000</Col>
-            <Col id="col7">370000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">LG-KU6000</Col>
-            <Col id="col5">20090212</Col>
-            <Col id="col6">430000</Col>
-            <Col id="col7">590000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">LG-KU9100</Col>
-            <Col id="col5">20081205</Col>
-            <Col id="col6">360000</Col>
-            <Col id="col7">630000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">LG-KH8000</Col>
-            <Col id="col5"/>
-            <Col id="col6">470000</Col>
-            <Col id="col7">720000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">LG-KH6500</Col>
-            <Col id="col5">20090219</Col>
-            <Col id="col6">560000</Col>
-            <Col id="col7">840000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">팬택&amp;큐리</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">canU-S1000</Col>
-            <Col id="col5">20090303</Col>
-            <Col id="col6">270000</Col>
-            <Col id="col7">410000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">팬택&amp;큐리</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">canU801EX</Col>
-            <Col id="col5"/>
-            <Col id="col6"/>
-            <Col id="col7">600000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">팬택&amp;큐리</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">canU502S</Col>
-            <Col id="col5">20090109</Col>
-            <Col id="col6">300000</Col>
-            <Col id="col7"/>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset enableevent="true" firefirstcount="0" firenextcount="0" id="ds_type" preload="true" updatecontrol="true" useclientlayout="false">
-        <ColumnInfo>
-          <Column id="code" size="256" type="STRING"/>
-          <Column id="value" size="256" type="STRING"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="code">1</Col>
-            <Col id="value">폴더</Col>
-          </Row>
-          <Row>
-            <Col id="code">2</Col>
-            <Col id="value">슬라이드</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset enableevent="true" firefirstcount="0" firenextcount="0" id="ds_sample" preload="true" updatecontrol="true" useclientlayout="false">
-        <ColumnInfo>
-          <Column id="col1" size="256" type="STRING"/>
-          <Column id="col2" size="256" type="STRING"/>
-          <Column id="col3" size="256" type="STRING"/>
-          <Column id="col4" size="256" type="STRING"/>
-          <Column id="col5" size="256" type="STRING"/>
-          <Column id="col6" size="256" type="INT"/>
-          <Column id="col7" size="256" type="INT"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">SCH-W420</Col>
-            <Col id="col5">20081223</Col>
-            <Col id="col6">235000</Col>
-            <Col id="col7">320000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-M490</Col>
-            <Col id="col5">20090111</Col>
-            <Col id="col6">353000</Col>
-            <Col id="col7">420000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-W270</Col>
-            <Col id="col5">20090209</Col>
-            <Col id="col6">498000</Col>
-            <Col id="col7">680000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">SCH-W570</Col>
-            <Col id="col5">20081201</Col>
-            <Col id="col6">351000</Col>
-            <Col id="col7">510000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-W550</Col>
-            <Col id="col5">20090125</Col>
-            <Col id="col6">150000</Col>
-            <Col id="col7">610000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">AnyCall</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">SCH-W750</Col>
-            <Col id="col5">20090225</Col>
-            <Col id="col6">589000</Col>
-            <Col id="col7">860000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">LG-KH2100</Col>
-            <Col id="col5"/>
-            <Col id="col6">256000</Col>
-            <Col id="col7">370000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">LG-KU6000</Col>
-            <Col id="col5">20090212</Col>
-            <Col id="col6">430000</Col>
-            <Col id="col7">590000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">LG-KU9100</Col>
-            <Col id="col5">20081205</Col>
-            <Col id="col6">360000</Col>
-            <Col id="col7">630000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">LG-KH8000</Col>
-            <Col id="col5"/>
-            <Col id="col6">470000</Col>
-            <Col id="col7">720000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">cyon</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">LG-KH6500</Col>
-            <Col id="col5">20090219</Col>
-            <Col id="col6">560000</Col>
-            <Col id="col7">840000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">팬택&amp;큐리</Col>
-            <Col id="col2">2</Col>
-            <Col id="col3">2G</Col>
-            <Col id="col4">canU-S1000</Col>
-            <Col id="col5">20090303</Col>
-            <Col id="col6">270000</Col>
-            <Col id="col7">410000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">팬택&amp;큐리</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">canU801EX</Col>
-            <Col id="col5"/>
-            <Col id="col6"/>
-            <Col id="col7">600000</Col>
-          </Row>
-          <Row>
-            <Col id="col1">팬택&amp;큐리</Col>
-            <Col id="col2">1</Col>
-            <Col id="col3">3G</Col>
-            <Col id="col4">canU502S</Col>
-            <Col id="col5">20090109</Col>
-            <Col id="col6">300000</Col>
-            <Col id="col7"/>
-          </Row>
-        </Rows>
-      </Dataset>
-    </Objects>
-    <Script type="xscript5.1"><![CDATA[/*
- Grid Filter
+<Script version="1.0" type="xscript5.1"><![CDATA[/**
+*  @FileName 	GridFilter.xjs 
+*/
+
+var pForm = nexacro.Form.prototype;
+
+/*
+Grid Filter
  
   ============================= 포함기능 =============================
   
@@ -419,10 +37,83 @@
 this.GridFilter_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 {
 	// 그리드 헤드 마우스오버 필터기능 사용을 위한 초기화
-	this.initGridHeadOverFilter(this.grd_sample);
+	//	this.initGridHeadOverFilter(this.grd_sample);
 	
 	// 그리드 헤드 영역 추가 필터기능 사용을 위한 초기화
 	//	this.initGridHeadAppendFilter(this.grd_sample2);
+}
+
+this.gfn_gridFilter = function(objGrid)
+{
+	// 그리드 헤드 마우스오버 필터기능 사용을 위한 초기화
+	this.initGridHeadOverFilter(objGrid);
+}
+
+this.gfn_gridFilter_2 = function(objGrid)
+{
+
+// 	Eco.Logger.startElapsed();
+// 	
+// 	var show = Eco.XComp.getUserProperty(obj, "showFilter");
+// 	
+// 	if ( show )
+// 	{		
+// 		this.hideHeadAppendFilter(this.grd_sample2);
+// 	}
+// 	else
+// 	{
+// 		this.showHeadAppendFilter(this.grd_sample2);
+// 	}
+// 	
+// 	show = show ? false : true;
+// 	
+// 	var text = show ? "필터제거" : "필터사용";
+// 	obj.set_text(text);
+// 		
+// 	Eco.XComp.setUserProperty(obj, "showFilter", show);	
+// 	
+// 	Eco.Logger.debug({message:"end", elapsed: true});
+// 	
+	
+	Eco.Logger.startElapsed();
+	
+	// 그리드 헤드 영역 추가 필터기능 사용을 위한 초기화
+	this.initGridHeadAppendFilter(objGrid);
+	
+	// 버튼클릭 이벤트 실행
+	this.showHeadAppendFilter(objGrid);
+	//	this.hideHeadAppendFilter(objGrid);
+	
+	Eco.Logger.debug({message:"end", elapsed: true});
+	
+// 	var index = Eco.XComp.getUserProperty(objGrid, "appendHeadRowIndex");	
+// 	if ( Eco.isUndefined(index) )
+// 	{
+// 		index = objGrid.appendContentsRow("head");
+// 		
+// 		// 추가된 head row index를 담아두어 제거시 사용
+// 		Eco.XComp.setUserProperty(objGrid, "appendHeadRowIndex", index);
+// 		
+// 		this.arrangeAppendFilterComps(objGrid);
+// 	}
+}
+
+this.gfn_gridUnFilter = function(objGrid)
+{
+	//	Grid head over filter 기능에 추가된 컴포넌트 제거
+	this.removeOverFilterComps(objGrid);
+	
+	// 	add onmousemove handler - 마우스 이동 시 필터 가능 이미지 표시
+	objGrid.removeEventHandler("onmousemove", this.filterGridOnMouseMoveHandler, this);
+	
+	//	이걸로 되는지 정확히 디버깅은 아직 못했음.
+	//	"대상이 이미 초기화 되었는지 확인"에서 걸리지 않도록 강제로 셋팅함.
+	Eco.XComp.setUserProperty(objGrid, "initGridHeadOverFilter", false);
+	
+	//	add onhscroll handler - 가로 스크롤 발생 시 컴포넌트 재배치
+	//	objGrid.removeEventHandler("onhscroll", this.arrangeOverFilterComps, this);
+
+	
 }
 
 this.btn_filter_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
@@ -460,12 +151,13 @@ this.btn_filter_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
  */
 this.initGridHeadOverFilter = function(grid)
 {
+
 	// 대상이 이미 초기화 되었는지 확인
 	if ( Eco.XComp.getUserProperty(grid, "initGridHeadOverFilter") )
 	{
 		return;
 	}
-	
+
 	// 필터 적용 표시를 위해 추가한 컴포넌트 name 목록 속성 추가
 	Eco.XComp.setUserProperty(grid, "overFilterCompNameList", []);
 	
@@ -879,12 +571,13 @@ this.removeOverFilterComps = function(grid)
  */
 this.initGridHeadAppendFilter = function(grid)
 {
+	
 	// 대상이 이미 초기화 되었는지 확인
 	if ( Eco.XComp.getUserProperty(grid, "initGridHeadAppendFilter") )
 	{
 		return;
 	}
-	
+
 	// 필터영역(Div) 컴포넌트 name 을 담아둘 속성 추가
 	Eco.XComp.setUserProperty(grid, "appendFilterCompNameList", []);
 	
@@ -960,11 +653,13 @@ this.hideHeadAppendFilter = function(grid)
 this.arrangeAppendFilterComps = function(grid, e)
 {
 	var index = Eco.XComp.getUserProperty(grid, "appendHeadRowIndex");
-	
+	//	trace("index--->"+index);
+
 	if ( Eco.isUndefined(index) ) return;
 	
 	// 스크롤 이벤트에 의해 호출된 경우
 	var adjustRectSize = 0;
+
 	if ( e ) 
 	{
 		switch(e.type)
@@ -986,23 +681,31 @@ this.arrangeAppendFilterComps = function(grid, e)
 		}
 	}
 	
-	var form = grid.parent;
-	var nameList = Eco.XComp.getUserProperty(grid, "appendFilterCompNameList");
-
-	var comp, comps = form.components;
+	
+	
+	//	var form = grid.parent;		//	trace("form.name--->"+form.name); //form	
+	var form = this.oFrmParnt;		//	trace("form.name--->"+form.name); //POList
+									//	trace("grid.name-->"+grid.name);
+	var nameList = this.gfn_nvl(Eco.XComp.getUserProperty(grid, "appendFilterCompNameList"),  Array());	//	trace("nameList--->"+nameList);
+	
+	var comp, comps = form.components;	//	trace("comps--->"+comps);
 	for (var i=0,len=nameList.length; i<len; i++)
 	{
-		comp = comps[nameList[i]];
+		comp = comps[nameList[i]];		//	trace("comp.name--->"+comp.name);
 		if ( comp )
 		{
 			comp.set_visible(false);
 		}
 	}	
 	
-	var filterInfos = Eco.XComp.getUserProperty(grid, "filterInfos");
+	//	var filterInfos = Eco.XComp.getUserProperty(grid, "filterInfos");
+	//	var filterInfos = this.gfn_nvl(Eco.XComp.getUserProperty(grid, "filterInfos"), Array());
+		var filterInfos = this.gfn_nvl(Eco.XComp.getUserProperty(grid, "filterInfos"), {});
 	
-	var gridLeftPos = grid.getOffsetLeft();
-	var gridTopPos = grid.getOffsetTop();
+	var gridEcoPos = Eco.XComp.PositionSize.getTopLevelFormBox(grid);	// [ leftPosition, topPosition, wdith, height ]
+	var gridLeftPos = gridEcoPos[0]				//	grid.getOffsetLeft();
+	var gridTopPos = gridEcoPos[1]				//	grid.getOffsetTop();
+				
 	var gridWidth = grid.getOffsetWidth();
 	var gridPos = [gridLeftPos, gridTopPos, gridLeftPos + gridWidth, gridTopPos + grid.getOffsetBottom()];
 	var borderWidths = Eco.XComp.Style.getBorderWidth(grid);
@@ -1102,14 +805,14 @@ this.arrangeAppendFilterComps = function(grid, e)
 	}
 
 	// 현재 보이는 cell 영역에 필터 입력 영역 생성
-	var len = makeInfo.length;
+	var len = makeInfo.length;	//	trace("len--->"+len);
 	var info;
 	for (var i=0; i<len; i++)
 	{	
 		info = makeInfo[i];		
-		bodyCellIndex = this.getBodyCellIndex(grid, info.cell);
-		columnName = this.getBindColumnNameByIndex(grid, bodyCellIndex);
-		type = grid.getCellProperty("body", bodyCellIndex, "displaytype");
+		bodyCellIndex = this.getBodyCellIndex(grid, info.cell);		//	trace("bodyCellIndex--->"+bodyCellIndex);
+		columnName = this.getBindColumnNameByIndex(grid, bodyCellIndex);	
+		type = grid.getCellProperty("body", bodyCellIndex, "displaytype");	
 		
 		if ( Eco.isUndefined(type) ) type = "normal";
 		
@@ -1121,7 +824,7 @@ this.arrangeAppendFilterComps = function(grid, e)
 			nameList.push(name);
 			
 			//	comp = new Div(name, "absolute", 0, 0, 0, 0);
-			comp = new Div(name, 0, 0, 0, 0);
+			comp = new Div(name, 0, 0, 0, 0);		//	trace("comp.name------>"+comp.name);
 			comp.set_border("0px none #ffffff");
 			comp.set_formscrollbartype("none");
 			comp.set_async(false);
@@ -1138,26 +841,31 @@ this.arrangeAppendFilterComps = function(grid, e)
 			comp.initValue();
 		}
 		
+		
 		// Div에 참조값 지정
 		Eco.XComp.setUserProperty(comp, "grid", grid);
 		Eco.XComp.setUserProperty(comp, "refCell", this.getGridCellObject(grid, "head", info.cell));
 		Eco.XComp.setUserProperty(comp, "displayType", type);
 		Eco.XComp.setUserProperty(comp, "filterColumnName", columnName);
-		Eco.XComp.setUserProperty(comp, "filterInfo", filterInfos[columnName]);
+		//	trace("columnName--->"+columnName);
+		//	trace("filterInfos[columnName]--->"+filterInfos[columnName]);
+		
+		Eco.XComp.setUserProperty(comp, "filterInfo", filterInfos[columnName]);	//	trace("filterInfos["+columnName+"]--->"+filterInfos[columnName]);
+		//	trace("--------------------->"+comp.name);
 		
 		// 필터 정보 지정
 		comp.form.setFilterInfo();
 	    
 		// 위치 조정
 		l = gridPos[0] + info.left;
-		t = gridPos[1] + info.top + borderWidths[1];
+		t = gridPos[1] + info.top + borderWidths[1];		//	trace("gridPos[1]-->"+gridPos[1]);trace("info.top-->"+info.top);trace("borderWidths[1]-->"+borderWidths[1]);
 		w = info.width - 1;
 		h = info.height - 1;
 		
 		comp.move(l, t, w, h);
 		comp.set_visible(true);
 	}
-	
+	 
 	var div = Eco.XComp.getUserProperty(grid, "currentFocusDiv");
 	if ( !Eco.isEmpty(div) ) div.setFocus();
 }
@@ -1216,9 +924,16 @@ this.getFilterInfo = function(grid, columnName)
  * @param {array} datas 필터 데이터로 {logic, operator, value} 형태의 object 배열이다.
  */
 this.setFilterInfo = function(grid, columnName, datas)
-{
-	var filterInfos = Eco.XComp.getUserProperty(grid, "filterInfos");
-	filterInfos[columnName] = datas;
+{		trace("here----------------------------------------------"); return;
+	//	var filterInfos = this.gfn_nvl(Eco.XComp.getUserProperty(grid, "filterInfos"), {});
+		var filterInfos = Eco.XComp.getUserProperty(grid, "filterInfos");
+			trace("filterInfos-->"+filterInfos);
+			trace("filterInfos[0]-->"+filterInfos[0]);
+// 			trace("filterInfos[0].logic-->"+filterInfos[0].logic);
+// 			trace("filterInfos[0].operator-->"+filterInfos[0].operator);
+// 			trace("filterInfos[0].datas-->"+filterInfos[0].datas);
+																			
+		filterInfos[columnName] = datas;
 }
 
 /**
@@ -1247,6 +962,7 @@ this.executeFilter = function(grid)
 	var ds = Eco.XComp.lookup(grid.parent, grid.binddataset);
 	
 	var filterString = "";
+	//	var filterInfos = this.gfn_nvl(Eco.XComp.getUserProperty(grid, "filterInfos"),{});
 	var filterInfos = Eco.XComp.getUserProperty(grid, "filterInfos");
 	var filterInfo;
 	var info, colType, logic;
@@ -1254,6 +970,7 @@ this.executeFilter = function(grid)
 	// 필터 항목의 데이터를 추출하여 filter string 을 만든다.
 	for (var columnName in filterInfos )
 	{
+										trace("columnName.USAGE--->"+columnName.USAGE);
 		if ( filterInfos.hasOwnProperty(columnName) )
 		{
 			if ( !Eco.isEmpty(filterString) )
@@ -1713,11 +1430,4 @@ this.setUserGridOnCellMoved = function(grid, func, scope)
 	
 	Eco.XComp.setUserProperty(grid, "setUserGridOnCellMoved", true);
 }
-
-
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-};
 ]]></Script>
-  </Form>
-</FDL>

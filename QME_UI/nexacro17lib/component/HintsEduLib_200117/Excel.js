@@ -1,6 +1,7 @@
 ﻿/**
 *  @FileName 	Excel.js 
 */
+
 var pForm = nexacro.Form.prototype;
 
 /**
@@ -14,45 +15,41 @@ var pForm = nexacro.Form.prototype;
  */
 pForm.gfn_excelExport = function(objGrid,  sSheetName, sFileName)
 {
-														var gtrcPos = "Excel.xjs.gfn_excelExport";
-														this.gtrace("● 엑셀익스포트 : gfn_excelExport", gtrcPos);
+
 	this.setWaitCursor(true);
 	var objGrid_excel = objGrid;
 	
-	//(엑셀에서 지원하지않는 모든 문자)
-	var regExp = /[?*:\/\[\]]/g;  				
+	var regExp = /[?*:\/\[\]]/g;  				//(엑셀에서 지원하지않는 모든 문자)
 	
-	//파일명에 특수문자 제거
-	sFileName = sFileName.replace(regExp,"");			this.gtrace(" - 파일명 : sFileName--->" + sFileName, gtrcPos);
-	//시트명에 특수문자 제거
-	sSheetName = sSheetName.replace(regExp,"");			this.gtrace(" - 시트명 : sSheetName--->" + sSheetName, gtrcPos);
-
+	sFileName = sFileName.replace(regExp,"");	//파일명에 특수문자 제거
+	sSheetName = sSheetName.replace(regExp,""); //시트명에 특수문자 제거
+	
 	//fileName nullcheck
-	sFileName = this.gfn_isNull(sFileName) ? 
-	this.gfn_getArgument("menuNm")+"_"+this.gfn_getDate() : sFileName;
+	sFileName = this.gfn_isNull(sFileName) ? this.gfn_getArgument("menuNm")+"_"+this.gfn_getDate() : sFileName;
 	//sheetName nullcheck
 	sSheetName = this.gfn_isNull(sSheetName) ? "sheet1" : sSheetName;
 	//sheetName 30이상일경우 기본시트명
 	if( String(sSheetName).length > 30 ){
 		sSheetName =  "sheet1";
 	}
-
-	var svcUrl = "AppSvrLocalMsSql::XExportImport.do";
+	
+	var svcUrl = "AppSvr::XExportImport.do";
+//	var svcUrl = "LocalUrl::XExportImport.do";
+//    var svcUrl = "http://localhost:8080/edusys/XExportImport.do";
 	this.objExport = null
 	this.objExport = new ExcelExportObject();
 	
-	this.objExport.objgrid = objGrid_excel;	this.gtrace(" - 그리드오브젝트 : this.objExport.objgrid-->"+this.objExport.objgrid.name, gtrcPos);
-	this.objExport.set_exporturl(svcUrl);	this.gtrace(" - 내보내기URL : this.objExport.exporturl-->"+this.objExport.exporturl, gtrcPos);
+	this.objExport.objgrid = objGrid_excel;
+	this.objExport.set_exporturl(svcUrl);
 	this.objExport.addExportItem(nexacro.ExportItemTypes.GRID, objGrid_excel, sSheetName+"!A1","allband","allrecord");
-											
-	this.objExport.set_exportfilename(sFileName);		this.gtrace(" - 파일명 : this.objExport.exportfilename-->"+this.objExport.exportfilename, gtrcPos);
+	this.objExport.set_exportfilename(sFileName);	
 	
- 	this.objExport.set_exporteventtype("itemrecord");	this.gtrace(" - 이벤트타입 : this.objExport.exporteventtype-->"+this.objExport.exportfilename, gtrcPos);
- 	this.objExport.set_exportuitype("none");			this.gtrace(" - UI타입 : this.objExport.exportuitype-->"+this.objExport.exportuitype, gtrcPos);
+ 	this.objExport.set_exporteventtype("itemrecord");
+ 	this.objExport.set_exportuitype("none");
  	this.objExport.set_exportmessageprocess("");
 	this.objExport.addEventHandler("onsuccess", this.gfn_exportOnsuccess, this);	
 	this.objExport.addEventHandler("onerror", this.gfn_exportOnerror, this);	
-														this.gtrace(" - EXPORTDATA 실행 (넥사크로오브젝트 ExcelExportObject.js(ComComp))", gtrcPos);
+		
 	var result = this.objExport.exportData();
 };
 

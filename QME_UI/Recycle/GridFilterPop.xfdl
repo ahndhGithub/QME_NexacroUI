@@ -406,7 +406,7 @@ this.applyComboFilter = function(ds)
 this.applyNormalFilter = function(ds)
 {
 	var grid = Eco.XComp.getUserProperty(this.parent, "grid");		
-	var columnName = Eco.XComp.getUserProperty(this.parent, "filterColumnName");	//	trace("columnName---->"+columnName);
+	var columnName = Eco.XComp.getUserProperty(this.parent, "filterColumnName");	trace("columnName---->"+columnName);
 	
 	// 필터 정보 생성
 	var info;

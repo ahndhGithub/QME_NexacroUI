@@ -2223,7 +2223,7 @@ pForm.gfn_DsCommCode = function(objDs, sComGrp, bFirstSel, sFirstGB, sComp)
 	if(!this.gfn_isNull(sComp)) {
 		sComp.set_index(0);
 	}
-};
+}
 
  /**********************************************************************************
  * Function Name:  gfn_SetFirstRow
@@ -2231,16 +2231,7 @@ pForm.gfn_DsCommCode = function(objDs, sComGrp, bFirstSel, sFirstGB, sComp)
  * Arguments    : 				   
  * Return       : 
  **********************************************************************************/
- var iCnt = 0;
-pForm.gfn_SetFirstRow = function(objDs, sCd, sName, sFirstGB){
-	var gtrcPos = "Util.xjs.gfn_SetFirstRow";
-	 
-		this.gtrace("ㅇ 첫줄세팅(gfn_SetFirstRow)--->"+objDs.name, gtrcPos);
-		this.gtrace("데이터셋명(objDs)--->"+objDs.name, gtrcPos);
-		this.gtrace("코드(sCd	)--->"+sCd, gtrcPos);
-		this.gtrace("이름(sName)--->"+sName, gtrcPos);
-		this.gtrace("첫줄구분(sFirstGB)--->"+sFirstGB, gtrcPos);
-		
+this.gfn_SetFirstRow = function(objDs:nexacro.NormalDataset, sCd, sName, sFirstGB){
 	if (sFirstGB == 'A'){
 		objDs.insertRow(0);
 		objDs.setColumn(0, sCd  , '');

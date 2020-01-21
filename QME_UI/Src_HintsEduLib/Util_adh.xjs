@@ -17,13 +17,12 @@ var pForm = nexacro.Form.prototype;
 			- 증상 : 숨기기 후 컬럼 사라짐
 			- 원인 : 타겟그리드의org포맷(orgformat2)--> undefined
 			- 수정 : Grid.xjs.gfn_setGridobjGrid.orgformat2 = objGrid.getFormatString()
- */
- 
- var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
- var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
- 
+ */ 
 pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
 {	//	우클릭메뉴 ( 컬럼 숨기기 / 보이기 )
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+ 
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191224_ColumnHide", "ROW_CHK"),"")!="1") return;
 	
 	if(	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"		//	우클릭메뉴에서 해당메뉴 선택
@@ -39,7 +38,10 @@ pForm.gtrace_191224_ColumnHide = function(strTrc,strPos)
 }
 
 pForm.fn_trace = function(strTrc, strPos){
-	
+
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+ 	
 	if(strTrc.indexOf("●")==-1){
 		if(strTrc.indexOf(" - ")!=0){
 			strTrc = " - "+strTrc;
@@ -72,7 +74,9 @@ pForm.fn_trace = function(strTrc, strPos){
  */
 pForm.gtrace_191229_Comm_ComboConditionFromTo = function(strTrc,strPos)
 {	//	콤보조건공통화_From_To
-	
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+ 		
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191229_Comm_ComboConditionFromTo", "ROW_CHK"),"")!="1") return;
 	
 	if(	strPos == "Comm_ComboConditionFromTo.xfdl.form_onload"	//	온로드
@@ -101,6 +105,9 @@ pForm.gtrace_191229_Comm_ComboConditionFromTo = function(strTrc,strPos)
  */
 pForm.gtrace_200104_cmmSearchConditionFromTo = function(strTrc,strPos)
 {
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_200104_cmmSearchConditionFromTo", "ROW_CHK"),"")!="1") return;
 	
 	if(strPos == "Comm_SearchConditionFromTo.xfdl.form_onload"
@@ -122,6 +129,9 @@ pForm.gtrace_200104_cmmSearchConditionFromTo = function(strTrc,strPos)
  */
 pForm.gtrace_191230_Comm_MultiCombo = function(strTrc,strPos)
 {
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191230_Comm_MultiCombo", "ROW_CHK"),"")!="1") return;
 	
 	if(strPos.indexOf("Comm_MultiComb.xfdl.")>-1)
@@ -145,6 +155,9 @@ pForm.gtrace_191230_Comm_MultiCombo = function(strTrc,strPos)
  */
 pForm.gtrace_191225_ExcelExport = function(strTrc,strPos)
 {	//	엑셀export
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191225_ExcelExport", "ROW_CHK"),"")!="1") return;
 	
 	if(	strPos == "Grid.xjs.gfn_popupmenu_onmenuclick"		//	우클릭메뉴에서 해당메뉴 선택
@@ -168,6 +181,9 @@ pForm.gtrace_191225_ExcelExport = function(strTrc,strPos)
  */
 pForm.gtrace_191226_CommCodeSetting = function(strTrc,strPos)
 {	//	엑셀export
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_191226_CommCodeSetting", "ROW_CHK"),"")!="1") return;
 	if(	strPos == "Util_adh.xjs.gfn_getAllInitData"
 	){	
@@ -177,6 +193,9 @@ pForm.gtrace_191226_CommCodeSetting = function(strTrc,strPos)
 
 pForm.gtrace_200107_cmmGridFilterButton = function(strTrc,strPos)
 {	//	퀵그리드필터버튼클릭
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+	
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_200107_cmmGridFilterButton", "ROW_CHK"),"")!="1") return;
 	
 	if(strPos.indexOf("cmmGridFilterButton.xfdl.")>-1)
@@ -196,6 +215,9 @@ pForm.gtrace_200107_cmmGridFilterButton = function(strTrc,strPos)
 
 pForm.gtrace_gfn_getParentForm = function(strTrc,strPos)
 {	//	부모폼가져오기
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+	
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", "gtrace_gfn_getParentForm", "ROW_CHK"),"")!="1") return;
 	
 	if(strPos.indexOf("Util_adh.xjs.gfn_getParentForm")>-1)
@@ -220,6 +242,9 @@ pForm.gtrace_gfn_getParentForm = function(strTrc,strPos)
  */
 pForm.gtrace_checked = function(strPos)
 {
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+
 	if(this.gfn_nvl(gds_TrcInfo.lookup("TrcId", strPos, "ROW_CHK"),"")=="1") return true;
 	else return false;
 }
@@ -232,6 +257,9 @@ pForm.gtrace_checked = function(strPos)
  */
 pForm.gtrace = function(strTrc,strPos)
 {
+	var gds_TrcInfo = this.gfn_getApplication().gds_TrcInfo;
+	var gds_TrcInfoOutput = this.gfn_getApplication().gds_TrcInfoOutput;
+
 	if(!pForm.gtrace_checked(strPos)) return;
 	
 	//	부모폼가져오기

@@ -952,6 +952,26 @@
       </ColumnInfo>
       <Rows>
         <Row>
+          <Col id="TrcId">Util.xjs.gfn_SetFirstRow</Col>
+          <Col id="TrcName">콤보첫줄삽입</Col>
+          <Col id="TrcSeq">94</Col>
+        </Row>
+        <Row>
+          <Col id="TrcId">QmeNexa.xjs.gfn_getArrComboSetStr</Col>
+          <Col id="TrcSeq">95</Col>
+          <Col id="TrcName">공통코드문자열처리</Col>
+        </Row>
+        <Row>
+          <Col id="TrcId">QmeNexa.xjs.gfn_onloadSequence</Col>
+          <Col id="TrcName">온로드시퀀스</Col>
+          <Col id="TrcSeq">96</Col>
+        </Row>
+        <Row>
+          <Col id="TrcId">Order_recap.xfdl.fn_reset</Col>
+          <Col id="TrcSeq">97</Col>
+          <Col id="TrcName">오더리캡_리셋</Col>
+        </Row>
+        <Row>
           <Col id="TrcName">포맺저장트랜잭션</Col>
           <Col id="TrcId">PopupSaveLayout.xfdl.tfn_FormatSave</Col>
           <Col id="TrcSeq">98</Col>

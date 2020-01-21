@@ -131,7 +131,7 @@ this.fn_getHeadTextAndBindingInfo = function ()
 		var columnIndex = i;
 		if( this.fv_targetGrid.getRealColSize(columnIndex) == 0 ) nchk = 0;
 		
-		if( columnText == "[순번]" || columnText == "[상태]" ) continue;
+		if( columnText == "[Seq.]" || columnText == "[상태]" ) continue;
 		if( columnText == "[0]" && this.fv_targetGrid.getCellProperty("Body", i, "text") == "bind:gridcmmcheck" ) continue;
 		var nRow = this.ds_filter.addRow();
 		this.ds_filter.setColumn(nRow, "columnText",  columnText);

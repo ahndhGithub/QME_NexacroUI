@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Script version="1.0" type="xscript5.1"><![CDATA[/**
+﻿/**
 *  @FileName 	GridFilter.xjs 
 */
 
@@ -699,4 +698,3 @@ pForm.fnIndexOf = function(array, item, from, strict)
 	
 	return -1;
 };
-]]></Script>

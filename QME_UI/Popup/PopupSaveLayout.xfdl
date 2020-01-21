@@ -35,16 +35,16 @@
         <Static id="StaticVendor00" taborder="8" text="Default Layout" left="0" top="74" width="160" cssclass="sta_WF_searchLabel" height="24"/>
         <CheckBox id="CheckBoxDefaultLayout" taborder="9" text="" left="158" top="79" width="21" height="15" background="" truevalue="1" falsevalue="0" readonly="true"/>
         <Div id="DivBtnAddDel_GridPoList00" taborder="10" text="" top="8" width="208" height="28" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="grd_list" right="16"/>
-        <Button id="Button00" taborder="11" text="Button00" left="308" top="189" width="180" height="26" onclick="fn_getSplitArrForSave"/>
       </Layout>
     </Layouts>
     <Objects>
       <Dataset id="ds_inLayout" useclientlayout="true">
         <ColumnInfo>
-          <Column id="p_program_id" type="STRING" size="256"/>
-          <Column id="p_grid_id" type="STRING" size="256"/>
-          <Column id="p_user_id" type="STRING" size="256"/>
-          <Column id="p_default_yn" type="STRING" size="256"/>
+          <Column id="PROGRAM_ID" type="STRING" size="256"/>
+          <Column id="GRID_ID" type="STRING" size="256"/>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="DEFAULT_YN" type="STRING" size="256"/>
+          <Column id="DEL_YN" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_LayoutList" useclientlayout="true" oncolumnchanged="ds_LayoutList_oncolumnchanged">
@@ -74,245 +74,12 @@
         <ColumnInfo>
           <Column id="PROGRAM_ID" type="STRING" size="256"/>
           <Column id="USER_ID" type="STRING" size="256"/>
-          <Column id="DATA_1" type="STRING" size="256"/>
           <Column id="GRID_ID" type="STRING" size="256"/>
           <Column id="DEFAULT_YN" type="STRING" size="256"/>
           <Column id="LAYOUT_NM" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_tranResult"/>
-      <Dataset id="ds_paramMap">
-        <ColumnInfo>
-          <Column id="LoadCol" type="STRING" size="256"/>
-          <Column id="SaveCol" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="LoadCol">SEQ</Col>
-            <Col id="SaveCol">p_seq</Col>
-          </Row>
-          <Row>
-            <Col id="LoadCol">PROGRAM_ID</Col>
-            <Col id="SaveCol">p_program_id</Col>
-          </Row>
-          <Row>
-            <Col id="LoadCol">GRID_ID</Col>
-            <Col id="SaveCol">p_grid_id</Col>
-          </Row>
-          <Row>
-            <Col id="LoadCol">USER_ID</Col>
-            <Col id="SaveCol">p_user_id</Col>
-          </Row>
-          <Row>
-            <Col id="LoadCol">LAYOUT_NM</Col>
-            <Col id="SaveCol">p_layout_nm</Col>
-          </Row>
-          <Row>
-            <Col id="LoadCol">DEFAULT_YN</Col>
-            <Col id="SaveCol">p_default_yn</Col>
-          </Row>
-          <Row>
-            <Col id="LoadCol">DEL_YN</Col>
-            <Col id="SaveCol">p_del_yn</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="ds_FormatDataSample">
-        <ColumnInfo>
-          <Column id="Text" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="Text">&lt;Format id="default"&gt;
-&lt;Columns&gt;
-&lt;Column size="60" band="left"/&gt;
-&lt;Column size="40" band="left"/&gt;
-&lt;Column size="50" band="left"/&gt;
-&lt;Column size="80" band="left"/&gt;
-&lt;Column size="90" band="left"/&gt;
-&lt;Column size="50" band="left"/&gt;
-&lt;Column size="50" band="left"/&gt;
-&lt;Column size="100" band="left"/&gt;
-&lt;Column size="250"/&gt;
-&lt;Column size="150"/&gt;
-&lt;Column size="90"/&gt;
-&lt;Column size="150"/&gt;
-&lt;Column size="60"/&gt;
-&lt;Column size="90"/&gt;
-&lt;Column size="100"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="140"/&gt;
-&lt;Column size="70"/&gt;
-&lt;Column size="110"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="40"/&gt;
-&lt;Column size="60"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="40"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="60"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="90"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="150"/&gt;
-&lt;Column size="80"/&gt;
-&lt;Column size="50"/&gt;
-&lt;Column size="40"/&gt;
-&lt;Column size="40"/&gt;
-&lt;Column size="40"/&gt;
-&lt;Column size="120"/&gt;
-&lt;Column size="120"/&gt;
-&lt;Column size="90"/&gt;
-&lt;Column size="120"/&gt;
-&lt;Column size="120"/&gt;
-&lt;Column size="50"/&gt;
-&lt;Column size="90"/&gt;
-&lt;Column size="60"/&gt;
-&lt;Column size="120"/&gt;
-&lt;/Columns&gt;
-&lt;Rows&gt;
-&lt;Row band="head" size="24"/&gt;
-&lt;Row band="body" size="24"/&gt;
-&lt;/Rows&gt;
-&lt;Band id="head"&gt;
-&lt;Cell col="0" row="0" tooltiptext="순번" text="순번" textAlign="center"/&gt;
-&lt;Cell col="1" row="0" displaytype="checkboxcontrol" edittype="checkbox" text="0"/&gt;
-&lt;Cell col="2" row="0" tooltiptext="상태값" text="상태값" textAlign="center"/&gt;
-&lt;Cell col="3" row="0" text="Message"/&gt;
-&lt;Cell col="4" row="0" text="Sales&amp;#32;Order"/&gt;
-&lt;Cell col="5" row="0" text="Factory"/&gt;
-&lt;Cell col="6" row="0" text="Type"/&gt;
-&lt;Cell col="7" row="0" text="Style#"/&gt;
-&lt;Cell col="8" row="0" text="Payment&amp;#32;Terms" background="ibory"/&gt;
-&lt;Cell col="9" row="0" text="Document&amp;#32;Type" background="ibory"/&gt;
-&lt;Cell col="10" row="0" text="Vendor"/&gt;
-&lt;Cell col="11" row="0" text="Vendor&amp;#32;Name"/&gt;
-&lt;Cell col="12" row="0" text="PO&amp;#32;Desc"/&gt;
-&lt;Cell col="13" row="0" text="Material"/&gt;
-&lt;Cell col="14" row="0" text="Item"/&gt;
-&lt;Cell col="15" row="0" text="MTL&amp;#32;Code"/&gt;
-&lt;Cell col="16" row="0" text="Text"/&gt;
-&lt;Cell col="17" row="0" text="GMT&amp;#32;Color"/&gt;
-&lt;Cell col="18" row="0" text="GMT&amp;#32;Color&amp;#32;code"/&gt;
-&lt;Cell col="19" row="0" text="COLOR"/&gt;
-&lt;Cell col="20" row="0" tooltiptext="SIZE" text="SIZE"/&gt;
-&lt;Cell col="21" row="0" text="BOM&amp;#32;Q&amp;apos;ty(rounding&amp;#32;up)"/&gt;
-&lt;Cell col="22" row="0" text="Unit"/&gt;
-&lt;Cell col="23" row="0" text="PO&amp;#32;Q&amp;apos;ty"/&gt;
-&lt;Cell col="24" row="0" text="Order&amp;#32;Q&amp;apos;ty" background="ibory"/&gt;
-&lt;Cell col="25" row="0" text="Order&amp;#32;Unit"/&gt;
-&lt;Cell col="26" row="0" text="Price" background="ibory"/&gt;
-&lt;Cell col="27" row="0" text="Per" background="ibory"/&gt;
-&lt;Cell col="28" row="0" text="TTL&amp;#32;Amount"/&gt;
-&lt;Cell col="29" row="0" text="Currency"/&gt;
-&lt;Cell col="30" row="0" text="Goods&amp;#32;movement&amp;#32;Q&amp;apos;ty"/&gt;
-&lt;Cell col="31" row="0" text="Purch.Group"/&gt;
-&lt;Cell col="32" row="0" text="GR&amp;#32;Based&amp;#32;Inv.&amp;#32;Verif"/&gt;
-&lt;Cell col="33" row="0" text="OS&amp;#32;Price"/&gt;
-&lt;Cell col="34" row="0" text="OS&amp;#32;Price&amp;#32;Unit"/&gt;
-&lt;Cell col="35" row="0" text="OS&amp;#32;Currency"/&gt;
-&lt;Cell col="36" row="0" text="OS&amp;#32;AMOUNT"/&gt;
-&lt;Cell col="37" row="0" text="Delivery&amp;#32;Date"/&gt;
-&lt;Cell col="38" row="0" text="More"/&gt;
-&lt;Cell col="39" row="0" text="Less"/&gt;
-&lt;Cell col="40" row="0" text="Delivery&amp;#32;Location"/&gt;
-&lt;Cell col="41" row="0" text="Forwarder"/&gt;
-&lt;Cell col="42" row="0" text="Buyer&amp;#32;Code"/&gt;
-&lt;Cell col="43" row="0" text="Incoterms" background="ibory"/&gt;
-&lt;Cell col="44" row="0" text="Remark"/&gt;
-&lt;Cell col="45" row="0" tooltiptext="CENTER_CD" text="CENTER_CD"/&gt;
-&lt;Cell col="46" row="0" text="SORT_NUM"/&gt;
-&lt;Cell col="47" row="0" text="CRT"/&gt;
-&lt;Cell col="48" row="0" text="MSGBN"/&gt;
-&lt;Cell col="49" row="0" text="MTL_SIZE_KEY"/&gt;
-&lt;Cell col="50" row="0" text="MTL_COLOR_KEY"/&gt;
-&lt;Cell col="51" row="0" text="GOODS_MOV"/&gt;
-&lt;Cell col="52" row="0" tooltiptext="MTL_ITEM_CD" text="MTL_ITEM_CD"/&gt;
-&lt;Cell col="53" row="0" tooltiptext="ITEM_CD" text="ITEM_CD"/&gt;
-&lt;Cell col="54" row="0" text="OSSTS"/&gt;
-&lt;Cell col="55" row="0" text="GMTMATNR"/&gt;
-&lt;Cell col="56" row="0" text="POSNR"/&gt;
-&lt;Cell col="57" row="0" text="LOT_NO"/&gt;
-&lt;/Band&gt;
-&lt;Band id="body"&gt;
-&lt;Cell col="0" row="0" text="expr:currow+1" border="" textAlign="center"/&gt;
-&lt;Cell col="1" row="0" displaytype="checkboxcontrol" edittype="checkbox" text="bind:ROW_CHK" border=""/&gt;
-&lt;Cell col="2" row="0" displaytype="imagecontrol" text="expr:comp.parent.gfn_setRowStatus(ROW_STS)" border="" textAlign="center"/&gt;
-&lt;Cell col="3" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:Message" border=""/&gt;
-&lt;Cell col="4" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:VBELN" border="" textAlign="center"/&gt;
-&lt;Cell col="5" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:CENTER_NM" border="" textAlign="center"/&gt;
-&lt;Cell col="6" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:TYPE" border="" textAlign="center"/&gt;
-&lt;Cell col="7" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:GMT_ITEM" border="1px&amp;#32;solid&amp;#32;#dbdee2&amp;#32;,&amp;#32;2px&amp;#32;solid&amp;#32;aqua&amp;#32;,&amp;#32;1px&amp;#32;solid&amp;#32;#dbdee2&amp;#32;,&amp;#32;1px&amp;#32;solid&amp;#32;#dbdee2" textAlign="center"/&gt;
-&lt;Cell col="8" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="combocontrol" edittype="combo" text="bind:ZTERM" border="" textAlign="center" combocodecol="CODE_CD" combodatacol="CODE_NM" combodataset="ds_cmbPaymentTerms"/&gt;
-&lt;Cell col="9" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="combocontrol" edittype="combo" text="bind:DOC_TYPE" border="" textAlign="center" combocodecol="CODE_CD" combodatacol="CODE_NM" combodataset="ds_cmbDocumentType"/&gt;
-&lt;Cell col="10" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:SUPPLIER_CODE1" border="" textAlign="center"/&gt;
-&lt;Cell col="11" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:SUPPLIER_NAME" border="" padding="0px&amp;#32;0px&amp;#32;0px&amp;#32;5px" textAlign="left"/&gt;
-&lt;Cell col="12" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:PO_DESC" border="" textAlign="center"/&gt;
-&lt;Cell col="13" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MATNR" border="" textAlign="center"/&gt;
-&lt;Cell col="14" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:USAGE" border="" padding="0px&amp;#32;0px&amp;#32;0px&amp;#32;5px" textAlign="left"/&gt;
-&lt;Cell col="15" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:BUYER_ITEM_CD" border="" textAlign="center"/&gt;
-&lt;Cell col="16" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MTL_ITEM" border="" padding="0px&amp;#32;0px&amp;#32;0px&amp;#32;5px" textAlign="left"/&gt;
-&lt;Cell col="17" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:GMT_COL" border="" textAlign="center"/&gt;
-&lt;Cell col="18" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:GMTColorcode" border="" textAlign="center"/&gt;
-&lt;Cell col="19" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:COLOR" border="" textAlign="center"/&gt;
-&lt;Cell col="20" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:SIZE" border="" textAlign="center"/&gt;
-&lt;Cell col="21" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" text="bind:OS_MENGE" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="22" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:UNIT" border="" textAlign="center"/&gt;
-&lt;Cell col="23" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" text="bind:PO_MENGE" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="24" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" edittype="mask" text="bind:REMAIN_MENGE" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditautoselect="true" maskeditlimitbymask="integer" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="25" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MEINS" border="" textAlign="center"/&gt;
-&lt;Cell col="26" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" edittype="mask" text="bind:PRICE" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditautoselect="true" maskeditlimitbymask="integer" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="27" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" edittype="mask" text="bind:PEINH" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditautoselect="true" maskeditlimitbymask="integer" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="28" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" text="bind:L_NETWR" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="29" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="combotext" text="bind:CURRENCY" border="" textAlign="center" combocodecol="CODE_CD" combodatacol="CODE_NM" combodataset="ds_cmbCurrency"/&gt;
-&lt;Cell col="30" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" text="bind:PR_MENGE" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="31" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:PURCGRP" border="" textAlign="center"/&gt;
-&lt;Cell col="32" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:WEBRE" border="" textAlign="center"/&gt;
-&lt;Cell col="33" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" text="bind:OS_PRICE" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="34" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:OS_PEINH" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right"/&gt;
-&lt;Cell col="35" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:L_WAERK" border="" textAlign="center"/&gt;
-&lt;Cell col="36" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="mask" text="bind:OS_AMOUNT" border="" padding="0px&amp;#32;5px&amp;#32;0px&amp;#32;0px" textAlign="right" maskeditformat="###,###,###"/&gt;
-&lt;Cell col="37" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:DELIVERY_DATE" border="" textAlign="center"/&gt;
-&lt;Cell col="38" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:UEBTO" border="" textAlign="center"/&gt;
-&lt;Cell col="39" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:UNTTO" border="" textAlign="center"/&gt;
-&lt;Cell col="40" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:DeliveryLocation" border="" textAlign="center"/&gt;
-&lt;Cell col="41" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:Forwarder" border="" textAlign="center"/&gt;
-&lt;Cell col="42" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:BuyerCode" border="" textAlign="center"/&gt;
-&lt;Cell col="43" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" displaytype="combocontrol" edittype="combo" text="bind:INCO1" border="" textAlign="center" combocodecol="CODE_CD" combodatacol="CODE_NM" combodataset="ds_cmbIncoterms"/&gt;
-&lt;Cell col="44" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:Remark" border="" textAlign="center"/&gt;
-&lt;Cell col="45" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:CENTER_CD" border="" textAlign="center"/&gt;
-&lt;Cell col="46" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:SORT_NUM" border="" textAlign="center"/&gt;
-&lt;Cell col="47" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:CRT" border="" textAlign="center"/&gt;
-&lt;Cell col="48" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MSGBN" border="" textAlign="center"/&gt;
-&lt;Cell col="49" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MTL_SIZE_KEY" border="" textAlign="center"/&gt;
-&lt;Cell col="50" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MTL_COLOR_KEY" border="" textAlign="center"/&gt;
-&lt;Cell col="51" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:GOODS_MOV" border="" textAlign="center"/&gt;
-&lt;Cell col="52" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:MTL_ITEM_CD" border="" textAlign="center"/&gt;
-&lt;Cell col="53" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:ITEM_CD" border="" textAlign="center"/&gt;
-&lt;Cell col="54" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:OSSTS" border="" textAlign="center"/&gt;
-&lt;Cell col="55" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:GMTMATNR" border="" textAlign="center"/&gt;
-&lt;Cell col="56" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:POSNR" border="" textAlign="center"/&gt;
-&lt;Cell col="57" row="0" cssclass="expr:(dataset.getRowLevel(currow)==0?(!(ROW_STS&amp;#32;==&amp;#32;&amp;apos;I&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;D&amp;apos;||ROW_STS&amp;#32;==&amp;#32;&amp;apos;U&amp;apos;)&amp;#32;?&amp;#32;&amp;apos;lv2&amp;apos;&amp;#32;:&amp;#32;&amp;apos;lv3&amp;apos;&amp;#32;)&amp;#32;:&amp;#32;&amp;apos;lv4&amp;apos;&amp;#32;)" text="bind:LOT_NO" border="" textAlign="center"/&gt;
-&lt;/Band&gt;
-&lt;/Format&gt;
-</Col>
-          </Row>
-        </Rows>
-      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
 @desc	1. Include
@@ -396,6 +163,7 @@ this.fn_reset = function()
 		this.ds_inLayout.clearData();		//	검색in
 		this.ds_LayoutList.clearData();		//	결과Main
 		this.ds_in.clearData();				//	INSERT용
+		
 		this.ds_in.addRow();
 		this.ds_tranResult.clearData();		//	INSERT결과
 	}
@@ -422,11 +190,16 @@ this.tfn_FormatSearch = function(){
 	{
 		this.ds_inLayout.clearData();
 		this.ds_inLayout.addRow();
-		this.ds_inLayout.setColumn(0, "p_program_id", this.paramNum);
-		this.ds_inLayout.setColumn(0, "GRID_ID", this.paramObj.name);
-		this.gfn_setUser(this.ds_inLayout, "p_user_id");
+		this.ds_inLayout.setColumn(0, "PROGRAM_ID", this.paramNum);
+		//	this.ds_inLayout.setColumn(0, "GRID_ID", this.paramObj.name);
+		this.ds_inLayout.setColumn(0, "GRID_ID", this._getUniqueId(this.paramObj));
+		this.ds_inLayout.setColumn(0, "DEFAULT_YN", "");
+		this.ds_inLayout.setColumn(0, "DEL_YN", "N");
+
+		
+		this.gfn_setUser(this.ds_inLayout, "USER_ID");
 	}
-	
+	//	trace(this.ds_inLayout.saveXML());
 	var sSvcID 			= "FormatSearch";
 	var sURL 			= "AppSvr::common/commonAction.ppc";
 	var sInDatasets 	= "ds_in0=ds_inLayout";
@@ -443,11 +216,11 @@ this.tfn_FormatSearch = function(){
 this.tfn_FormatSave = function()
 {
 	var gtrcPos = "PopupSaveLayout.xfdl.tfn_FormatSave";		this.gtrace("● 포맺저장트랜잭션", gtrcPos);
-
+		//	trace("LAYOUT_NM---->"+this.ds_in.getColumn(0, "LAYOUT_NM"));
 	// INSERT 상황
 	if(!this.gfn_isNull(this.ds_in.getColumn(0, "LAYOUT_NM")))
 	{	// 레이아웃명이 있다면 INSERT
-		var bDfltLayout = this.ds_in.getColumn(0, "DEFAULT_YN");		trace("bDfltLayout--->"+bDfltLayout);
+		var bDfltLayout = this.ds_in.getColumn(0, "DEFAULT_YN");		//	trace("bDfltLayout--->"+bDfltLayout);
 		if(bDfltLayout==CHK_TRUE)
 		{	//INSERT가 디폴트인경우 : 기존 것들은 체크 해제
 			for(var i=0;i<this.ds_LayoutList.rowcount;i++){
@@ -462,14 +235,14 @@ this.tfn_FormatSave = function()
 		this.ds_LayoutList.setColumn(iAddRp, "PROGRAM_ID", this.paramNum);
 		this.ds_LayoutList.setColumn(iAddRp, "GRID_ID", this._getUniqueId(this.paramObj));
 		this.ds_LayoutList.setColumn(iAddRp, "LAYOUT_NM", this.ds_in.getColumn(0, "LAYOUT_NM"));
-		this.ds_LayoutList.setColumn(iAddRp, "DEFAULT_YN", this.ds_in.getColumn(0, "DEFAULT_YN"));
+		this.ds_LayoutList.setColumn(iAddRp, "DEFAULT_YN", this.gfn_nvl(this.ds_in.getColumn(0, "DEFAULT_YN"),"N"));
+		this.ds_LayoutList.setColumn(iAddRp, "DEL_YN", "N");
 		this.ds_LayoutList.setColumn(iAddRp, "SEQ", "1");
 
 		//잘라서 1~10 넣기
 		this.fn_setFormatStringToDataset(iAddRp);
 	}
 
-	
 	//USER세팅
 	this.gfn_setUser(this.ds_LayoutList, "USER_ID"); // gfn_setUser는 ds이벤트에 영향안줌
 	
@@ -478,7 +251,7 @@ this.tfn_FormatSave = function()
 		
 		this.ds_LayoutList.set_enableevent(false);
 		
-		this.gtrace("ds_LayoutList--->"+this.ds_LayoutList.saveXML(), gtrcPos);
+//		trace("this.ds_LayoutList---->"+this.ds_LayoutList.saveXML());
 		
 		// 트랜잭션
 		var sSvcID 			= "FormatSave";
@@ -514,13 +287,14 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 	switch (strSvcID) 
 	{
 		default:
-				//	trace("ds_LayoutList.saveXML---->"+this.ds_LayoutList.saveXML());
+
 			break;
  		
 		case "FormatSave"	:
-									this.gtrace("transResult.xml---->"+this.ds_tranResult.saveXML(), gtrcPos);
+				
+				trace(this.ds_tranResult.saveXML());
 				this.fn_reset();
-									
+
 				break;
  	}
 }
@@ -642,7 +416,7 @@ this.fn_setFormatStringToDataset = function(iRp){
 	var sSampleText = this.paramObj.getCurFormatString();
 	
 	var sTmpSubstrText;			//	sSampleText = "1234567890";		//	var iSubstrNum = 3;
-	var iSubstrNum = 4000;
+	var iSubstrNum = 3000;
 	
 	var iLen = sSampleText.length;
 	var iStartNum = 0;
@@ -651,12 +425,12 @@ this.fn_setFormatStringToDataset = function(iRp){
 	while(iStartNum < iLen)
 	{
 		var sTmpSubstrText = sSampleText.substring(iStartNum,iEndNum); //	trace("sTmpSubstrText--->"+sTmpSubstrText);
-		this.ds_LayoutList.setColumn(iRp, "DATA_"+iCnt, "ABC"); //	sTmpSubstrText);
+		this.ds_LayoutList.setColumn(iRp, "DATA_"+iCnt, sTmpSubstrText);
 
 		iStartNum += iSubstrNum;
 		iEndNum += iSubstrNum;
 		iCnt++;
-	}
+	}	
 }
 ]]></Script>
     <Bind>

@@ -3,7 +3,6 @@
 */
 
 var pForm = nexacro.Form.prototype;
-//var pForm = this;
 
 /******************************************************************************************************
  * @class 서비스 호출 공통함수 <br>
@@ -25,7 +24,6 @@ var pForm = nexacro.Form.prototype;
 *****************************************************************************************************/ 
 pForm.gfn_transaction = function(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc, isAsync)
 {	
-											var gtrcPos = "Transaction.xjs.gfn_transaction";
 	// callback 함수 기본값 설정
 	if (this.gfn_isNull(callBackFnc)) callBackFnc = "fn_callback";
 	
@@ -74,28 +72,13 @@ pForm.gfn_transaction = function(strSvcId, strSvcUrl, inData, outData, strArg, c
 		nDataType = 0;
 	}
 
-     this.gtrace("in_var1="+nexacro.wrapQuote(this.titletext) + " in_var2="+this.name, gtrcPos); 
-	 
-	 
-	 {	//	out데이터셋백업 : 콜백 사라짐 제거용
-		var arrOutDs = outData.split(" ");				//	this.gtrace("arrOutDs--->"+arrOutDs, gtrcPos);
-		
-		for (var k = 0 ; k < arrOutDs.length ; k++){
-			var arrTmpStr = arrOutDs[k].split("=");
-			var tmpDs = eval("this."+arrTmpStr[0]);		this.gtrace(arrTmpStr[0]+"-->tmpDs.useclientlayout--->"+tmpDs.useclientlayout, gtrcPos);
-			for( var j=0; j<tmpDs.getColCount(); j++){
-				var tmpcol = tmpDs.getColID(j);
-					//	this.gtrace("tmpcol-->"+tmpcol, gtrcPos);
-			}
-		}
-	 }
-	 
+     trace("in_var1="+nexacro.wrapQuote(this.titletext) + " in_var2="+this.name); 
 	this.transaction( JSON.stringify(objSvcID)  //1.svcID
 					, strServiceUrl             //2.strServiceUrl
 					, inData                    //3.inDataSet
 					, outData                   //4.outDataSet
 					, strArguments              //5.arguments
-					, "gfn_callback"			//6.strCallbackFunc
+					, "gfn_callback"				//6.strCallbackFunc
 					, isAsync                   //7.bAsync
 					, nDataType                 //8.nDataType : 0(XML 타입), 1((Binary 타입),  2(SSV 타입) --> HTML5에서는 Binary 타입은 지원안함
 					, false);                   //9.bCompress ( default : false ) 
@@ -111,7 +94,6 @@ pForm.gfn_transaction = function(strSvcId, strSvcUrl, inData, outData, strArg, c
  */
 pForm.gfn_callback = function(svcID, errorCode, errorMsg)
 {
-																var gtrcPos = "Transaction.xjs.gfn_callback"
 	var objSvcID = JSON.parse(svcID);
 	// 에러 공통 처리
 	if(errorCode != 0)
@@ -149,14 +131,14 @@ pForm.gfn_callback = function(svcID, errorCode, errorMsg)
 	if (errorCode == 0)
 	{
 		sMsg = "gfn_callback : svcID>>"+objSvcID.svcId+ ",  svcUrl>>"+objSvcID.svcUrl+ ",  errorCode>>"+errorCode + ", errorMsg>>"+errorMsg + ", isAsync>>" + objSvcID.isAsync + ", sStartDate>>" + sStartDate + ", sEndDate>>"+sEndDate + ", nElapseTime>>"+nElapseTime;
-		//	trace(sMsg);
+		trace(sMsg);
 	}
 	else {
 		sMsg = "gfn_callback : svcID>>"+objSvcID.svcId+ ",  svcUrl>>"+objSvcID.svcUrl+ ",  errorCode>>"+errorCode + ", isAsync>>" + objSvcID.isAsync + ", sStartDate>>" + sStartDate + ", sEndDate>>"+sEndDate + ", nElapseTime>>"+nElapseTime;
 		sMsg += "\n==================== errorMsg =======================\n"+errorMsg+"\n==================================================";
-		//	trace(sMsg);
+		trace(sMsg);
 	}
-																this.gtrace("this[objSvcID.outData]--->"+this[objSvcID.outData], gtrcPos);
+
 	// form에 callback 함수가 있을때
 	if (this[objSvcID.callback]) {
         this.lookupFunc(objSvcID.callback).call(objSvcID.svcId, errorCode, errorMsg);
@@ -226,7 +208,7 @@ pForm.gfn_codeCallback = function(svcID, errorCode, errorMsg)
 
 pForm.gfn_getCommonCode = function(arrCode, objDsTemp) 
 {
-    if(this.gfn_isNull(objDsTemp)) objDsTemp = this.gfn_getApplication().gds_CommCode;
+    if(this.gfn_isNull(objDsTemp)) objDsTemp = this.gfn_getApplication().gds_comCode;
     
 	var objDs = null;		// 대상 데이터셋
 	var objComp = null;	// 대상 컴포넌트

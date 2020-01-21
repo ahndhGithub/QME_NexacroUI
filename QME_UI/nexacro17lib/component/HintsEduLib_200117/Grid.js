@@ -25,6 +25,7 @@ pForm.tragetGrid = "";
 */
 pForm.gfn_setGrid = function(objGrid)
 {
+										var gtrcPos = "Grid.xjs.gfn_setGrid";
 	//Grid의 binddataset설정
 	var objDs = objGrid.getBindDataset();
 
@@ -38,7 +39,7 @@ pForm.gfn_setGrid = function(objGrid)
 	}
 	
 	//Grid의 UserProperty설정
-	var arrProp = this._getGridUserProperty(objGrid);
+	var arrProp = this._getGridUserProperty(objGrid);			this.gtrace("_getGridUserProperty를 통해 가져온 배열(중복현상 있음) arrProp--->"+arrProp, gtrcPos);
 	if(this.gfn_isNull(arrProp)) return; 		//설정할 속성이 엄쪄용
 	
 	objGrid.set_enableevent(false);
@@ -48,26 +49,34 @@ pForm.gfn_setGrid = function(objGrid)
 	var objApp = pForm.gfn_getApplication();
 	var objGds = objApp.gds_gridPersonal;
 	
-	var sFormatId = this._getUniqueId(objGrid);
+	var sFormatId = this._getUniqueId(objGrid);					this.gtrace("_getUniqueId를 통해 sFormatId를 가져온다--->"+sFormatId, gtrcPos);
 	var sFormat;
-	var nFindRow = objGds.findRow("sFormatId", sFormatId);
+	var nFindRow = objGds.findRow("sFormatId", sFormatId);		this.gtrace("gds_gridPersonal에 sFormatId "+sFormatId+"가 있는지 확인 nFindRow--->"+nFindRow, gtrcPos);
 	if( nFindRow > -1){
 		objGrid.orgformat2 = objGds.getColumn(nFindRow, "sOrgFormat");
-		
+																this.gtrace("gds_gridPersonal에 있을경우 sOrgFormat컬럼값을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
 		sFormat = "<Formats>" + objGds.getColumn(nFindRow, "sFormat") + "</Formats>";
+																this.gtrace("gds_gridPersonal의 sFormat컬럼값을 sFormat 스트링에 담아서"+objGrid.name+"그리드의 포맺으로 지정", gtrcPos);
 		objGrid.set_formats(sFormat);
 	}
 	else{
 		objGrid.orgformat2 = objGrid.getFormatString();
+																this.gtrace("gds_gridPersonal에 없으므로 "+objGrid.name+" 그리드의 포맺스트링을 orgformat2에 지정--->"+objGrid.orgformat2, gtrcPos);
 	}
 	
 	objGrid.arrprop = arrProp;
+																this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnGridAddProp 를 실행", gtrcPos);
 	this._gfnGridAddProp(objGrid);
-	
+																this.gtrace(arrProp+"(arrProp)가 지정된 그리드를 넘겨서 _gfnMakeGridPopupMenu 를 실행", gtrcPos);
 	this._gfnMakeGridPopupMenu(objGrid,arrProp);//popupmenu 생성
 	/*********************************************** 이벤트추가 START ***********************************************/
 	
-	objGrid.addEventHandler("onheadclick", this.gfn_grid_onheadclick, this); 	//헤드클릭이벤트추가
+	objGrid.addEventHandler("onheadclick", this.gfn_grid_onheadclick, this); 	this.gtrace("헤드클릭이벤트추가 gfn_grid_onheadclick", gtrcPos);
+																				
+																				this.gtrace("userproperties중 하나라도 popupmenulist에 하나라도 있다면 우클릭 이벤트 추가", gtrcPos);
+																				this.gtrace("		userproperties(arrProp)---->"+arrProp, gtrcPos);
+																				this.gtrace("		popupmenulist---->"+this.popupmenulist, gtrcPos);
+																				this.gtrace("		우클릭이벤트 : gfn_grid_onrbuttondown", gtrcPos);
 	for(var k=0; k< arrProp.length; k++)
     {
 		var arr = this.popupmenulist.split(",");
@@ -81,6 +90,7 @@ pForm.gfn_setGrid = function(objGrid)
 			}
 		}
 		if( arrProp[k] == "cellcopypaste"){
+																				this.gtrace("arrProp["+k+"]-->"+arrProp[k]+"-->이므로 키다운이벤트추가---> : gfn_grid_onrbuttondown", gtrcPos);
 			objGrid.addEventHandler("onkeydown", this.gfn_grid_onkeydown, this);
 		}
 	}
@@ -89,6 +99,10 @@ pForm.gfn_setGrid = function(objGrid)
 	objGrid.set_enableredraw(true);	
 	objDs.set_enableevent(true);
 	objGrid.orgformat = objGrid.getCurFormatString();
+	
+	this.gtrace("", gtrcPos);
+	this.gtrace("/////////////////////////////////////////////////////--gfn_setGrid 끝--/////////////////////////////////////////////////////", gtrcPos);
+	this.gtrace("", gtrcPos);
 };	
 
 /**
@@ -99,27 +113,33 @@ pForm.gfn_setGrid = function(objGrid)
  * this._gfnGridAddProp(this.grdMain);	
 */
 pForm._gfnGridAddProp = function (objGrid)
-{
-	var arrProp = objGrid.arrprop;
-	var objDs = objGrid.getBindDataset();
+{																var gtrcPos = "Grid.xjs._gfnGridAddProp";
+																this.gtrace("여기서는 checkbox, no, status, sort 값에 대한 기능을 처리한다", gtrcPos);
+	var arrProp = objGrid.arrprop;								this.gtrace("전달받은 userproperties : arrProp--->"+arrProp, gtrcPos);
+	var objDs = objGrid.getBindDataset();						this.gtrace("바인딩된 데이터셋 : objDs--->"+objDs.name, gtrcPos);
 	for( var i=0; i<arrProp.length; i++)
 	{
 		switch(arrProp[i]) {
 			case "checkbox":
+																this.gtrace("arrProp["+i+"]-->"+arrProp[i]+"-->_gfnGridCheckboxNoStatusAdd(objGrid, objDs, '"+arrProp[i]+"')--실행", gtrcPos);
 				this._gfnGridCheckboxNoStatusAdd(objGrid, objDs, "checkbox");
 				break;
 			case "no":
+																this.gtrace("arrProp["+i+"]-->"+arrProp[i]+"-->_gfnGridCheckboxNoStatusAdd(objGrid, objDs, '"+arrProp[i]+"')--실행", gtrcPos);
 				this._gfnGridCheckboxNoStatusAdd(objGrid, objDs, "no");
 				break;
 			case "status":
+																this.gtrace("arrProp["+i+"]-->"+arrProp[i]+"-->_gfnGridCheckboxNoStatusAdd(objGrid, objDs, '"+arrProp[i]+"')--실행", gtrcPos);
 				this._gfnGridCheckboxNoStatusAdd(objGrid, objDs, "status");
 				break;
 			case "sort":
+																this.gtrace("arrProp["+i+"]-->"+arrProp[i]+"-->objGrid.sort = 'true'--실행", gtrcPos);
 				objGrid.sort = "true";
 				break;
 			default: break;
 		}
 	}
+																this.gtrace("-----------------------------END---_gfnGridAddProp------------------------------", gtrcPos);
 };
 
 /**
@@ -150,7 +170,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 		if (objGrid.getFormatRowProperty(i, "band") == "body") nBodyCount++;
 	}
 
-	var sNo = this.gfn_getWord("cmm.no");		// 순번
+	var sNo = this.gfn_getWord("cmm.no");		// Seq.
 	var sStatus = this.gfn_getWord("cmm.status");// 상태
 
 	//체크박스
@@ -200,7 +220,7 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
 	{
 		for( var i=0; i<objGrid.getCellCount("head"); i++){
 			var tmp = objGrid.getCellProperty("head" , i, "text");
-			if( tmp == "NO" || tmp == "순번"){
+			if( tmp == "NO" || tmp == "Seq."){
 				//return;
 				objGrid.deleteContentsCol("body", i);
 			}
@@ -263,16 +283,18 @@ pForm._gfnGridCheckboxNoStatusAdd = function(objGrid, objDs, addProp)
  * objGrid.addEventHandler("onheadclick", 	 this.gfn_grid_onheadclick, 	 this);
  */
 pForm.gfn_grid_onheadclick = function(objGrid, e)
-{
-	var sType = objGrid.getCellProperty("head", e.cell, "displaytype");
-	if (sType == "checkboxcontrol"){
+{																				var gtrcPos = "Grid.xjs.gfn_grid_onheadclick";
+																				this.gtrace("onheadclick시에 발생하는 이벤트 : 체크박스 / 일반 구분에 따라 다름(전체선택 / 정렬)", gtrcPos);
+	var sType = objGrid.getCellProperty("head", e.cell, "displaytype");			this.gtrace("getCellProperty - displaytype 가져오기 sType--->"+sType, gtrcPos);
+	if (sType == "checkboxcontrol"){											this.gtrace("head display type이 checkbox인 경우 all/none check기능추가--->_gfnHeadCheckSelectAll", gtrcPos);
 		//head display type이 checkbox일 경우 all/none check기능추가
 		this._gfnHeadCheckSelectAll(objGrid, e);
-	}else{
+	}else{																		this.gtrace("head display type이 checkbox가 아닌 경우 sType--->"+sType, gtrcPos);
+																				this.gtrace("objGrid.sort값을 본다--->"+objGrid.sort, gtrcPos);
 		//sort
 		if(this.gfn_isNull(objGrid.sort) || objGrid.sort=="false"){
 			return;
-		}else if(objGrid.sort == "true"){
+		}else if(objGrid.sort == "true"){										this.gtrace("objGrid.sort=="+objGrid.sort+" 이므로 sort시작", gtrcPos);
 			var arr = objGrid.arrprop;
 			var bUserHeader = this._gfnGridUserHeaderFlg(objGrid);
 			var multiple = false;
@@ -288,6 +310,7 @@ pForm.gfn_grid_onheadclick = function(objGrid, e)
 			}
 		}
 	}
+																							this.gtrace("-----------------------------END---------------------------------", gtrcPos);
 };
 
 /**
@@ -309,7 +332,7 @@ pForm.gfn_grid_onkeydown =function(objGrid, e){
 			}else {
 				this._gfnGridCopyEventForChrome(objGrid, e);
 			}
-		}else if(keycode == 86){
+		}else if(keycode == 86){ // ctrl+V
 			//paste
 			this._gfnGridPasteEvent(objGrid, e);
 		}
@@ -785,6 +808,8 @@ pForm._gfnClearSortMark = function(obj)
  */
 pForm.gfn_grid_onrbuttondown = function (objGrid, e)
 {
+											var gtrcPos = "Grid.xjs.gfn_grid_onrbuttondown";
+											this.gtrace("그리드우클릭이벤트--->시작", gtrcPos);
 	var objApp = pForm.gfn_getApplication();
 	
 	// 대상 그리드와 셀 정보를 추가
@@ -794,8 +819,10 @@ pForm.gfn_grid_onrbuttondown = function (objGrid, e)
 
 	var x = nexacro.toNumber(nexacro.System.getCursorX()) - nexacro.toNumber(system.clientToScreenX(objApp.mainframe, 0));
 	var y = nexacro.toNumber(nexacro.System.getCursorY()) - nexacro.toNumber(system.clientToScreenY(objApp.mainframe, 0));
-
+											this.gtrace("x,y--->("+x+","+y+")", gtrcPos);
 	objGrid.popupMenu.trackPopup(x, y);
+
+	this.gtrace("---------------end-------------------------gfn_grid_onrbuttondown----------------------------------------", gtrcPos);
 };
 
 /**
@@ -808,6 +835,8 @@ pForm.gfn_grid_onrbuttondown = function (objGrid, e)
  */
 pForm.gfn_popupmenu_onmenuclick = function (objMenu, e)
 {
+											var gtrcPos = "Grid.xjs.gfn_popupmenu_onmenuclick";
+											this.gtrace("우클릭메뉴에서 선택했을 때", gtrcPos);
 	var selectId   = e.id;
 	var grid 	   = objMenu.grid;
 	var nCellIndex = objMenu.cellindex;	
@@ -859,6 +888,7 @@ pForm.gfn_popupmenu_onmenuclick = function (objMenu, e)
 			break;
 		default: break;
 	}
+	this.gtrace("---------------end-------------------------gfn_popupmenu_onmenuclick----------------------------------------", gtrcPos);
 };
 
 /**
@@ -895,7 +925,9 @@ pForm._gfnGridSetCssclass = function (objGrid)
  * this._gfnHeadCheckSelectAll(objGrid, e); //ALL CHECK
  */
 pForm._gfnHeadCheckSelectAll = function (objGrid, e)
-{
+{																			var gtrcPos = "Grid.xjs._gfnHeadCheckSelectAll";
+																			this.gtrace("체크박스전체선택기능---checkbox의truevalue/falsevalue를 별도로 세팅할 필요 없다. 기본 : 1 과 0 이다", gtrcPos);
+																			this.gtrace("objGrid.readonly==true이면 return된다---->"+objGrid.readonly, gtrcPos);
 	if(objGrid.readonly == true) return;
 	
 	var sType;
@@ -903,29 +935,33 @@ pForm._gfnHeadCheckSelectAll = function (objGrid, e)
 	var sVal;
 	var sChkVal;
 	var oDsObj;
-	var nHeadCell  = e.cell;
+	var nHeadCell  = e.cell;												this.gtrace("e.cell-->nHeadCell---->"+nHeadCell, gtrcPos);
 	var nBodyCell;
 	var nSubCnt = objGrid.getSubCellCount("head", nHeadCell);
 
-	oDsObj  = objGrid.getBindDataset();
+	oDsObj  = objGrid.getBindDataset();										this.gtrace("바인딩된 데이터셋 : oDsObj---->"+oDsObj.name, gtrcPos);
 	
-	if(oDsObj.getRowCount() < 1) return;
+	if(oDsObj.getRowCount() < 1) return;									this.gtrace("oDsObj의 행의 갯수 < 1이면 리턴 oDsObj.getRowCount()---->"+oDsObj.getRowCount(), gtrcPos);
+																			this.gtrace("objGrid.getCellCount(body)---->"+objGrid.getCellCount("body"), gtrcPos);
+																			this.gtrace("objGrid.getCellCount(head)---->"+objGrid.getCellCount("head"), gtrcPos);
 	
+																			this.gtrace("이벤트가 발생한 셀번호 가져오기", gtrcPos);
 	if(objGrid.getCellCount("body") != objGrid.getCellCount("head")) {
-		nBodyCell = parseInt(objGrid.getCellProperty("head", nHeadCell, "col"));
+		nBodyCell = parseInt(objGrid.getCellProperty("head", nHeadCell, "col"));	this.gtrace("body head getCellCount가 다르므로 head의 프로퍼티에서 가져온다.nBodyCell---->"+nBodyCell, gtrcPos);
 	} else {
-		nBodyCell = e.cell;
+		nBodyCell = e.cell;													this.gtrace("body head getCellCount가 같으므로 nBodyCell == e.cell---->"+e.cell, gtrcPos);
 	}
-	sChkVal = objGrid.getCellProperty("body", nBodyCell, "text");
-	sChkVal = sChkVal.toString().replace("bind:", "");
+																			this.gtrace("<----체크박스에 바인딩된 텍스트가공 : sChkVal---->", gtrcPos);
+	sChkVal = objGrid.getCellProperty("body", nBodyCell, "text");			this.gtrace("body의 "+nBodyCell+"번 셀의 text값 sChkVal---->"+sChkVal, gtrcPos);
+	sChkVal = sChkVal.toString().replace("bind:", "");						this.gtrace("sChkVal.toString().replace('bind:','')---->"+sChkVal, gtrcPos);
 		
 	// Merge한 셀이 없는 경우
-	sType = objGrid.getCellProperty("head", nHeadCell, "displaytype");
+	sType = objGrid.getCellProperty("head", nHeadCell, "displaytype");		this.gtrace("head의 displayType--->sType---->"+sType+"checkboxcontrol이 아니면 리턴된다", gtrcPos);
 
 	if(sType != "checkboxcontrol") {
 		return;
 	}
-
+																			this.gtrace("<----objGrid.getCellProperty('head', nHeadCell, 'text')-->sVal 기준으로 Head, Body 세팅한다.---->"+sType+"checkboxcontrol이 아니면 리턴된다", gtrcPos);
 	// Head셋팅
 	sVal = objGrid.getCellProperty("head", nHeadCell, "text");
 
@@ -950,6 +986,7 @@ pForm._gfnHeadCheckSelectAll = function (objGrid, e)
 		oDsObj.setColumn(i, sChkVal, sChk);
 	}
 	oDsObj.set_enableevent(true);
+														this.gtrace("------------------------------------------end------------------------------------------", gtrcPos);
 };
 
 /**
@@ -960,33 +997,34 @@ pForm._gfnHeadCheckSelectAll = function (objGrid, e)
  * this._gfnGetHeadBodyIndex(this.grdMain, this.dsMain);	
  */
 pForm._gfnMakeGridPopupMenu = function (objGrid, arrProp)
-{
-	var objApp 		 = pForm.gfn_getApplication();
-	var objMenuDs 	 = objApp.gds_gridPopupMenu;
-	var objParentForm= objGrid.parent;
+{																		var gtrcPos = "Grid.xjs._gfnMakeGridPopupMenu";
+	var objApp 		 = pForm.gfn_getApplication();						//this.gtrace("objApp-->"+objApp, gtrcPos);
+	var objMenuDs 	 = objApp.gds_gridPopupMenu;						//this.gtrace("objMenuDs-->"+objMenuDs.name, gtrcPos);
+	var objParentForm= objGrid.parent;									//this.gtrace("objParentForm-->"+objParentForm.name, gtrcPos);
 	
-	var sPopupDsMenu = "dsPopupMenu_"+objGrid.name+"_"+this.name;
-	var objPopupDs 	 = new Dataset(sPopupDsMenu);
-	objParentForm.addChild(sPopupDsMenu, objPopupDs); 
-	objPopupDs.copyData(objApp.gds_gridPopupMenu);
-	
+	var sPopupDsMenu = "dsPopupMenu_"+objGrid.name+"_"+this.name;		//this.gtrace("sPopupDsMenu-->"+sPopupDsMenu, gtrcPos);
+	var objPopupDs 	 = new Dataset(sPopupDsMenu);						//this.gtrace("새롭게 생성된 데이터셋(sPopupDsMenu 명칭으로 생성됨) : objPopupDs-->"+objPopupDs.name, gtrcPos);
+	objParentForm.addChild(sPopupDsMenu, objPopupDs); 					this.gtrace(objPopupDs.name+"(objPopupDs)를 addChild 함", gtrcPos);
+	objPopupDs.copyData(objApp.gds_gridPopupMenu);						this.gtrace("objPopupDs에 gds_gridPopupMenu를 복사해 옴", gtrcPos);
+																		this.gtrace("루프돌리기 : arrProp---->"+arrProp+"----length:"+arrProp.length, gtrcPos);
 	for(var i=0; i<arrProp.length; i++){
 		for(var j=0; j<objPopupDs.rowcount; j++){
-			var sMenu = objPopupDs.getColumn(j,"id");
+			var sMenu = objPopupDs.getColumn(j,"id");					//	if(i==0){this.gtrace("objPopupDs의 메뉴=sMenu---->"+sMenu, gtrcPos);}
 			if( this.gfn_isNull(sMenu) ) continue;
 			
-			if( sMenu.indexOf(arrProp[i]) > -1 ){
-				objPopupDs.setColumn(j, "enable", "true");
+			if( sMenu.indexOf(arrProp[i]) > -1 ){						this.gtrace("objPopupDs의 메뉴에 존재하는 arrProp[i]---->"+arrProp[i], gtrcPos);
+				objPopupDs.setColumn(j, "enable", "true");				this.gtrace("존재하는 sMenu만 objPopupDs의 enable을 true로 해 줌", gtrcPos);
+																		this.gtrace("level 1 인지 확인--->"+objPopupDs.getColumn(j, "level"), gtrcPos);
 				if( objPopupDs.getColumn(j, "level") == 1){
 					var sUpMenu = objPopupDs.getColumn(j, "upmenu");
-					var nUpRow = objPopupDs.findRow("id", sUpMenu);
+					var nUpRow = objPopupDs.findRow("id", sUpMenu);		this.gtrace("level 1 이므로 그 상위메뉴(upmenu)도 enable true로 바꿈, 여기서의 상위메뉴id는-->"+objPopupDs.getColumn(nUpRow, "id"), gtrcPos);
 					if(nUpRow > -1) objPopupDs.setColumn(nUpRow, "enable", "true");
 				}
 			}
 		}
 	}
 	var sPopMenu = "popMenu_"+objGrid.name+"_"+this.name;
-	var objPopMenu = new PopupMenu(sPopMenu, 0, 0, 100, 100);
+	var objPopMenu = new PopupMenu(sPopMenu, 0, 0, 100, 100);			this.gtrace("PopupMenu생성(objPopMenu)(사이즈 :  0, 0, 100, 100)---------->"+objPopMenu.name, gtrcPos);
 	
 	objParentForm.addChild(objPopMenu.name, objPopMenu);
 	
@@ -996,13 +1034,15 @@ pForm._gfnMakeGridPopupMenu = function (objGrid, arrProp)
     objPopMenu.set_enablecolumn("enable");
 	objPopMenu.set_idcolumn("id");
 	objPopMenu.set_levelcolumn("level");
- 	objPopMenu.addEventHandler("onmenuclick", this.gfn_popupmenu_onmenuclick, objParentForm);
+ 	objPopMenu.addEventHandler("onmenuclick", this.gfn_popupmenu_onmenuclick, objParentForm);	this.gtrace(objParentForm+"(objParentForm)에 이벤트추가 : gfn_popupmenu_onmenuclick", gtrcPos);
 	objPopMenu.show();
 	
 	objPopMenu.set_itemheight(24);
 	
 	objPopMenu.grid = objGrid;
 	objGrid.popupMenu = objPopMenu;
+
+														this.gtrace("-------END--------"+gtrcPos+"------", gtrcPos);
 };
 
 /**
@@ -1015,33 +1055,39 @@ pForm._gfnMakeGridPopupMenu = function (objGrid, arrProp)
  */
 pForm._getGridUserProperty = function (objGrid)
 {
-	var sProp = objGrid.griduserproperty;
-	
-	var arrdefault = this.defaultmenulis.split(",");
+														var gtrcPos	= "Grid.xjs._getGridUserProperty";
+	var sProp = objGrid.griduserproperty;				this.gtrace(objGrid.name+"의 griduserproperty (sProp) : "+sProp, gtrcPos);
+	var arrdefault = this.defaultmenulis.split(",");	this.gtrace("defaultmenulis값을 쉼표로 스플릿해 나온 배열 arrdefault : "+arrdefault, gtrcPos);
 	var arrprop = [];
 	
-	if(!this.gfn_isNull(sProp)){
-		arrprop = sProp.split(",");
+	if(!this.gfn_isNull(sProp)){						this.gtrace("		"+sProp+" : sProp 값이 null이 아닌 경우", gtrcPos);
+		arrprop = sProp.split(",");						this.gtrace("		"+arrprop+" : 스플릿 하여 arrprop 배열을 만든다.", gtrcPos);
+														this.gtrace("		"+"느낌표로 시작하는 것은 TODO.DEFAULT에서 제거한다", gtrcPos);
 		for( var i=0; i<arrprop.length; i++){
 			if( arrprop[i].indexOf("!") == 0 ){
 				//TODO.DEFAULT에서제거
 				for( var j=0; j<arrdefault.length; j++){
 					if( arrdefault[j] == arrprop[i].substr(1) ){
+														this.gtrace(arrdefault[j]+"---arrdefault[j] ---------같으므로---------"+arrprop[i].substr(1)+"---arrprop[i].substr(1)", gtrcPos);
 						arrdefault[j] = "";
+														this.gtrace("["+arrdefault[j]+"]---arrdefault[j]값을 공백처리", gtrcPos);
 					}
 				}
 				arrprop[i] = "";
+														this.gtrace("arrprop[i]가 공백처리된 후의 상태 : "+arrprop, gtrcPos);
 			}
 		}
 	}
 	
 	var arrmyprop = [];
+														this.gtrace("arrdefault를 루프돌면서 있는 것만 arrmyprop에 담기", gtrcPos);
 	for( var i=0; i< arrdefault.length; i++){
 		if(!this.gfn_isNull(arrdefault[i])){
 			arrmyprop.push(arrdefault[i]);
 		}
 	}
-	
+														this.gtrace("즉, 느낌표 없는 것만 추출된다. arrmyprop:"+arrmyprop, gtrcPos);
+														this.gtrace("arrprop 기준으로 또 넣는다 ?? 중복 아님 ?? 뭔가 이상하다...arrprop-->"+arrprop, gtrcPos);
 	for( var i=0; i< arrprop.length; i++){
 		if(!this.gfn_isNull(arrprop[i])){
 			arrmyprop.push(arrprop[i]);
@@ -1049,6 +1095,7 @@ pForm._getGridUserProperty = function (objGrid)
 	}
 	
 	return arrmyprop;
+														this.gtrace("------------------------------------------end------------------------------------------", gtrcPos);
 };
 
 
@@ -1157,8 +1204,9 @@ pForm._gfnGridCellFree = function(objGrid)
  * this._gfnGridFilter(this.grdMain);	
  */
 pForm._gfnGridFilter = function(objGrid)
-{
-	var sTitle = this.gfn_getWord("popup.datafiltersetting");
+{																				var gtrcPos = "Grid.xjs._gfnGridFilter";
+																				this.gtrace("<-------------셀필터(cellFilter)설정------------->", gtrcPos);
+	var sTitle = this.gfn_getWord("popup.datafiltersetting");					this.gtrace("sTitle---->"+sTitle, gtrcPos);
 	var oArg = {pvGrid:objGrid};
 	
 	var oOption = {title:sTitle};	//top, left를 지정하지 않으면 가운데정렬 //"top=20,left=370"
@@ -1279,31 +1327,44 @@ pForm._gfnGridPersonalize = function(objGrid)
  */
 pForm._getUniqueId = function (objGrid)
 {
+										var gtrcPos = "Grid.xjs._getUniqueId";
 	var sFormId;
 	var oForm = objGrid.parent; //대상FORM조회
+										this.gtrace("해당 그리드를 포함한 폼 : oForm---->"+oForm.name, gtrcPos);
+										this.gtrace("위 폼 "+oForm.name+"이 ChildFrame인지 확인---->"+(oForm instanceof nexacro.ChildFrame), gtrcPos);
 	while (true)
 	{
 		if(oForm instanceof nexacro.ChildFrame){
 			break;
 		}else{
-			oForm = oForm.parent;
+			oForm = oForm.parent;		this.gtrace("위 값이 false인 경우 gv_MenuCodeCol에서 parent를 다시 가져옴---->"+oForm.name, gtrcPos);
 		}
 	}
-	sFormId = oForm.name;
+
+	sFormId = oForm.name;				this.gtrace("oForm의 name : sFormId---->"+sFormId, gtrcPos);
+										this.gtrace("sFormId에 'win'을 포함하는지에 따라 (팝업 / workform)을 구분함", gtrcPos);
 	if( sFormId.indexOf("win") > -1 ){
 		//팝업과 workform구분
 		sFormId = oForm.form.div_work.form.name;
+										this.gtrace("팝업이므로 oForm 의 div_work의 이름을 다시 가져옴 sFormId : "+sFormId, gtrcPos);
+	}else{			
+										this.gtrace("팝업이 아니므로 sFormId는 그대로 "+sFormId, gtrcPos);
 	}
 	
-	var otf = objGrid.parent.parent;
+	var otf = objGrid.parent.parent;	this.gtrace(objGrid.name+"의 parent.parent는 otf : " +otf.name, gtrcPos);
+										this.gtrace(otf.name+"이 탭페이지인지 확인 : " +(otf instanceof nexacro.Tabpage), gtrcPos);
 	if( otf instanceof nexacro.Tabpage){
 		//탭안에 그리드가 있을경우
 		sFormId += "_" + otf.parent.name +"_"+ otf.name;
+										this.gtrace(otf.name+"이 탭페이지 이므로 : "+sFormId.name+"_"+ otf.parent.name+"_"+otf.name, gtrcPos);
 	}else if( otf instanceof nexacro.Div && otf.name != "div_work"){
 		//div안에 그리드가 있을경우
 		sFormId += "_" + otf.name;
+										this.gtrace(otf.name+"이 div안에 있으므로 : "+sFormId.name+"_"+ otf.name, gtrcPos);
 	}
-	sFormId += "_" + objGrid.name;
+	sFormId += "_" + objGrid.name;		this.gtrace("마지막 그리드의 이름을 붙임 : _"+objGrid.name, gtrcPos);
+										this.gtrace("최종 sFormId : "+sFormId, gtrcPos);
+										this.gtrace("----------------------------------------------------------------------", gtrcPos);
 	return sFormId;
 };
 

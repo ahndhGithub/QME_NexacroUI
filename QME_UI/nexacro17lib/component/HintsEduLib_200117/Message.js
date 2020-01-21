@@ -3,7 +3,6 @@
 */
 
 var pForm = nexacro.Form.prototype;
-//	var pForm = this;
 
 /**
  * @class 메세지팝업오픈
@@ -11,39 +10,28 @@ var pForm = nexacro.Form.prototype;
  * @param {Array} arrArg - 메세지에 치환될 부분은 "{0~N}"이 되고 치환값은 배열로 넘김 
  * @param {String} [strPopId] - 팝업ID(하나의 callback함수에서 중복된 메시지 처리를 할 경우 PopId구분을 위해 unique한 ID 반드시 사용)
  * @param {String} [strCallback] - 팝업콜백 (confirm성 메시지를 사용시 반드시 필요)
- * @param {String} [strMsgType] - alert / confirm 구분
-  * @return N/A
+ * @return N/A
  * @example
  * this.gfnAlert(this, "A", "확인하세요");	
  */
- pForm.gfn_alert = function (strMsgId, arrArg, strPopId, strCallback, strMsgType)
+ pForm.gfn_alert = function (strMsgId, arrArg, strPopId, strCallback)
 {
-											var gtrcPos = "Message.xjs.gfn_alert";
     var objApp = pForm.gfn_getApplication();
 
-	//	if(objApp.gds_message.findRow("MSG_ID", strMsgId) < 0) return false;
-												this.gtrace("strMsgId------>"+strMsgId,gtrcPos);
-												this.gtrace("gds_Language.findRow------>"+objApp.gds_Language.findRow("DEFAULT_LANG", strMsgId), gtrcPos);
-	
-	//	메세지셋에 없으면 strMsgId를 그대로 출력 하도록 수정하기 위해 아래 막음
-	//	if(objApp.gds_Language.findRow("DEFAULT_LANG", strMsgId) < 0) return false;
-	
-	// var strMsg = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TEXT");
-	var strMsg = objApp.gds_Language.lookup("DEFAULT_LANG", strMsgId, "LANGUAGE");
-												this.gtrace("strMsg------>"+strMsg, gtrcPos);
-		strMsg = this.gfn_nvl(strMsg, strMsgId);	//	메세지셋에 없으면 strMsgId를 그대로 출력
-    //	if(this.gfn_isNull(strMsg)) strMsg = "확인";
+	if(objApp.gds_message.findRow("MSG_ID", strMsgId) < 0) return false;
+	var strMsg = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TEXT");
+
+    if(this.gfn_isNull(strMsg)) strMsg = "확인";
 	
     // 줄바꿈 변경
 	strMsg = strMsg.replace(/\\n/g, String.fromCharCode(10));
 	strMsg = pForm.gfn_convertMessage(strMsg, arrArg);
-												this.gtrace("strMsg------>"+strMsg, gtrcPos);
-//    trace("strMsg : " + strMsg);
-//	var strMsgType = objApp.gds_Language.lookup("DEFAULT_LANG", strMsgId, "MSG_TYPE");	
-
-	if(this.gfn_isNull(strPopId)) strPopId = strMsgId;
-	if(this.gfn_isNull(strMsgType)) strMsgType = "A";	// 기본 alert 으로 세팅
 	
+//    trace("strMsg : " + strMsg);
+	var strMsgType = objApp.gds_message.lookup("MSG_ID", strMsgId, "MSG_TYPE");	
+	if(this.gfn_isNull(strPopId)) strPopId = strMsgId;
+	
+	var strMsgUrl ="";
 	switch(strMsgType) {
 		case "A":
 			strMsgUrl = "Comm::Comm_Alert.xfdl";
@@ -94,11 +82,9 @@ pForm.gfn_convertMessage = function(msg, values)
 pForm.gfn_getMessage = function(sMsgId, arrArg) 
 {
     var objApp = pForm.gfn_getApplication();
-	//	if(objApp.gds_message.findRow("MSG_ID", sMsgId) < 0) return false;
-	if(objApp.gds_Language.findRow("DEFAULT_LANG", sMsgId) < 0) return false;
+	if(objApp.gds_message.findRow("MSG_ID", sMsgId) < 0) return false;
 	
-	//	var sMsg = objApp.gds_message.lookup("MSG_ID", sMsgId, "MSG_TEXT");
-	var sMsg = objApp.gds_Language.lookup("DEFAULT_LANG", sMsgId, "LANGUAGE");
+	var sMsg = objApp.gds_message.lookup("MSG_ID", sMsgId, "MSG_TEXT");
 	// 줄바꿈 변경
 	sMsg = sMsg.replace(/\\n/g, String.fromCharCode(10));
 	sMsg =  pForm.gfn_convertMessage(sMsg, arrArg);	
@@ -114,9 +100,9 @@ pForm.gfn_getWord = function (sWord)
 {
 	var objApp 	  = this.gfn_getApplication();
 	var sVal = sWord;
-	var nRow = objApp.gds_Language.findRow("DEFAULT_LANG",sWord);
+	var nRow = objApp.gds_word.findRow("WORD_ID",sWord);
 	if (nRow != -1){
-		sVal = objApp.gds_Language.getColumn(nRow, "LANGUAGE");
+		sVal = objApp.gds_word.getColumn(nRow, "KR");
 	}
 	return sVal;
 };

@@ -1,6 +1,5 @@
 ﻿
 var pForm = nexacro.Form.prototype;
-//var pForm = this;
 
 /**
  * @class 해당 콤포넌트의 form으로 부터의 경로를 구하는 함수
@@ -79,35 +78,24 @@ pForm.gfn_monthCalClose = function(obj)
 
 pForm.gfn_openMultiCombo = function(obj)
 {
-		var gtrcPos = "Comp.xjs.gfn_openMultiCombo";
-							this.gtrace("● 멀티콤보라이브러리 : gfn_openMultiCombo"				, gtrcPos);
-	this.gfn_getParentForm();	// 공통화폼의 경우 무조건 실행
-
-				
-				this.gtrace(" - this.sParentFormGetTxt	--->"+this.sParentFormGetTxt	, gtrcPos);
-				this.gtrace(" - this.oFrmParnt.name    --->"+this.oFrmParnt.name		, gtrcPos);
-				this.gtrace(" - this.oDivParnt.name    --->"+this.oDivParnt.name		, gtrcPos);
-				this.gtrace(" - this.oTargetGrid       --->"+this.oTargetGrid			, gtrcPos);
-				this.gtrace(" - this.oTargetDs         --->"+this.oTargetDs				, gtrcPos);
-				this.gtrace(" - this.sInitCompVisEna   --->"+this.sInitCompVisEna		, gtrcPos);
-	
     if(this.gfn_isNull(obj.u_innerdataset) || this.gfn_isNull(obj.u_codecolumn) || this.gfn_isNull(obj.u_datacolumn)){
         this.alert("innerdataset error");
         return;
     }
 
-	//	var objDs = this.all[obj.u_innerdataset];
-    var objDs = this.oFrmParnt.all[obj.u_innerdataset];
-    if(this.gfn_isNull(objDs)){		
-			this.alert("innerdataset error");
+    var objDs = this.all[obj.u_innerdataset];
+    if(this.gfn_isNull(objDs)){
+        this.alert("innerdataset error");
         return;
     }
+
 
     // obj : Combo Object
     // 컴포넌트의 Full 경로: Formid.Combo00 or Formid.Div00.form.Combo00
     // 맨 앞쪽에 Formid 제거, "."을 "_"로 변경(컴포넌트ID에 "." 설정 불가)
     // PopupDiv 생성시 Pdv_
     // Dataset  생성시 ds_
+    
     var sFullPath = this.gfn_getCompId(obj)     
 	var sFormId   = this.name;    
     var compPath  = sFullPath.substr(sFormId.length+1);    //Combo00 or Div00.form.Combo00
@@ -115,7 +103,6 @@ pForm.gfn_openMultiCombo = function(obj)
 
     //1. Combo InnerDataset 생성        
     var sDsId = "ds_" + compid;   // innerdataset id는 "ds_"+ComboID로 지정 ds_Combo00    
-
     var objComboDs = this.all[sDsId];
 	if(this.gfn_isNull(objComboDs)) {		
 		objComboDs = new Dataset();
@@ -218,7 +205,7 @@ pForm.gfn_openMultiCombo = function(obj)
         }        
         objPdv.set_height(nGridRow0 + (nGridRow1 * displayCnt) + 2);
     }
-    obj.set_text("선택");
+    obj.set_text("선택");    
 	objPdv.trackPopupByComponent(obj, 0, obj.height);
 }
 
@@ -227,19 +214,10 @@ pForm._pdvClose = function(obj, e)
 {
 //    trace(obj.uDs);     //object dataset
 //    trace(obj.uCombo);  //object combo
-	this.gfn_getParentForm();	// 공통화폼의 경우 무조건 실행
 
-				
-				trace(" - this.sParentFormGetTxt	--->"+this.sParentFormGetTxt);
-				trace(" - this.oFrmParnt.name    --->"+this.oFrmParnt.name		);
-				trace(" - this.oDivParnt.name    --->"+this.oDivParnt.name		);
-				trace(" - this.oTargetGrid       --->"+this.oTargetGrid			);
-				trace(" - this.oTargetDs         --->"+this.oTargetDs			);
-				trace(" - this.sInitCompVisEna   --->"+this.sInitCompVisEna		);
-				
 	var arrTextList  = [];
 	var arrValueList = [];
-
+			
 	for(var i=0; i<obj.uDs.getRowCount(); i++)
 	{
 		if(obj.uDs.getColumn(i, "mComboChk") == "1"){
@@ -249,23 +227,9 @@ pForm._pdvClose = function(obj, e)
 	}
 
 	this.gfn_setComboText(obj.uCombo, arrTextList, arrValueList);
-
-	if (!this.gfn_isNull(obj.uCallback)){		//	trace("obj.uCombo.name--->"+obj.uCombo.name);
-												//	trace("obj.uCallback------>"+obj.uCallback);
-												//	trace("this.oFrmParnt.lookupFunc(obj.uCallback)--->"+this.oFrmParnt.lookupFunc(obj.uCallback));
-												//	trace("this.lookupFunc(obj.uCallback)--->"+this.lookupFunc(obj.uCallback));
-												//	trace("this.parent.lookupFunc(obj.uCallback)--->"+this.parent.lookupFunc(obj.uCallback));
-												//	trace("this.parent.parent.lookupFunc(obj.uCallback)--->"+this.parent.parent.lookupFunc(obj.uCallback));
-												//	trace("this.parent.form.lookupFunc(obj.uCallback)--->"+this.parent.form.lookupFunc(obj.uCallback));
-												//	trace("this.parent.form.parent.lookupFunc(obj.uCallback)--->"+this.parent.form.parent.lookupFunc(obj.uCallback));
-												
-												//	trace("this.parent.form.parent.parent.lookupFunc(obj.uCallback)--->"+this.parent.form.parent.parent.lookupFunc(obj.uCallback));
-												//	trace(this.name);
-												
-	eval(obj.uCallback+"(obj.uCombo, arrTextList, arrValueList)"); 
-
-		//	this.lookupFunc(obj.uCallback).call(obj.uCombo); 
-		//	eval("this.oFrmParnt.form."+obj.uCallback+"()");
+	
+	if (!this.gfn_isNull(obj.uCallback)){
+		this.lookupFunc(obj.uCallback).call(obj.uCombo); 
 	}
 };
 
@@ -340,14 +304,14 @@ pForm.gfn_getCommCode = function()
         }
 
         sCodeType = strDs.substr(strDs.length-4, 4);   //ds_C003...
-        objApp.gds_CommCode.filter("CodeGroup =='" + sCodeType + "'");
-        objDs.copyData(objApp.gds_CommCode, true);
-        objApp.gds_CommCode.filter("");
+        objApp.gds_comCode.filter("GROUP =='" + sCodeType + "'");
+        objDs.copyData(objApp.gds_comCode, true);
+        objApp.gds_comCode.filter("");
         if (!this.gfn_isNull(sType)){
             if (sType != 2)	{
                 objDs.insertRow(0);
-                objDs.setColumn(0, "Code", (sType == 0 ? "ALL" : ""));
-                objDs.setColumn(0, "CodeName", (sType == 0 ? "ALL" : "Selected..."));
+                objDs.setColumn(0, "CODE", (sType == 0 ? "ALL" : ""));
+                objDs.setColumn(0, "CODE_NAME", (sType == 0 ? "ALL" : "Selected..."));
             }
         }
         

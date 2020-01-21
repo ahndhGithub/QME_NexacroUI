@@ -5,14 +5,10 @@
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Tab id="TabMain" taborder="1" tabindex="0" left="8" top="146" bottom="107" right="8" border="1px solid gray,1px solid gray,1px solid gray,1px solid gray">
           <Tabpages>
-            <Tabpage id="TabpagePOList" text="POList" formscrolltype="none" griduserproperty="">
+            <Tabpage id="TabpagePOList" text="POList" formscrolltype="none">
               <Layouts>
                 <Layout>
-                  <Div id="DivBtnAddDel_GridPoList00" taborder="0" text="" left="10" top="6" width="218" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" InitCompVisEna="0:0:0,1:1:1"/>
-                  <Div id="DivBtnFormat" taborder="1" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
-                  <Div id="DivBtnGfilter" taborder="2" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
-                  <Button id="Button00" taborder="3" text="Button00" left="111" top="167" width="240" height="36" onclick="TabMain_TabpagePOList_Button00_onclick" visible="true"/>
-                  <Grid id="GridPoList" taborder="4" left="8" top="44" binddataset="ds_POList" right="8" bottom="8">
+                  <Grid id="GridPoList" left="10" top="42" right="10" summarytype="top" showselection="true" griduserproperty="!sort,status,checkbox,!no,export,colfix,rowfix,filter,initial,!cellcopypase,!cellcopy,!colhide,!personal,!subsum,!seltype" bottom="7" taborder="0" visible="true" autoupdatetype="itemselect" cellsizingtype="col" binddataset="ds_POList">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -72,9 +68,12 @@
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
+                          <Row band="head" size="24"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
@@ -134,6 +133,9 @@
                           <Cell col="53" text="GMTMATNR"/>
                           <Cell col="54" text="POSNR"/>
                           <Cell col="55" text="LOT_NO"/>
+                          <Cell col="56" text="Column63"/>
+                          <Cell col="57" text="Column64"/>
+                          <Cell col="58" text="Column65"/>
                         </Band>
                         <Band id="body">
                           <Cell text="bind:Status"/>
@@ -192,10 +194,17 @@
                           <Cell col="53" text="bind:GMTMATNR"/>
                           <Cell col="54" text="bind:POSNR"/>
                           <Cell col="55" text="bind:LOT_NO"/>
+                          <Cell col="56" text="bind:Column63"/>
+                          <Cell col="57" text="bind:Column64"/>
+                          <Cell col="58" text="bind:Column65"/>
                         </Band>
                       </Format>
                     </Formats>
                   </Grid>
+                  <Div id="DivBtnAddDel_GridPoList00" taborder="1" text="" left="10" top="6" width="218" height="35" url="Comm::cmmGridAddDelButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" InitCompVisEna="0:0:0,1:1:1"/>
+                  <Div id="DivBtnFormat" taborder="2" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
+                  <Div id="DivBtnGfilter" taborder="3" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
+                  <Button id="Button00" taborder="4" text="Button00" left="111" top="167" width="240" height="36" onclick="TabMain_TabpagePOList_Button00_onclick" visible="true"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -569,8 +578,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button01" taborder="6" text="Button01" left="35" top="430" width="490" height="50" onclick="Button01_onclick" visible="false"/>
-        <Button id="Button02" taborder="7" text="Button02" left="126" top="279" width="204" height="31" onclick="Button02_onclick" visible="false"/>
+        <Button id="Button01" taborder="6" text="Button01" left="35" top="430" width="490" height="50" onclick="Button01_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
@@ -589,7 +597,6 @@ this.COMBO_SET_STR = "ds_cmbPaymentTerms"	+"#"+"ZTERM"		+" "
 					;  
 
 var GridPoList = this.TabMain.TabpagePOList.form.GridPoList;
-
 /********************************************************************************************
 @desc	3. OnLoad
 ********************************************************************************************/
@@ -629,6 +636,7 @@ this.tfn_getPoListHistoryLoad = function(){
 	this.ds_POHistory.clearData();
 	//	this.ds_in.setColumn(0, "p_osno1", "1126195724");
 	this.ds_in.setColumn(0, "p_user_id", this.gfn_getApplication().gds_User.getColumn(0, "USER_ID"));
+
 	//	http://nyc.panpacific.co.kr/QMENexacroSvr/common/commonAction.ppc
 	//	http://203.229.231.124/QMENexacroSvr/common/commonAction.ppc
 	//	AppSvr	JSP	-- http://nyc.panpacific.co.kr/QMENexacroSvr/
@@ -875,14 +883,6 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
 this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.ds_POList.filter("(USAGE=='')");
-};
-
-this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	//	trace(this.gfn_getCompId(obj));
-	//	this.test_func();
-	//	trace(this.gfn_getApplication());
-	trace(this.gfn_getParentForm());
 };
 ]]></Script>
     <Objects>
@@ -1697,497 +1697,7 @@ this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_POList_backup" useclientlayout="true" oncolumnchanged="ds_POList_oncolumnchanged">
-        <ColumnInfo>
-          <Column id="Status" type="STRING" size="256"/>
-          <Column id="Message" type="STRING" size="256"/>
-          <Column id="VBELN" type="STRING" size="256" sumtext="" description=""/>
-          <Column id="CENTER_NM" type="STRING" size="256"/>
-          <Column id="TYPE" type="STRING" size="256"/>
-          <Column id="GMT_ITEM" type="STRING" size="256"/>
-          <Column id="ZTERM" type="STRING" size="256" sumtext="" description=""/>
-          <Column id="DOC_TYPE" type="STRING" size="256" sumtext="" description=""/>
-          <Column id="SUPPLIER_CODE1" type="STRING" size="256" sumtext="" description=""/>
-          <Column id="SUPPLIER_NAME" type="STRING" size="256"/>
-          <Column id="PO_DESC" type="STRING" size="256"/>
-          <Column id="MATNR" type="STRING" size="256"/>
-          <Column id="USAGE" type="STRING" size="256"/>
-          <Column id="BUYER_ITEM_CD" type="STRING" size="256"/>
-          <Column id="MTL_ITEM" type="STRING" size="256"/>
-          <Column id="GMT_COL" type="STRING" size="256"/>
-          <Column id="GMTColorcode" type="STRING" size="256"/>
-          <Column id="COLOR" type="STRING" size="256"/>
-          <Column id="SIZE" type="STRING" size="256"/>
-          <Column id="OS_MENGE" type="FLOAT" size="256"/>
-          <Column id="UNIT" type="STRING" size="256"/>
-          <Column id="PO_MENGE" type="STRING" size="256"/>
-          <Column id="REMAIN_MENGE" type="FLOAT" size="256"/>
-          <Column id="MEINS" type="STRING" size="256"/>
-          <Column id="PRICE" type="STRING" size="256"/>
-          <Column id="PEINH" type="STRING" size="256"/>
-          <Column id="L_NETWR" type="STRING" size="256"/>
-          <Column id="CURRENCY" type="STRING" size="256"/>
-          <Column id="PR_MENGE" type="STRING" size="256"/>
-          <Column id="PURCGRP" type="STRING" size="256"/>
-          <Column id="WEBRE" type="STRING" size="256"/>
-          <Column id="OS_PRICE" type="STRING" size="256"/>
-          <Column id="OS_PEINH" type="STRING" size="256"/>
-          <Column id="L_WAERK" type="STRING" size="256"/>
-          <Column id="OS_AMOUNT" type="STRING" size="256"/>
-          <Column id="DELIVERY_DATE" type="STRING" size="256"/>
-          <Column id="UEBTO" type="STRING" size="256"/>
-          <Column id="UNTTO" type="STRING" size="256"/>
-          <Column id="DeliveryLocation" type="STRING" size="256"/>
-          <Column id="Forwarder" type="STRING" size="256"/>
-          <Column id="BuyerCode" type="STRING" size="256"/>
-          <Column id="INCO1" type="STRING" size="256"/>
-          <Column id="Remark" type="STRING" size="256"/>
-          <Column id="CENTER_CD" type="STRING" size="256"/>
-          <Column id="SORT_NUM" type="STRING" size="256"/>
-          <Column id="CRT" type="STRING" size="256"/>
-          <Column id="MSGBN" type="STRING" size="256"/>
-          <Column id="MTL_SIZE_KEY" type="STRING" size="256"/>
-          <Column id="MTL_COLOR_KEY" type="STRING" size="256"/>
-          <Column id="GOODS_MOV" type="STRING" size="256"/>
-          <Column id="MTL_ITEM_CD" type="STRING" size="256"/>
-          <Column id="ITEM_CD" type="STRING" size="256"/>
-          <Column id="OSSTS" type="STRING" size="256"/>
-          <Column id="GMTMATNR" type="STRING" size="256"/>
-          <Column id="POSNR" type="STRING" size="256"/>
-          <Column id="LOT_NO" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000239</Col>
-            <Col id="SUPPLIER_NAME">PAXAR(CHINA)LIMITED</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831904</Col>
-            <Col id="USAGE">eas label</Col>
-            <Col id="MTL_ITEM">EAS label</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">536</Col>
-            <Col id="UNIT">PCS</Col>
-            <Col id="REMAIN_MENGE">536</Col>
-            <Col id="MEINS">PCS</Col>
-            <Col id="PRICE">56</Col>
-            <Col id="PEINH">1,000</Col>
-            <Col id="L_NETWR">30</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">536</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">56</Col>
-            <Col id="OS_PEINH">1000</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">FOB-Free on board</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">140</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556680</Col>
-            <Col id="MTL_COLOR_KEY">201911051556679</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556678</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178355</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">30</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">30</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">30</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">20</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556668</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178364</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">122</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">122</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">122</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">30</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556666</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178362</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">150</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">150</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">150</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">40</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556664</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178360</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">137</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">137</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">137</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">50</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556663</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178359</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">90</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">90</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">90</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">60</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556662</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178358</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">31</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">31</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">31</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">70</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556665</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178361</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831901</Col>
-            <Col id="USAGE">SIZE LABEL</Col>
-            <Col id="MTL_ITEM">ATATSPY00Y</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">24</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">24</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">15</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">87</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">24</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">15</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">80</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556667</Col>
-            <Col id="MTL_COLOR_KEY">201911051556661</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556660</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178363</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000580</Col>
-            <Col id="SUPPLIER_NAME">SHANGHAI SML CO.,LTD.</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831900</Col>
-            <Col id="USAGE">MAIN LABEL</Col>
-            <Col id="MTL_ITEM">ATATMPY00D</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">572</Col>
-            <Col id="UNIT">EA</Col>
-            <Col id="REMAIN_MENGE">572</Col>
-            <Col id="MEINS">EA</Col>
-            <Col id="PRICE">38</Col>
-            <Col id="PEINH">1,000</Col>
-            <Col id="L_NETWR">21</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">572</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PRICE">38</Col>
-            <Col id="OS_PEINH">1000</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">EXW-Ex Works</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">110</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556659</Col>
-            <Col id="MTL_COLOR_KEY">201911051556658</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556657</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178357</Col>
-          </Row>
-          <Row>
-            <Col id="VBELN">1126195724</Col>
-            <Col id="CENTER_NM">VPC</Col>
-            <Col id="TYPE">VERP</Col>
-            <Col id="GMT_ITEM">126126126</Col>
-            <Col id="SUPPLIER_CODE1">0033000957</Col>
-            <Col id="SUPPLIER_NAME">NEPTUNE TRADING SERVICING CO.,LTD</Col>
-            <Col id="PO_DESC">ALL</Col>
-            <Col id="MATNR">VA010831903</Col>
-            <Col id="USAGE">MOBILON TAPE</Col>
-            <Col id="MTL_ITEM">MOBILON TAEP @ SD</Col>
-            <Col id="GMT_COL">ALL</Col>
-            <Col id="OS_MENGE">292</Col>
-            <Col id="UNIT">YD</Col>
-            <Col id="REMAIN_MENGE">292</Col>
-            <Col id="MEINS">YD</Col>
-            <Col id="PEINH">100</Col>
-            <Col id="L_NETWR">1</Col>
-            <Col id="CURRENCY">USD-USD</Col>
-            <Col id="PR_MENGE">292</Col>
-            <Col id="PURCGRP">126</Col>
-            <Col id="OS_PEINH">100</Col>
-            <Col id="L_WAERK">USD</Col>
-            <Col id="DELIVERY_DATE">2018-11-09</Col>
-            <Col id="UEBTO">0</Col>
-            <Col id="UNTTO">0</Col>
-            <Col id="INCO1">DDU-Delivered Duty Unpaid</Col>
-            <Col id="CENTER_CD">1000</Col>
-            <Col id="SORT_NUM">130</Col>
-            <Col id="CRT">C</Col>
-            <Col id="MSGBN">3</Col>
-            <Col id="MTL_SIZE_KEY">201911051556677</Col>
-            <Col id="MTL_COLOR_KEY">201911051556676</Col>
-            <Col id="GOODS_MOV">0</Col>
-            <Col id="MTL_ITEM_CD">201911051556675</Col>
-            <Col id="ITEM_CD">201911051556634</Col>
-            <Col id="OSSTS">C</Col>
-            <Col id="GMTMATNR">A061483</Col>
-            <Col id="POSNR">000010</Col>
-            <Col id="LOT_NO">201911050178367</Col>
-          </Row>
-        </Rows>
-      </Dataset>
-      <Dataset id="ds_POList" oncolumnchanged="ds_POList_oncolumnchanged">
+      <Dataset id="ds_POList">
         <ColumnInfo>
           <Column id="Status" type="STRING" size="256"/>
           <Column id="Message" type="STRING" size="256"/>
@@ -2245,6 +1755,9 @@ this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="GMTMATNR" type="STRING" size="256"/>
           <Column id="POSNR" type="STRING" size="256"/>
           <Column id="LOT_NO" type="STRING" size="256"/>
+          <Column id="Column63" type="STRING" size="256"/>
+          <Column id="Column64" type="STRING" size="256"/>
+          <Column id="Column65" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

@@ -5,14 +5,16 @@
 	"license": "",
 	"scripts": [
         "HintsEduLib/Comp.js",
+        "HintsEduLib/Excel.js",
         "HintsEduLib/Frame.js",
+        "HintsEduLib/Grid.js",
+        "HintsEduLib/GridFilter.js",
+        "HintsEduLib/Message.js",
+        "HintsEduLib/Popup.js",
+		"HintsEduLib/QmeNexa.js",
+        "HintsEduLib/Transaction.js",
         "HintsEduLib/Util.js",
 		"HintsEduLib/Util_adh.js",
-        "HintsEduLib/Transaction.js",
         "HintsEduLib/Validation.js",
-        "HintsEduLib/Popup.js",
-        "HintsEduLib/Message.js",
-        "HintsEduLib/Grid.js",
-        "HintsEduLib/Excel.js",
 	]
 }

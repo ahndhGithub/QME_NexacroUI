@@ -1,6 +1,6 @@
 ﻿
 var pForm  = nexacro.Form.prototype;
- 
+
 /************************************************************************************************
  * @ Application 오브젝트를 반환하는 메소드
  * @param  none
@@ -11,7 +11,6 @@ pForm.gfn_getApplication = function()
 	var objApp = nexacro.getApplication();	
 	return objApp;
 }
-
 
 /**
 * @class frame open <br>
@@ -27,15 +26,15 @@ pForm.gfn_formOnLoad = function(objForm)
 
 	for(var i=0; i<nLength; i++)
 	{
-
 		if(arrComp[i] instanceof nexacro.Div){
 			this.gfn_formOnLoad(arrComp[i].form); //재귀함수
 		}
 		else if(arrComp[i] instanceof nexacro.Tab){
 			var nPages = arrComp[i].tabpages.length;			
 			for(var j=0; j<nPages;j++)
-			{			
+			{
 				this.gfn_formOnLoad(arrComp[i].tabpages[j].form); //재귀함수
+				this.gfn_setLanguage(arrComp[i]);	//	탭의 다국어
 			}
 		}
 		else{
@@ -51,9 +50,13 @@ pForm.gfn_formOnLoad = function(objForm)
             if (arrComp[i] instanceof nexacro.Combo){
                 if(arrComp[i].u_type == "multi"){
 					arrComp[i].addEventHandler("ondropdown", this.gfn_openMultiCombo, this);
-                }
+                }else{
+					arrComp[i].set_index(0);	//	콤보이면 무조건 0번째를 선택
+				}
             }
-            
+			
+			//다국어
+				this.gfn_setLanguage(arrComp[i]);
 		}
 	}
    
@@ -233,3 +236,82 @@ pForm.gfn_getServerUrl = function()
 	return urlPath;
 };
 
+/////////////////////////////////////////////////////////////////
+// method name		: 
+// description		: Obj : arrComp[i]
+// parameter		: 
+// return			: 
+/////////////////////////////////////////////////////////////////
+pForm.gfn_setLanguage = function(Obj, rName)
+{
+														var gtrcPos = "Frame.xjs.gfn_setLanguage";
+	var gds_Language 	= this.gfn_getApplication().gds_Language;										//	this.gtrace("gds_Language---->"+gds_Language.name, gtrcPos);
+	var LanguageKey 	= nexacro.getApplication().gds_QmeLogonInfo.getColumn(0, "LanguageKey");	//	this.gtrace("LanguageKey---->"+LanguageKey, gtrcPos);
+	
+	if(	Obj instanceof nexacro.Button
+	|| 	Obj instanceof nexacro.Static			
+	|| 	Obj instanceof nexacro.CheckBox			 
+	|| 	Obj instanceof nexacro.GroupBox
+	) 
+	{															//	this.gtrace("<----instanceof nexacro.Button,Static,CheckBox,GroupBox---->", gtrcPos);
+ 		if(!this.gfn_isNull(Obj.name)){                			//	this.gtrace("Obj.name---->"+Obj.name, gtrcPos);
+
+			//id 기준 : Obj.name    /  text기준 : Obj.text
+//			var tmpStr = gds_Language.lookup("DEFAULT_LANG", Obj.name, "LANGUAGE");	if(Obj.name=="StaticSalesOrder"){ this.gtrace("tmpStr---->"+tmpStr, gtrcPos);}
+			var tmpStr = gds_Language.lookup("DEFAULT_LANG", Obj.text, "LANGUAGE");	if(Obj.name=="StaticSalesOrder"){ this.gtrace("tmpStr---->"+tmpStr, gtrcPos);}
+			
+			if(!this.gfn_isNull(tmpStr))
+			{
+				Obj.set_tooltiptext(tmpStr);
+				Obj.set_text(tmpStr);
+			}
+		}
+ 	}
+	else if(Obj instanceof nexacro.Grid) 
+	{
+																//	this.gtrace("<----instanceof nexacro.Grid---->", gtrcPos);
+																//	this.gtrace("Obj.name---->"+Obj.name, gtrcPos);
+																//	this.gtrace("<----Obj.getCellCount(HEAD)---->"+Obj.getCellCount("HEAD"), gtrcPos);
+		for(var j = 0; j < Obj.getCellCount("HEAD"); j++)
+		{
+													//	if(j==0) this.gtrace("Obj.name-->"+Obj.name, gtrcPos);
+			var sHeadText = Obj.getCellProperty("HEAD", j, "text");
+							
+ 			if(!this.gfn_isNull(sHeadText)) {
+								//	if(Obj.name=="GridPoList00") this.gtrace("sHeadText-->"+sHeadText, gtrcPos);
+				var tmpStr = gds_Language.lookup("DEFAULT_LANG", sHeadText, "LANGUAGE");
+								//	if(Obj.name=="GridPoList00") this.gtrace("findRow-->"+gds_Language.findRow("WORD_ID=='"+sHeadText+"'"), gtrcPos);
+								//	if(Obj.name=="GridPoList00") this.gtrace("tmpStr-->"+tmpStr, gtrcPos);
+				if(!this.gfn_isNull(tmpStr))
+				{
+					Obj.setCellProperty("HEAD", j, "text", tmpStr);
+					Obj.setCellProperty("HEAD", j, "tooltiptext", tmpStr);
+				}
+			}
+		}
+	}
+	else if(Obj instanceof nexacro.Tab)
+	{
+										this.gtrace("<----instanceof nexacro.Tab---->", gtrcPos);
+										this.gtrace("Obj.getTabpageCount()---->"+Obj.getTabpageCount(), gtrcPos);
+		for(var j = 0; j < Obj.getTabpageCount(); j++)
+		{
+			var sTpageTxt = Obj.tabpages[j].text;
+			if(!this.gfn_isNull(sTpageTxt)) {
+										this.gtrace("sTpageTxt-->"+sTpageTxt, gtrcPos);
+				var tmpStr = gds_Language.lookup("DEFAULT_LANG", sTpageTxt, "LANGUAGE");
+										this.gtrace("tmpStr-->"+tmpStr, gtrcPos);
+				if(!this.gfn_isNull(tmpStr)) Obj.tabpages[j].set_text(tmpStr);
+			}
+		}
+	}
+	// Calendar language
+	else if (Obj instanceof nexacro.Calendar)
+	{
+			 if(LanguageKey == "EN") Obj.set_locale("en_US");
+		else if(LanguageKey == "KO") Obj.set_locale("ko_KR");
+		else if(LanguageKey == "CN") Obj.set_locale("ja_JP");
+		else if(LanguageKey == "JP") Obj.set_locale("ja_JP");
+		else Obj.set_locale("en_US");
+	}
+}

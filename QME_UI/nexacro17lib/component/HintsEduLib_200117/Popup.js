@@ -3,7 +3,6 @@
 */
 
 var pForm = nexacro.Form.prototype;
-//var pForm = this;
 
 /**
  * @class 팝업오픈

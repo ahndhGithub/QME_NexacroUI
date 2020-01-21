@@ -6,6 +6,7 @@ include "Src_HintsEduLib::Grid.xjs";
 include "Src_HintsEduLib::GridFilter.xjs";
 include "Src_HintsEduLib::Message.xjs";
 include "Src_HintsEduLib::Popup.xjs";
+
 include "Src_HintsEduLib::Transaction.xjs";
 include "Src_HintsEduLib::Util.xjs";
 include "Src_HintsEduLib::Validation.xjs";

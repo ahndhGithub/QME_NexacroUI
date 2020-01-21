@@ -3,6 +3,7 @@
 */
 
 var pForm = nexacro.Form.prototype;
+// var pForm = this;
 
 /************************************************************************************************
 * String 및 Util 관련
@@ -2194,3 +2195,61 @@ pForm.gfn_getAge = function(brtYmd, stdYmd)
 
 	return retVal;	
 };
+
+ /**********************************************************************************
+ * Function Name:  gfn_DsCommCode
+ * Description  : Dataset 공통코드 처리
+ * Arguments    :  bFirstSel    : 첫번째 Row select 여부 (true/false)
+				   sCd          : 코드명
+				 sName        : 명칭
+				 sFirstGB     : 첫번째 값 구분 ('':row추가 안함, 'A':ALL, 'S':Select, 'B':빈 ROW추가)				   
+ * Return       : 팝업창
+ **********************************************************************************/
+pForm.gfn_DsCommCode = function(objDs, sComGrp, bFirstSel, sFirstGB, sComp)
+{	
+	// 0. 공통코드 얻기
+	this.gfn_getCommCode(objDs, sComGrp, false);
+	
+	// 1. 첫 번째Row 추가
+	this.gfn_SetFirstRow(objDs, "Code", "CodeName", sFirstGB);
+	
+	// 2. 첫 번째값 선택 여부
+	if (bFirstSel == true){
+		objDs.set_rowposition(0);
+	}
+	
+	// 3. 첫 번째값 선택 여부
+	if(!this.gfn_isNull(sComp)) {
+		sComp.set_index(0);
+	}
+};
+
+ /**********************************************************************************
+ * Function Name:  gfn_SetFirstRow
+ * Description  : Dataset 처리
+ * Arguments    : 				   
+ * Return       : 
+ **********************************************************************************/
+pForm.gfn_SetFirstRow = function(objDs, sCd, sName, sFirstGB){
+	if (sFirstGB == 'A'){
+		objDs.insertRow(0);
+		objDs.setColumn(0, sCd  , '');
+		objDs.setColumn(0, sName, '<-All->');
+	}else if (sFirstGB == 'S'){
+		objDs.insertRow(0);
+		objDs.setColumn(0, sCd  , '');
+		objDs.setColumn(0, sName, '<-Select->');
+	}else if (sFirstGB == 'S '){
+		if (objDs.rowcount > 0){
+			objDs.insertRow(0);
+			objDs.setColumn(0, sCd  , '');
+			objDs.setColumn(0, sName, '<-Select->');
+		}
+	}else if (sFirstGB == 'B'){
+		objDs.insertRow(0);
+		objDs.setColumn(0, sCd  , '');
+		objDs.setColumn(0, sName, '');
+	}
+	
+	objDs.set_rowposition(0);
+}
