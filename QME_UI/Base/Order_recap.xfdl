@@ -92,7 +92,7 @@
             <Tabpage id="TabpageStyle" text="Style">
               <Layouts>
                 <Layout>
-                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" binddataset="ds_listStyle" cellsizingtype="col" onvscroll="TabOrderRecap_TabpageStyle_GridStyle_onvscroll" wheelscrollrow="5">
+                  <Grid id="GridStyle" taborder="0" left="8" top="10" right="22" bottom="9" griduserproperty="no,!status,!checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype" binddataset="ds_listStyle" cellsizingtype="col" onvscroll="TabOrderRecap_TabpageStyle_GridStyle_onvscroll" wheelscrollrow="5">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -1065,7 +1065,7 @@
         <Button id="Button00_00" taborder="7" text="Output Clear" width="209" height="35" onclick="Button00_onclick" right="0" bottom="0" visible="false"/>
         <Button id="Button01" taborder="8" text="테스트트랜" left="387" top="175" width="103" height="25" onclick="Button01_onclick"/>
         <Button id="Button02" taborder="9" text="일반테스트" left="500" top="175" width="103" height="25" onclick="Button02_onclick" visible="true"/>
-        <Grid id="GridTrace" taborder="6" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="340" tempuserproperty="" oncellclick="Grid01_oncellclick">
+        <Grid id="GridTrace" taborder="6" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="340" tempuserproperty="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -1160,8 +1160,6 @@ this.fn_reset = function()
 		this.ds_in.setColumn(0, "p_perf_date", this.gfn_getDate());
 		//	this.ds_in.setColumn(0, "p_radio", this.DivCondition.form.CheckBoxShipment.falsevalue);
 
-// 		this.DivCondition.form.RadioSewing.readonly    = true;
-// 		this.DivCondition.form.Calendar00.readonly = true;
 	}
 }
 
@@ -1316,11 +1314,12 @@ this.fn_UiControl = function(iRbVal)
 				//sewing
 				this.DivCondition.form.RadioSewing.set_readonly(true);
 				this.ds_in.setColumn(0, "p_sewi_type", "SEWING");
+				this.ds_in.setColumn(0, "p_perf_date", "");
 				
 				//buydate
-				this.DivCondition.form.div_calFromToBuyDate.set_enable(false);		
 				this.ds_in.setColumn(0, "p_buy_date_sta", "");
 				this.ds_in.setColumn(0, "p_buy_date_end", "");
+				this.DivCondition.form.div_calFromToBuyDate.set_enable(false);
 			break;
 		
 		case "6" : 	// 생산
@@ -1347,11 +1346,12 @@ this.fn_UiControl = function(iRbVal)
 				//sewing
 				this.DivCondition.form.RadioSewing.set_readonly(true);
 				this.ds_in.setColumn(0, "p_sewi_type", "SEWING");
+				this.ds_in.setColumn(0, "p_perf_date", "");
 				
 				//buydate
-				this.DivCondition.form.div_calFromToBuyDate.set_enable(false);
 				this.ds_in.setColumn(0, "p_buy_date_sta", "");
 				this.ds_in.setColumn(0, "p_buy_date_end", "");
+				this.DivCondition.form.div_calFromToBuyDate.set_enable(false);
 				
 			break;
 
@@ -1361,12 +1361,6 @@ this.fn_UiControl = function(iRbVal)
 /********************************************************************************************/
 /**   9. 이벤트(Event) 처리                                                                 */
 /********************************************************************************************/
-// 
-// this.DivCondition_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
-// {
-// 	this.fn_UiControl();
-// };
-
 this.ds_in_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
 	if(e.columnid == "p_radio"){
@@ -1528,18 +1522,6 @@ this.ds_listStyle_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro
 // 	trace("Eco.getClientHeight--->"+Eco.XComp.PositionSize.getClientHeight(GridStyle));
 // 	
 // 	trace("this.ds_listStyle.rowposition--->"+this.ds_listStyle.rowposition);
-};
-
-this.Grid01_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
-{
-	trace("obj.tempuserproperty--->"+obj.tempuserproperty);
-	if(obj.tempuserproperty=="FRONT"){
-		obj.sendToBack();
-		obj.tempuserproperty="BACK"
-	}else{
-		obj.bringToFront();
-		obj.tempuserproperty="FRONT"
-	}
 };
 
 this.ButtonTrace_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

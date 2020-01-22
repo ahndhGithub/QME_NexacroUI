@@ -35,18 +35,10 @@ this.oBindListCol 			;
 var ds_SearchConditionType = this.gfn_getApplication().gds_SearchConditionType;
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-			var gtrcPos = "Comm_SearchConditionFromTo.xfdl.form_onload";
+	var gtrcPos = "Comm_SearchConditionFromTo.xfdl.form_onload";
+	
 	// 0.선언
 	var sEvFrm;
-	
-	{	//	1. 스콥 확인용
-// 											this.gtrace("this.parent.form.name--->"+this.parent.form.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.name--->"+this.parent.form.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.name--->"+this.parent.form.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.name, gtrcPos);
-// 											this.gtrace("this.parent.form.parent.parent.parent.parent.parent.parent.name--->"+this.parent.form.parent.parent.parent.parent.parent.parent.name, gtrcPos);
-	}
 	
 	{	//	2. 상위 폼 찾아 오기
 		sEvFrm = "this.parent.form.parent.parent";		//왜 parent를 두번 써야 하는 것인가 ??
@@ -67,13 +59,51 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 		this.oBindListCol			= nexacro.trim(this.gfn_nvl(arrUserProp[4],""));                    this.gtrace("oBindListCol--->"+this.oBindListCol, gtrcPos);
 	}
 	
+	{
+		// oncolumnchanged 이벤트 추가
+		this.oBindDs.addEventHandler("oncolumnchanged", this.fn_parentDsChanged, this);
+	}
+	
 	{	//  9. 기본호출 ( 그리드, 초기화 )
 		//	this.gfn_formOnLoad(this);
 		this.fn_init();
 	}
-			
-			this.gtrace("<-------------------END------------------->", gtrcPos);
 };
+
+this.fn_parentDsChanged = function(objDs, e)
+{
+		var gtrcPos = "Comm_SearchConditionFromTo.xfdl.fn_parentDsChanged";
+			this.gtrace("● 온컬럼체인지드 : fn_parentDsChanged", gtrcPos);
+// 	var arrFromStr 	= ["_sta","1"];	//나중에...
+// 	var arrToStr 	= ["_end","2"];
+// 	var arrListStr 	= ["_list"];
+	
+	var sColId 		= e.columnid;					this.gtrace("sColId --->"+sColId 	,gtrcPos);
+	if(sColId==this.oBindFromCol
+	|| sColId==this.oBindToCol
+	|| sColId==this.oBindListCol)
+	{
+		var iFromNdx 	= sColId.indexOf("_sta");		this.gtrace("iFromNdx --->"+iFromNdx 	,gtrcPos);
+			iFromNdx = (iFromNdx==-1?sColId.indexOf("1"):iFromNdx);
+		var iToNdx		= sColId.indexOf("_end");		this.gtrace("iToNdx	--->"+iToNdx		,gtrcPos);
+			iToNdx = (iToNdx==-1?sColId.indexOf("2"):iToNdx);
+		var iListNdx	= sColId.indexOf("_list");		this.gtrace("iListNdx --->"+iListNdx	,gtrcPos);
+		var sFromToList = (iFromNdx > -1 ? "From" : (iToNdx > -1 ? "To" : (iListNdx > -1 ? "List" : null)));
+		
+		var setDsCol;
+		switch(sFromToList){
+			case "From" : 	setDsCol = this.oBindFromCol;	break;
+			case "To" 	: 	setDsCol = this.oBindToCol;		break;
+			case "List" : 	setDsCol = this.oBindListCol;	break;
+			default : break;
+		}
+
+		if(setDsCol == e.columnid)
+		{
+			this.ds_FromTo.setColumn(0, sFromToList, e.newvalue);
+		}
+	}
+}
 
 /**
 * @description 초기화

@@ -12,7 +12,7 @@
                   <Div id="DivBtnFormat" taborder="1" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
                   <Div id="DivBtnGfilter" taborder="2" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
                   <Button id="Button00" taborder="3" text="Button00" left="111" top="167" width="240" height="36" onclick="TabMain_TabpagePOList_Button00_onclick" visible="true"/>
-                  <Grid id="GridPoList" taborder="4" left="8" top="44" binddataset="ds_POList" right="8" bottom="8">
+                  <Grid id="GridPoList" taborder="4" left="8" top="44" binddataset="ds_POList" right="8" bottom="8" griduserproperty="no,status,checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -466,25 +466,10 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid02" taborder="6" left="0" height="100" binddataset="ds_PoSave_in" bottom="0" right="0">
+        <Grid id="Grid02" taborder="6" left="0" height="100" binddataset="ds_in" bottom="0" right="0">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -505,72 +490,68 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="P_VBELN"/>
-                <Cell col="1" text="P_ZTERM"/>
-                <Cell col="2" text="P_BSART"/>
-                <Cell col="3" text="P_LIFNR"/>
-                <Cell col="4" text="P_MATNR"/>
-                <Cell col="5" text="P_USAGE"/>
-                <Cell col="6" text="P_BUYER_ITEM_CD"/>
-                <Cell col="7" text="P_TXZ01"/>
-                <Cell col="8" text="P_J_3ASIZE"/>
-                <Cell col="9" text="P_MENGE"/>
-                <Cell col="10" text="P_NETPR"/>
-                <Cell col="11" text="P_PEINH"/>
-                <Cell col="12" text="P_NETWR"/>
-                <Cell col="13" text="P_WAERS"/>
-                <Cell col="14" text="P_EKGRP"/>
-                <Cell col="15" text="P_WEBRE"/>
-                <Cell col="16" text="P_UEBTO"/>
-                <Cell col="17" text="P_UNTTO"/>
-                <Cell col="18" text="P_INCO1"/>
-                <Cell col="19" text="P_BUKRS"/>
-                <Cell col="20" text="P_MTL_SIZE_KEY"/>
-                <Cell col="21" text="P_MTL_COLOR_KEY"/>
-                <Cell col="22" text="P_MTL_ITEM_CD"/>
-                <Cell col="23" text="P_VBELP"/>
-                <Cell col="24" text="P_WERKS"/>
-                <Cell col="25" text="P_EKORG"/>
-                <Cell col="26" text="P_CRUD"/>
-                <Cell col="27" text="P_LOEKZ"/>
-                <Cell col="28" text="P_USER_ID"/>
+                <Cell text="p_mandt"/>
+                <Cell col="1" text="p_osno1"/>
+                <Cell col="2" text="p_osno2"/>
+                <Cell col="3" text="p_osno_list"/>
+                <Cell col="4" text="p_matnr1"/>
+                <Cell col="5" text="p_matnr2"/>
+                <Cell col="6" text="p_matnr_list"/>
+                <Cell col="7" text="p_mtl_matnr1"/>
+                <Cell col="8" text="p_mtl_matnr2"/>
+                <Cell col="9" text="p_mtl_matnr_list"/>
+                <Cell col="10" text="p_supply1"/>
+                <Cell col="11" text="p_supply2"/>
+                <Cell col="12" text="p_supply_list"/>
+                <Cell col="13" text="p_user_id"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:P_VBELN"/>
-                <Cell col="1" text="bind:P_ZTERM"/>
-                <Cell col="2" text="bind:P_BSART"/>
-                <Cell col="3" text="bind:P_LIFNR"/>
-                <Cell col="4" text="bind:P_MATNR"/>
-                <Cell col="5" text="bind:P_USAGE"/>
-                <Cell col="6" text="bind:P_BUYER_ITEM_CD"/>
-                <Cell col="7" text="bind:P_TXZ01"/>
-                <Cell col="8" text="bind:P_J_3ASIZE"/>
-                <Cell col="9" text="bind:P_MENGE"/>
-                <Cell col="10" text="bind:P_NETPR"/>
-                <Cell col="11" text="bind:P_PEINH"/>
-                <Cell col="12" text="bind:P_NETWR"/>
-                <Cell col="13" text="bind:P_WAERS"/>
-                <Cell col="14" text="bind:P_EKGRP"/>
-                <Cell col="15" text="bind:P_WEBRE"/>
-                <Cell col="16" text="bind:P_UEBTO"/>
-                <Cell col="17" text="bind:P_UNTTO"/>
-                <Cell col="18" text="bind:P_INCO1"/>
-                <Cell col="19" text="bind:P_BUKRS"/>
-                <Cell col="20" text="bind:P_MTL_SIZE_KEY"/>
-                <Cell col="21" text="bind:P_MTL_COLOR_KEY"/>
-                <Cell col="22" text="bind:P_MTL_ITEM_CD"/>
-                <Cell col="23" text="bind:P_VBELP"/>
-                <Cell col="24" text="bind:P_WERKS"/>
-                <Cell col="25" text="bind:P_EKORG"/>
-                <Cell col="26" text="bind:P_CRUD"/>
-                <Cell col="27" text="bind:P_LOEKZ"/>
-                <Cell col="28" text="bind:P_USER_ID"/>
+                <Cell text="bind:p_mandt"/>
+                <Cell col="1" text="bind:p_osno1"/>
+                <Cell col="2" text="bind:p_osno2"/>
+                <Cell col="3" text="bind:p_osno_list"/>
+                <Cell col="4" text="bind:p_matnr1"/>
+                <Cell col="5" text="bind:p_matnr2"/>
+                <Cell col="6" text="bind:p_matnr_list"/>
+                <Cell col="7" text="bind:p_mtl_matnr1"/>
+                <Cell col="8" text="bind:p_mtl_matnr2"/>
+                <Cell col="9" text="bind:p_mtl_matnr_list"/>
+                <Cell col="10" text="bind:p_supply1"/>
+                <Cell col="11" text="bind:p_supply2"/>
+                <Cell col="12" text="bind:p_supply_list"/>
+                <Cell col="13" text="bind:p_user_id"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Button id="Button01" taborder="6" text="Button01" left="35" top="430" width="490" height="50" onclick="Button01_onclick" visible="false"/>
         <Button id="Button02" taborder="7" text="Button02" left="126" top="279" width="204" height="31" onclick="Button02_onclick" visible="false"/>
+        <Grid id="GridTrace" taborder="8" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="340" tempuserproperty="">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="158"/>
+                <Column size="363"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="TrcSeq"/>
+                <Cell col="1" text="TrcName"/>
+                <Cell col="2" text="TrcId"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:TrcSeq"/>
+                <Cell col="1" text="bind:TrcName"/>
+                <Cell col="2" text="bind:TrcId"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="ButtonTrace" taborder="9" text="Trc." height="25" onclick="ButtonTrace_onclick" right="18" width="40" top="145"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
@@ -598,13 +579,8 @@ var GridPoList = this.TabMain.TabpagePOList.form.GridPoList;
  */
 this.fn_reset = function()
 {
-														var gtrcPos	=	"POList.xfdl.fn_reset";
-														//	this.gtrace("nexacro.getApplication().gds_User.saveXML()->"+nexacro.getApplication().gds_User.saveXML(), gtrcPos);
-	// 기본 데이터 가져오기 + 콤보세팅 + word
-	{	 
-		this.gfn_getAllInitData();
-	}
-	
+	var gtrcPos	=	"POList.xfdl.fn_reset";
+
 	// 데이터셋 초기화 ( clear+addrow )
 	{
 		//조건
@@ -616,7 +592,7 @@ this.fn_reset = function()
 /********************************************************************************************
 @desc	4. Validation 처리
 ********************************************************************************************/
-
+this.fn_validation_savePO
 /********************************************************************************************
 @desc	5. 서비스 호출(Transaction)
 ********************************************************************************************/
@@ -662,6 +638,10 @@ this.tfn_savePO = function(){
  		for(var i=0; i < this.ds_POList.rowcount ;i++){
  			var iAdRp = this.ds_PoSave_in.addRow();
 								 											//	this.gtrace("내부param(i)--->"+i, gtrcPos);
+			//
+			this.ds_PoSave_in.setColumn(iAdRp, "P_USER_BU", this.gfn_getUser().BU_CD) ;
+			this.ds_PoSave_in.setColumn(iAdRp, "ROW_ID", iAdRp) ;
+			
 			for(var j=0; j < this.ds_paramMap.rowcount; j++){
 				
 				var sLdCol = this.ds_paramMap.getColumn(j, "LoadCol");		//	if(i==0)	this.gtrace("내부param(sLdCol)--->"+sLdCol, gtrcPos);
@@ -681,6 +661,7 @@ this.tfn_savePO = function(){
 					//	PO생성 구분자 "C" 입력
 					this.ds_PoSave_in.setColumn(iAdRp, "P_CRUD", "C") ;
 					
+					
 					this.gfn_setUser(this.ds_PoSave_in, "P_USER_ID");
 				}
 			}
@@ -690,7 +671,6 @@ this.tfn_savePO = function(){
 	}
 	
 	this.gtrace("트랜잭션데이터셋(ds_PoSave_in.saveXML)--->"+this.ds_PoSave_in.saveXML(), gtrcPos);
-	trace("트랜잭션데이터셋(ds_PoSave_in.saveXML)--->"+this.ds_PoSave_in.saveXML(), gtrcPos);
 	
 	var sSvcID 			= "savePO";
 	var sURL 			= "AppSvr::po/savePO.ppc";
@@ -731,7 +711,9 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 					
 				break;
 			case "savePO":
-					//	trace(this.ds_result_savePO.saveXML());
+					//	"00000000000" : 모두 PO생성 안됐다는 것임.
+					trace(this.ds_result_savePO.saveXML());
+					
 					var sMSG		=	this.ds_result_savePO.getColumn(0, "O_MSG");	//	trace("sMSG--->"+sMSG);
 					var sLIFNR		=	this.ds_result_savePO.getColumn(0, "O_LIFNR");	//	trace("sLIFNR--->"+sLIFNR);
 					var sVBELN		=	this.ds_result_savePO.getColumn(0, "O_VBELN");	//	trace("sVBELN--->"+sVBELN);
@@ -765,18 +747,17 @@ this.cfn_search = function()
 {
 	{	//Validation 세팅 : Sample_Validation.xfdl 참조
 		this.gfn_clearValidation(this.ds_in);
-		//this.gfn_setValidation(this.ds_in, "p_osno1", "오더번호", "required,length:10");
 		
-		if(this.gfn_isNull(this.ds_in.getColumn(0, "p_osno_list"))){
+		//SalesOrder
+		if(this.gfn_isNull(this.ds_in.getColumn(0, "p_osno_list"))){	
 			this.gfn_setValidation(this.ds_in, "p_osno1", "Sales Order", "required");
 		}
 		
+		//STYLE
 // 		if(this.gfn_isNull(this.ds_in.getColumn(0, "p_matnr1_list"))){
 // 			this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "required");
 // 		}
 	}
-
-	// trace("this.gfn_validation(this.ds_in, 'A')--->"+this.gfn_validation(this.ds_in, "A"));
 	
   	if(this.gfn_validation(this.ds_in, "A"))	// Validation == true 이면
 	{
@@ -805,6 +786,11 @@ this.cfn_del = function()
  */
 this.cfn_save = function()
 {
+	for(var i=0 ; i < this.ds_POList.rowcount ; i++)
+	{
+		
+	}
+	
 	this.tfn_savePO();
 };
 
@@ -821,7 +807,8 @@ this.cfn_save = function()
  */
 this.formOnload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.fn_reset();
+	// 기본 데이터 가져오기 + 콤보세팅 + word
+	this.gfn_getAllInitData();		//	콜백에서 fn_reset을 실행함.
 };
 
 this.POList_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
@@ -832,7 +819,13 @@ this.POList_onclick = function(obj:nexacro.Form,e:nexacro.ClickEventInfo)
 
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_in.setColumn(0, "p_osno1", 1126195724);
+// 	this.ds_in.setColumn(0, "p_osno1", "1126195724");
+// 	this.ds_in.setColumn(0, "p_matnr1", "126126126");
+	
+	this.ds_in.setColumn(0, "p_osno1", "1202195746");
+	//	this.ds_in.setColumn(0, "p_matnr1", "126126126");
+	
+
 	this.DivCrudButton.form.btn_search.click();
 };
 
@@ -883,6 +876,11 @@ this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	//	this.test_func();
 	//	trace(this.gfn_getApplication());
 	trace(this.gfn_getParentForm());
+};
+
+this.ButtonTrace_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.GridTrace.set_visible(!this.GridTrace.visible);
 };
 ]]></Script>
     <Objects>
@@ -953,6 +951,7 @@ this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       </Dataset>
       <Dataset id="ds_PoSave_in" useclientlayout="true">
         <ColumnInfo>
+          <Column id="ROW_ID" type="STRING" size="256"/>
           <Column id="P_VBELN" type="STRING" size="256"/>
           <Column id="P_ZTERM" type="STRING" size="256"/>
           <Column id="P_BSART" type="STRING" size="256"/>
@@ -2189,6 +2188,7 @@ this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       </Dataset>
       <Dataset id="ds_POList" oncolumnchanged="ds_POList_oncolumnchanged">
         <ColumnInfo>
+          <Column id="ROW_ID" type="STRING" size="256"/>
           <Column id="Status" type="STRING" size="256"/>
           <Column id="Message" type="STRING" size="256"/>
           <Column id="VBELN" type="STRING" size="256"/>

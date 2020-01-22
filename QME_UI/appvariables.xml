@@ -952,6 +952,16 @@
       </ColumnInfo>
       <Rows>
         <Row>
+          <Col id="TrcId">Comm_SearchConditionFromTo.xfdl.fn_parentDsChanged</Col>
+          <Col id="TrcName">조건온컬럼체인지드</Col>
+          <Col id="TrcSeq">92</Col>
+        </Row>
+        <Row>
+          <Col id="TrcId">Comm_CalFromTo.xfdl.fn_parentDsChanged</Col>
+          <Col id="TrcName">달력온컬럼체인지드</Col>
+          <Col id="TrcSeq">93</Col>
+        </Row>
+        <Row>
           <Col id="TrcId">Util.xjs.gfn_SetFirstRow</Col>
           <Col id="TrcName">콤보첫줄삽입</Col>
           <Col id="TrcSeq">94</Col>

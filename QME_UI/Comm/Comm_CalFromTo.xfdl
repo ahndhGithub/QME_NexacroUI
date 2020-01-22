@@ -42,31 +42,17 @@ include "Src_HintsEduLib::All_EduLib.xjs";
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 		var gtrcPos = "Comm_CalFromTo.xfdl.form_onload";
-	//	this.gfn_formOnLoad(this);
-	this.gfn_getParentForm();	// 공통화폼의 경우 무조건 실행
-	this.gtrace("this.gfn_getTopLevelForm().name------->"+this.gfn_getTopLevelForm(this).name, gtrcPos);
-	this.gtrace("this.parent.name------->"+this.parent.name, gtrcPos);
+			this.gtrace("● 콤보공통화 : Comm_ComboConditionFromTo"				, gtrcPos);
 	
-				this.gtrace("● 콤보공통화 : Comm_ComboConditionFromTo"				, gtrcPos);
-				this.gtrace(" - this.sParentFormGetTxt	--->"+this.sParentFormGetTxt	, gtrcPos);
-				this.gtrace(" - this.oFrmParnt.name    --->"+this.oFrmParnt.name		, gtrcPos);
-				this.gtrace(" - this.oDivParnt.name    --->"+this.oDivParnt.name		, gtrcPos);
-				this.gtrace(" - this.oTargetGrid       --->"+this.oTargetGrid			, gtrcPos);
-				this.gtrace(" - this.oTargetDs         --->"+this.oTargetDs				, gtrcPos);
-				this.gtrace(" - this.sInitCompVisEna   --->"+this.sInitCompVisEna		, gtrcPos);
-	{	//	3. userproperty를 통해 전역에 타입,바인딩DS,이너Ds,컬럼 세팅
-		var arrUserProp	=	this.oDivParnt.SearchConditionType.split(",");				this.gtrace(" - arrUserProp--->"			+arrUserProp				, gtrcPos);
-				//	이렇게 해도 된다 --> //	var arrUserProp = this._getUserProperty("this.parent","SearchConditionType");	this.gtrace(" - this.parent.SearchConditionType--->"+this.parent.SearchConditionType, gtrcPos);
-				//	Ex : Year,ds_in,ds_cmcdYear,p_year_sta,p_year_end
-		
-		this.sSearchConditionType  	= nexacro.trim(this.gfn_nvl(arrUserProp[0],""));									this.gtrace(" - sSearchConditionType--->"	+this.sSearchConditionType	, gtrcPos);
-		this.oBindDs  				= eval(this.sParentFormGetTxt+"."+nexacro.trim(this.gfn_nvl(arrUserProp[1]),""));  	this.gtrace(" - oBindDs.name--->"			+this.oBindDs.name			, gtrcPos);
-		this.oBindFromCol 			= nexacro.trim(this.gfn_nvl(arrUserProp[2],""));                           			this.gtrace(" - oBindFromCol--->"			+this.oBindFromCol			, gtrcPos);
-		this.oBindToCol 			= nexacro.trim(this.gfn_nvl(arrUserProp[3],""));                          			this.gtrace(" - oBindToCol--->"				+this.oBindToCol			, gtrcPos);
-		this.oBindListCol			= nexacro.trim(this.gfn_nvl(arrUserProp[4],""));    								this.gtrace(" - oBindListCol--->"			+this.oBindListCol			, gtrcPos);
+	this.oFrmParnt				=	this.gfn_getTopLevelForm(this);					this.gtrace("부모폼(this.gfn_getTopLevelForm().name)------->"+this.gfn_getTopLevelForm(this).name, gtrcPos);
+		//SearchConditionType : BuyDate,ds_in,p_buy_date_sta,p_buy_date_end		:	구분값, DS  ,바인딩컬럼(시작,끝)
+	var strSearchCond 			= 	this.parent.SearchConditionType;				this.gtrace("부모속성(this.parent.SearchConditionType)--------->"+this.parent.SearchConditionType, gtrcPos);
+ 	var arrUserProp				=	strSearchCond.split(",");
+	this.oBindDs  				= 	this.oFrmParnt.lookup(arrUserProp[1]);			this.gtrace("바인딩Ds(this.oBindDs)--------->"+this.oBindDs.name, gtrcPos);
+	this.oBindFromCol 			= 	nexacro.trim(this.gfn_nvl(arrUserProp[2],""));  this.gtrace("시작컬럼(this.oBindFromCol)---->"+this.oBindFromCol, gtrcPos);
+	this.oBindToCol 			= 	nexacro.trim(this.gfn_nvl(arrUserProp[3],""));  this.gtrace("끝컬럼(this.oBindToCol)-------->"+this.oBindToCol	 , gtrcPos);
+// 	this.oBindListCol			= 	nexacro.trim(this.gfn_nvl(arrUserProp[4],""));  this.gtrace("리스트컬럼(this.oBindListCol--->"+this.oBindListCol, gtrcPos);
 
-	}
-	
 	{
 		// oncolumnchanged 이벤트 추가
 		this.oBindDs.addEventHandler("oncolumnchanged", this.fn_parentDsChanged, this);
@@ -77,29 +63,31 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 
 this.fn_parentDsChanged = function(objDs, e)
 {
-	var sColId 		= e.columnid;
-	var iFromNdx 	= sColId.indexOf("_sta");	//	trace("iFromNdx --->"+iFromNdx 	);
-	var iToNdx		= sColId.indexOf("_end");	//	trace("iToNdx	--->"+iToNdx	);
-	var iListNdx	= sColId.indexOf("_list");	//	trace("iListNdx --->"+iListNdx	);
-	var sFromToList = (iFromNdx > -1 ? "From" : (iToNdx > -1 ? "To" : (iListNdx > -1 ? "List" : null)));
-	
-// 	if(this.gfn_isNull(sFromToList)){
-// 		sFromToList = this.ds_ColIdType.lookup("ColName", sColId, "FTL_Type");
-// 	}
-	
-	//	trace("sFromToList--->"+sFromToList);
-	
-	var setDsCol;
-	switch(sFromToList){
-		case "From" : 	setDsCol = this.oBindFromCol;	break;
-		case "To" 	: 	setDsCol = this.oBindToCol;		break;
-		case "List" : 	setDsCol = this.oBindListCol;	break;
-		default : break;
-	}
-
-	if(setDsCol == e.columnid)
+		var gtrcPos = "Comm_CalFromTo.xfdl.fn_parentDsChanged";
+			this.gtrace("● 온컬럼체인지드 : fn_parentDsChanged", gtrcPos);
+										
+	var sColId 		= e.columnid;					this.gtrace("sColId --->"+sColId 	,gtrcPos);
+	if(sColId==this.oBindFromCol
+	|| sColId==this.oBindToCol
+	|| sColId==this.oBindListCol)
 	{
-		this.ds_FromTo.setColumn(0, sFromToList, e.newvalue);
+		var iFromNdx 	= sColId.indexOf("_sta");		this.gtrace("iFromNdx --->"+iFromNdx 	,gtrcPos);
+		var iToNdx		= sColId.indexOf("_end");		this.gtrace("iToNdx	--->"+iToNdx		,gtrcPos);
+		var iListNdx	= sColId.indexOf("_list");		this.gtrace("iListNdx --->"+iListNdx	,gtrcPos);
+		var sFromToList = (iFromNdx > -1 ? "From" : (iToNdx > -1 ? "To" : (iListNdx > -1 ? "List" : null)));
+		
+		var setDsCol;
+		switch(sFromToList){
+			case "From" : 	setDsCol = this.oBindFromCol;	break;
+			case "To" 	: 	setDsCol = this.oBindToCol;		break;
+			case "List" : 	setDsCol = this.oBindListCol;	break;
+			default : break;
+		}
+
+		if(setDsCol == e.columnid)
+		{
+			this.ds_FromTo.setColumn(0, sFromToList, e.newvalue);
+		}
 	}
 }
 
@@ -278,8 +266,6 @@ this.ds_FromTo_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
     <Bind>
       <BindItem id="item0" compid="pdv_cal.form.pdv_calFrom" propid="value" datasetid="ds_FromTo" columnid="From"/>
       <BindItem id="item1" compid="pdv_cal.form.pdv_calTo" propid="value" datasetid="ds_FromTo" columnid="To"/>
-      <BindItem id="item2" compid="cal_from" propid="value" datasetid="ds_FromTo" columnid="From"/>
-      <BindItem id="item3" compid="cal_to" propid="value" datasetid="ds_FromTo" columnid="To"/>
     </Bind>
   </Form>
 </FDL>
