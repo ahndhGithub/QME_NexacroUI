@@ -943,7 +943,7 @@
         <Column id="SaveUser" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
-    <Dataset id="gds_TrcInfo">
+    <Dataset id="gds_TrcInfo" keystring="S:TrcId">
       <ColumnInfo>
         <Column id="ROW_CHK" type="STRING" size="256"/>
         <Column id="TrcSeq" type="STRING" size="256"/>

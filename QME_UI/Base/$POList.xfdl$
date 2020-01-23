@@ -12,7 +12,7 @@
                   <Div id="DivBtnFormat" taborder="1" text="" top="6" width="40" height="35" url="Comm::cmmFormatMenuButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="8"/>
                   <Div id="DivBtnGfilter" taborder="2" text="" top="6" width="40" height="35" url="Comm::cmmGridFilterButton.xfdl" targetGrid="TabMain.TabpagePOList.form.GridPoList" visible="true" right="58"/>
                   <Button id="Button00" taborder="3" text="Button00" left="111" top="167" width="240" height="36" onclick="TabMain_TabpagePOList_Button00_onclick" visible="true"/>
-                  <Grid id="GridPoList" taborder="4" left="8" top="44" binddataset="ds_POList" right="8" bottom="8" griduserproperty="no,status,checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype">
+                  <Grid id="GridPoList" taborder="4" left="8" top="44" binddataset="ds_POList" right="8" bottom="8" griduserproperty="no,status,checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -72,126 +72,129 @@
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
+                          <Column size="80"/>
                         </Columns>
                         <Rows>
-                          <Row size="24" band="head"/>
+                          <Row band="head" size="24"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="Status"/>
-                          <Cell col="1" text="Message"/>
-                          <Cell col="2" text="VBELN"/>
-                          <Cell col="3" text="CENTER_NM"/>
-                          <Cell col="4" text="TYPE"/>
-                          <Cell col="5" text="GMT_ITEM"/>
-                          <Cell col="6" text="ZTERM"/>
-                          <Cell col="7" text="DOC_TYPE"/>
-                          <Cell col="8" text="SUPPLIER_CODE1"/>
-                          <Cell col="9" text="SUPPLIER_NAME"/>
-                          <Cell col="10" text="PO_DESC"/>
-                          <Cell col="11" text="MATNR"/>
-                          <Cell col="12" text="USAGE"/>
-                          <Cell col="13" text="BUYER_ITEM_CD"/>
-                          <Cell col="14" text="MTL_ITEM"/>
-                          <Cell col="15" text="GMT_COL"/>
-                          <Cell col="16" text="GMTColorcode"/>
-                          <Cell col="17" text="COLOR"/>
-                          <Cell col="18" text="SIZE"/>
-                          <Cell col="19" text="OS_MENGE"/>
-                          <Cell col="20" text="UNIT"/>
-                          <Cell col="21" text="PO_MENGE"/>
-                          <Cell col="22" text="REMAIN_MENGE"/>
-                          <Cell col="23" text="MEINS"/>
-                          <Cell col="24" text="PRICE"/>
-                          <Cell col="25" text="PEINH"/>
-                          <Cell col="26" text="L_NETWR"/>
-                          <Cell col="27" text="CURRENCY"/>
-                          <Cell col="28" text="PR_MENGE"/>
-                          <Cell col="29" text="PURCGRP"/>
-                          <Cell col="30" text="WEBRE"/>
-                          <Cell col="31" text="OS_PRICE"/>
-                          <Cell col="32" text="OS_PEINH"/>
-                          <Cell col="33" text="L_WAERK"/>
-                          <Cell col="34" text="OS_AMOUNT"/>
-                          <Cell col="35" text="DELIVERY_DATE"/>
-                          <Cell col="36" text="UEBTO"/>
-                          <Cell col="37" text="UNTTO"/>
-                          <Cell col="38" text="DeliveryLocation"/>
-                          <Cell col="39" text="Forwarder"/>
-                          <Cell col="40" text="BuyerCode"/>
-                          <Cell col="41" text="INCO1"/>
-                          <Cell col="42" text="Remark"/>
-                          <Cell col="43" text="CENTER_CD"/>
-                          <Cell col="44" text="SORT_NUM"/>
-                          <Cell col="45" text="CRT"/>
-                          <Cell col="46" text="MSGBN"/>
-                          <Cell col="47" text="MTL_SIZE_KEY"/>
-                          <Cell col="48" text="MTL_COLOR_KEY"/>
-                          <Cell col="49" text="GOODS_MOV"/>
-                          <Cell col="50" text="MTL_ITEM_CD"/>
-                          <Cell col="51" text="ITEM_CD"/>
-                          <Cell col="52" text="OSSTS"/>
-                          <Cell col="53" text="GMTMATNR"/>
-                          <Cell col="54" text="POSNR"/>
-                          <Cell col="55" text="LOT_NO"/>
+                          <Cell text="ROW_ID"/>
+                          <Cell col="1" text="Status"/>
+                          <Cell col="2" text="Message"/>
+                          <Cell col="3" text="VBELN"/>
+                          <Cell col="4" text="CENTER_NM"/>
+                          <Cell col="5" text="TYPE"/>
+                          <Cell col="6" text="GMT_ITEM"/>
+                          <Cell col="7" text="ZTERM"/>
+                          <Cell col="8" text="DOC_TYPE"/>
+                          <Cell col="9" text="SUPPLIER_CODE1"/>
+                          <Cell col="10" text="SUPPLIER_NAME"/>
+                          <Cell col="11" text="PO_DESC"/>
+                          <Cell col="12" text="MATNR"/>
+                          <Cell col="13" text="USAGE"/>
+                          <Cell col="14" text="BUYER_ITEM_CD"/>
+                          <Cell col="15" text="MTL_ITEM"/>
+                          <Cell col="16" text="GMT_COL"/>
+                          <Cell col="17" text="GMTColorcode"/>
+                          <Cell col="18" text="COLOR"/>
+                          <Cell col="19" text="SIZE"/>
+                          <Cell col="20" text="OS_MENGE"/>
+                          <Cell col="21" text="UNIT"/>
+                          <Cell col="22" text="PO_MENGE"/>
+                          <Cell col="23" text="REMAIN_MENGE"/>
+                          <Cell col="24" text="MEINS"/>
+                          <Cell col="25" text="PRICE"/>
+                          <Cell col="26" text="PEINH"/>
+                          <Cell col="27" text="L_NETWR"/>
+                          <Cell col="28" text="CURRENCY"/>
+                          <Cell col="29" text="PR_MENGE"/>
+                          <Cell col="30" text="PURCGRP"/>
+                          <Cell col="31" text="WEBRE"/>
+                          <Cell col="32" text="OS_PRICE"/>
+                          <Cell col="33" text="OS_PEINH"/>
+                          <Cell col="34" text="L_WAERK"/>
+                          <Cell col="35" text="OS_AMOUNT"/>
+                          <Cell col="36" text="DELIVERY_DATE"/>
+                          <Cell col="37" text="UEBTO"/>
+                          <Cell col="38" text="UNTTO"/>
+                          <Cell col="39" text="DeliveryLocation"/>
+                          <Cell col="40" text="Forwarder"/>
+                          <Cell col="41" text="BuyerCode"/>
+                          <Cell col="42" text="INCO1"/>
+                          <Cell col="43" text="Remark"/>
+                          <Cell col="44" text="CENTER_CD"/>
+                          <Cell col="45" text="SORT_NUM"/>
+                          <Cell col="46" text="CRT"/>
+                          <Cell col="47" text="MSGBN"/>
+                          <Cell col="48" text="MTL_SIZE_KEY"/>
+                          <Cell col="49" text="MTL_COLOR_KEY"/>
+                          <Cell col="50" text="GOODS_MOV"/>
+                          <Cell col="51" text="MTL_ITEM_CD"/>
+                          <Cell col="52" text="ITEM_CD"/>
+                          <Cell col="53" text="OSSTS"/>
+                          <Cell col="54" text="GMTMATNR"/>
+                          <Cell col="55" text="POSNR"/>
+                          <Cell col="56" text="LOT_NO"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:Status"/>
-                          <Cell col="1" text="bind:Message"/>
-                          <Cell col="2" text="bind:VBELN"/>
-                          <Cell col="3" text="bind:CENTER_NM"/>
-                          <Cell col="4" text="bind:TYPE"/>
-                          <Cell col="5" text="bind:GMT_ITEM"/>
-                          <Cell col="6" text="bind:ZTERM"/>
-                          <Cell col="7" text="bind:DOC_TYPE"/>
-                          <Cell col="8" text="bind:SUPPLIER_CODE1"/>
-                          <Cell col="9" text="bind:SUPPLIER_NAME"/>
-                          <Cell col="10" text="bind:PO_DESC"/>
-                          <Cell col="11" text="bind:MATNR"/>
-                          <Cell col="12" text="bind:USAGE"/>
-                          <Cell col="13" text="bind:BUYER_ITEM_CD"/>
-                          <Cell col="14" text="bind:MTL_ITEM"/>
-                          <Cell col="15" text="bind:GMT_COL"/>
-                          <Cell col="16" text="bind:GMTColorcode"/>
-                          <Cell col="17" text="bind:COLOR"/>
-                          <Cell col="18" text="bind:SIZE"/>
-                          <Cell col="19" text="bind:OS_MENGE"/>
-                          <Cell col="20" text="bind:UNIT"/>
-                          <Cell col="21" text="bind:PO_MENGE"/>
-                          <Cell col="22" text="bind:REMAIN_MENGE"/>
-                          <Cell col="23" text="bind:MEINS"/>
-                          <Cell col="24" text="bind:PRICE"/>
-                          <Cell col="25" text="bind:PEINH"/>
-                          <Cell col="26" text="bind:L_NETWR"/>
-                          <Cell col="27" text="bind:CURRENCY"/>
-                          <Cell col="28" text="bind:PR_MENGE"/>
-                          <Cell col="29" text="bind:PURCGRP"/>
-                          <Cell col="30" text="bind:WEBRE"/>
-                          <Cell col="31" text="bind:OS_PRICE"/>
-                          <Cell col="32" text="bind:OS_PEINH"/>
-                          <Cell col="33" text="bind:L_WAERK"/>
-                          <Cell col="34" text="bind:OS_AMOUNT"/>
-                          <Cell col="35" text="bind:DELIVERY_DATE"/>
-                          <Cell col="36" text="bind:UEBTO"/>
-                          <Cell col="37" text="bind:UNTTO"/>
-                          <Cell col="38" text="bind:DeliveryLocation"/>
-                          <Cell col="39" text="bind:Forwarder"/>
-                          <Cell col="40" text="bind:BuyerCode"/>
-                          <Cell col="41" text="bind:INCO1"/>
-                          <Cell col="42" text="bind:Remark"/>
-                          <Cell col="43" text="bind:CENTER_CD"/>
-                          <Cell col="44" text="bind:SORT_NUM"/>
-                          <Cell col="45" text="bind:CRT"/>
-                          <Cell col="46" text="bind:MSGBN"/>
-                          <Cell col="47" text="bind:MTL_SIZE_KEY"/>
-                          <Cell col="48" text="bind:MTL_COLOR_KEY"/>
-                          <Cell col="49" text="bind:GOODS_MOV"/>
-                          <Cell col="50" text="bind:MTL_ITEM_CD"/>
-                          <Cell col="51" text="bind:ITEM_CD"/>
-                          <Cell col="52" text="bind:OSSTS"/>
-                          <Cell col="53" text="bind:GMTMATNR"/>
-                          <Cell col="54" text="bind:POSNR"/>
-                          <Cell col="55" text="bind:LOT_NO"/>
+                          <Cell text="bind:ROW_ID"/>
+                          <Cell col="1" text="bind:Status"/>
+                          <Cell col="2" text="bind:Message"/>
+                          <Cell col="3" text="bind:VBELN"/>
+                          <Cell col="4" text="bind:CENTER_NM"/>
+                          <Cell col="5" text="bind:TYPE"/>
+                          <Cell col="6" text="bind:GMT_ITEM"/>
+                          <Cell col="7" text="bind:ZTERM"/>
+                          <Cell col="8" text="bind:DOC_TYPE"/>
+                          <Cell col="9" text="bind:SUPPLIER_CODE1"/>
+                          <Cell col="10" text="bind:SUPPLIER_NAME"/>
+                          <Cell col="11" text="bind:PO_DESC"/>
+                          <Cell col="12" text="bind:MATNR"/>
+                          <Cell col="13" text="bind:USAGE"/>
+                          <Cell col="14" text="bind:BUYER_ITEM_CD"/>
+                          <Cell col="15" text="bind:MTL_ITEM"/>
+                          <Cell col="16" text="bind:GMT_COL"/>
+                          <Cell col="17" text="bind:GMTColorcode"/>
+                          <Cell col="18" text="bind:COLOR"/>
+                          <Cell col="19" text="bind:SIZE"/>
+                          <Cell col="20" text="bind:OS_MENGE"/>
+                          <Cell col="21" text="bind:UNIT"/>
+                          <Cell col="22" text="bind:PO_MENGE"/>
+                          <Cell col="23" text="bind:REMAIN_MENGE"/>
+                          <Cell col="24" text="bind:MEINS"/>
+                          <Cell col="25" text="bind:PRICE"/>
+                          <Cell col="26" text="bind:PEINH"/>
+                          <Cell col="27" text="bind:L_NETWR"/>
+                          <Cell col="28" text="bind:CURRENCY"/>
+                          <Cell col="29" text="bind:PR_MENGE"/>
+                          <Cell col="30" text="bind:PURCGRP"/>
+                          <Cell col="31" text="bind:WEBRE"/>
+                          <Cell col="32" text="bind:OS_PRICE"/>
+                          <Cell col="33" text="bind:OS_PEINH"/>
+                          <Cell col="34" text="bind:L_WAERK"/>
+                          <Cell col="35" text="bind:OS_AMOUNT"/>
+                          <Cell col="36" text="bind:DELIVERY_DATE"/>
+                          <Cell col="37" text="bind:UEBTO"/>
+                          <Cell col="38" text="bind:UNTTO"/>
+                          <Cell col="39" text="bind:DeliveryLocation"/>
+                          <Cell col="40" text="bind:Forwarder"/>
+                          <Cell col="41" text="bind:BuyerCode"/>
+                          <Cell col="42" text="bind:INCO1"/>
+                          <Cell col="43" text="bind:Remark"/>
+                          <Cell col="44" text="bind:CENTER_CD"/>
+                          <Cell col="45" text="bind:SORT_NUM"/>
+                          <Cell col="46" text="bind:CRT"/>
+                          <Cell col="47" text="bind:MSGBN"/>
+                          <Cell col="48" text="bind:MTL_SIZE_KEY"/>
+                          <Cell col="49" text="bind:MTL_COLOR_KEY"/>
+                          <Cell col="50" text="bind:GOODS_MOV"/>
+                          <Cell col="51" text="bind:MTL_ITEM_CD"/>
+                          <Cell col="52" text="bind:ITEM_CD"/>
+                          <Cell col="53" text="bind:OSSTS"/>
+                          <Cell col="54" text="bind:GMTMATNR"/>
+                          <Cell col="55" text="bind:POSNR"/>
+                          <Cell col="56" text="bind:LOT_NO"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -501,7 +504,7 @@
         </Grid>
         <Button id="Button01" taborder="6" text="Button01" left="35" top="430" width="490" height="50" onclick="Button01_onclick" visible="false"/>
         <Button id="Button02" taborder="7" text="Button02" left="126" top="279" width="204" height="31" onclick="Button02_onclick" visible="false"/>
-        <Grid id="GridTrace" taborder="8" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="false" right="0" bottom="0" top="340" tempuserproperty="">
+        <Grid id="GridTrace" taborder="8" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="true" right="0" bottom="0" top="340" tempuserproperty="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -526,7 +529,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="ButtonTrace" taborder="9" text="Trc." height="25" onclick="ButtonTrace_onclick" right="18" width="40" top="145"/>
+        <Button id="ButtonTrace" taborder="9" text="Trc. 보이기/숨기기" height="25" onclick="ButtonTrace_onclick" right="117" width="340" top="181"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
