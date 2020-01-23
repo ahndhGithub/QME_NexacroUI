@@ -35,23 +35,29 @@ pForm.gfn_clearValidation = function(objDs)
  */
 pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
 {
-			var gtrcPos = "Validation.xjs.gfn_setValidation";
+			
 	var arrValidation = new Array();
-	
+												var gtrcPos = "Validation.xjs.gfn_setValidation";
+												var sTrcColName = "Sales Order";
+												if(sColName==sTrcColName)this.gtrace("●정합성체크 Rule을 등록(gfn_setValidation)", gtrcPos);
+												if(sColName==sTrcColName)this.gtrace("입력파람(objDs.name)-->"+objDs.name, gtrcPos);
+												if(sColName==sTrcColName)this.gtrace("입력파람(sColID)-->"+sColID, gtrcPos);
+												if(sColName==sTrcColName)this.gtrace("입력파람(sColName)-->"+sColName+" ( ~에 들어갈 단어 ( '~은(는) 필수 입력 항목입니다.))' ", gtrcPos);
+												if(sColName==sTrcColName)this.gtrace("입력파람(sRule)-->"+sRule, gtrcPos);
 	// title이 2개가 올 경우 구분자를 변경
 	// checkrule == "equalto" || checkrule == "fromto" || checkrule == "comparebig" || checkrule == "comparesmall"
 	//if (sColName.indexOf(",") != -1) sColName = nexacro.replaceAll(sColName, ",", "^_^");
-										this.gtrace("this.gfn_isNull(objDs.validationRuleSet)-->"+this.gfn_isNull(objDs.validationRuleSet), gtrcPos);
 
 	// Dataset에 RuleSet이 존재하면
+										if(sColName==sTrcColName)this.gtrace("RULE SET 널체크(this.gfn_isNull(objDs.validationRuleSet))-->"+this.gfn_isNull(objDs.validationRuleSet), gtrcPos);
 	if(!this.gfn_isNull(objDs.validationRuleSet))
     {
-		arrValidation = JSON.parse(objDs.validationRuleSet); 
+		arrValidation = JSON.parse(objDs.validationRuleSet); 	if(sColName==sTrcColName)this.gtrace("RULE SET (arrValidation)-->"+arrValidation, gtrcPos);
 		for(var index in arrValidation)
 		{
 			// 기존 RuleSet에 컬럼에 대한 Rule이 존재하면 변경
 			if( arrValidation[index].name == sColID )
-			{            
+			{            										
 				arrValidation[index].title = sColName;
 				arrValidation[index].value = sRule;
 				if(""+sRule.indexOf("required") > -1){
@@ -75,7 +81,7 @@ pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
 	   ,title : sColName	// Title		: 	아이디
 	   ,value : sRule		// 정합성 Rule	:	required,length:5
 	};
-    
+					if(sColName==sTrcColName)this.gtrace("정합성체크 Rule(validationRule)-->"+validationRule, gtrcPos);
 	// RuleSet에 필수여부 추가
 	if(""+sRule.indexOf("required") > -1) {
 		validationRule.notnull = true;
@@ -83,10 +89,11 @@ pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
 	else {
 		validationRule.notnull = false;
 	}
-
-	arrValidation.push(validationRule);
+					this.gtrace("필수여부(validationRule.notnull)-->"+validationRule.notnull, gtrcPos);
+	arrValidation.push(validationRule);	if(sColName==sTrcColName)this.gtrace("룰추가(validationRule-->arrValidation)", gtrcPos);
+										
 	objDs.validationRuleSet = JSON.stringify(arrValidation);
-    
+										if(sColName==sTrcColName)this.gtrace("데이터셋 "+objDs.name+" 의 RULE SET (objDs.validationRuleSet)-->"+objDs.validationRuleSet, gtrcPos);
 };
 
 /**
@@ -98,31 +105,35 @@ pForm.gfn_setValidation = function(objDs, sColID, sColName, sRule)
 pForm.gfn_validation = function()
 {
 							var gtrcPos = "Validation.xjs.gfn_validation";
+								this.gtrace("●정합성체크(gfn_validation)", gtrcPos);
 	var nUpdateCnt = 0;
 	var targetlist  = new Array();
 	var sCheckMode   = "U";
-												this.gtrace("arguments.length--->"+arguments.length, gtrcPos);
-												this.gtrace("arguments[0].name--->"+arguments[0].name, gtrcPos);
-												this.gtrace("arguments[1]--->"+arguments[1], gtrcPos);
+												this.gtrace("입력파람(arguments.length)--->"+arguments.length, gtrcPos);
+												this.gtrace("입력파람(arguments[0].name)--->"+arguments[0].name, gtrcPos);
+												this.gtrace("입력파람(arguments[1])--->"+arguments[1], gtrcPos);
 	// Check 대상과 Check Mode(A/U)를 지정
 	for(var m=0; m<arguments.length; m++)
 	{    									//	this.gtrace("m--->"+m, gtrcPos);
 		// Check 모드(A-전체 row, U-변경된 row) 설정
+			
 		if(this.gfn_typeOf(arguments[m]) == "string")
 		{
 			if(arguments[m] == "A" || arguments[m] == "U")
 			{
-				sCheckMode = arguments[m];
+				sCheckMode = arguments[m];	this.gtrace("	Check 모드(sCheckMode)---->"+sCheckMode, gtrcPos);
 			}
 		}
 		// Check 대상 설정 : 데이타셋 or 그리드
 		else
 		{
-			targetlist.push(arguments[m]);
+			targetlist.push(arguments[m]);	this.gtrace("	Check 대상(targetlist)---->"+arguments[m].name, gtrcPos);
 		}
 	}
-
+												
 	// arguments로 넘어온 Object 만큼 정합성 체크
+											this.gtrace("정합성 체크 : arguments로 넘어온 Object 만큼", gtrcPos);
+											this.gtrace("	갯수는(targetlist.length)--->"+targetlist.length, gtrcPos);
 	for(var m=0; m<targetlist.length; m++)
 	{
 		var objDs;
@@ -142,7 +153,9 @@ pForm.gfn_validation = function()
 		else {
 			continue;
 		}
-
+												this.gtrace("오브젝트타입(sObjtype)--->"+sObjtype, gtrcPos);
+												this.gtrace("오브젝트(objDs)--->"+objDs.name, gtrcPos);
+		
 		// 데이터셋의 RuleSet
 		var arrValidation = new Array();
 		if(!this.gfn_isNull(objDs.validationRuleSet) )
@@ -152,22 +165,26 @@ pForm.gfn_validation = function()
 		else {
 			continue;
 		}
-
+												this.gtrace("(데이터셋의) RULE SET (arrValidation)--->"+arrValidation, gtrcPos);
+												
 		// 삭제된 row 정합성 체크 건수 증가
 		nUpdateCnt += parseInt(objDs.getDeletedRowCount());
+												this.gtrace("삭제된 Row갯수(nUpdateCnt)--->"+nUpdateCnt, gtrcPos);
 
 		// 데이터셋의 row 만큼 정합성 체크
 		for(var i=0; i<objDs.getRowCount(); i++)
 		{
-			var nRowType = objDs.getRowType(i);
+													this.gtrace("i--->"+i+"(데이터셋의 "+i+"번째 행 in FOR문)", gtrcPos);
+			var nRowType = objDs.getRowType(i);		this.gtrace("행타입--->"+nRowType, gtrcPos);
 
 			// 삭제된 row
 			if (nRowType == 8) {
-				++nUpdateCnt;
+				++nUpdateCnt;						this.gtrace("삭제행 nUpdateCnt증가--->"+nUpdateCnt, gtrcPos);
 				continue;
 			}
 
 			// sCheckMode에 따른 체크 대상 구분
+													this.gtrace("체크모드(sCheckMode)--->"+sCheckMode+" (A: 모든 row에 대해서 체크, U: 변경된 row에 대해서만 체크(default))", gtrcPos);
 			if (sCheckMode == "U") {
 				// 변경 안된 Row는 정합성 체크 SKIP
 				if (nRowType == 1) {
@@ -183,25 +200,27 @@ pForm.gfn_validation = function()
 			else {
 				++nUpdateCnt;
 			}
-																					//	this.gtrace("arrValidation.length--->"+arrValidation.length, gtrcPos);
+													this.gtrace("체크대상데이터셋행갯수(nUpdateCnt)--->"+nUpdateCnt, gtrcPos);
+			
 			// Rule 만큼 처리
+													this.gtrace("	RULE SET 갯수만큼 처리 (arrValidation.length)--->"+arrValidation.length, gtrcPos);
 			for(var j=0; j<arrValidation.length; j++)
 			{
-				var sColID     = arrValidation[j].name;								if(j==0)this.gtrace("sColID--->"+sColID, gtrcPos);
-				var sColName   = new String(arrValidation[j].title);				if(j==0)this.gtrace("sColName--->"+sColName, gtrcPos);
-				var sColValue  = String(objDs.getColumn(i, sColID)).trim();			if(j==0)this.gtrace("sColValue--->"+sColValue, gtrcPos);
-
+																					this.gtrace("첫번째체크룰 오브젝트만 확인(arrValidation[0]--->"+arrValidation[0], gtrcPos);
+				var sColID     = arrValidation[j].name;								if(j==0)this.gtrace("	셋파람(sColID)--->"+sColID, gtrcPos);
+				var sColName   = new String(arrValidation[j].title);				if(j==0)this.gtrace("	셋파람(sColName)--->"+sColName, gtrcPos);
+				var sColValue  = String(objDs.getColumn(i, sColID)).trim();			if(j==0)this.gtrace("	셋파람(sColValue)--->"+sColValue, gtrcPos);
 				var arrRule    = (""+arrValidation[j].value).split(","); //required,length:5
-																					if(j==0)this.gtrace("arrRule--->"+arrRule, gtrcPos);
+																					if(j==0)this.gtrace("	룰(arrRule)--->"+arrRule, gtrcPos);
 				var bNullCheck = arrValidation[j].notnull;
-																					if(j==0)this.gtrace("bNullCheck--->"+bNullCheck, gtrcPos);
+																					if(j==0)this.gtrace("	널체크할것이지(bNullCheck)--->"+bNullCheck, gtrcPos);
 				// 필수입력 체크
 				if(bNullCheck == true){		//required가 있으므로 nullCheck를 하라
-																					if(j==0)this.gtrace("this.gfn_nvl(sColValue,'')--->"+this.gfn_nvl(sColValue,""), gtrcPos);
+																					if(j==0)this.gtrace("	this.gfn_nvl(sColValue,'')--->"+this.gfn_nvl(sColValue,""), gtrcPos);
 
 				//	if(this.gfn_nvl(sColValue,"")==""){	//공백인 경우도체크 undefined인 경우는 ??
+					
 					if(this.gfn_isNull(sColValue)){
-																					if(j==0)this.gtrace("<---------------------->", gtrcPos);
 						// row 이동 및 focus 저장
 						objDs.set_rowposition(i);
 						this.validationObject = arguments[m];

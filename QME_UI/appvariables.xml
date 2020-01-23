@@ -952,6 +952,11 @@
       </ColumnInfo>
       <Rows>
         <Row>
+          <Col id="TrcId">Grid.xjs.gfn_setGrid.bindHeaderText</Col>
+          <Col id="TrcName">바인드명을헤더텍스트로</Col>
+          <Col id="TrcSeq">90</Col>
+        </Row>
+        <Row>
           <Col id="TrcSeq">91</Col>
           <Col id="TrcId">POList.xfdl.tfn_getPoListHistoryLoad</Col>
           <Col id="TrcName">POSearch트랜잭션</Col>
@@ -1163,6 +1168,10 @@
           <Col id="TrcSeq">450</Col>
         </Row>
         <Row>
+          <Col id="TrcId">POList.xfdl.callbackFunction.getPoListHistoryLoad</Col>
+          <Col id="TrcSeq">451</Col>
+        </Row>
+        <Row>
           <Col id="TrcId">Comm_SubSum.xfdl.form_onload</Col>
           <Col id="TrcSeq">460</Col>
         </Row>
@@ -1239,7 +1248,7 @@
           <Col id="TrcSeq">640</Col>
         </Row>
         <Row>
-          <Col id="TrcId">Validation.xjs.gfn_validation </Col>
+          <Col id="TrcId">Validation.xjs.gfn_validation</Col>
           <Col id="TrcSeq">650</Col>
         </Row>
         <Row>
