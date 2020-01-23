@@ -317,7 +317,7 @@ pForm.gfn_getAllInitData = function()
 pForm.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 {
 	var gtrcPos = "Util_adh.xjs.gfn_callbackFunction"
-	
+			this.gtrace("콜백서비스아이디(strSvcID)--->"+strSvcID, gtrcPos);
 	// 에러 체크 영역
 	if (nErrorCode < 0) 
 	{
@@ -365,7 +365,7 @@ pForm.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 				//테스트데이터는 삭제
 				var iTstRp = oTmpFrmDs.findRowExpr("GRID_ID=='MASTER' && LAYOUT_NM=='TEST_LAYOUT'");
 					oTmpFrmDs.deleteRow(iTstRp);
-					this.gtrace("oTmpFrmDs.saveXML---->"+oTmpFrmDs.saveXML(),gtrcPos);
+						//	this.gtrace("oTmpFrmDs.saveXML---->"+oTmpFrmDs.saveXML(),gtrcPos);
 
 					//	trace("oTmpFrmDs.getRowCount()---->"+oTmpFrmDs.getRowCount());
 				//포맺데이터가 있을 경우만 실행
@@ -481,6 +481,7 @@ pForm.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			}
 
 			//	트랜잭션을 하던 안하던 실행되는 함수
+				this.gtrace("온로드시퀀스실행", gtrcPos);
 				this.gfn_onloadSequence();
 		break;
 
@@ -492,7 +493,7 @@ pForm.gfn_callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 
 pForm.gfn_onloadSequence = function(){
 	var gtrcPos = "QmeNexa.xjs.gfn_onloadSequence"
-
+			this.gtrace("● 온로드시퀀스", gtrcPos);
 	//	타 함수의 집합으로만 구성. 순서에 집중하기 위함
 	
 
