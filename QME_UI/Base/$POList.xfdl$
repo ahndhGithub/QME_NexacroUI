@@ -582,10 +582,10 @@ this.fn_setSearchValidation = function() {
 			this.gfn_setValidation(this.ds_in, "p_osno1", "Sales Order", "required");
 		}
 		
-		//STYLE
-		if(this.gfn_isNull(this.ds_in.getColumn(0, "p_matnr1_list"))){
-			this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "required");
-		}
+// 		//STYLE
+// 		if(this.gfn_isNull(this.ds_in.getColumn(0, "p_matnr1_list"))){
+// 			this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "required");
+// 		}
 	}
 }
 
