@@ -2263,4 +2263,8 @@ pForm.gfn_SetFirstRow = function(objDs, sCd, sName, sFirstGB){
 	
 	objDs.set_rowposition(0);
 }
-]]></Script>
+
+pForm.gfn_dsLookup = function(ds, varCol, varCmpVal, strOutputColID){
+	var fRp = ds.findRow(varCol, varCmpVal);
+	return ds.getColumn(fRp, strOutputColID);
+}]]></Script>

@@ -574,43 +574,44 @@ this.fn_reset = function()
 @desc	4. Validation 처리
 *******************************************************************************************/
 this.fn_setSearchValidation = function() {
-	{	//Validation 세팅 : Sample_Validation.xfdl 참조
+	{
+		//Validation 세팅 : Sample_Validation.xfdl 참조
 		this.gfn_clearValidation(this.ds_in);
 		
 		//SalesOrder
-			this.gfn_setValidation(this.ds_in, "p_osno1", "Sales Order", "required");
-			//	this.gfn_setValidation(this.ds_in, "p_osno_list", "Sales Order", "required");
+		this.gfn_setValidation(this.ds_in, "p_osno1||p_osno_list||p_matnr1||p_matnr_list", "Sales Order", "required");
 		
-// 		//STYLE
-			//	this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "required");
-			//	this.gfn_setValidation(this.ds_in, "p_matnr_list", "Style#", "required");
+ 		//STYLE
+		//	this.gfn_setValidation(this.ds_in, "p_matnr1||p_osno_list", "Style#", "required");
 	}
 }
 
-this.fn_setSaveValidation = function() {
-
-// 	this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "CURRENCY");
-// 	this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "PEINH");
-// 	this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "SUPPLIER_CODE1");
-// 	this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "DELIVERY_DATE");
-// 	this.gfn_setValidation(this.ds_in, "p_matnr1", "Style#", "DOC_TYPE");
-
-// 	if(this.ds_POList.findRow("ROW_CHK","1") < 0 ){
-// 		this.gfn_alert("no checked data");
-// 		return false;
-// 	}
+this.fn_setSaveValidation = function()
+{
+	this.gfn_clearValidation(this.ds_POList);
 	
-	//	SAVE 필수입력값 없을경우 해당 필드 에러 메시지 (확인후 해당 필드로 이동)
-// 	for(var i = 0 ; i < this.ds_POList.rowcount ; i++){
-// NETWR	CURRENCY			
-// WAERS	ORDER_QTY
-// MENGE	PEINH
-// NETPR	SUPPLIER_CODE1
-// LIFNR	DELIVERY_DATE
-// EINDT	DOC_TYPE
-// BSART	ZTERM
-// 	}
-// 	
+	var strVldtn_01	=	"CURRENCY"		;
+	var strVldtn_02	=	"REMAIN_MENGE"	;
+	var strVldtn_03	=	"L_NETWR"		;
+	var strVldtn_04	=	"SUPPLIER_CODE1";
+	var strVldtn_05	=	"CURRENCY"		;
+	var strVldtn_06	=	"PEINH"			;
+	var strVldtn_07	=	"SUPPLIER_CODE1";
+	var strVldtn_08	=	"DELIVERY_DATE"	;
+	var strVldtn_09	=	"DOC_TYPE"		;
+	var strVldtn_10	=	"ZTERM"			;
+
+	this.gfn_setValidation(this.ds_POList, strVldtn_01, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_01, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_02, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_02, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_03, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_03, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_04, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_04, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_05, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_05, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_06, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_06, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_07, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_07, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_08, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_08, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_09, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_09, "HeaderText")	, "required");
+	this.gfn_setValidation(this.ds_POList, strVldtn_10, this.gfn_dsLookup(this.ds_grdDic, "BindCol", strVldtn_10, "HeaderText")	, "required");
+	
 }
 /********************************************************************************************
 @desc	5. 서비스 호출(Transaction)
@@ -660,7 +661,6 @@ this.tfn_savePO = function(){
 																				//	this.gtrace("내부param(i)--->"+i, gtrcPos);
 				//
 				this.ds_PoSave_in.setColumn(iAdRp, "P_USER_BU", this.gfn_getUser().BU_CD) ;
-				this.ds_PoSave_in.setColumn(iAdRp, "ROW_ID", i) ;	//	ds_POList의 행 번호를 넘긴다.
 				
 				for(var j=0; j < this.ds_paramMap.rowcount; j++){
 					
@@ -733,7 +733,7 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 				break;
 			case "savePO":
 					//	"00000000000" : 모두 PO생성 안됐다는 것임.
-					trace(this.ds_result_savePO.saveXML());
+					this.gtrace(this.ds_result_savePO.saveXML(), gtrcPos);
 					
 					var sMSG		=	this.ds_result_savePO.getColumn(0, "O_MSG");	//	trace("sMSG--->"+sMSG);
 					var sLIFNR		=	this.ds_result_savePO.getColumn(0, "O_LIFNR");	//	trace("sLIFNR--->"+sLIFNR);
@@ -793,12 +793,10 @@ this.cfn_del = function()
  */
 this.cfn_save = function()
 {
-	for(var i=0 ; i < this.ds_POList.rowcount ; i++)
+  	if(this.gfn_validation(this.ds_POList, "R"))	// R : 체크한 행에 대해서만 체크
 	{
-		
+		this.tfn_savePO();
 	}
-	
-	this.tfn_savePO();
 };
 
 /********************************************************************************************/
@@ -830,6 +828,8 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 	this.ds_in.setColumn(0, "p_matnr1", "126126126");
 	
 	this.ds_in.setColumn(0, "p_osno1", "1202195746");
+	//	this.ds_in.setColumn(0, "p_matnr1", "D087 NEW (TOP)");
+	
 	//	this.ds_in.setColumn(0, "p_matnr1", "126126126");
 	
 
@@ -882,13 +882,15 @@ this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	//	trace(this.gfn_getCompId(obj));
 	//	this.test_func();
 	//	trace(this.gfn_getApplication());
-	trace(this.gfn_getParentForm());
+	//	trace(this.gfn_getParentForm());
+	trace("-------"+this.ds_grdDic.lookup("BindCol","VBELN","ColWidth"));
 };
 
 this.ButtonTrace_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.GridTrace.set_visible(!this.GridTrace.visible);
 };
+
 ]]></Script>
     <Objects>
       <Dataset id="ds_in">
@@ -1022,13 +1024,7 @@ this.ButtonTrace_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="CODE_CD_FULL_F" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_result_savePO">
-        <ColumnInfo>
-          <Column id="O_MSG" type="STRING" size="256"/>
-          <Column id="O_LIFNR" type="STRING" size="256"/>
-          <Column id="O_VBELN" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
+      <Dataset id="ds_result_savePO"/>
       <Dataset id="ds_grdDic">
         <ColumnInfo>
           <Column id="GridId" type="STRING" size="256"/>
@@ -2195,7 +2191,6 @@ this.ButtonTrace_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       </Dataset>
       <Dataset id="ds_POList" oncolumnchanged="ds_POList_oncolumnchanged">
         <ColumnInfo>
-          <Column id="ROW_ID" type="STRING" size="256"/>
           <Column id="Status" type="STRING" size="256"/>
           <Column id="Message" type="STRING" size="256"/>
           <Column id="VBELN" type="STRING" size="256"/>

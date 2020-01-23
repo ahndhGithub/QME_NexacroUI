@@ -115,8 +115,7 @@ var ds_SearchConditionType = this.gfn_getApplication().gds_SearchConditionType;
 this.fn_reset = function()
 {
 												var gtrcPos = "PopupMultiSelect.xfdl.Form_onload";
-	//	this.gfn_formOnLoad(this);
-	this.gfn_getAllInitData();
+	this.gfn_formOnLoad(this);		//	this.gfn_getAllInitData();
     this.paramStr = this.getOwnerFrame().pStr;			this.gtrace("paramStr--->"+this.paramStr, gtrcPos);
     this.paramNum = this.getOwnerFrame().pNum;			this.gtrace("paramNum--->"+this.paramNum, gtrcPos);
     this.paramObj = this.getOwnerFrame().pObj;			this.gtrace("paramObj--->"+this.paramObj, gtrcPos);
