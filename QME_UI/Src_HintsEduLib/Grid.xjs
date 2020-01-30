@@ -102,6 +102,7 @@ pForm.gfn_setGrid = function(objGrid)
 			var sbCombodataset 			= this.ds_grdDic.getColumn(iFndRp, "bCombodataset");			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombodataset--->"+sbCombodataset, gtrcPos);}
 			var sbCombocodecol 			= this.ds_grdDic.getColumn(iFndRp, "bCombocodecol");			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombocodecol--->"+sbCombocodecol, gtrcPos);}
 			var sbCombodatacol 			= this.ds_grdDic.getColumn(iFndRp, "bCombodatacol");			if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombodatacol--->"+sbCombodatacol, gtrcPos);}
+			var sbCombotype 			= this.ds_grdDic.getColumn(iFndRp, "bCombotype");				if(sObjGridNm == sTrcGridNm && tmpcol==sTrcTmpCol)/**/{this.gtrace("sbCombotype--->"+sbCombotype, gtrcPos);}
 			var sbMaskedittype 			= this.ds_grdDic.getColumn(iFndRp, "bMaskedittype");										
 			var sbMaskeditlimitbymask 	= this.ds_grdDic.getColumn(iFndRp, "bMaskeditlimitbymask");									
 			var sbMaskeditformat		= this.ds_grdDic.getColumn(iFndRp, "bMaskeditformat");									
@@ -143,6 +144,7 @@ pForm.gfn_setGrid = function(objGrid)
 			if(!this.gfn_isNull(sbCombodataset	)) 	objGrid.setCellProperty( "body", realGridCellIndex, "combodataset"	, sbCombodataset 	);
 			if(!this.gfn_isNull(sbCombocodecol	)) 	objGrid.setCellProperty( "body", realGridCellIndex, "combocodecol"	, sbCombocodecol 	);
 			if(!this.gfn_isNull(sbCombodatacol	)) 	objGrid.setCellProperty( "body", realGridCellIndex, "combodatacol"	, sbCombodatacol 	);
+			if(!this.gfn_isNull(sbCombotype		)) 	objGrid.setCellProperty( "body", realGridCellIndex, "combotype"		, sbCombotype 		);
 		}
 	}
 

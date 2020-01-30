@@ -228,7 +228,7 @@
                       </Format>
                     </Formats>
                   </Grid>
-                  <Grid id="GridPOListHistoryName" taborder="10" width="225" height="244" binddataset="ds_ColChangeHDR" visible="false" bottom="52" left="411" griduserproperty="!checkbox,!status,!no">
+                  <Grid id="GridPOListHistoryName" taborder="10" width="225" height="244" visible="false" bottom="52" left="411" griduserproperty="!checkbox,!status,!no" binddataset="">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -255,24 +255,65 @@
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="TabpageExample" text="2.Example">
+            <Tabpage id="Tabpage3" text="PoHistory">
               <Layouts>
                 <Layout>
-                  <Button id="Button_tp2_SortComma" taborder="0" text="S:Team,Name" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42"/>
-                  <Button id="Button_tp2_GroupComma" taborder="1" text="G:Team,Name" left="349" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42"/>
-                  <Button id="Button_tp2_InitSortGroup" taborder="2" text="INIT_SortGroup" left="477" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42"/>
-                  <Button id="Button_tp2_GroupPlus" taborder="3" text="G:Team+Name" left="350" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7"/>
-                  <Button id="Button_tp2_SortPlus" taborder="4" text="S:Team+Name" left="10" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7"/>
-                  <Grid id="Grid00" left="10" top="13" right="12" summarytype="top" showselection="true" griduserproperty="!no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,subsum" bottom="82" taborder="5" binddataset="">
+                  <Grid id="GridPoList" taborder="0" left="8" top="44" binddataset="ds_POHistory" right="8" bottom="8" griduserproperty="no,status,checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
-                          <Column size="30"/>
-                          <Column size="60"/>
-                          <Column size="60"/>
-                          <Column size="100"/>
                           <Column size="80"/>
-                          <Column size="60"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
@@ -280,58 +321,139 @@
                         </Columns>
                         <Rows>
                           <Row size="24" band="head"/>
-                          <Row size="30" band="head"/>
-                          <Row size="40"/>
+                          <Row size="32"/>
                         </Rows>
                         <Band id="head">
-                          <Cell colspan="2" text="A"/>
-                          <Cell col="2" text="B"/>
-                          <Cell col="3" colspan="2" text="C"/>
-                          <Cell col="5" text="D"/>
-                          <Cell col="6" text="E"/>
-                          <Cell col="7"/>
-                          <Cell col="8"/>
-                          <Cell col="9" text="H"/>
-                          <Cell row="1" displaytype="checkboxcontrol" edittype="checkbox"/>
-                          <Cell row="1" col="1" text="팀"/>
-                          <Cell row="1" col="2" text="이름"/>
-                          <Cell row="1" col="3" text="Group"/>
-                          <Cell row="1" col="4" text="제품"/>
-                          <Cell row="1" col="5"/>
-                          <Cell row="1" col="6" text="일자"/>
-                          <Cell row="1" col="7" text="수량"/>
-                          <Cell row="1" col="8" text="금액"/>
-                          <Cell row="1" col="9" text="ABC"/>
+                          <Cell text="Status"/>
+                          <Cell col="1" text="Message"/>
+                          <Cell col="2" text="VBELN"/>
+                          <Cell col="3" text="CENTER_NM"/>
+                          <Cell col="4" text="TYPE"/>
+                          <Cell col="5" text="GMT_ITEM"/>
+                          <Cell col="6" text="ZTERM"/>
+                          <Cell col="7" text="DOC_TYPE"/>
+                          <Cell col="8" text="SUPPLIER_CODE1"/>
+                          <Cell col="9" text="SUPPLIER_NAME"/>
+                          <Cell col="10" text="PO_DESC"/>
+                          <Cell col="11" text="MATNR"/>
+                          <Cell col="12" text="USAGE"/>
+                          <Cell col="13" text="BUYER_ITEM_CD"/>
+                          <Cell col="14" text="MTL_ITEM"/>
+                          <Cell col="15" text="GMT_COL"/>
+                          <Cell col="16" text="GMTColorcode"/>
+                          <Cell col="17" text="COLOR"/>
+                          <Cell col="18" text="SIZE"/>
+                          <Cell col="19" text="OS_MENGE"/>
+                          <Cell col="20" text="UNIT"/>
+                          <Cell col="21" text="PO_MENGE"/>
+                          <Cell col="22" text="REMAIN_MENGE"/>
+                          <Cell col="23" text="MEINS"/>
+                          <Cell col="24" text="PRICE"/>
+                          <Cell col="25" text="PEINH"/>
+                          <Cell col="26" text="L_NETWR"/>
+                          <Cell col="27" text="CURRENCY"/>
+                          <Cell col="28" text="PR_MENGE"/>
+                          <Cell col="29" text="PURCGRP"/>
+                          <Cell col="30" text="WEBRE"/>
+                          <Cell col="31" text="OS_PRICE"/>
+                          <Cell col="32" text="OS_PEINH"/>
+                          <Cell col="33" text="L_WAERK"/>
+                          <Cell col="34" text="OS_AMOUNT"/>
+                          <Cell col="35" text="DELIVERY_DATE"/>
+                          <Cell col="36" text="UEBTO"/>
+                          <Cell col="37" text="UNTTO"/>
+                          <Cell col="38" text="DeliveryLocation"/>
+                          <Cell col="39" text="Forwarder"/>
+                          <Cell col="40" text="BuyerCode"/>
+                          <Cell col="41" text="INCO1"/>
+                          <Cell col="42" text="Remark"/>
+                          <Cell col="43" text="CENTER_CD"/>
+                          <Cell col="44" text="SORT_NUM"/>
+                          <Cell col="45" text="CRT"/>
+                          <Cell col="46" text="MSGBN"/>
+                          <Cell col="47" text="MTL_SIZE_KEY"/>
+                          <Cell col="48" text="MTL_COLOR_KEY"/>
+                          <Cell col="49" text="GOODS_MOV"/>
+                          <Cell col="50" text="MTL_ITEM_CD"/>
+                          <Cell col="51" text="ITEM_CD"/>
+                          <Cell col="52" text="OSSTS"/>
+                          <Cell col="53" text="GMTMATNR"/>
+                          <Cell col="54" text="POSNR"/>
+                          <Cell col="55" text="LOT_NO"/>
                         </Band>
                         <Band id="body">
-                          <Cell displaytype="checkboxcontrol" edittype="checkbox" text="bind:ROW_CHK"/>
-                          <Cell col="1" text="bind:Team" suppress="1"/>
-                          <Cell col="2" text="bind:Name" suppress="2" expandsize="22"/>
-                          <Cell col="3" text="bind:ProductGroup" suppress="3"/>
-                          <Cell col="4" text="bind:Product" expandshow="show" expandsize="24" suppress="4"/>
-                          <Cell col="5" imagestretch="fixaspectratio" displaytype="imagecontrol" edittype="normal" background="#ffffff" text="bind:ImageUrl"/>
-                          <Cell col="6" text="bind:Date"/>
-                          <Cell col="7" text="bind:Qty"/>
-                          <Cell col="8" text="bind:Price"/>
-                          <Cell col="9" text="bind:ABC"/>
+                          <Cell text="bind:Status"/>
+                          <Cell col="1" text="bind:Message"/>
+                          <Cell col="2" text="bind:VBELN"/>
+                          <Cell col="3" text="bind:CENTER_NM"/>
+                          <Cell col="4" text="bind:TYPE"/>
+                          <Cell col="5" text="bind:ITEM_NM"/>
+                          <Cell col="6" text="bind:ZTERM"/>
+                          <Cell col="7" text="bind:BSART"/>
+                          <Cell col="8" text="bind:SUPPLIER_CODE1"/>
+                          <Cell col="9" text="bind:SUPPLIER_NAME"/>
+                          <Cell col="10" text="bind:PO_DESC"/>
+                          <Cell col="11" text="bind:MATNR"/>
+                          <Cell col="12" text="bind:USAGE"/>
+                          <Cell col="13" text="bind:BUYER_ITEM_CD"/>
+                          <Cell col="14" text="bind:MTL_ITEM"/>
+                          <Cell col="15" text="bind:GMT_COL"/>
+                          <Cell col="16" text="bind:GMTColorcode"/>
+                          <Cell col="17" text="bind:COLOR"/>
+                          <Cell col="18" text="bind:SIZE"/>
+                          <Cell col="19" text="bind:OS_MENGE"/>
+                          <Cell col="20" text="bind:UNIT"/>
+                          <Cell col="21" text="bind:PO_MENGE"/>
+                          <Cell col="22" text="bind:REMAIN_MENGE"/>
+                          <Cell col="23" text="bind:MEINS"/>
+                          <Cell col="24" text="bind:PRICE"/>
+                          <Cell col="25" text="bind:PEINH"/>
+                          <Cell col="26" text="bind:L_NETWR"/>
+                          <Cell col="27" text="bind:CURRENCY"/>
+                          <Cell col="28" text="bind:PR_MENGE"/>
+                          <Cell col="29" text="bind:PURCGRP"/>
+                          <Cell col="30" text="bind:WEBRE"/>
+                          <Cell col="31" text="bind:OS_PRICE"/>
+                          <Cell col="32" text="bind:OS_PEINH"/>
+                          <Cell col="33" text="bind:L_WAERK"/>
+                          <Cell col="34" text="bind:OS_AMOUNT"/>
+                          <Cell col="35" text="bind:DELIVERY_DATE"/>
+                          <Cell col="36" text="bind:UEBTO"/>
+                          <Cell col="37" text="bind:UNTTO"/>
+                          <Cell col="38" text="bind:DeliveryLocation"/>
+                          <Cell col="39" text="bind:Forwarder"/>
+                          <Cell col="40" text="bind:BuyerCode"/>
+                          <Cell col="41" text="bind:INCO1"/>
+                          <Cell col="42" text="bind:Remark"/>
+                          <Cell col="43" text="bind:CENTER_CD"/>
+                          <Cell col="44" text="bind:SORT_NUM"/>
+                          <Cell col="45" text="bind:CRT"/>
+                          <Cell col="46" text="bind:MSGBN"/>
+                          <Cell col="47" text="bind:MTL_SIZE_KEY"/>
+                          <Cell col="48" text="bind:MTL_COLOR_KEY"/>
+                          <Cell col="49" text="bind:GOODS_MOV"/>
+                          <Cell col="50" text="bind:MTL_ITEM_CD"/>
+                          <Cell col="51" text="bind:ITEM_CD"/>
+                          <Cell col="52" text="bind:OSSTS"/>
+                          <Cell col="53" text="bind:GMTMATNR"/>
+                          <Cell col="54" text="bind:POSNR"/>
+                          <Cell col="55" text="bind:LOT_NO"/>
                         </Band>
                       </Format>
                     </Formats>
                   </Grid>
-                  <Button id="Button_tp2_G_Team_S_Name" taborder="6" text="G:Team,S:Name " left="477" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7"/>
-                  <Button id="Button_tp2_G_M_Team_S_P_Name" taborder="7" text="G:-Team,S:+Name " left="607" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="7"/>
-                  <Button id="Button_tp2_TeamSortNameGroup" taborder="8" text="S:Team,G:Name" left="136" width="120" height="28" onclick="Button_SortGroup_onclick" bottom="42"/>
-                  <Static id="Static00" taborder="9" text="단순 Sorting 기능만, 부분합X" left="Button_tp2_TeamSortNameGroup:-122" top="Button_tp2_SortPlus:-28" width="206" height="28"/>
-                </Layout>
-              </Layouts>
-            </Tabpage>
-            <Tabpage id="Tabpage3" text="PoHistory">
-              <Layouts>
-                <Layout>
-                  <Grid id="GridPoList00" left="9" top="10" right="8" summarytype="top" showselection="true" griduserproperty="no,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal" bottom="8" binddataset="ds_POHistory" taborder="0">
+                  <Grid id="GridPoList00" taborder="1" left="8" top="254" binddataset="ds_POHistory" right="8" bottom="38" griduserproperty="no,status,checkbox,export,colfix,rowfix,sort,filter,initial,cellcopypaste,colhide,personal,seltype" cellsizingtype="col">
                     <Formats>
                       <Format id="default">
                         <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
                           <Column size="80"/>
@@ -381,94 +503,110 @@
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell text="Sel"/>
-                          <Cell col="1" text="Status"/>
-                          <Cell col="2" text="Message"/>
-                          <Cell col="3" text="Sales_Order"/>
-                          <Cell col="4" text="Factory"/>
-                          <Cell col="5" text="Type"/>
-                          <Cell col="6" text="Style"/>
-                          <Cell col="7" text="Payment_Terms"/>
-                          <Cell col="8" text="Document_Type"/>
-                          <Cell col="9" text="Incoterms"/>
-                          <Cell col="10" text="Vendor"/>
-                          <Cell col="11" text="Vendor_Name"/>
-                          <Cell col="12" text="PO_Desc"/>
-                          <Cell col="13" text="Material"/>
-                          <Cell col="14" text="Item"/>
-                          <Cell col="15" text="MTL_Code"/>
-                          <Cell col="16" text="Text"/>
-                          <Cell col="17" text="GMT_Color"/>
-                          <Cell col="18" text="GMT_Color_code"/>
-                          <Cell col="19" text="COLOR"/>
-                          <Cell col="20" text="SIZE"/>
-                          <Cell col="21" text="BOM_Qty"/>
-                          <Cell col="22" text="Unit"/>
-                          <Cell col="23" text="PO_Qty"/>
-                          <Cell col="24" text="Order_Qty"/>
-                          <Cell col="25" text="Order_Unit"/>
-                          <Cell col="26" text="Price"/>
-                          <Cell col="27" text="Per"/>
-                          <Cell col="28" text="TTL_Amount"/>
-                          <Cell col="29" text="Currency"/>
-                          <Cell col="30" text="Goods_movement_Qty"/>
-                          <Cell col="31" text="PurchGroup"/>
-                          <Cell col="32" text="GR_Based_Inv_Verif"/>
-                          <Cell col="33" text="OS_Price"/>
-                          <Cell col="34" text="OS_Price_Unit"/>
-                          <Cell col="35" text="OS_Currency"/>
-                          <Cell col="36" text="OS_AMOUNT"/>
-                          <Cell col="37" text="Delivery_Date"/>
-                          <Cell col="38" text="More"/>
-                          <Cell col="39" text="Less"/>
-                          <Cell col="40" text="Delivery_Location"/>
-                          <Cell col="41" text="Forwarder"/>
-                          <Cell col="42" text="Remark"/>
+                          <Cell text="VBELN"/>
+                          <Cell col="1" text="CENTER_CD"/>
+                          <Cell col="2" text="SORT_NUM"/>
+                          <Cell col="3" text="ITEM_NM"/>
+                          <Cell col="4" text="VBELP"/>
+                          <Cell col="5" text="STATUS"/>
+                          <Cell col="6" text="BSART"/>
+                          <Cell col="7" text="MTL_SIZE_KEY"/>
+                          <Cell col="8" text="BUYER_ITEM_CD"/>
+                          <Cell col="9" text="TYPE"/>
+                          <Cell col="10" text="TXZ01"/>
+                          <Cell col="11" text="MTL_COLOR_KEY"/>
+                          <Cell col="12" text="ELIKZ"/>
+                          <Cell col="13" text="FULL_DESC"/>
+                          <Cell col="14" text="BSART_F"/>
+                          <Cell col="15" text="EBELP"/>
+                          <Cell col="16" text="ZQME_PO"/>
+                          <Cell col="17" text="PEINH"/>
+                          <Cell col="18" text="INCO1"/>
+                          <Cell col="19" text="CUST_NM"/>
+                          <Cell col="20" text="EKGRP"/>
+                          <Cell col="21" text="USER_NM"/>
+                          <Cell col="22" text="LIFNR"/>
+                          <Cell col="23" text="LOT_NO"/>
+                          <Cell col="24" text="GRQTY"/>
+                          <Cell col="25" text="UNTTO"/>
+                          <Cell col="26" text="GMT_COL"/>
+                          <Cell col="27" text="MENGE"/>
+                          <Cell col="28" text="MTL_COLOR"/>
+                          <Cell col="29" text="J_3ASIZE"/>
+                          <Cell col="30" text="PO_DESC"/>
+                          <Cell col="31" text="ERP_STYLE"/>
+                          <Cell col="32" text="NETPR"/>
+                          <Cell col="33" text="WAERS"/>
+                          <Cell col="34" text="EINDT"/>
+                          <Cell col="35" text="USAGE"/>
+                          <Cell col="36" text="REG_USER_ID"/>
+                          <Cell col="37" text="BUYER_CD"/>
+                          <Cell col="38" text="ZTERM"/>
+                          <Cell col="39" text="MATNR"/>
+                          <Cell col="40" text="MTL_ITEM_CD"/>
+                          <Cell col="41" text="UEBTO"/>
+                          <Cell col="42" text="ITEM_CD"/>
+                          <Cell col="43" text="CENTER_NM"/>
+                          <Cell col="44" text="GR_BSD"/>
+                          <Cell col="45" text="MEINS"/>
+                          <Cell col="46" text="POITEM"/>
+                          <Cell col="47" text="NAME1"/>
+                          <Cell col="48" text="NETWR"/>
+                          <Cell col="49" text="J_3AEBSP"/>
+                          <Cell col="50" text="SaveUser"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:Sel"/>
-                          <Cell col="1" text="bind:Status"/>
-                          <Cell col="2" text="bind:Message"/>
-                          <Cell col="3" text="bind:Sales_Order"/>
-                          <Cell col="4" text="bind:Factory"/>
-                          <Cell col="5" text="bind:Type"/>
-                          <Cell col="6" text="bind:Style"/>
-                          <Cell col="7" text="bind:Payment_Terms"/>
-                          <Cell col="8" text="bind:Document_Type"/>
-                          <Cell col="9" text="bind:Incoterms"/>
-                          <Cell col="10" text="bind:Vendor"/>
-                          <Cell col="11" text="bind:Vendor_Name"/>
-                          <Cell col="12" text="bind:PO_Desc"/>
-                          <Cell col="13" text="bind:Material"/>
-                          <Cell col="14" text="bind:Item"/>
-                          <Cell col="15" text="bind:MTL_Code"/>
-                          <Cell col="16" text="bind:Text"/>
-                          <Cell col="17" text="bind:GMT_Color"/>
-                          <Cell col="18" text="bind:GMT_Color_code"/>
-                          <Cell col="19" text="bind:COLOR"/>
-                          <Cell col="20" text="bind:SIZE"/>
-                          <Cell col="21" text="bind:BOM_Qty"/>
-                          <Cell col="22" text="bind:Unit"/>
-                          <Cell col="23" text="bind:PO_Qty"/>
-                          <Cell col="24" text="bind:Order_Qty"/>
-                          <Cell col="25" text="bind:Order_Unit"/>
-                          <Cell col="26" text="bind:Price"/>
-                          <Cell col="27" text="bind:Per"/>
-                          <Cell col="28" text="bind:TTL_Amount"/>
-                          <Cell col="29" text="bind:Currency"/>
-                          <Cell col="30" text="bind:Goods_movement_Qty"/>
-                          <Cell col="31" text="bind:PurchGroup"/>
-                          <Cell col="32" text="bind:GR_Based_Inv_Verif"/>
-                          <Cell col="33" text="bind:OS_Price"/>
-                          <Cell col="34" text="bind:OS_Price_Unit"/>
-                          <Cell col="35" text="bind:OS_Currency"/>
-                          <Cell col="36" text="bind:OS_AMOUNT"/>
-                          <Cell col="37" text="bind:Delivery_Date"/>
-                          <Cell col="38" text="bind:More"/>
-                          <Cell col="39" text="bind:Less"/>
-                          <Cell col="40" text="bind:Delivery_Location"/>
-                          <Cell col="41" text="bind:Forwarder"/>
-                          <Cell col="42" text="bind:Remark"/>
+                          <Cell text="bind:VBELN"/>
+                          <Cell col="1" text="bind:CENTER_CD"/>
+                          <Cell col="2" text="bind:SORT_NUM"/>
+                          <Cell col="3" text="bind:ITEM_NM"/>
+                          <Cell col="4" text="bind:VBELP"/>
+                          <Cell col="5" text="bind:STATUS"/>
+                          <Cell col="6" text="bind:BSART"/>
+                          <Cell col="7" text="bind:MTL_SIZE_KEY"/>
+                          <Cell col="8" text="bind:BUYER_ITEM_CD"/>
+                          <Cell col="9" text="bind:TYPE"/>
+                          <Cell col="10" text="bind:TXZ01"/>
+                          <Cell col="11" text="bind:MTL_COLOR_KEY"/>
+                          <Cell col="12" text="bind:ELIKZ"/>
+                          <Cell col="13" text="bind:FULL_DESC"/>
+                          <Cell col="14" text="bind:BSART_F"/>
+                          <Cell col="15" text="bind:EBELP"/>
+                          <Cell col="16" text="bind:ZQME_PO"/>
+                          <Cell col="17" text="bind:PEINH"/>
+                          <Cell col="18" text="bind:INCO1"/>
+                          <Cell col="19" text="bind:CUST_NM"/>
+                          <Cell col="20" text="bind:EKGRP"/>
+                          <Cell col="21" text="bind:USER_NM"/>
+                          <Cell col="22" text="bind:LIFNR"/>
+                          <Cell col="23" text="bind:LOT_NO"/>
+                          <Cell col="24" text="bind:GRQTY"/>
+                          <Cell col="25" text="bind:UNTTO"/>
+                          <Cell col="26" text="bind:GMT_COL"/>
+                          <Cell col="27" text="bind:MENGE"/>
+                          <Cell col="28" text="bind:MTL_COLOR"/>
+                          <Cell col="29" text="bind:J_3ASIZE"/>
+                          <Cell col="30" text="bind:PO_DESC"/>
+                          <Cell col="31" text="bind:ERP_STYLE"/>
+                          <Cell col="32" text="bind:NETPR"/>
+                          <Cell col="33" text="bind:WAERS"/>
+                          <Cell col="34" text="bind:EINDT"/>
+                          <Cell col="35" text="bind:USAGE"/>
+                          <Cell col="36" text="bind:REG_USER_ID"/>
+                          <Cell col="37" text="bind:BUYER_CD"/>
+                          <Cell col="38" text="bind:ZTERM"/>
+                          <Cell col="39" text="bind:MATNR"/>
+                          <Cell col="40" text="bind:MTL_ITEM_CD"/>
+                          <Cell col="41" text="bind:UEBTO"/>
+                          <Cell col="42" text="bind:ITEM_CD"/>
+                          <Cell col="43" text="bind:CENTER_NM"/>
+                          <Cell col="44" text="bind:GR_BSD"/>
+                          <Cell col="45" text="bind:MEINS"/>
+                          <Cell col="46" text="bind:POITEM"/>
+                          <Cell col="47" text="bind:NAME1"/>
+                          <Cell col="48" text="bind:NETWR"/>
+                          <Cell col="49" text="bind:J_3AEBSP"/>
+                          <Cell col="50" text="bind:SaveUser"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -840,10 +978,12 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 			
 			case "dsActRecordSearch" :
 				//	this.gfn_distincDsFilter(this.ds_ColChangeHDR, "CidName");
+				trace("this.ds_ColChangeHDR.saveXML()---->"+this.ds_ColChangeHDR.saveXML());
 				this.gfn_distincDsFilter(this.ds_ColChangeHDR, "CID");
 				break;
 			case "getPoListHistoryLoad"	:
-													this.gtrace(this.ds_POList.saveXML(), gtrcSearchPos);
+													//	this.gtrace(this.ds_POList.saveXML(), gtrcSearchPos);
+													this.gtrace(this.ds_POHistory.saveXML(), gtrcSearchPos);
 					
 					
 				break;
@@ -1121,53 +1261,6 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           <Column id="I_CHECK" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_POHistory" useclientlayout="true">
-        <ColumnInfo>
-          <Column id="Sel" type="STRING" size="256"/>
-          <Column id="Status" type="STRING" size="256"/>
-          <Column id="Message" type="STRING" size="256"/>
-          <Column id="Sales_Order" type="STRING" size="256"/>
-          <Column id="Factory" type="STRING" size="256"/>
-          <Column id="Type" type="STRING" size="256"/>
-          <Column id="Style" type="STRING" size="256"/>
-          <Column id="Payment_Terms" type="STRING" size="256"/>
-          <Column id="Document_Type" type="STRING" size="256"/>
-          <Column id="Incoterms" type="STRING" size="256"/>
-          <Column id="Vendor" type="STRING" size="256"/>
-          <Column id="Vendor_Name" type="STRING" size="256"/>
-          <Column id="PO_Desc" type="STRING" size="256"/>
-          <Column id="Material" type="STRING" size="256"/>
-          <Column id="Item" type="STRING" size="256"/>
-          <Column id="MTL_Code" type="STRING" size="256"/>
-          <Column id="Text" type="STRING" size="256"/>
-          <Column id="GMT_Color" type="STRING" size="256"/>
-          <Column id="GMT_Color_code" type="STRING" size="256"/>
-          <Column id="COLOR" type="STRING" size="256"/>
-          <Column id="SIZE" type="STRING" size="256"/>
-          <Column id="BOM_Qty" type="STRING" size="256"/>
-          <Column id="Unit" type="STRING" size="256"/>
-          <Column id="PO_Qty" type="STRING" size="256"/>
-          <Column id="Order_Qty" type="STRING" size="256"/>
-          <Column id="Order_Unit" type="STRING" size="256"/>
-          <Column id="Price" type="STRING" size="256"/>
-          <Column id="Per" type="STRING" size="256"/>
-          <Column id="TTL_Amount" type="STRING" size="256"/>
-          <Column id="Currency" type="STRING" size="256"/>
-          <Column id="Goods_movement_Qty" type="STRING" size="256"/>
-          <Column id="PurchGroup" type="STRING" size="256"/>
-          <Column id="GR_Based_Inv_Verif" type="STRING" size="256"/>
-          <Column id="OS_Price" type="STRING" size="256"/>
-          <Column id="OS_Price_Unit" type="STRING" size="256"/>
-          <Column id="OS_Currency" type="STRING" size="256"/>
-          <Column id="OS_AMOUNT" type="STRING" size="256"/>
-          <Column id="Delivery_Date" type="STRING" size="256"/>
-          <Column id="More" type="STRING" size="256"/>
-          <Column id="Less" type="STRING" size="256"/>
-          <Column id="Delivery_Location" type="STRING" size="256"/>
-          <Column id="Forwarder" type="STRING" size="256"/>
-          <Column id="Remark" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
       <Dataset id="ds_PoSave_in">
         <ColumnInfo>
           <Column id="ROW_ID" type="STRING" size="256"/>
@@ -1249,6 +1342,7 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           <Column id="bCombodataset" type="STRING" size="256"/>
           <Column id="bCombocodecol" type="STRING" size="256"/>
           <Column id="bCombodatacol" type="STRING" size="256"/>
+          <Column id="bCombotype" type="STRING" size="256"/>
           <Column id="bMaskedittype" type="STRING" size="256" description="number / string"/>
           <Column id="bMaskeditlimitbymask" type="STRING" size="256" description="decimal / integer / both / none "/>
           <Column id="bMaskeditformat" type="STRING" size="256" description="9,999.##"/>
@@ -1288,6 +1382,18 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="bTextAlign">center</Col>
           </Row>
           <Row>
+            <Col id="BindCol">ITEM_NM</Col>
+            <Col id="HeaderText">Style#</Col>
+            <Col id="ColWidth">100</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bEdittype"></Col>
+            <Col id="bTextAlign">center</Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
+          </Row>
+          <Row>
             <Col id="BindCol">ZTERM</Col>
             <Col id="HeaderText">Payment Terms</Col>
             <Col id="ColWidth">250</Col>
@@ -1297,26 +1403,43 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="bCombodataset">ds_cmbPaymentTerms</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="bCombotype">filterlike</Col>
           </Row>
           <Row>
             <Col id="BindCol">DOC_TYPE</Col>
             <Col id="HeaderText">Document Type</Col>
             <Col id="ColWidth">150</Col>
+            <Col id="bTextAlign">center</Col>
             <Col id="bDisplaytype">combocontrol</Col>
             <Col id="bEdittype">combo</Col>
-            <Col id="bTextAlign">center</Col>
             <Col id="bCombodataset">ds_cmbDocumentType</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="bCombotype">filterlike</Col>
           </Row>
           <Row>
             <Col id="BindCol">SUPPLIER_CODE1</Col>
             <Col id="HeaderText">Vendor</Col>
             <Col id="ColWidth">90</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
           </Row>
           <Row>
             <Col id="BindCol">SUPPLIER_NAME</Col>
+            <Col id="HeaderText">Vendor Name</Col>
+            <Col id="ColWidth">150</Col>
+            <Col id="bTextAlign">left</Col>
+            <Col id="bPadding">0px 0px 0px 5px</Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">LIFNR</Col>
+            <Col id="HeaderText">Vendor</Col>
+            <Col id="ColWidth">90</Col>
+            <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+          </Row>
+          <Row>
+            <Col id="BindCol">NAME1</Col>
             <Col id="HeaderText">Vendor Name</Col>
             <Col id="ColWidth">150</Col>
             <Col id="bTextAlign">left</Col>
@@ -1329,10 +1452,18 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="bTextAlign">center</Col>
           </Row>
           <Row>
+            <Col id="BindCol">PO_DESC</Col>
+            <Col id="HeaderText">PO Desc</Col>
+            <Col id="ColWidth">60</Col>
+            <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+          </Row>
+          <Row>
             <Col id="BindCol">MATNR</Col>
             <Col id="HeaderText">Material</Col>
             <Col id="ColWidth">90</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
           </Row>
           <Row>
             <Col id="BindCol">USAGE</Col>
@@ -1346,6 +1477,7 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="HeaderText">MTL Code</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
           </Row>
           <Row>
             <Col id="BindCol">MTL_ITEM</Col>
@@ -1358,7 +1490,12 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="BindCol">GMT_COL</Col>
             <Col id="HeaderText">GMT Color</Col>
             <Col id="ColWidth">70</Col>
+            <Col id="bDisplaytype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">GMTColorcode</Col>
@@ -1370,20 +1507,31 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="BindCol">COLOR</Col>
             <Col id="HeaderText">COLOR</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">SIZE</Col>
             <Col id="HeaderText">SIZE</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bEdittype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">OS_MENGE</Col>
             <Col id="HeaderText">BOM Q'ty(rounding up)</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
@@ -1393,13 +1541,20 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="BindCol">UNIT</Col>
             <Col id="HeaderText">Unit</Col>
             <Col id="ColWidth">40</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bEdittype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">PO_MENGE</Col>
             <Col id="HeaderText">PO Q'ty</Col>
             <Col id="ColWidth">60</Col>
             <Col id="bDisplaytype">mask</Col>
+            <Col id="bEdittype"></Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
@@ -1411,49 +1566,63 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="HeaderText">Order Q'ty</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bDisplaytype">mask</Col>
-            <Col id="bEdittype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
             <Col id="bMaskeditformat">###,###,###</Col>
+            <Col id="bEdittype">mask</Col>
           </Row>
           <Row>
             <Col id="BindCol">MEINS</Col>
             <Col id="HeaderText">Order Unit</Col>
             <Col id="ColWidth">40</Col>
+            <Col id="bDisplaytype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
+            <Col id="bEdittype"></Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">PRICE</Col>
             <Col id="HeaderText">Price</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bDisplaytype">mask</Col>
-            <Col id="bEdittype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
             <Col id="bMaskeditformat">###,###,###</Col>
+            <Col id="bEdittype">mask</Col>
           </Row>
           <Row>
             <Col id="BindCol">PEINH</Col>
             <Col id="HeaderText">Per</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bDisplaytype">mask</Col>
-            <Col id="bEdittype">mask</Col>
             <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
             <Col id="bMaskeditformat">###,###,###</Col>
+            <Col id="bEdittype">mask</Col>
           </Row>
           <Row>
             <Col id="BindCol">L_NETWR</Col>
             <Col id="HeaderText">TTL Amount</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype">mask</Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
@@ -1465,17 +1634,22 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="ColWidth">80</Col>
             <Col id="bDisplaytype">combotext</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
             <Col id="bCombodataset">ds_cmbCurrency</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="bCombotype">filterlike</Col>
           </Row>
           <Row>
             <Col id="BindCol">PR_MENGE</Col>
             <Col id="HeaderText">Goods movement Q'ty</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
             <Col id="bMaskeditformat">###,###,###</Col>
@@ -1490,15 +1664,20 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="BindCol">WEBRE</Col>
             <Col id="HeaderText">GR Based Inv. Verif</Col>
             <Col id="ColWidth">80</Col>
+            <Col id="bDisplaytype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">OS_PRICE</Col>
             <Col id="HeaderText">OS Price</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
             <Col id="bMaskeditformat">###,###,###</Col>
@@ -1508,20 +1687,29 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="HeaderText">OS Price Unit</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype"></Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">L_WAERK</Col>
             <Col id="HeaderText">OS Currency</Col>
             <Col id="ColWidth">60</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">OS_AMOUNT</Col>
             <Col id="HeaderText">OS AMOUNT</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bDisplaytype">mask</Col>
             <Col id="bTextAlign">right</Col>
+            <Col id="bDisplaytype">mask</Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
@@ -1532,6 +1720,11 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="HeaderText">Delivery Date</Col>
             <Col id="ColWidth">90</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bPadding"></Col>
+            <Col id="bMaskedittype"></Col>
+            <Col id="bMaskeditlimitbymask"></Col>
+            <Col id="bMaskeditformat"></Col>
           </Row>
           <Row>
             <Col id="BindCol">UEBTO</Col>
@@ -1548,8 +1741,13 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
             <Col id="BindCol">UNTTO</Col>
             <Col id="HeaderText">Less</Col>
             <Col id="ColWidth">80</Col>
-            <Col id="bTextAlign">right</Col>
             <Col id="bDisplaytype">mask</Col>
+            <Col id="bEdittype"></Col>
+            <Col id="bTextAlign">right</Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
             <Col id="bPadding">0px 5px 0px 0px</Col>
             <Col id="bMaskedittype">number</Col>
             <Col id="bMaskeditlimitbymask">integer</Col>
@@ -1563,32 +1761,39 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           </Row>
           <Row>
             <Col id="BindCol">Forwarder</Col>
-            <Col id="HeaderText">Forwarder</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="HeaderText">Forwarder</Col>
           </Row>
           <Row>
             <Col id="BindCol">BuyerCode</Col>
-            <Col id="HeaderText">Buyer Code</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="HeaderText">Buyer Code</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bEdittype"></Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
           </Row>
           <Row>
             <Col id="BindCol">INCO1</Col>
-            <Col id="HeaderText">Incoterms</Col>
             <Col id="ColWidth">150</Col>
+            <Col id="bTextAlign">center</Col>
+            <Col id="HeaderText">Incoterms</Col>
             <Col id="bDisplaytype">combocontrol</Col>
             <Col id="bEdittype">combo</Col>
-            <Col id="bTextAlign">center</Col>
             <Col id="bCombodataset">ds_cmbIncoterms</Col>
             <Col id="bCombocodecol">CODE_CD</Col>
             <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="bCombotype">filterlike</Col>
           </Row>
           <Row>
             <Col id="BindCol">Remark</Col>
-            <Col id="HeaderText">Remark</Col>
             <Col id="ColWidth">80</Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="HeaderText">Remark</Col>
           </Row>
           <Row>
             <Col id="BindCol">CENTER_CD</Col>
@@ -1637,8 +1842,15 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           </Row>
           <Row>
             <Col id="BindCol">OSSTS</Col>
+            <Col id="HeaderText"></Col>
             <Col id="ColWidth">50</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bEdittype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
           </Row>
           <Row>
             <Col id="BindCol">GMTMATNR</Col>
@@ -1652,9 +1864,38 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           </Row>
           <Row>
             <Col id="BindCol">LOT_NO</Col>
+            <Col id="HeaderText"></Col>
             <Col id="ColWidth">120</Col>
+            <Col id="bDisplaytype"></Col>
+            <Col id="bEdittype"></Col>
             <Col id="bTextAlign">center</Col>
+            <Col id="bCombodataset"></Col>
+            <Col id="bCombocodecol"></Col>
+            <Col id="bCombodatacol"></Col>
+            <Col id="bCombotype"></Col>
           </Row>
+          <Row>
+            <Col id="BindCol">BSART</Col>
+            <Col id="HeaderText">Document Type</Col>
+            <Col id="ColWidth">150</Col>
+            <Col id="bDisplaytype">combocontrol</Col>
+            <Col id="bEdittype">combo</Col>
+            <Col id="bTextAlign">center</Col>
+            <Col id="bCombodataset">ds_cmbDocumentType</Col>
+            <Col id="bCombocodecol">CODE_CD</Col>
+            <Col id="bCombodatacol">CODE_NM</Col>
+            <Col id="bCombotype">filterlike</Col>
+          </Row>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
           <Row/>
           <Row/>
           <Row/>
@@ -2400,7 +2641,28 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           </Row>
         </Rows>
       </Dataset>
-      <Dataset id="ds_POList" oncolumnchanged="ds_POList_oncolumnchanged">
+      <Dataset id="ds_ColChange">
+        <ColumnInfo>
+          <Column id="CID" type="STRING" size="256"/>
+          <Column id="CidSeq" type="INT" size="256"/>
+          <Column id="CidName" type="STRING" size="256"/>
+          <Column id="DsID" type="STRING" size="256"/>
+          <Column id="DsCol" type="STRING" size="256"/>
+          <Column id="DsRow" type="STRING" size="256"/>
+          <Column id="DsOldVal" type="STRING" size="256"/>
+          <Column id="DsNewVal" type="STRING" size="256"/>
+          <Column id="SaveUser" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_result_savePO"/>
+      <Dataset id="ds_out_po_default"/>
+      <Dataset id="ds_ColChange_in">
+        <ColumnInfo>
+          <Column id="DsID" type="STRING" size="256"/>
+          <Column id="SaveUser" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_POList" oncolumnchanged="ds_POList_oncolumnchanged" useclientlayout="true">
         <ColumnInfo>
           <Column id="Status" type="STRING" size="256"/>
           <Column id="Message" type="STRING" size="256"/>
@@ -2460,30 +2722,64 @@ this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Bu
           <Column id="LOT_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_ColChange">
-        <ColumnInfo>
-          <Column id="CID" type="STRING" size="256"/>
-          <Column id="CidSeq" type="INT" size="256"/>
-          <Column id="CidName" type="STRING" size="256"/>
-          <Column id="DsID" type="STRING" size="256"/>
-          <Column id="DsCol" type="STRING" size="256"/>
-          <Column id="DsRow" type="STRING" size="256"/>
-          <Column id="DsOldVal" type="STRING" size="256"/>
-          <Column id="DsNewVal" type="STRING" size="256"/>
-          <Column id="SaveUser" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_result_savePO"/>
-      <Dataset id="ds_out_po_default"/>
-      <Dataset id="ds_ColChangeHDR" onrowposchanged="ds_ColChangeHDR_onrowposchanged">
+      <Dataset id="ds_ColChangeHDR" onrowposchanged="ds_ColChangeHDR_onrowposchanged" useclientlayout="true">
         <ColumnInfo>
           <Column id="CID" type="STRING" size="256"/>
           <Column id="CidName" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_ColChange_in">
+      <Dataset id="ds_POHistory">
         <ColumnInfo>
-          <Column id="DsID" type="STRING" size="256"/>
+          <Column id="VBELN" type="STRING" size="256"/>
+          <Column id="CENTER_CD" type="STRING" size="256"/>
+          <Column id="SORT_NUM" type="STRING" size="256"/>
+          <Column id="ITEM_NM" type="STRING" size="256"/>
+          <Column id="VBELP" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+          <Column id="BSART" type="STRING" size="256"/>
+          <Column id="MTL_SIZE_KEY" type="STRING" size="256"/>
+          <Column id="BUYER_ITEM_CD" type="STRING" size="256"/>
+          <Column id="TYPE" type="STRING" size="256"/>
+          <Column id="TXZ01" type="STRING" size="256"/>
+          <Column id="MTL_COLOR_KEY" type="STRING" size="256"/>
+          <Column id="ELIKZ" type="STRING" size="256"/>
+          <Column id="FULL_DESC" type="STRING" size="256"/>
+          <Column id="BSART_F" type="STRING" size="256"/>
+          <Column id="EBELP" type="STRING" size="256"/>
+          <Column id="ZQME_PO" type="STRING" size="256"/>
+          <Column id="PEINH" type="STRING" size="256"/>
+          <Column id="INCO1" type="STRING" size="256"/>
+          <Column id="CUST_NM" type="STRING" size="256"/>
+          <Column id="EKGRP" type="STRING" size="256"/>
+          <Column id="USER_NM" type="STRING" size="256"/>
+          <Column id="LIFNR" type="STRING" size="256"/>
+          <Column id="LOT_NO" type="STRING" size="256"/>
+          <Column id="GRQTY" type="STRING" size="256"/>
+          <Column id="UNTTO" type="STRING" size="256"/>
+          <Column id="GMT_COL" type="STRING" size="256"/>
+          <Column id="MENGE" type="STRING" size="256"/>
+          <Column id="MTL_COLOR" type="STRING" size="256"/>
+          <Column id="J_3ASIZE" type="STRING" size="256"/>
+          <Column id="PO_DESC" type="STRING" size="256"/>
+          <Column id="ERP_STYLE" type="STRING" size="256"/>
+          <Column id="NETPR" type="STRING" size="256"/>
+          <Column id="WAERS" type="STRING" size="256"/>
+          <Column id="EINDT" type="STRING" size="256"/>
+          <Column id="USAGE" type="STRING" size="256"/>
+          <Column id="REG_USER_ID" type="STRING" size="256"/>
+          <Column id="BUYER_CD" type="STRING" size="256"/>
+          <Column id="ZTERM" type="STRING" size="256"/>
+          <Column id="MATNR" type="STRING" size="256"/>
+          <Column id="MTL_ITEM_CD" type="STRING" size="256"/>
+          <Column id="UEBTO" type="STRING" size="256"/>
+          <Column id="ITEM_CD" type="STRING" size="256"/>
+          <Column id="CENTER_NM" type="STRING" size="256"/>
+          <Column id="GR_BSD" type="STRING" size="256"/>
+          <Column id="MEINS" type="STRING" size="256"/>
+          <Column id="POITEM" type="STRING" size="256"/>
+          <Column id="NAME1" type="STRING" size="256"/>
+          <Column id="NETWR" type="STRING" size="256"/>
+          <Column id="J_3AEBSP" type="STRING" size="256"/>
           <Column id="SaveUser" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
