@@ -199,7 +199,59 @@
                   <Button id="ButtonTrace" taborder="5" text="Trc. 보이기/숨기기" height="28" onclick="ButtonTrace_onclick" right="107" width="160" top="6"/>
                   <Button id="Button00_00" taborder="6" text="Search Sample 트랜잭션" top="6" width="160" height="28" onclick="Button00_onclick" visible="true" right="276"/>
                   <Button id="ButtonPOListHist" taborder="7" text="POList 기록시작" top="6" width="160" height="28" visible="true" right="446" onclick="TabMain_TabpagePOList_ButtonPOListHist_onclick"/>
-                  <Div id="DivCrudButton" left="119" top="149" height="32" text="" formscrolltype="none" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" InitCompVisEna="1:0:1:0,1:0:1:1" taborder="8" width="444" fn_searchName="tfn_dsPOList_search" fn_newName="" fn_deleteName="" visible="false"/>
+                  <Div id="DivCrudButtonDsPoListHist" height="32" text="" formscrolltype="none" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" InitCompVisEna="1:0:1:0,1:0:1:1" taborder="8" width="437" fn_searchName="tfn_ColChange_Search" fn_newName="" fn_deleteName="" visible="false" bottom="306" left="411" fn_saveName="tfn_ColChange_Save"/>
+                  <Grid id="GridPOListHistory" taborder="9" width="435" height="244" binddataset="ds_ColChange" visible="false" bottom="52" left="651" griduserproperty="!checkbox,!status,!no">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CidSeq"/>
+                          <Cell col="1" text="DsCol"/>
+                          <Cell col="2" text="DsRow"/>
+                          <Cell col="3" text="DsNewVal"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CidSeq"/>
+                          <Cell col="1" text="bind:DsCol"/>
+                          <Cell col="2" text="bind:DsRow"/>
+                          <Cell col="3" text="bind:DsNewVal"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Grid id="GridPOListHistoryName" taborder="10" width="225" height="244" binddataset="ds_ColChangeHDR" visible="false" bottom="52" left="411" griduserproperty="!checkbox,!status,!no">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="140"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="CID"/>
+                          <Cell col="1" text="CidName"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:CID"/>
+                          <Cell col="1" text="bind:CidName"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Edit id="EditCidName" taborder="11" width="212" height="32" bottom="306" visible="false" left="682"/>
+                  <Button id="ButtonColChangeExec" taborder="12" text="적용" left="899" width="144" height="32" onclick="TabMain_TabpagePOList_ButtonColChangeExec_onclick" visible="false" bottom="306"/>
                 </Layout>
               </Layouts>
             </Tabpage>
@@ -439,15 +491,16 @@
               <Div id="div_MaterialFromTo" taborder="7" text="Div00" left="658" top="8" height="21" url="Comm::Comm_SearchConditionFromTo.xfdl" maxwidth="" callbackfunc="fn_calCallback" formscrolltype="none" width="431" SearchConditionType="MaterialCode,ds_in,p_mtl_matnr1,p_mtl_matnr2,p_mtl_matnr_list"/>
               <Edit id="Edit00" taborder="8" left="562" top="36" width="299" height="24" readonly="true" value="1126195724" text="1126195724" visible="true"/>
               <Static id="StaticMaterial00" taborder="9" text="Sales Order별" left="540" top="58" width="118" cssclass="sta_WF_searchLabel" height="21"/>
-              <CheckBox id="CheckBox00" taborder="10" text="" left="658" top="58" width="21" height="21" value="true"/>
+              <CheckBox id="CheckBox00" taborder="10" text="" left="658" top="58" width="21" height="21" value="true" truevalue="X" falsevalue=" "/>
             </Layout>
           </Layouts>
         </Div>
         <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" InitCompVisEna="1:1:1:1,1:0:1:1" fn_searchName="" fn_newName="" fn_saveName="" fn_deleteName=""/>
-        <Grid id="Grid02" taborder="6" left="0" height="100" binddataset="ds_in" bottom="0" right="0">
+        <Grid id="Grid02" taborder="6" left="0" height="90" binddataset="ds_in" bottom="0" right="0">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -482,6 +535,7 @@
                 <Cell col="11" text="p_supply2"/>
                 <Cell col="12" text="p_supply_list"/>
                 <Cell col="13" text="p_user_id"/>
+                <Cell col="14" text="I_CHECK"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:p_mandt"/>
@@ -498,12 +552,13 @@
                 <Cell col="11" text="bind:p_supply2"/>
                 <Cell col="12" text="bind:p_supply_list"/>
                 <Cell col="13" text="bind:p_user_id"/>
+                <Cell col="14" text="bind:I_CHECK"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Button id="Button02" taborder="7" text="Button02" left="126" top="279" width="204" height="31" onclick="Button02_onclick" visible="false"/>
-        <Grid id="GridTrace" taborder="8" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="true" right="0" bottom="0" top="340" tempuserproperty="">
+        <Grid id="GridTrace" taborder="8" width="690" binddataset="gds_TrcInfo" griduserproperty="checkbox,sort" autofittype="col" cellsizingtype="col" visible="true" right="17" bottom="137" top="363" tempuserproperty="">
           <Formats>
             <Format id="default">
               <Columns>
@@ -528,43 +583,6 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="GridPOListHistory" taborder="7" width="635" height="264" binddataset="ds_ColChange" visible="false" right="515" bottom="98">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="CID"/>
-                <Cell col="1" text="CidSeq"/>
-                <Cell col="2" text="DsID"/>
-                <Cell col="3" text="DsCol"/>
-                <Cell col="4" text="DsRow"/>
-                <Cell col="5" text="DsOldVal"/>
-                <Cell col="6" text="DsNewVal"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:CID"/>
-                <Cell col="1" text="bind:CidSeq"/>
-                <Cell col="2" text="bind:DsID"/>
-                <Cell col="3" text="bind:DsCol"/>
-                <Cell col="4" text="bind:DsRow"/>
-                <Cell col="5" text="bind:DsOldVal"/>
-                <Cell col="6" text="bind:DsNewVal"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/********************************************************************************************
@@ -584,6 +602,12 @@ this.COMBO_SET_STR = "ds_cmbPaymentTerms"	+"#"+"ZTERM"		+" "
 
 var GridPoList = this.TabMain.TabpagePOList.form.GridPoList;
 var ButtonPOListHist = this.TabMain.TabpagePOList.form.ButtonPOListHist;
+var DivCrudButtonDsPoListHist = this.TabMain.TabpagePOList.form.DivCrudButtonDsPoListHist;
+var GridPOListHistory = this.TabMain.TabpagePOList.form.GridPOListHistory;
+var GridPOListHistoryName = this.TabMain.TabpagePOList.form.GridPOListHistoryName;
+var EditCidName	= this.TabMain.TabpagePOList.form.EditCidName;
+var ButtonColChangeExec	= this.TabMain.TabpagePOList.form.ButtonColChangeExec;
+
 /********************************************************************************************
 @desc	3. OnLoad
 ********************************************************************************************/
@@ -682,7 +706,8 @@ this.tfn_getPoListHistoryLoad = function(){
 @desc	POList , POHistory Load
 */
 this.tfn_savePO = function(){
-
+	// I_CHECK "X" / ""
+	
 	var gtrcPos = "POList.xfdl.tfn_savePO";		this.gtrace("● PO저장트랜잭션", gtrcPos);
 		
 	{	//	beforeTrans
@@ -697,9 +722,11 @@ this.tfn_savePO = function(){
 			
 				var iAdRp = this.ds_PoSave_in.addRow();
 																				//	this.gtrace("내부param(i)--->"+i, gtrcPos);
-				//
+				//일괄 값세팅
 				this.ds_PoSave_in.setColumn(iAdRp, "P_USER_BU", this.gfn_getUser().BU_CD) ;
+				this.ds_PoSave_in.setColumn(iAdRp, "I_CHECK", this.ds_in.getColumn(0, "I_CHECK")) ;
 				
+				//paramMap 적용 세팅
 				for(var j=0; j < this.ds_paramMap.rowcount; j++){
 					
 					var sLdCol = this.ds_paramMap.getColumn(j, "LoadCol");		//	if(i==0)	this.gtrace("내부param(sLdCol)--->"+sLdCol, gtrcPos);
@@ -739,9 +766,53 @@ this.tfn_savePO = function(){
 	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
 }
 
-this.tfn_dsPOList_search = function(){
+this.tfn_ColChange_Save = function(){
 	
+	var gtrcPos = "POList.xfdl.tfn_ColChange_Save";	trace("● ColChange 저장트랜잭션");
+	
+	this.gfn_setUser(this.ds_ColChange);
+	var sCID = "CID_"+this.gfn_getDate("time");
+	var sCidName = EditCidName.text;
+	for(var i = 0 ; i < this.ds_ColChange.rowcount ; i++)
+	{
+		this.ds_ColChange.setColumn(i, "CID", sCID);
+		this.ds_ColChange.setColumn(i, "CidName", sCidName);
+	}
+	
+	var sSvcID 			= "dsActRecordSave";
+	//	var sURL 			= "AppSvr::common/commonAction.ppc";
+	var sURL 			= "AppSvrLocalMsSql::CommonSaveAction_Return.do";
+	
+	var sInDatasets 	= "ds_in0=ds_ColChange";
+	var sOutDatasets 	= "ds_ColChange=ds_out0";
+	var sArguments 		= "sqlId=" + nexacro.wrapQuote("dsActRecordSave");
+		
+		//	trace("보내는 데이터셋(ds_ColChange.saveXML())---->"+this.ds_ColChange.saveXML());
+	
+	//공통 트랜잭션 사용
+	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
+
 }
+
+this.tfn_ColChange_Search = function(){
+
+	this.ds_ColChange_in.clearData();
+	this.ds_ColChange_in.addRow();
+	this.ds_ColChange_in.setColumn(0, "DsID", this.gfn_getCompId(this.ds_POList));
+	this.gfn_setUser(this.ds_ColChange_in);
+	
+	var sSvcID 			= "dsActRecordSearch";
+	//	var sURL 		= "AppSvr::common/commonAction.ppc";
+	var sURL 			= "AppSvrLocalMsSql::CommonSaveAction_Return.do";
+	var sInDatasets 	= "ds_in0=ds_ColChange_in ds_in1=ds_ColChange_in";
+	var sOutDatasets 	= "ds_ColChangeHDR=ds_out0 ds_ColChange=ds_out1";
+	var sArguments 		= "sqlId=" + nexacro.wrapQuote("dsActRecordSearch dsActRecordSearch");
+	
+	//공통 트랜잭션 사용
+	this.gfn_transaction(sSvcID, sURL, sInDatasets, sOutDatasets, sArguments, "callbackFunction");
+
+}
+
 /********************************************************************************************
 @desc	6. Callback
 ********************************************************************************************/
@@ -766,7 +837,11 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 	{
 		default:
 			break;
- 		
+			
+			case "dsActRecordSearch" :
+				//	this.gfn_distincDsFilter(this.ds_ColChangeHDR, "CidName");
+				this.gfn_distincDsFilter(this.ds_ColChangeHDR, "CID");
+				break;
 			case "getPoListHistoryLoad"	:
 													this.gtrace(this.ds_POList.saveXML(), gtrcSearchPos);
 					
@@ -784,7 +859,8 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 						var sVBELN		=	this.ds_result_savePO.getColumn(i, "VBELN");		this.gtrace("sVBELN--->"+sVBELN, gtrcPos);	//	Sales Order
 						var sLIFNR		=	this.ds_result_savePO.getColumn(i, "LIFNR");		this.gtrace("sLIFNR--->"+sLIFNR, gtrcPos);	//	Vendor ( SUPPLIER_CODE )
 						var sMSG		=	this.ds_result_savePO.getColumn(i, "MESSAGE");		this.gtrace("sMSG--->"+sMSG, gtrcPos);	
-						
+						//ZQME_PO : 000000000000000
+						//RETURN : S/F
 						for(var k = 0 ; k < this.ds_POList.rowcount ; k++)
 						{
 							var pROW_CHK	=	this.ds_POList.getColumn(k, "ROW_CHK");						this.gtrace("pROW_CHK--->"+pROW_CHK, gtrcPos);	//	rowcheckbox
@@ -795,6 +871,7 @@ this.callbackFunction = function(strSvcID, nErrorCode, strErrorMsg)
 							{
 								if(sVBELN == pVBELN && sLIFNR == pSUPPLIER_CODE1)
 								{
+									
 									this.ds_POList.setColumn(k, "Message", sMSG);
 								}
 							}
@@ -896,6 +973,7 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.DivCrudButton.form.btn_search.click();
 };
 
+var bDsColChangeHistExec = true;
 this.ds_POList_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
 	if(	e.columnid == "REMAIN_MENGE"
@@ -906,8 +984,9 @@ this.ds_POList_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DS
 		this.fn_TotalAmountCalc(e.row);
 		obj.set_enableevent(true);
 	}
-	
-	this.fn_dsColChangeHist(this.gfn_getCompId(obj), e.columnid, e.row, e.oldvalue, e.newvalue);
+	if(bDsColChangeHistExec){
+		this.fn_dsColChangeHist(this.gfn_getCompId(obj), e.columnid, e.row, e.oldvalue, e.newvalue);
+	}
 };
 
 this.fn_TotalAmountCalc = function(iCalcRp){
@@ -936,6 +1015,7 @@ this.TabMain_TabpagePOList_Button00_onclick = function(obj:nexacro.Button,e:nexa
 
 this.Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+	trace(this.gfn_getDate("time"));
 	//	trace(this.gfn_getCompId(obj));
 	//	this.test_func();
 	//	trace(this.gfn_getApplication());
@@ -980,13 +1060,44 @@ this.fn_dsColChangeHist = function(sDsID, sDsCol, sDsRow, sDsOldVal, sDsNewVal)
 }
 this.TabMain_TabpagePOList_ButtonPOListHist_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.GridPOListHistory.set_visible(!this.GridPOListHistory.visible);
+	GridPOListHistory.set_visible(!GridPOListHistory.visible);
+	DivCrudButtonDsPoListHist.set_visible(GridPOListHistory.visible);
+	GridPOListHistoryName.set_visible(GridPOListHistory.visible);
+	EditCidName.set_visible(GridPOListHistory.visible);
+	ButtonColChangeExec.set_visible(GridPOListHistory.visible);
 	
-	if(!this.GridPOListHistory.visible){
+	if(!GridPOListHistory.visible){
+		bDsColChangeHistExec = false;
 		ButtonPOListHist.set_text("POList 기록시작");
 	}else{
-		ButtonPOListHist.set_text("POList 기록 끝");
+		bDsColChangeHistExec = true;
 		this.ds_ColChange.clearData();
+		this.tfn_ColChange_Search();
+		ButtonPOListHist.set_text("POList 기록 끝");
+	}
+};
+
+this.ds_ColChangeHDR_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{
+	this.ds_ColChange.filter("");
+	this.ds_ColChange.filter("CID=='"+obj.getColumn(e.newrow, "CID")+"'");
+};
+
+this.TabMain_TabpagePOList_ButtonColChangeExec_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cCid = this.ds_ColChangeHDR.getColumn(this.ds_ColChangeHDR.rowposition, "CID");
+	for(var i = 0 ; i < this.ds_ColChange.rowcount ; i++)
+	{
+		if(this.ds_ColChange.getColumn(i, "CID") == cCid)
+		{
+			var dRow = this.ds_ColChange.getColumn(i, "DsRow");
+			var dCol = this.ds_ColChange.getColumn(i, "DsCol");
+			var dVal = this.ds_ColChange.getColumn(i, "DsNewVal");
+			
+			bDsColChangeHistExec = false;
+			this.ds_POList.setColumn(dRow, dCol, dVal);
+			bDsColChangeHistExec = true;
+		}
 	}
 };
 ]]></Script>
@@ -1007,6 +1118,7 @@ this.TabMain_TabpagePOList_ButtonPOListHist_onclick = function(obj:nexacro.Butto
           <Column id="p_supply2" type="STRING" size="256"/>
           <Column id="p_supply_list" type="STRING" size="256"/>
           <Column id="p_user_id" type="STRING" size="256"/>
+          <Column id="I_CHECK" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_POHistory" useclientlayout="true">
@@ -1056,9 +1168,10 @@ this.TabMain_TabpagePOList_ButtonPOListHist_onclick = function(obj:nexacro.Butto
           <Column id="Remark" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_PoSave_in" useclientlayout="true">
+      <Dataset id="ds_PoSave_in">
         <ColumnInfo>
           <Column id="ROW_ID" type="STRING" size="256"/>
+          <Column id="I_CHECK" type="STRING" size="256"/>
           <Column id="P_VBELN" type="STRING" size="256"/>
           <Column id="P_ZTERM" type="STRING" size="256"/>
           <Column id="P_BSART" type="STRING" size="256"/>
@@ -2351,15 +2464,29 @@ this.TabMain_TabpagePOList_ButtonPOListHist_onclick = function(obj:nexacro.Butto
         <ColumnInfo>
           <Column id="CID" type="STRING" size="256"/>
           <Column id="CidSeq" type="INT" size="256"/>
+          <Column id="CidName" type="STRING" size="256"/>
           <Column id="DsID" type="STRING" size="256"/>
           <Column id="DsCol" type="STRING" size="256"/>
           <Column id="DsRow" type="STRING" size="256"/>
           <Column id="DsOldVal" type="STRING" size="256"/>
           <Column id="DsNewVal" type="STRING" size="256"/>
+          <Column id="SaveUser" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_result_savePO"/>
       <Dataset id="ds_out_po_default"/>
+      <Dataset id="ds_ColChangeHDR" onrowposchanged="ds_ColChangeHDR_onrowposchanged">
+        <ColumnInfo>
+          <Column id="CID" type="STRING" size="256"/>
+          <Column id="CidName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ColChange_in">
+        <ColumnInfo>
+          <Column id="DsID" type="STRING" size="256"/>
+          <Column id="SaveUser" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="DivCondition.form.div_SalesOrderFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
@@ -2372,6 +2499,7 @@ this.TabMain_TabpagePOList_ButtonPOListHist_onclick = function(obj:nexacro.Butto
       <BindItem id="item7" compid="DivCondition.form.div_VendorFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
       <BindItem id="item8" compid="DivCondition.form.div_MaterialFromTo.form.calFrom" propid="value" datasetid="dsList" columnid="dtFrom"/>
       <BindItem id="item9" compid="DivCondition.form.div_MaterialFromTo.form.calTo" propid="value" datasetid="dsList" columnid="dtTo"/>
+      <BindItem id="item10" compid="DivCondition.form.CheckBox00" propid="value" datasetid="ds_in" columnid="I_CHECK"/>
     </Bind>
   </Form>
 </FDL>
