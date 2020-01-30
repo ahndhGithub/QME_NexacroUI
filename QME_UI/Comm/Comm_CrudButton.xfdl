@@ -20,7 +20,15 @@ this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.StaticDevTxt.set_visible(false);	//	개발자용텍스트 숨기기
 	
 	var gtrcPos = "Comm_CrudButton.form_onload";
-	
+
+	this.fn_searchName = this.parent.fn_searchName;
+	this.fn_newName = this.parent.fn_newName;
+	this.fn_saveName = this.parent.fn_saveName;
+	this.fn_deleteName = this.parent.fn_deleteName;
+		this.gtrace("this.fn_searchName--->"+this.fn_searchName, gtrcPos);
+		this.gtrace("this.fn_newName--->"+this.fn_newName, gtrcPos);
+		this.gtrace("this.fn_saveName--->"+this.fn_saveName, gtrcPos);
+		this.gtrace("this.fn_deleteName--->"+this.fn_deleteName, gtrcPos);
 	this.gfn_getParentForm();	// 공통화폼의 경우 무조건 실행
 };
 
@@ -61,13 +69,21 @@ this.btn_Crud_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	switch(obj.name) {
 	case "btn_search":										this.gtrace("case btn_search----->",gtrcPos);
 															this.gtrace("this.oFrmParnt --->"+this.oFrmParnt.name, gtrcPos);
-						this.oFrmParnt.cfn_search();
+															this.gtrace("this.fn_searchName --->"+this.fn_searchName, gtrcPos);
+						if(this.gfn_nvl(this.fn_searchName,"")=="")	this.oFrmParnt.cfn_search();
+						else 			     this.oFrmParnt.lookup(this.fn_searchName).call();
 		break;
-	case "btn_add":		this.oFrmParnt.cfn_add();
+	case "btn_add":		
+						if(this.gfn_nvl(this.fn_newName,"")=="")	this.oFrmParnt.cfn_add();
+						else 			     this.oFrmParnt.lookup(this.fn_newName).call();
 		break;
-	case "btn_save":	this.oFrmParnt.cfn_save();
+	case "btn_save":	
+						if(this.gfn_nvl(this.fn_saveName,"")=="")	this.oFrmParnt.cfn_save();
+						else 			     this.oFrmParnt.lookup(this.fn_saveName).call();
 		break;
-	case "btn_delete":	this.oFrmParnt.cfn_del();
+	case "btn_delete":	
+						if(this.gfn_nvl(this.fn_deleteName,"")=="")	this.oFrmParnt.cfn_del();
+						else 			     this.oFrmParnt.lookup(this.fn_deleteName).call();
 		break;
 	default:
 	}

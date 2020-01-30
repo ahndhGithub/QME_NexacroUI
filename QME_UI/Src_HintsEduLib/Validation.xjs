@@ -171,15 +171,6 @@ pForm.gfn_validation = function()
 		// 삭제된 row 정합성 체크 건수 증가
 		nUpdateCnt += parseInt(objDs.getDeletedRowCount());
 												this.gtrace("삭제된 Row갯수(nUpdateCnt)--->"+nUpdateCnt, gtrcPos);
-
-		// R인 경우 : 체크된 것이 있는지 체크
-		if(sCheckMode=="R"){
-			if(objDs.findRow("ROW_CHK", "1") == -1){		//	ROW_STS
-				// 메시지 처리 : ${}
-				this.gfn_alert("no checked row", null, null, null, "A");
-				return false;
-			}
-		}
 		
 		// 데이터셋의 row 만큼 정합성 체크
 		for(var i=0; i<objDs.getRowCount(); i++)
@@ -1048,4 +1039,22 @@ pForm.gfn_isEmail = function(strValue)
 		}
 	}
 	return retVal;
+};
+
+
+/**
+ * @class 데이터셋에서 체크된 행이 있는지 확인하여 없을 경우 경고창 발생
+ * @param {String} strMsg
+ * @return
+ */
+pForm.gfn_rowCheckValidation = function(objDs, strMsg)
+{
+	if(objDs.findRow("ROW_CHK", "1") == -1){
+		// 메시지 처리 : ${}
+		//	this.gfn_alert("msg.err.validator.length", ["사원번호", "5자리"]);
+		this.gfn_alert("msg.err.validator.selectrow");
+		return false;
+	}else{
+		return this.gfn_validation(objDs, "R");
+	}
 };]]></Script>

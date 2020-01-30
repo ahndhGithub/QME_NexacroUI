@@ -3,7 +3,7 @@
   <Form id="Order_recap" width="1280" height="720" titletext="New Form" onload="formOnload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="0" InitCompVisEna="1:0:0:0,1:1:1:1"/>
+        <Div id="DivCrudButton" left="8" top="8" height="32" text="" formscrolltype="none" right="8" cssclass="div_WF_search" url="Comm::Comm_CrudButton.xfdl" taborder="0" InitCompVisEna="1:0:0:0,1:1:1:1" fn_searchName="" fn_newName="" fn_saveName="" fn_deleteName=""/>
         <Div id="DivCondition" taborder="1" left="8" top="40" height="170" cssclass="div_WF_search" text="" formscrolltype="none" right="8">
           <Layouts>
             <Layout>

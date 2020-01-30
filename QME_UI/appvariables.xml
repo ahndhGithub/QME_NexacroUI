@@ -846,8 +846,28 @@
           <Col id="LANG_KO">{0} 은(는) 필수 입력 항목입니다. </Col>
         </Row>
         <Row>
-          <Col id="DEFAULT_LANG">msg.err.validator </Col>
-          <Col id="LANG_KO">{0} </Col>
+          <Col id="DEFAULT_LANG">msg.err.validator</Col>
+          <Col id="LANG_KO">{0}</Col>
+          <Col id="LANG_VI">{0}</Col>
+          <Col id="LANG_ID">{0}</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg</Col>
+          <Col id="LANG_KO">{0}</Col>
+          <Col id="LANG_VI">{0}</Col>
+          <Col id="LANG_ID">{0}</Col>
+        </Row>
+        <Row>
+          <Col id="DEFAULT_LANG">msg.err.validator.selectrow</Col>
+          <Col id="LANG_KO">Please select save data</Col>
+          <Col id="LANG_VI">Please select save data</Col>
+          <Col id="LANG_ID">Please select save data</Col>
+        </Row>
+        <Row>
+          <Col id="LANG_KO">Please Check Message!</Col>
+          <Col id="LANG_VI">Please Check Message!</Col>
+          <Col id="LANG_ID">Please Check Message!</Col>
+          <Col id="DEFAULT_LANG">msg.pleasecheckmessage</Col>
         </Row>
         <Row>
           <Col id="DEFAULT_LANG">아이디 </Col>
